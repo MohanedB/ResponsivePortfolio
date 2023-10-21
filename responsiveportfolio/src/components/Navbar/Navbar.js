@@ -25,6 +25,8 @@ z-index: 10;
 `;
 
  const NavbarContainer = styled.div`
+ //make all the text in one line
+  white-space: nowrap;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -54,6 +56,7 @@ z-index: 10;
  const NavItems = styled.ul`
     width: 100%;
     display: flex;
+   
     align-items: center;
     justify-content:center;
     gap: 32px;
@@ -132,6 +135,7 @@ transition: all 0.6s ease-in-out;
  const ButtonContainer = styled.div`
   width: 80%;  
   height: 100%;
+  float:right;
   display: flex;
   justify-content: end;
   align-items: center;
@@ -266,9 +270,9 @@ const Navbar = () => {
         <NavItems>
           <NavLink href="#about">About</NavLink>
           <NavLink href='#skills'>Skills</NavLink>
-          <NavLink href='#experience'>Experience</NavLink>
           <NavLink href='#projects'>Projects</NavLink>
           <NavLink href='#education'>Education</NavLink>
+          <NavLink href='#contact'>Contact Me</NavLink>
         </NavItems>
         <ButtonContainer>
           <GitHubButton href={Bio.github} target="_blank">Github Profile</GitHubButton>
@@ -285,15 +289,15 @@ const Navbar = () => {
             <MobileLink href='#skills' onClick={() => {
               setIsOpen(!isOpen)
             }}>Skills</MobileLink>
-            <MobileLink href='#experience' onClick={() => {
-              setIsOpen(!isOpen)
-            }}>Experience</MobileLink>
             <MobileLink href='#projects' onClick={() => {
               setIsOpen(!isOpen)
             }}>Projects</MobileLink>
             <MobileLink href='#education' onClick={() => {
               setIsOpen(!isOpen)
-            }}>Education
+            }}>Education </MobileLink>
+             <MobileLink href='#contact' onClick={() => {
+              setIsOpen(!isOpen)
+            }}>Contact Me
             </MobileLink>
             <GitHubButton style={{padding: '10px 16px', background: `${({ theme }) => theme.primary}`, color: 'white',width: 'max-content'}} href={Bio.github} target="_blank">Github Profile</GitHubButton>
             <LinkedInButton style={{padding: '10px 16px', margin: '0px' ,background: `${({ theme }) => theme.primary}`, color: 'white',width: 'max-content'}} href={Bio.github} target="_blank">LinkedIn Profile</LinkedInButton>
