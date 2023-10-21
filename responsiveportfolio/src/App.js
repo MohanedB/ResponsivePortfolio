@@ -2,7 +2,7 @@ import './App.css';
 import styled, {ThemeProvider} from "styled-components";
 import { darkTheme } from './utils/Theme';
 import NavBar from "./components/Navbar/Navbar";
-import Hero from './components/HeroSection/Hero';
+import Hero from './components/Hero/Hero';
 import Skills from './components/Skills/Skills';
 import Education from './components/Education/Education';
 import { BrowserRouter as Router} from "react-router-dom";
@@ -24,7 +24,7 @@ function App() {
   return (
     <ThemeProvider theme={darkTheme}>
     <Router>
-      <NavBar></NavBar>
+      <NavBar/>
       <Body>
         <Hero/>
         <Wrapper>
@@ -33,8 +33,6 @@ function App() {
         <Education/>
      </Body>
    </Router>
-      
-     
     </ThemeProvider>
 
    
