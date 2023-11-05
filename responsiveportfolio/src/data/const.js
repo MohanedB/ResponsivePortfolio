@@ -39,6 +39,11 @@ export const Bio = {
           image:
             "https://getbootstrap.com/docs/5.3/assets/brand/bootstrap-logo-shadow.png",
         },
+        {
+          name: "SwiftUI",
+          image:
+            "https://zonneveld.dev/wp-content/uploads/2019/10/swiftUI-banner.jpg",
+        },
       ],
     },
     {
@@ -72,6 +77,16 @@ export const Bio = {
           name: "Java",
           image:
             "https://raw.githubusercontent.com/devicons/devicon/master/icons/java/java-original.svg",
+        },
+        {
+          name: "C#",
+          image:
+            "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bd/Logo_C_sharp.svg/1200px-Logo_C_sharp.svg.png",
+        },
+        {
+          name: "Linux",
+          image:
+            "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ab/Linux_Logo_in_Linux_Libertine_Font.svg/1200px-Linux_Logo_in_Linux_Libertine_Font.svg.png",
         },
       ],
     },
@@ -108,6 +123,11 @@ export const Bio = {
           image:
             "https://camo.githubusercontent.com/ed93c2b000a76ceaad1503e7eb9356591b885227e82a36a005b9d3498b303ba5/68747470733a2f2f7777772e766563746f726c6f676f2e7a6f6e652f6c6f676f732f6669676d612f6669676d612d69636f6e2e737667",
         },
+        {
+          name: "Unity",
+          image:
+            "https://www.svgrepo.com/show/331626/unity.svg",
+        },
       ],
     },
   ];
@@ -115,29 +135,89 @@ export const Bio = {
   export const education = [
     {
       id: 0,
-      img: "https://firebasestorage.googleapis.com/v0/b/flexi-coding.appspot.com/o/Kiit.jpeg?alt=media&token=3839d520-c59d-4341-ad8f-0980c98de4dd",
-      school: "Kalinga Institute of Industrial Technology, Bhubaneswar",
-      date: "Oct 2021 - Sep 2025",
-      grade: "8.71 CGPA",
-      desc: "I am currently pursuing a Bachelor's degree in Computer Science and Engineering at Kalinga Institute of Industrial Technology, Bhubaneswar. I have completed 4 semesters and have a CGPA of 8.71. I have taken courses in Data Structures, Algorithms, Object-Oriented Programming, Database Management Systems, Operating Systems, and Computer Networks, among others. I am also a member of the Google Developers Student Club (GDSC) at KIIT, where I am learning and working on exciting projects with a team of talented developers.",
-      degree: "Bachelor of Technology - BTech, Computer Science and Engineering",
+      img: "",
+      school: "Champlain College",
+      date: "August 2021 - May 2024",
+      grade: "28.9",
+      desc: "Currently finishing my technic in computer science. I have completed 5 semesters flawlessly so far with an overall R Score of 28.9. I have take multiple corses shuch as java, linux, IOS, database and more.",
+      degree: "Technique Computer Science",
     },
+
+  ];
+
+  export const projects = [
+
     {
       id: 1,
-      img: "https://firebasestorage.googleapis.com/v0/b/flexi-coding.appspot.com/o/methodist.png?alt=media&token=018a1b18-e2dd-4f34-8855-cff1b6b69fd3",
-      school: "Methodist School, Dankuni",
-      date: "Apr 2019 - Apr 2025",
-      grade: "88.2%",
-      desc: "I completed my class 12 high school education at Methodist School, Dankuni, where I studied Science with Computer Science.",
-      degree: "ISC(XII), Science with Computer",
+      title: "Calculator",
+      date: "Jun 2021",
+      description:
+        "A simple Calculator in C#",
+      image:
+        "",
+      tags: ["C#", "Visual Studio"],
+      category: "YEAR1",
+      github: "https://github.com/MohanedB/Calculator",
+      webapp: "",
     },
     {
       id: 2,
-      img: "https://firebasestorage.googleapis.com/v0/b/flexi-coding.appspot.com/o/methodist.png?alt=media&token=018a1b18-e2dd-4f34-8855-cff1b6b69fd3",
-      school: "Methodist School, Dankuni",
-      date: "Apr 2017 - Apr 2019",
-      grade: "92.3%",
-      desc: "I completed my class 10 education at Methodist School, Dankuni, where I studied Science with Computer Application.",
-      degree: "ICSC(X), Science with Computer",
+      title: "Quiz App",
+      date: "Nov 2022 - Dec 2022",
+      description:
+        "Quizz app that creates random quiz using a trivia api. Calculates the score and stores it in the database",
+      image:
+        "",
+      tags: ["Firebase", "SwiftUI", "Swift"],
+      category: "YEAR2",
+      github: "",
+      webapp: "",
+    },
+    {
+      id: 3,
+      title: "Paysage-Meloche",
+      date: "Jan 2023 - Feb 2023",
+      description:
+        "A website designed for an outdoor compagny that would allow scheduling direcetly from the website, but also managing the workers and making legal documents",
+      image:
+        "",
+      tags: ["ReactJs", "Visual Studio","NodeJS", "MangoDB"],
+      category: "YEAR3",
+      github: "https://github.com/Carstal/paysages-meloche",
+      webapp: "",
+    },
+    {
+      id: 4,
+      title: "Pet-Clinic",
+      date: "Oct 2023 - Dec 2023",
+      description:
+        "Kept working on a project that is past down by shcool year after year. Worked on the calendar and filtering. Fixed some Front end issues",
+      image:
+        "",
+      tags: ["JavaScript", "Visual Studio"],
+      category: "YEAR3",
+      github: "https://github.com/istiaque-champ/champ_petclinic",
+      webapp: "",
+    },
+    {
+      id: 5,
+      title: "Fallen God",
+      date: "Jan 2022 - Mar 2022",
+      description:
+        "A game based a greek mythology where you have a character that has to collect all the coins to open the portal to a boss while fighting off enemies and avoiding traps",
+      image:
+        "",
+      tags: [
+        "Unity",
+        "C#",
+        "GIT",
+        "Visual Studio"
+      ],
+      category: "YEAR2",
+      github: "https://github.com/ShadowFever3/FinalProject2D",
+      webapp: "",
     },
   ];
+
+ 
+
