@@ -210,7 +210,7 @@ export const Bio = {
       tags: [
         "Unity",
         "C#",
-        "GIT",
+        "Git Hub",
         "Visual Studio"
       ],
       category: "YEAR2",
