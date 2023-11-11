@@ -277,7 +277,6 @@ const Navbar = () => {
         <ButtonContainer>
           <GitHubButton href={Bio.github} target="_blank">Github Profile</GitHubButton>
           
-          <LinkedInButton href={Bio.linkedin} target="_blank">LinkedIn Profile</LinkedInButton>
 
         </ButtonContainer>
         {
@@ -300,7 +299,6 @@ const Navbar = () => {
             }}>Contact Me
             </MobileLink>
             <GitHubButton style={{padding: '10px 16px', background: `${({ theme }) => theme.primary}`, color: 'white',width: 'max-content'}} href={Bio.github} target="_blank">Github Profile</GitHubButton>
-            <LinkedInButton style={{padding: '10px 16px', margin: '0px' ,background: `${({ theme }) => theme.primary}`, color: 'white',width: 'max-content'}} href={Bio.github} target="_blank">LinkedIn Profile</LinkedInButton>
 
           </MobileMenu>
         }

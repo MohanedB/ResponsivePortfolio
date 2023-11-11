@@ -6,6 +6,7 @@ import Hero from './components/Hero/Hero';
 import Skills from './components/Skills/Skills';
 import Education from './components/Education/Education';
 import Contact from './components/Contact/Contact';
+import Footer from './components/footer/footer';
 import { BrowserRouter as Router} from "react-router-dom";
 import Projects from './components/Project/Project';
 
@@ -40,6 +41,7 @@ function App() {
         <Education/>
         <Projects/>
         <Contact/>
+        <Footer/>
      </Body>
    </Router>
     </ThemeProvider>

@@ -9,6 +9,8 @@ export const Bio = {
     resume:
       "https://drive.google.com/file/d/1VADCWKlg9nthWxPFhvv1MYFAvU_KIShh/view?usp=share_link",
     linkedin: "https://www.linkedin.com/in/mohaned-bouzaidi-a7390724a/",
+    insta: "https://www.instagram.com/_momo204/",
+    facebook: "https://www.facebook.com/mohaned.bouzaidi.7/",
   };
 
   export const skills = [
