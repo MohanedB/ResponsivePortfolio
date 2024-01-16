@@ -7,7 +7,7 @@ export const Bio = {
       "I am a motivated and versatile Student, always eager to take on new challenges with a passion for learning. I am dedicated to delivering high-quality results with a positive attitude and a great mindset and I am ready to make a meaningful contribution and achieve great things.",
     github: "https://github.com/MohanedB",
     resume:
-      "https://drive.google.com/file/d/1VADCWKlg9nthWxPFhvv1MYFAvU_KIShh/view?usp=share_link",
+      "https://drive.google.com/file/d/1tmD25vboUseJHgxOdFNTGC1jBgwf9q0F/view?usp=sharing",
     linkedin: "https://www.linkedin.com/in/mohaned-bouzaidi-a7390724a/",
     insta: "https://www.instagram.com/_momo204/",
     facebook: "https://www.facebook.com/mohaned.bouzaidi.7/",
