@@ -219,6 +219,20 @@ export const Bio = {
       github: "https://github.com/ShadowFever3/FinalProject2D",
       webapp: "",
     },
+    {
+      id: 6,
+      title: "HalalBites",
+      date: "Jan 2024 - Feb 2024",
+      description:
+        "A search engine website made for people of different cultures such as muslims. The website would help these people find specific restaurant around them, such as for example, all halal restaurant in someones city ",
+      image:
+        "",
+      tags: ["JavaScript", "Visual Studio", "ReactJs", "Java SpringBoot"],
+      category: "YEAR3",
+      github: "https://github.com/Nmazza1/HalalbitesBackend",
+      github: "https://github.com/Nmazza1/halalbitesfrontend",
+      webapp: "",
+    },
   ];
 
  
