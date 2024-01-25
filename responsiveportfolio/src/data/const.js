@@ -227,7 +227,7 @@ export const Bio = {
         "A search engine website made for people of different cultures such as muslims. The website would help these people find specific restaurant around them, such as for example, all halal restaurant in someones city ",
       image:
         "",
-      tags: ["JavaScript", "Visual Studio", "ReactJs", "Java SpringBoot"],
+      tags: ["JavaScript", "Visual Studio", "ReactJs", "Java SpringBoot", "MySQL"],
       category: "YEAR3",
       github: "https://github.com/Nmazza1/HalalbitesBackend",
       webapp: "",

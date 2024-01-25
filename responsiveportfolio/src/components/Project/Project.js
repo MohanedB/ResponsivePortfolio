@@ -108,8 +108,11 @@ const CardContainer = styled.div`
 `;
 
 
-const Projects = ({openModal,setOpenModal}) => {
-    const [toggle, setToggle] = useState('all');
+
+const Projects = () => {
+  
+  const [openModal, setOpenModal] = useState(false);
+  const [toggle, setToggle] = useState('all');
   return (
     <Container id="projects">
       <Wrapper>
@@ -145,12 +148,12 @@ const Projects = ({openModal,setOpenModal}) => {
         <CardContainer>
           {toggle === 'all' && projects
             .map((project) => (
-              <ProjectCard project={project} openModal={openModal} setOpenModal={setOpenModal}/>
+              <ProjectCard project={project} openModal={openModal} setOpenModal={setOpenModal} github={project.github}/>
             ))}
           {projects
             .filter((item) => item.category == toggle)
             .map((project) => (
-              <ProjectCard project={project} openModal={openModal} setOpenModal={setOpenModal}/>
+              <ProjectCard project={project} openModal={openModal} setOpenModal={setOpenModal} github={project.github}/>
             ))}
         </CardContainer>
        
@@ -158,5 +161,6 @@ const Projects = ({openModal,setOpenModal}) => {
     </Container>
   )
 }
+
 
 export default Projects

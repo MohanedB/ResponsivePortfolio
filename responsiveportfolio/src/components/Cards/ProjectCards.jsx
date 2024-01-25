@@ -122,9 +122,12 @@ const Avatar = styled.img`
     border: 3px solid ${({ theme }) => theme.card};
 `
 
+
+// ...existing styled components...
+
 const ProjectCards = ({project,setOpenModal}) => {
     return (
-        <Card onClick={() => setOpenModal({state: true, project: project})}>
+        <Card onClick={() => window.open(project.github, '_blank')}>
             <Image src={project.image}/>
             <Tags>
                 {project.tags?.map((tag, index) => (
@@ -141,7 +144,6 @@ const ProjectCards = ({project,setOpenModal}) => {
                     <Avatar src={member.img}/>
                 ))}
             </Members>
-            {/* <Button>View Project</Button> */}
         </Card>
     )
 }
