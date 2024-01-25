@@ -109,54 +109,55 @@ const CardContainer = styled.div`
 
 
 const Projects = ({openModal,setOpenModal}) => {
-    const [toggle, setToggle] = useState('all');
-  return (
-    <Container id="projects">
-      <Wrapper>
-        <Title>Projects</Title>
-        <Desc>
-          I have worked on a wide range of projects
-        </Desc>
-        <ToggleButtonGroup >
-          {toggle === 'all' ?
-            <ToggleButton active value="all" onClick={() => setToggle('all')}>All</ToggleButton>
-            :
-            <ToggleButton value="all" onClick={() => setToggle('all')}>All</ToggleButton>
-          }
-          <Divider />
-          {toggle === 'YEAR1' ?
-            <ToggleButton active value="YEAR1" onClick={() => setToggle('YEAR1')}>First Year</ToggleButton>
-            :
-            <ToggleButton value="YEAR1" onClick={() => setToggle('YEAR1')}>First Year</ToggleButton>
-          }
-          <Divider />
-          {toggle === 'YEAR2' ?
-            <ToggleButton active value="YEAR2" onClick={() => setToggle('YEAR2')}>Second Year</ToggleButton>
-            :
-            <ToggleButton value="YEAR2" onClick={() => setToggle('YEAR2')}>Second Year</ToggleButton>
-          }
-          <Divider />
-          {toggle === 'YEAR3' ?
-            <ToggleButton active value="YEAR3" onClick={() => setToggle('YEAR3')}>Third Year</ToggleButton>
-            :
-            <ToggleButton value="YEAR3" onClick={() => setToggle('YEAR3')}>Third Year</ToggleButton>
-          }
-        </ToggleButtonGroup>
-        <CardContainer>
-          {toggle === 'all' && projects
-            .map((project) => (
-              <ProjectCard project={project} openModal={openModal} setOpenModal={setOpenModal}/>
-            ))}
-          {projects
-            .filter((item) => item.category == toggle)
-            .map((project) => (
-              <ProjectCard project={project} openModal={openModal} setOpenModal={setOpenModal}/>
-            ))}
-        </CardContainer>
-       
-      </Wrapper>
-    </Container>
-  )
+  const [toggle, setToggle] = useState('all');
+return (
+  <Container id="projects">
+    <Wrapper>
+      <Title>Projects</Title>
+      <Desc>
+        I have worked on a wide range of projects
+      </Desc>
+      <ToggleButtonGroup >
+        {toggle === 'all' ?
+          <ToggleButton active value="all" onClick={() => setToggle('all')}>All</ToggleButton>
+          :
+          <ToggleButton value="all" onClick={() => setToggle('all')}>All</ToggleButton>
+        }
+        <Divider />
+        {toggle === 'YEAR1' ?
+          <ToggleButton active value="YEAR1" onClick={() => setToggle('YEAR1')}>First Year</ToggleButton>
+          :
+          <ToggleButton value="YEAR1" onClick={() => setToggle('YEAR1')}>First Year</ToggleButton>
+        }
+        <Divider />
+        {toggle === 'YEAR2' ?
+          <ToggleButton active value="YEAR2" onClick={() => setToggle('YEAR2')}>Second Year</ToggleButton>
+          :
+          <ToggleButton value="YEAR2" onClick={() => setToggle('YEAR2')}>Second Year</ToggleButton>
+        }
+        <Divider />
+        {toggle === 'YEAR3' ?
+          <ToggleButton active value="YEAR3" onClick={() => setToggle('YEAR3')}>Third Year</ToggleButton>
+          :
+          <ToggleButton value="YEAR3" onClick={() => setToggle('YEAR3')}>Third Year</ToggleButton>
+        }
+      </ToggleButtonGroup>
+      <CardContainer>
+        {toggle === 'all' && projects
+          .map((project) => (
+            <ProjectCard project={project} openModal={openModal} setOpenModal={setOpenModal}/>
+          ))}
+        {projects
+          .filter((item) => item.category == toggle)
+          .map((project) => (
+            <ProjectCard project={project} openModal={openModal} setOpenModal={setOpenModal}/>
+          ))}
+      </CardContainer>
+      <a href="https://github.com/yourusername" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+    </Wrapper>
+  </Container>
+)
 }
+
 
 export default Projects
