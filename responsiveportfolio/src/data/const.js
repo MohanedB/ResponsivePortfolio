@@ -98,7 +98,7 @@ export const Bio = {
         {
           name: "Git",
           image:
-            "https://camo.githubusercontent.com/fbfcb9e3dc648adc93bef37c718db16c52f617ad055a26de6dc3c21865c3321d/68747470733a2f2f7777772e766563746f726c6f676f2e7a6f6e652f6c6f676f732f6769742d73636d2f6769742d73636d2d69636f6e2e737667",
+            "https://img.icons8.com/?size=256&id=20906&format=png",
         },
         {
           name: "GitHub",
@@ -118,12 +118,12 @@ export const Bio = {
         {
           name: "Postman",
           image:
-            "https://tse3.mm.bing.net/th/id/OIP.ev0hMHHlKjpQ19nJ23TSmwHaGq?rs=1&pid=ImgDetMain",
+            "https://img.icons8.com/?size=256&id=QEQQKirln6Tf&format=png",
         },
         {
           name: "Figma",
           image:
-            "https://camo.githubusercontent.com/ed93c2b000a76ceaad1503e7eb9356591b885227e82a36a005b9d3498b303ba5/68747470733a2f2f7777772e766563746f726c6f676f2e7a6f6e652f6c6f676f732f6669676d612f6669676d612d69636f6e2e737667",
+            "https://img.icons8.com/?size=256&id=zfHRZ6i1Wg0U&format=png",
         },
         {
           name: "Unity",
