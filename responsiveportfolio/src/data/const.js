@@ -230,7 +230,7 @@ export const Bio = {
       tags: ["JavaScript", "Visual Studio", "ReactJs", "Java SpringBoot"],
       category: "YEAR3",
       github: "https://github.com/Nmazza1/HalalbitesBackend",
-      webapp: "https://responsive-portfolio-kohl.vercel.app",
+      webapp: "",
     },
   ];
 
