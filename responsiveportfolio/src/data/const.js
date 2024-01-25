@@ -115,7 +115,11 @@ export const Bio = {
           image:
             "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Visual_Studio_Code_1.35_icon.svg/512px-Visual_Studio_Code_1.35_icon.svg.png?20210804221519",
         },
-   
+        {
+          name: "Postman",
+          image:
+            "https://tse3.mm.bing.net/th/id/OIP.ev0hMHHlKjpQ19nJ23TSmwHaGq?rs=1&pid=ImgDetMain",
+        },
         {
           name: "Figma",
           image:
