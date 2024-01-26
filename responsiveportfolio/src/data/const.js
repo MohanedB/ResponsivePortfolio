@@ -151,7 +151,7 @@ export const Bio = {
       school: "Champlain College",
       date: "August 2021 - May 2024",
       grade: "28.9",
-      desc: "Currently finishing my technic in computer science. I have completed 5 semesters flawlessly so far with an overall R Score of 28.9. I have take multiple corses shuch as java, linux, IOS, database and more.",
+      desc: "Currently finishing my technic in computer science. I have completed 5 semesters flawlessly so far with an overall R Score of 28.9. I have take multiple courses such as java, linux, IOS, database and more.",
       degree: "Technique Computer Science",
     },
 
