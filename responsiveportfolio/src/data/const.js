@@ -135,6 +135,11 @@ export const Bio = {
           image:
             "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ab/Linux_Logo_in_Linux_Libertine_Font.svg/1200px-Linux_Logo_in_Linux_Libertine_Font.svg.png",
         },
+        {
+          name: "GNS3",
+          image:
+            "https://cdn.icon-icons.com/icons2/1381/PNG/512/gns3_94911.png",
+        },
       ],
     },
   ];
