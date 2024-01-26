@@ -46,6 +46,11 @@ export const Bio = {
           image:
             "https://zonneveld.dev/wp-content/uploads/2019/10/swiftUI-banner.jpg",
         },
+        {
+          name: "TailWind",
+          image:
+            "https://cdn.icon-icons.com/icons2/2107/PNG/512/file_type_tailwind_icon_130128.png",
+        },
       ],
     },
     {
