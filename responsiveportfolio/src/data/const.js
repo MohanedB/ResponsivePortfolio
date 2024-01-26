@@ -86,9 +86,9 @@ export const Bio = {
             "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bd/Logo_C_sharp.svg/1200px-Logo_C_sharp.svg.png",
         },
         {
-          name: "Linux",
+          name: "PHP",
           image:
-            "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ab/Linux_Logo_in_Linux_Libertine_Font.svg/1200px-Linux_Logo_in_Linux_Libertine_Font.svg.png",
+            "https://img.icons8.com/?size=256&id=UGYn5TapNioV&format=png",
         },
       ],
     },
@@ -129,6 +129,11 @@ export const Bio = {
           name: "Unity",
           image:
             "https://www.svgrepo.com/show/331626/unity.svg",
+        },
+        {
+          name: "Linux",
+          image:
+            "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ab/Linux_Logo_in_Linux_Libertine_Font.svg/1200px-Linux_Logo_in_Linux_Libertine_Font.svg.png",
         },
       ],
     },
