@@ -1,6 +1,6 @@
 
-import React from 'react'
-import styled from 'styled-components'
+import React from 'react';
+import styled from 'styled-components';
 import Timeline from '@mui/lab/Timeline';
 import TimelineItem from '@mui/lab/TimelineItem';
 import TimelineSeparator from '@mui/lab/TimelineSeparator';
@@ -9,6 +9,8 @@ import TimelineContent from '@mui/lab/TimelineContent';
 import TimelineDot from '@mui/lab/TimelineDot';
 import { education, experiences } from '../../data/const';
 import EducationCard from '../Cards/Education';
+import { useTranslation } from 'react-i18next';
+
 
 const Container = styled.div`
     display: flex;
@@ -77,13 +79,19 @@ const TimelineSection = styled.div`
 
 
 
-const index = () => {
+const Index = () => {
+    const { t, i18n } = useTranslation();
+
+    const changeLanguage = (lng) => {
+      i18n.changeLanguage(lng);
+    };
     return (
+        
         <Container id="education">
             <Wrapper>
-                <Title>Education</Title>
+                <Title>{t('Education')}</Title>
                 <Desc>
-                    My education has been a journey of self-discovery and growth. My educational details are as follows.
+                {t('Edudesc')}
                 </Desc>
                 <TimelineSection>
                     <Timeline>
@@ -99,4 +107,4 @@ const index = () => {
     )
 }
 
-export default index
+export default Index

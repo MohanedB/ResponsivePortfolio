@@ -9,6 +9,10 @@ import Contact from './components/Contact/Contact';
 import Footer from './components/footer/footer';
 import { BrowserRouter as Router} from "react-router-dom";
 import Projects from './components/Project/Project';
+import { I18nextProvider } from 'react-i18next';
+import i18n from './components/Internationalization/I18n';
+import { useTranslation } from 'react-i18next';
+
 
 const Body = styled.div`
   background-color: ${({ theme }) => theme.bg};
@@ -23,32 +27,29 @@ const Wrapper = styled.div`
   clip-path: polygon(0 0, 100% 0, 100% 100%,30% 98%, 0 100%);
   padding-bottom: 20px;
 
-
-
- 
 `
+
 
 function App() {
   return (
-    <ThemeProvider theme={darkTheme}>
-    <Router>
-      <NavBar/>
-      <Body>
-        <Hero/>
-        <Wrapper>
-        <Skills/>
-        </Wrapper>
-        <Education/>
-        <Projects/>
-        <Contact/>
-        <Footer/>
-     </Body>
-   </Router>
-    </ThemeProvider>
-
-   
+    <I18nextProvider i18n={i18n}>
+      <ThemeProvider theme={darkTheme}>
+        <Router>
+          <NavBar/>
+          <Body>
+            <Hero/>
+            <Wrapper>
+              <Skills/>
+            </Wrapper>
+            <Education/>
+            <Projects/>
+            <Contact/>
+            <Footer/>
+          </Body>
+        </Router>
+      </ThemeProvider>
+    </I18nextProvider>
   );
-} 
-
+}
 
 export default App;

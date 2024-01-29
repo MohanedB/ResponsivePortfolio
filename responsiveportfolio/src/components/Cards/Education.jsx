@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import { useTranslation } from 'react-i18next';
 
 const Document = styled.img`
     display: none;
@@ -127,24 +128,30 @@ const Grade = styled.div`
 `
 
 
-
 const EducationCard = ({ education }) => {
+    const { t, i18n } = useTranslation();
+  
+    const changeLanguage = (lng) => {
+      i18n.changeLanguage(lng);
+    };
+  
     return (
-        <Card>
-            <Top>
-                <Image src={education.img} />
-                <Body>
-                    <Name>{education.school}</Name>
-                    <Degree>{education.degree}</Degree>
-                    <Date>{education.date}</Date>
-                </Body>
-            </Top>
-            <Grade><b>R Score: </b>{education.grade}</Grade>
-            <Description>
-                <Span>{education.desc}</Span>
-            </Description>
-        </Card>
-    )
-}
-
-export default EducationCard
+      <Card>
+        <Top>
+          <Image src={education.img} />
+          <Body>
+            <Name>{t(education.schoolKey)}</Name>
+            <Degree>{t(education.degreeKey)}</Degree>
+            <Date>{t(education.dateKey)}</Date>
+          </Body>
+        </Top>
+        <Grade><b>R Score: </b>{education.grade}</Grade>
+        <Description>
+        <Span>{t(education.descKey)}</Span>
+        </Description>
+      </Card>
+    );
+  };
+  
+  export default EducationCard;
+  

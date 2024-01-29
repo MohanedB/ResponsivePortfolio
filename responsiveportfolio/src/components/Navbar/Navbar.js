@@ -5,6 +5,9 @@ import {Link as LinkR} from "react-router-dom";
 import { DiBlackberry } from 'react-icons/di';
 import { FaBars } from 'react-icons/fa';
 import { useTheme } from 'styled-components';
+import { useTranslation } from 'react-i18next';
+
+
 
 
 
@@ -252,8 +255,30 @@ export const MobileNavLogo = styled(LinkR)`
   }
 `;
 
+function MyComponent() {
+  const { t } = useTranslation();
+
+  return <p>{t('myTranslationKey')}</p>;
+}
+
+function LanguageSwitcher() {
+  const { i18n } = useTranslation();
+
+  const changeLanguage = (language) => {
+    i18n.changeLanguage(language);
+  };
+} 
+
 const Navbar = () => {
   const [isOpen, setIsOpen] = React.useState(false);
+  const { i18n } = useTranslation();
+  const { t } = useTranslation();
+
+
+  const changeLanguage = (language) => {
+    i18n.changeLanguage(language);
+  };
+
   return (
     <Nav>
       <NavbarContainer>
@@ -268,38 +293,37 @@ const Navbar = () => {
           }} />
         </MobileIcon>
         <NavItems>
-          <NavLink href="#about">About</NavLink>
-          <NavLink href='#skills'>Skills</NavLink>
-          <NavLink href='#education'>Education</NavLink>
-          <NavLink href='#projects'>Projects</NavLink>
-          <NavLink href='#contact'>Contact Me</NavLink>
+          <NavLink href="#about">{t('About')}</NavLink>
+          <NavLink href='#skills'>{t('Skill')}</NavLink>
+          <NavLink href='#education'>{t('Education')}</NavLink>
+          <NavLink href='#projects'>{t('Projects')}</NavLink>
+          <NavLink href='#contact'>{t('Contact')}</NavLink>
         </NavItems>
         <ButtonContainer>
           <GitHubButton href={Bio.github} target="_blank">Github Profile</GitHubButton>
-          
-
-        </ButtonContainer>
+          <GitHubButton onClick={() => changeLanguage('en')}>{t('Language_en')}</GitHubButton>
+          <GitHubButton onClick={() => changeLanguage('fr')}>{t('Language_fr')}</GitHubButton>        
+          </ButtonContainer>
         {
           isOpen &&
           <MobileMenu isOpen={isOpen}>
             <MobileLink href="#about" onClick={() => {
               setIsOpen(!isOpen)
-            }}>About</MobileLink>
+            }}>{t('About')}</MobileLink>
             <MobileLink href='#skills' onClick={() => {
               setIsOpen(!isOpen)
-            }}>Skills</MobileLink>
+            }}>{t('Skill')}</MobileLink>
             <MobileLink href='#projects' onClick={() => {
               setIsOpen(!isOpen)
-            }}>Projects</MobileLink>
+            }}>{t('Projects')}</MobileLink>
             <MobileLink href='#education' onClick={() => {
               setIsOpen(!isOpen)
-            }}>Education </MobileLink>
+            }}>{t('Education')} </MobileLink>
              <MobileLink href='#contact' onClick={() => {
               setIsOpen(!isOpen)
-            }}>Contact Me
+            }}>{t('Contact')} 
             </MobileLink>
             <GitHubButton style={{padding: '10px 16px', background: `${({ theme }) => theme.primary}`, color: 'white',width: 'max-content'}} href={Bio.github} target="_blank">Github Profile</GitHubButton>
-
           </MobileMenu>
         }
       </NavbarContainer>
@@ -308,4 +332,3 @@ const Navbar = () => {
 }
 
 export default Navbar
-

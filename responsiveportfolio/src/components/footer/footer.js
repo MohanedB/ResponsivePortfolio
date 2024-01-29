@@ -4,6 +4,7 @@ import TwitterIcon from '@mui/icons-material/Twitter';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import { Bio } from '../../data/const';
+import { useTranslation } from 'react-i18next';
 
 const FooterContainer = styled.div`
   width: 100%;
@@ -85,16 +86,23 @@ const Copyright = styled.p`
 `;
 
 function Footer() {
+  const { i18n } = useTranslation();
+  const { t } = useTranslation();
+
+
+  const changeLanguage = (language) => {
+    i18n.changeLanguage(language);
+  };
   return (
     <FooterContainer>
       <FooterWrapper>
         <Logo>Mohaned Bouzaidi</Logo>
         <Nav>
-          <NavLink href="#about">About</NavLink>
-          <NavLink href="#skills">Skills</NavLink>
-          <NavLink href="#education">Education</NavLink>
-          <NavLink href="#projects">Projects</NavLink>
-          <NavLink href="#contact">Contact Me</NavLink>
+          <NavLink href="#about">{t('About')}</NavLink>
+          <NavLink href='#skills'>{t('Skill')}</NavLink>
+          <NavLink href='#education'>{t('Education')}</NavLink>
+          <NavLink href='#projects'>{t('Projects')}</NavLink>
+          <NavLink href='#contact'>{t('Contact')}</NavLink>
         </Nav>
         <SocialMediaIcons>
           <SocialMediaIcon href={Bio.facebook} target="display"><FacebookIcon /></SocialMediaIcon>

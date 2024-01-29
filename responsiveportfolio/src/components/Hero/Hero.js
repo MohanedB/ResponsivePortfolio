@@ -4,6 +4,7 @@ import HeroAnimation from "../HeroAnimation/HeroAnimation";
 import HeroImg from '../../Image/HeroImage.jpg'
 import Typewriter from 'typewriter-effect';
 import { Bio } from "../../data/const";
+import { useTranslation } from 'react-i18next';
 
 
 
@@ -107,6 +108,7 @@ export const Img = styled.img`
   max-height: 400px;
   border-radius: 50%;
   border: 2px solid ${({ theme }) => theme.primary};
+  object-fit: cover; /* Add this line */
 
   @media (max-width: 768px) {
     max-width: 400px;
@@ -118,6 +120,8 @@ export const Img = styled.img`
     max-height: 280px;
   }
 `;
+
+
 
 export const Title = styled.div`
   font-weight: 700;
@@ -209,42 +213,46 @@ export const ResumeButton = styled.a`
 
 `;
 
+
 const Hero = () => {
+  const { t, i18n } = useTranslation();
+
+  const changeLanguage = (lng) => {
+    i18n.changeLanguage(lng);
+  };
+
   return (
     <div id="about">
-            <HeroContainer>
-                <HeroBg>
-                  <HeroAnimation/>
-                </HeroBg>
-                <HeroInnerContainer >
-                    <HeroLeftContainer id="Left">
-                        <Title>Hi, I am <br /> {Bio.name}</Title>
-                        <TextLoop>
-                            I am a
-                            <Span>
-                                <Typewriter
-                                    options={{
-                                        strings: Bio.roles,
-                                        autoStart: true,
-                                        loop: true,
-                                    }}
-                                />
-                            </Span>
-                        </TextLoop>
-                        <SubTitle>{Bio.description}</SubTitle>
-                        <ResumeButton href={Bio.resume} target='display'>Check Resume</ResumeButton>
-                    </HeroLeftContainer>
+      <HeroContainer>
+        <HeroBg>
+          <HeroAnimation/>
+        </HeroBg>
+        <HeroInnerContainer >
+          <HeroLeftContainer id="Left">
+            <Title>{t('greeting')} <br /> {t('name')}</Title>
+            <TextLoop>
+              {t('IAM')}
+              <Span>
+              <Typewriter
+                  options={{
+                  strings: [...t('roles', { returnObjects: true })],
+                  autoStart: true,
+                  loop: true,
+                   }}
+                  />
+              </Span>
+            </TextLoop>
+            <SubTitle>{t('description')}</SubTitle>
+            <ResumeButton href={t('resume')} target='display'>Resumer</ResumeButton>
+          </HeroLeftContainer>
 
-                    <HeroRightContainer id="Right">
-                    <Img src={HeroImg} alt="hero-image" />
-
-                    </HeroRightContainer>
-                </HeroInnerContainer>
-
-            </HeroContainer>
-        </div>
+          <HeroRightContainer id="Right">
+            <Img src={HeroImg} alt="hero-image" />
+          </HeroRightContainer>
+        </HeroInnerContainer>
+      </HeroContainer>
+    </div>
   );
 };
-
 
 export default Hero;

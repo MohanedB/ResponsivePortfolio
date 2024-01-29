@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import { useRef } from 'react';
 import emailjs from '@emailjs/browser';
 import { Snackbar } from '@mui/material';
+import { useTranslation } from 'react-i18next';
 
 const Container = styled.div`
 display: flex;
@@ -127,7 +128,14 @@ const Contact = () => {
   //hooks
   const [open, setOpen] = React.useState(false);
   const form = useRef();
+  const [isOpen, setIsOpen] = React.useState(false);
+  const { i18n } = useTranslation();
+  const { t } = useTranslation();
 
+
+  const changeLanguage = (language) => {
+    i18n.changeLanguage(language);
+  };
   const sendemail = (e) => {
     e.preventDefault();
     emailjs.sendForm('service_x5oinbn', 'template_6y1ugbd', form.current, '6YknmoR5NVPH3K1pT')
@@ -144,14 +152,14 @@ const Contact = () => {
   return (
     <Container id="contact">
       <Wrapper>
-        <Title>Contact</Title>
-        <Desc>Feel free to reach out to me for any questions or opportunities!</Desc>
+        <Title>{t('Contact')}</Title>
+        <Desc>{t('ContactDesc')}</Desc>
         <ContactForm ref={form} onSubmit={sendemail}>
-          <ContactInput placeholder="Your Email" name="email" />
-          <ContactInput placeholder="Your Name" name="name" />
-          <ContactInput placeholder="Subject" name="subject" />
-          <ContactInputMessage placeholder="Message" rows="4" name="message" />
-          <ContactButton type="submit" value="Send" />
+          <ContactInput placeholder={t('Email')} name="email" />
+          <ContactInput placeholder={t('Name')} name="name" />
+          <ContactInput placeholder={t('Subject')} name="subject" />
+          <ContactInputMessage placeholder={t('Message')} rows="4" name="message" />
+          <ContactButton type="submit" value={t('Send')}/>
         </ContactForm>
         <Snackbar
           open={open}

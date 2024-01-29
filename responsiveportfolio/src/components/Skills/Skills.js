@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { skills } from '../../data/const';
+import { useTranslation } from 'react-i18next';
 
 const Container = styled.div`
 display: flex;
@@ -120,11 +121,18 @@ const SkillImage = styled.img`
 
 
 const Skills = () => {
+  const { i18n } = useTranslation();
+  const { t } = useTranslation();
+
+
+  const changeLanguage = (language) => {
+    i18n.changeLanguage(language);
+  };
   return (
     <Container id="skills">
       <Wrapper>
-        <Title>Skills</Title>
-        <Desc>Here are some of the skills I have picked up in my computer science program and individual studies for the past 3 years.
+        <Title>{t('Skill')}</Title>
+        <Desc>{t('skilldesc')}
         </Desc>
         <SkillsContainer>
           {skills.map((skill) => (

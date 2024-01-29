@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import { useState } from 'react'
 import ProjectCard from '../Cards/ProjectCards'
 import { projects } from '../../data/const'
+import { useTranslation } from 'react-i18next';
 
 const Container = styled.div`
     background: linear-gradient(343.07deg, rgba(132, 59, 206, 0.06) 5.71%, rgba(132, 59, 206, 0) 64.83%);
@@ -113,36 +114,45 @@ const Projects = () => {
   
   const [openModal, setOpenModal] = useState(false);
   const [toggle, setToggle] = useState('all');
+  const [isOpen, setIsOpen] = React.useState(false);
+  const { i18n } = useTranslation();
+  const { t } = useTranslation();
+
+
+  const changeLanguage = (language) => {
+    i18n.changeLanguage(language);
+  };
+
   return (
     <Container id="projects">
       <Wrapper>
         <Title>Projects</Title>
         <Desc>
-          I have worked on a wide range of projects
+        {t('ProjectDesc')}
         </Desc>
         <ToggleButtonGroup >
           {toggle === 'all' ?
-            <ToggleButton active value="all" onClick={() => setToggle('all')}>All</ToggleButton>
+            <ToggleButton active value="all" onClick={() => setToggle('all')}>{t('All')}</ToggleButton>
             :
-            <ToggleButton value="all" onClick={() => setToggle('all')}>All</ToggleButton>
+            <ToggleButton value="all" onClick={() => setToggle('all')}>{t('All')}</ToggleButton>
           }
           <Divider />
           {toggle === 'YEAR1' ?
-            <ToggleButton active value="YEAR1" onClick={() => setToggle('YEAR1')}>First Year</ToggleButton>
+            <ToggleButton active value="YEAR1" onClick={() => setToggle('YEAR1')}>{t('FirstYear')}</ToggleButton>
             :
-            <ToggleButton value="YEAR1" onClick={() => setToggle('YEAR1')}>First Year</ToggleButton>
+            <ToggleButton value="YEAR1" onClick={() => setToggle('YEAR1')}>{t('FirstYear')}</ToggleButton>
           }
           <Divider />
           {toggle === 'YEAR2' ?
-            <ToggleButton active value="YEAR2" onClick={() => setToggle('YEAR2')}>Second Year</ToggleButton>
+            <ToggleButton active value="YEAR2" onClick={() => setToggle('YEAR2')}>{t('SecondYear')}</ToggleButton>
             :
-            <ToggleButton value="YEAR2" onClick={() => setToggle('YEAR2')}>Second Year</ToggleButton>
+            <ToggleButton value="YEAR2" onClick={() => setToggle('YEAR2')}>{t('SecondYear')}</ToggleButton>
           }
           <Divider />
           {toggle === 'YEAR3' ?
-            <ToggleButton active value="YEAR3" onClick={() => setToggle('YEAR3')}>Third Year</ToggleButton>
+            <ToggleButton active value="YEAR3" onClick={() => setToggle('YEAR3')}>{t('ThirdYear')}</ToggleButton>
             :
-            <ToggleButton value="YEAR3" onClick={() => setToggle('YEAR3')}>Third Year</ToggleButton>
+            <ToggleButton value="YEAR3" onClick={() => setToggle('YEAR3')}>{t('ThirdYear')}</ToggleButton>
           }
         </ToggleButtonGroup>
         <CardContainer>

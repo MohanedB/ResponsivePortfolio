@@ -1,20 +1,21 @@
-import React from 'react'
 import styled from 'styled-components'
+import { useTranslation } from 'react-i18next';
+import React, { useState } from 'react';
 
-
-const Button = styled.button`
-    display: none;
-    width: 100%;
+const HoverDescription = styled.div`
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
     padding: 10px;
     background-color: ${({ theme }) => theme.white};
-    color: ${({ theme }) => theme.text_black};
-    font-size: 14px;
-    font-weight: 700;
-    border: none;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: all 0.8s ease-in-out;
-`
+    border-radius: 0 0 10px 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    transform: translateY(100%);
+    opacity: 0;
+    transition: all 0.3s ease-in-out;
+`;
+
 const Card = styled.div`
     width: 330px;
     height: 490px;
@@ -22,7 +23,7 @@ const Card = styled.div`
     cursor: pointer;
     border-radius: 10px;
     box-shadow: 0 0 12px 4px rgba(0,0,0,0.4);
-    overflow: hidden;
+    overflow: hidden; // Add this line
     padding: 26px 20px;
     display: flex;
     flex-direction: column;
@@ -32,9 +33,12 @@ const Card = styled.div`
         transform: translateY(-10px);
         box-shadow: 0 0 50px 4px rgba(0,0,0,0.6);
         filter: brightness(1.1);
-    }
-    &:hover ${Button} {
-        display: block;
+        ${({ theme }) => `
+            ${HoverDescription} {
+                transform: translateY(0%); // Change this line
+                opacity: 1;
+            }
+        `}
     }
 `
 
@@ -94,7 +98,6 @@ const Date = styled.div`
     }
 `
 
-
 const Description = styled.div`
     font-weight: 400;
     color: ${({ theme }) => theme.text_secondary + 99};
@@ -102,7 +105,7 @@ const Description = styled.div`
     margin-top: 8px;
     display: -webkit-box;
     max-width: 100%;
-    -webkit-line-clamp: 3;
+    -webkit-line-clamp: 3; // Change this line
     -webkit-box-orient: vertical;
     text-overflow: ellipsis;
 `
@@ -122,30 +125,33 @@ const Avatar = styled.img`
     border: 3px solid ${({ theme }) => theme.card};
 `
 
-
-// ...existing styled components...
-
-const ProjectCards = ({project,setOpenModal}) => {
+const ProjectCards = ({ project, setOpenModal }) => {
+    const { t, i18n } = useTranslation();
+    const [hovered, setHovered] = useState(false);
+    const changeLanguage = (lng) => {
+      i18n.changeLanguage(lng);
+    };
     return (
-        <Card onClick={() => window.open(project.github, '_blank')}>
-            <Image src={project.image}/>
-            <Tags>
-                {project.tags?.map((tag, index) => (
-                <Tag>{tag}</Tag>
-                ))}
-            </Tags>
-            <Details>
-                <Title>{project.title}</Title>
-                <Date>{project.date}</Date>
-                <Description>{project.description}</Description>
-            </Details>
-            <Members>
-                {project.member?.map((member) => (
-                    <Avatar src={member.img}/>
-                ))}
-            </Members>
-        </Card>
-    )
-}
+        <Card onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)}>
+        <Image src={project.image} />
+        <Tags>
+          {project.tags?.map((tag, index) => (
+            <Tag key={index}>{tag}</Tag>
+          ))}
+        </Tags>
+        <Details>
+          <Title>{t(project.titleKey)}</Title>
+          <Date>{t(project.dateKey)}</Date>
+          <Description>{t(project.descriptionKey)}</Description>
+        </Details>
+        <Members>
+          {project.member?.map((member) => (
+            <Avatar key={member.id} src={member.img} />
+          ))}
+        </Members>
+        <HoverDescription show={hovered}>{t(project.descriptionKey)}</HoverDescription>
+      </Card>
+    );
+  };
 
 export default ProjectCards
