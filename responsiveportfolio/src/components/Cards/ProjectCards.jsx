@@ -8,7 +8,8 @@ const HoverDescription = styled.div`
     left: 0;
     right: 0;
     padding: 10px;
-    background-color: ${({ theme }) => theme.white};
+    background-color: ${({ theme }) => theme.card};
+    color: ${({ theme }) => theme.white}; // Change this line
     border-radius: 0 0 10px 10px;
     box-shadow: 0 0 10px rgba(0,0,0,0.2);
     transform: translateY(100%);
