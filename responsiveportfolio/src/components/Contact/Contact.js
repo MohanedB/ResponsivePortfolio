@@ -165,7 +165,7 @@ const Contact = () => {
           open={open}
           autoHideDuration={6000}
           onClose={()=>setOpen(false)}
-          message="Email sent successfully!"
+          message={t('Success')}
           severity="success"
         />
       </Wrapper>

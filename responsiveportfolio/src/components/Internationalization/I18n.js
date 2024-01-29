@@ -19,7 +19,7 @@ education13: "Pet-Clinic", education14: "Oct 2023 - Dec 2023", education15:"Kept
 education16: "Fallen God", education17:"Jan 2022 - Mar 2022", education18:"A game based on greek mythology where you have a character that has to collect all the coins to open the portal to a boss while fighting off enemies and avoiding traps",
 education19: "HalalBites", education20:"Jan 2024 - Feb 2024", education21: "A search engine website made for people of different cultures such as muslims. The website would help these people find specific restaurant around them, such as for example, all halal restaurant in someones city",
 education22:"QuickReload", education23:"Jan 13th, 2024 - Jan 14th, 2024", education24:"a 2D game inspired by the classic arcade game “Asteroids” called “QuickReload” in a team of 2 using the Unity Game Engine"
-
+,Success: "Email sent successfully!"
 
 };
 
@@ -37,7 +37,7 @@ education13: "Pet-Clinic",education14: "oct. 2023 - déc. 2023",education15: "A 
 education16: "Fallen God", education17: "janv. 2022 - mars 2022", education18: "Un jeu basé sur la mythologie grecque où vous avez un personnage qui doit collecter toutes les pièces pour ouvrir le portail vers un boss tout en combattant les ennemis et en évitant les pièges",
 education19: "HalalBites", education20: "janv. 2024 - févr. 2024", education21: "Un site web de moteur de recherche conçu pour des personnes de différentes cultures telles que les musulmans. Le site web aiderait ces personnes à trouver un restaurant spécifique autour d'eux, comme par exemple, tous les restaurants halal dans la ville de quelqu'un",
 education22: "QuickReload",education23: "13 janv. 2024 - 14 janv. 2024", education24: "un jeu 2D inspiré du jeu d'arcade classique “Asteroids” appelé “QuickReload” dans une équipe de 2 en utilisant le moteur de jeu Unity"
-
+,Success: "Email envoyé avec succès"
 
 };
 i18n
