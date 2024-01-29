@@ -41,6 +41,10 @@ const Card = styled.div`
             }
         `}
     }
+    &:active {
+        // ...existing styles
+        cursor: pointer;
+      }
 `
 
 const Image = styled.img`
@@ -133,7 +137,7 @@ const ProjectCards = ({ project, setOpenModal }) => {
       i18n.changeLanguage(lng);
     };
     return (
-        <Card onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)}>
+        <Card onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)} onClick={() => window.open(project.github, '_blank')}>
         <Image src={project.image} />
         <Tags>
           {project.tags?.map((tag, index) => (
