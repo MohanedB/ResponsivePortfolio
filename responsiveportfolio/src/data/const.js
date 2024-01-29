@@ -15,7 +15,7 @@ export const Bio = {
 
   export const skills = [
     {
-      title: "Frontend",
+      titleKey: "skill0",
       skills: [
         {
           name: "React Js",
@@ -54,7 +54,7 @@ export const Bio = {
       ],
     },
     {
-      title: "Backend",
+      titleKey: "skill1",
       skills: [
         {
           name: "Node Js",
@@ -98,7 +98,7 @@ export const Bio = {
       ],
     },
     {
-      title: "Others",
+      titleKey: "skill2",
       skills: [
         {
           name: "Git",

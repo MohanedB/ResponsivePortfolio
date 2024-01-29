@@ -137,7 +137,7 @@ const Skills = () => {
         <SkillsContainer>
           {skills.map((skill) => (
             <Skill>
-              <SkillTitle>{skill.title}</SkillTitle>
+              <SkillTitle>{t(skill.titleKey)}</SkillTitle>
               <SkillList>
                 {skill.skills.map((item) => (
                   <SkillItem>
