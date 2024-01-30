@@ -319,6 +319,11 @@ const Navbar = () => {
             <MobileLink to='#projects' onClick={() => setIsOpen(false)}>{t('Projects')}</MobileLink>
             <MobileLink to='#contact' onClick={() => setIsOpen(false)}>{t('Contact')}</MobileLink>
             <GitHubButton style={{padding: '10px 16px', background: `${({ theme }) => theme.primary}`, color: 'white',width: 'max-content'}} href={Bio.github} target="_blank">Github Profile</GitHubButton>
+            {i18n.language === 'en' ? (
+            <LinkedInButton onClick={() => handleLanguageClick('fr')}>{t('Language_fr')}</LinkedInButton>
+          ) : (
+            <LinkedInButton onClick={() => handleLanguageClick('en')}>{t('Language_en')}</LinkedInButton>
+          )}
           </MobileMenu>
         )}
       </NavbarContainer>
