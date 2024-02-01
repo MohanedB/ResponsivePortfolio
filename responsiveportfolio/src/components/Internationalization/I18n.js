@@ -6,7 +6,7 @@ import { Bio as Bio_en, education as education_en, projects as projects_en, skil
 import { Bio as Bio_fr, education as education_fr, projects as projects_fr, skills as skills_fr  } from '../../data/constfr';
 
 const translations_en = { ...Bio_en, ...education_en, ...projects_en, ...skills_en, About: "About", Skill: "Skills", 
-Education: "Education", Projects:"Projects", Contact: "Contact", greeting: "Hi, I am", IAM: "Im a",
+Education: "Education", Projects:"Projects", Contact: "Contact", greeting: "Hi, I am", IAM: "Im a", resume: "Resume",
  skilldesc: "Here are some of the skills I have picked up in my computer science program and individual studies for the past 3 years.", Language_en: "English", 
  Language_fr: "French", Edudesc: "My education has been a journey of self-discovery and growth. My educational details are as follows.",
  education0: "Currently finishing my technic in computer science. I have completed 5 semesters flawlessly so far with an overall R Score of 28.9. I have take multiple courses such as java, linux, IOS, database and more.",
@@ -23,7 +23,7 @@ education22:"QuickReload", education23:"Jan 13th, 2024 - Jan 14th, 2024", educat
 
 };
 
-const translations_fr = { ...Bio_fr, ...education_fr, ...projects_fr, ...skills_fr, About: "À propos", 
+const translations_fr = { ...Bio_fr, ...education_fr, ...projects_fr, ...skills_fr, About: "À propos", resume: "Resumer",
 Skill: "Compétences", Education: "Éducation", Projects: "Projets", Contact: "Contactez Moi", greeting: "Bonjour, je suis", IAM: "Je suis un",  
 skilldesc: "Voici certaines des compétences que j’ai acquises dans mon programme d’informatique et mes études individuelles au cours des 3 dernières années.",  
 Language_en: "Anglais", Language_fr: "Français", Edudesc: "Mon éducation a été un voyage de découverte de soi et de croissance. Voici les détails de mon parcours éducatif",
