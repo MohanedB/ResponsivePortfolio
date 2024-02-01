@@ -243,7 +243,7 @@ const Hero = () => {
               </Span>
             </TextLoop>
             <SubTitle>{t('description')}</SubTitle>
-            <ResumeButton href={t('resume')} target='display'>{t('resume')}</ResumeButton>
+            <ResumeButton href={t('resumer')} target='display'>{t('resume')}</ResumeButton>
           </HeroLeftContainer>
 
           <HeroRightContainer id="Right">
