@@ -136,7 +136,6 @@ const Contact = () => {
   };
 
   const sendemail = (e) => {
-    e.preventDefault();
     emailjs.sendForm('service_x5oinbn', 'template_6y1ugbd', form.current, '6YknmoR5NVPH3K1pT')
       .then((result) => {
         setOpen(true);
@@ -179,6 +178,7 @@ const Contact = () => {
 
   const handleButtonClick = (e) => {
     e.preventDefault();
+    e.stopPropagation();
     if (!validateForm()) {
       return;
     }
