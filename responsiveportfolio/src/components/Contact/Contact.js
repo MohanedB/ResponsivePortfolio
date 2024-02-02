@@ -178,10 +178,11 @@ const Contact = () => {
   }
 
   const handleButtonClick = (e) => {
+    e.preventDefault();
     if (!validateForm()) {
       return;
     }
-
+  
     setButtonDisabled(true);
     setTimeout(() => {
       setButtonDisabled(false);
