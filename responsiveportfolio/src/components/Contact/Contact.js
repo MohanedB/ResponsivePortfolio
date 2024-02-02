@@ -123,19 +123,18 @@ const ContactButton = styled.input`
 
 
 
-const Contact = () => {
 
+const Contact = () => {
   //hooks
   const [open, setOpen] = React.useState(false);
   const form = useRef();
-  const [isOpen, setIsOpen] = React.useState(false);
   const { i18n } = useTranslation();
   const { t } = useTranslation();
-
 
   const changeLanguage = (language) => {
     i18n.changeLanguage(language);
   };
+
   const sendemail = (e) => {
     e.preventDefault();
     emailjs.sendForm('service_x5oinbn', 'template_6y1ugbd', form.current, '6YknmoR5NVPH3K1pT')
@@ -147,19 +146,64 @@ const Contact = () => {
       });
   }
 
+  const [buttonDisabled, setButtonDisabled] = React.useState(false);
+  const [errors, setErrors] = React.useState({ email: '', name: '', subject: '', message: '' });
 
+  const validateForm = () => {
+    let isValid = true;
+    let newErrors = { email: '', name: '', subject: '', message: '' };
+
+    if (form.current.email.value.trim() === '') {
+      isValid = false;
+      newErrors.email = t('emaileror');
+    }
+
+    if (form.current.name.value.trim() === '') {
+      isValid = false;
+      newErrors.name = t('nameeror');
+    }
+
+    if (form.current.subject.value.trim() === '') {
+      isValid = false;
+      newErrors.subject = t('subjecteror');
+    }
+
+    if (form.current.message.value.trim() === '') {
+      isValid = false;
+      newErrors.message = t('messageeror');
+    }
+
+    setErrors(newErrors);
+    return isValid;
+  }
+
+  const handleButtonClick = (e) => {
+    if (!validateForm()) {
+      return;
+    }
+
+    setButtonDisabled(true);
+    setTimeout(() => {
+      setButtonDisabled(false);
+    }, 10000);
+    sendemail(e);
+  };
 
   return (
     <Container id="contact">
       <Wrapper>
         <Title>{t('Contact')}</Title>
         <Desc>{t('ContactDesc')}</Desc>
-        <ContactForm ref={form} onSubmit={sendemail}>
-          <ContactInput placeholder={t('Email')} name="email" />
-          <ContactInput placeholder={t('Name')} name="name" />
-          <ContactInput placeholder={t('Subject')} name="subject" />
-          <ContactInputMessage placeholder={t('Message')} rows="4" name="message" />
-          <ContactButton type="submit" value={t('Send')}/>
+        <ContactForm ref={form} onSubmit={handleButtonClick}>
+          <ContactInput placeholder={t('Email')} name="email" error={errors.email} />
+          {errors.email && <p style={{ color: 'red' }}>{errors.email}</p>}
+          <ContactInput placeholder={t('Name')} name="name" error={errors.name} />
+          {errors.name && <p style={{ color: 'red' }}>{errors.name}</p>}
+          <ContactInput placeholder={t('Subject')} name="subject" error={errors.subject} />
+          {errors.subject && <p style={{ color: 'red' }}>{errors.subject}</p>}
+          <ContactInputMessage placeholder={t('Message')} rows="4" name="message" error={errors.message} />
+          {errors.message && <p style={{ color: 'red' }}>{errors.message}</p>}
+          <ContactButton type="submit" value={t('Send')} disabled={buttonDisabled} />
         </ContactForm>
         <Snackbar
           open={open}
