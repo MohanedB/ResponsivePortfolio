@@ -23,7 +23,7 @@ education22:"QuickReload", education23:"Jan 13th, 2024 - Jan 14th, 2024", educat
 
 };
 
-const translations_fr = { ...Bio_fr, ...education_fr, ...projects_fr, ...skills_fr, About: "À propos", resumer: "Resumer",
+const translations_fr = { ...Bio_fr, ...education_fr, ...projects_fr, ...skills_fr, About: "À propos", resumer: "CV",
 Skill: "Compétences", Education: "Éducation", Projects: "Projets", Contact: "Contactez Moi", greeting: "Bonjour, je suis", IAM: "Je suis un",  
 skilldesc: "Voici certaines des compétences que j’ai acquises dans mon programme d’informatique et mes études individuelles au cours des 3 dernières années.",  
 Language_en: "Anglais", Language_fr: "Français", Edudesc: "Mon éducation a été un voyage de découverte de soi et de croissance. Voici les détails de mon parcours éducatif",
