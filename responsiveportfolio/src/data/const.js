@@ -1,3 +1,12 @@
+import CalculatorImg from '../Image/Calculator.png'
+import PaysageMelocheImg from '../Image/PaysageMeloche.png'
+import PetClinicImg from '../Image/Pet-Clinic.png'
+import FallenGodImg from '../Image/FallenGod.png'
+import HalalBitesImg from '../Image/HalalBites.png'
+import QuickReloadImg from '../Image/QuickReload.png'
+
+
+
 export const Bio = {
     name: "Mohaned Bouzaidi",
     roles: [
@@ -169,8 +178,7 @@ export const Bio = {
       titleKey: "education4",
       dateKey: "education5",
       descriptionKey:"education6",
-      image:
-        "",
+      image:CalculatorImg,
       tags: ["C#", "Visual Studio"],
       category: "YEAR1",
       github: "https://github.com/MohanedB/Calculator",
@@ -193,8 +201,7 @@ export const Bio = {
       titleKey: "education10",
       dateKey: "education11",
       descriptionKey:"education12",
-      image:
-        "",
+      image: PaysageMelocheImg,
       tags: ["ReactJs", "Visual Studio","NodeJS", "MangoDB"],
       category: "YEAR3",
       github: "https://github.com/Carstal/paysages-meloche",
@@ -205,8 +212,7 @@ export const Bio = {
       titleKey: "education13",
       dateKey: "education14",
       descriptionKey:"education15",
-      image:
-        "",
+      image:PetClinicImg,
       tags: ["JavaScript", "Visual Studio"],
       category: "YEAR3",
       github: "https://github.com/istiaque-champ/champ_petclinic",
@@ -217,8 +223,7 @@ export const Bio = {
       titleKey: "education16",
       dateKey: "education17",
       descriptionKey:"education18",
-      image:
-        "",
+      image:FallenGodImg,
       tags: [
         "Unity",
         "C#",
@@ -234,8 +239,7 @@ export const Bio = {
       titleKey: "education19",
       dateKey: "education20",
       descriptionKey:"education21",
-      image:
-        "",
+      image:HalalBitesImg,
       tags: ["JavaScript", "Visual Studio", "ReactJs", "Java SpringBoot", "MySQL"],
       category: "YEAR3",
       github: "https://github.com/Nmazza1/HalalbitesBackend",
@@ -246,8 +250,7 @@ export const Bio = {
       titleKey: "education22",
       dateKey: "education23",
       descriptionKey:"education24",
-      image:
-        "",
+      image:QuickReloadImg,
       tags: ["Unity", "Visual Studio", "C#", "GitHub"],
       category: "YEAR3",
       github: "https://github.com/MohanedB/QuickReload",
