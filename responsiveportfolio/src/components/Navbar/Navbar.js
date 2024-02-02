@@ -304,7 +304,7 @@ const Navbar = () => {
           <NavLink href='#contact'>{t('Contact')}</NavLink>
         </NavItems>
         <ButtonContainer>
-          <GitHubButton href={Bio.github} target="_blank">Github Profile</GitHubButton>
+          <GitHubButton href={Bio.github} target="_blank">{t('Github')}</GitHubButton>
           {i18n.language === 'en' ? (
             <LinkedInButton onClick={() => handleLanguageClick('fr')}>{t('Language_fr')}</LinkedInButton>
           ) : (
