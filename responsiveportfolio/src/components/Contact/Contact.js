@@ -122,42 +122,32 @@ const ContactButton = styled.input`
 `
 
 
-import React, { useRef, useState } from 'react';
-import { useTranslation } from 'react-i18next';
-import emailjs from 'emailjs-com';
-import Snackbar from '@material-ui/core/Snackbar';
-import Alert from '@material-ui/lab/Alert';
 
 const Contact = () => {
+
   //hooks
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = React.useState(false);
   const form = useRef();
-  const [isOpen, setIsOpen] = useState(false);
-  const [lastClicked, setLastClicked] = useState(0); // new state variable to track last click time
+  const [isOpen, setIsOpen] = React.useState(false);
   const { i18n } = useTranslation();
   const { t } = useTranslation();
+
 
   const changeLanguage = (language) => {
     i18n.changeLanguage(language);
   };
-
   const sendemail = (e) => {
     e.preventDefault();
+    emailjs.sendForm('service_x5oinbn', 'template_6y1ugbd', form.current, '6YknmoR5NVPH3K1pT')
+      .then((result) => {
+        setOpen(true);
+        form.current.reset();
+      }, (error) => {
+        console.log(error.text);
+      });
+  }
 
-    if (Date.now() - lastClicked > 10000) {
-      emailjs.sendForm('service_x5oinbn', 'template_6y1ugbd', form.current, '6YknmoR5NVPH3K1pT')
-        .then((result) => {
-          setOpen(true);
-          form.current.reset();
-        }, (error) => {
-          console.log(error.text);
-        });
 
-      setLastClicked(Date.now());
-    } else {
-      setIsOpen(true);
-    }
-  };
 
   return (
     <Container id="contact">
@@ -169,25 +159,18 @@ const Contact = () => {
           <ContactInput placeholder={t('Name')} name="name" />
           <ContactInput placeholder={t('Subject')} name="subject" />
           <ContactInputMessage placeholder={t('Message')} rows="4" name="message" />
-          <ContactButton type="submit" value={t('Send')} />
+          <ContactButton type="submit" value={t('Send')}/>
         </ContactForm>
         <Snackbar
           open={open}
           autoHideDuration={6000}
-          onClose={() => setOpen(false)}
+          onClose={()=>setOpen(false)}
           message={t('Success')}
           severity="success"
         />
-        <Snackbar
-          open={isOpen}
-          autoHideDuration={6000}
-          onClose={() => setIsOpen(false)}
-          message={t('Please wait 10 seconds before sending another email')}
-          severity="warning"
-        />
       </Wrapper>
     </Container>
-  );
-};
+  )
+}
 
-export default Contact;
+export default Contact
