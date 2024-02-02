@@ -313,12 +313,12 @@ const Navbar = () => {
         </ButtonContainer>
         {isOpen && (
           <MobileMenu isOpen={isOpen}>
-            <MobileLink to="#about" onClick={() => setIsOpen(false)}>{t('About')}</MobileLink>
-            <MobileLink to='#skills' onClick={() => setIsOpen(false)}>{t('Skill')}</MobileLink>
-            <MobileLink to='#education' onClick={() => setIsOpen(false)}>{t('Education')}</MobileLink>
-            <MobileLink to='#projects' onClick={() => setIsOpen(false)}>{t('Projects')}</MobileLink>
-            <MobileLink to='#contact' onClick={() => setIsOpen(false)}>{t('Contact')}</MobileLink>
-            <GitHubButton style={{padding: '10px 16px', background: `${({ theme }) => theme.primary}`, color: 'white',width: 'max-content'}} href={Bio.github} target="_blank">Github Profile</GitHubButton>
+            <MobileLink href="#about" onClick={() => setIsOpen(false)}>{t('About')}</MobileLink>
+            <MobileLink href='#skills' onClick={() => setIsOpen(false)}>{t('Skill')}</MobileLink>
+            <MobileLink href='#education' onClick={() => setIsOpen(false)}>{t('Education')}</MobileLink>
+            <MobileLink href='#projects' onClick={() => setIsOpen(false)}>{t('Projects')}</MobileLink>
+            <MobileLink href='#contact' onClick={() => setIsOpen(false)}>{t('Contact')}</MobileLink>
+            <GitHubButton style={{padding: '10px 16px', background: `${({ theme }) => theme.primary}`, color: 'white',width: 'max-content'}} href={Bio.github} target="_blank">{t('Github')}</GitHubButton>
             {i18n.language === 'en' ? (
             <LinkedInButton onClick={() => handleLanguageClick('fr')}>{t('Language_fr')}</LinkedInButton>
           ) : (
