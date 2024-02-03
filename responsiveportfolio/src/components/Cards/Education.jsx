@@ -145,7 +145,7 @@ const EducationCard = ({ education }) => {
             <Date>{t(education.dateKey)}</Date>
           </Body>
         </Top>
-        <Grade><b>R Score: </b>{education.grade}</Grade>
+        <Grade><b>{t('R')}</b>{education.grade}</Grade>
         <Description>
         <Span>{t(education.descKey)}</Span>
         </Description>

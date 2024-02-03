@@ -20,14 +20,14 @@ education16: "Fallen God", education17:"Jan 2022 - Mar 2022", education18:"A gam
 education19: "HalalBites", education20:"Jan 2024 - Feb 2024", education21: "A search engine website made for people of different cultures such as muslims. The website would help these people find specific restaurant around them, such as for example, all halal restaurant in someones city",
 education22:"QuickReload", education23:"Jan 13th, 2024 - Jan 14th, 2024", education24:"a 2D game inspired by the classic arcade game “Asteroids” called “QuickReload” in a team of 2 using the Unity Game Engine"
 ,Success: "Email sent successfully!",skill0: "Frontend", skill1:"Backend", skill2:"Others", Github: "GitHub", emaileror:"Please enter an email", nameeror: "Please enter a name", subjecteror:"Please enter a subject", messageeror:"Please enter a message",
-
+R:"R Score:"
 };
 
 const translations_fr = { ...Bio_fr, ...education_fr, ...projects_fr, ...skills_fr, About: "À propos", resumer: "CV",
 Skill: "Compétences", Education: "Éducation", Projects: "Projets", Contact: "Contactez Moi", greeting: "Bonjour, je suis", IAM: "Je suis un",  
 skilldesc: "Voici certaines des compétences que j’ai acquises dans mon programme d’informatique et mes études individuelles au cours des 3 dernières années.",  
 Language_en: "Anglais", Language_fr: "Français", Edudesc: "Mon éducation a été un voyage de découverte de soi et de croissance. Voici les détails de mon parcours éducatif",
-education0: "Je termine actuellement ma technique en informatique. J'ai terminé jusqu'à présent 5 semestres sans faille avec une code R global de 28,9. J'ai suivi plusieurs cours tels que java, linux, IOS, base de données et plus encore.",
+education0: "Je termine actuellement ma technique en informatique. J'ai terminé jusqu'à présent 5 semestres sans faille avec une cote R global de 28,9. J'ai suivi plusieurs cours tels que java, linux, IOS, base de données et plus encore.",
 All: "Tous", FirstYear: "Première Année", SecondYear: "Deuxième Année", ThirdYear: "Troisième Année", ProjectDesc: "J’ai travaillé sur un large éventail de projets",ContactDesc: "N'hésitez pas à me contacter pour toute question ou opportunité!",
 Email: "Votre Email",Name: "Votre Nom", Subject: "Sujet", Message:"Message", Send: "Envoyer", education1:"Technique Informatique", education2: "Août 2020 - Mai 2024", education3 : "Collège Champlain",
 education4: "Calculatrice", education5: "Juin 2021", education6: "Une simple calculatrice en C#",education7: "QuizApp",education8: "nov. 2022 - déc. 2022",
@@ -38,7 +38,7 @@ education16: "Fallen God", education17: "janv. 2022 - mars 2022", education18: "
 education19: "HalalBites", education20: "janv. 2024 - févr. 2024", education21: "Un site web de moteur de recherche conçu pour des personnes de différentes cultures telles que les musulmans. Le site web aiderait ces personnes à trouver un restaurant spécifique autour d'eux, comme par exemple, tous les restaurants halal dans la ville de quelqu'un",
 education22: "QuickReload",education23: "13 janv. 2024 - 14 janv. 2024", education24: "un jeu 2D inspiré du jeu d'arcade classique “Asteroids” appelé “QuickReload” dans une équipe de 2 en utilisant le moteur de jeu Unity"
 ,Success: "Email envoyé avec succès", skill0:"Frontend", skill1:"Backend", skill2:"Autres", Github: "GitHub", emaileror: "Veuillez entrer un email", nameeror: "Veuillez entrer un nom", subjecteror: "Veuillez entrer un sujet", messageeror: "Veuillez entrer un message"
-
+,R: "Cote R: "
 };
 i18n
   .use(LanguageDetector)
