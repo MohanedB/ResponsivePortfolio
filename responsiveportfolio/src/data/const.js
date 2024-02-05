@@ -154,6 +154,11 @@ export const Bio = {
           image:
             "https://cdn.icon-icons.com/icons2/1381/PNG/512/gns3_94911.png",
         },
+        {
+          name: "Xcode",
+          image:
+            "https://cdn.icon-icons.com/icons2/3053/PNG/512/xcode_alt_macos_bigsur_icon_189542.png",
+        },
       ],
     },
   ];

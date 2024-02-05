@@ -95,6 +95,11 @@ export const skills = [
           image:
             "https://img.icons8.com/?size=256&id=UGYn5TapNioV&format=png",
         },
+        {
+          name: "Xcode",
+          image:
+            "https://cdn.icon-icons.com/icons2/3053/PNG/512/xcode_alt_macos_bigsur_icon_189542.png",
+        },
       ],
     },
     {
