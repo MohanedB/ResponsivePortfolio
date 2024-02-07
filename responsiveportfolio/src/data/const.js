@@ -176,7 +176,39 @@ export const Bio = {
 
   ];
 
-  export const projects = [
+  export const projects = [   {
+    id: 3,
+    titleKey: "education10",
+    dateKey: "education11",
+    descriptionKey:"education12",
+    image: PaysageMelocheImg,
+    tags: ["ReactJs", "Visual Studio","NodeJS", "MangoDB"],
+    category: "YEAR3",
+    github: "https://github.com/Carstal/paysages-meloche",
+    webapp: "",
+  },
+  {
+    id: 6,
+    titleKey: "education19",
+    dateKey: "education20",
+    descriptionKey:"education21",
+    image:HalalBitesImg,
+    tags: ["JavaScript", "Visual Studio", "ReactJs", "Java SpringBoot", "MySQL"],
+    category: "YEAR3",
+    github: "https://github.com/Nmazza1/HalalbitesBackend",
+    webapp: "",
+  },
+  {
+    id: 4,
+    titleKey: "education13",
+    dateKey: "education14",
+    descriptionKey:"education15",
+    image:PetClinicImg,
+    tags: ["JavaScript", "Visual Studio"],
+    category: "YEAR3",
+    github: "https://github.com/istiaque-champ/champ_petclinic",
+    webapp: "",
+  },
 
     {
       id: 1,
@@ -202,28 +234,6 @@ export const Bio = {
       webapp: "",
     },
     {
-      id: 3,
-      titleKey: "education10",
-      dateKey: "education11",
-      descriptionKey:"education12",
-      image: PaysageMelocheImg,
-      tags: ["ReactJs", "Visual Studio","NodeJS", "MangoDB"],
-      category: "YEAR3",
-      github: "https://github.com/Carstal/paysages-meloche",
-      webapp: "",
-    },
-    {
-      id: 4,
-      titleKey: "education13",
-      dateKey: "education14",
-      descriptionKey:"education15",
-      image:PetClinicImg,
-      tags: ["JavaScript", "Visual Studio"],
-      category: "YEAR3",
-      github: "https://github.com/istiaque-champ/champ_petclinic",
-      webapp: "",
-    },
-    {
       id: 5,
       titleKey: "education16",
       dateKey: "education17",
@@ -237,17 +247,6 @@ export const Bio = {
       ],
       category: "YEAR2",
       github: "https://github.com/ShadowFever3/FinalProject2D",
-      webapp: "",
-    },
-    {
-      id: 6,
-      titleKey: "education19",
-      dateKey: "education20",
-      descriptionKey:"education21",
-      image:HalalBitesImg,
-      tags: ["JavaScript", "Visual Studio", "ReactJs", "Java SpringBoot", "MySQL"],
-      category: "YEAR3",
-      github: "https://github.com/Nmazza1/HalalbitesBackend",
       webapp: "",
     },
     {
