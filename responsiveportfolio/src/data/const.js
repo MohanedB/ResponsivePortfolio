@@ -4,7 +4,7 @@ import PetClinicImg from '../Image/Pet-Clinic.png'
 import FallenGodImg from '../Image/FallenGod.png'
 import HalalBitesImg from '../Image/HalalBites.png'
 import QuickReloadImg from '../Image/QuickReload.png'
-
+import QuizAppImg from "../Image/QuizApp.jpg"
 
 
 export const Bio = {
@@ -226,8 +226,7 @@ export const Bio = {
       titleKey: "education7",
       dateKey: "education8",
       descriptionKey:"education9",
-      image:
-        "",
+      image:QuizAppImg,
       tags: ["Firebase", "SwiftUI", "Swift"],
       category: "YEAR2",
       github: "https://drive.google.com/drive/folders/1m76YGJ4o-YVeRBAoO9fLtQVap-J3kfFy?usp=sharing",
