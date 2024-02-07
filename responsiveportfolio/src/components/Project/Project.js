@@ -137,10 +137,10 @@ const Projects = () => {
             <ToggleButton value="all" onClick={() => setToggle('all')}>{t('All')}</ToggleButton>
           }
           <Divider />
-          {toggle === 'YEAR1' ?
-            <ToggleButton active value="YEAR1" onClick={() => setToggle('YEAR1')}>{t('FirstYear')}</ToggleButton>
+          {toggle === 'YEAR3' ?
+            <ToggleButton active value="YEAR1" onClick={() => setToggle('YEAR3')}>{t('ThirdYear')}</ToggleButton>
             :
-            <ToggleButton value="YEAR1" onClick={() => setToggle('YEAR1')}>{t('FirstYear')}</ToggleButton>
+            <ToggleButton value="YEAR1" onClick={() => setToggle('YEAR3')}>{t('ThirdYear')}</ToggleButton>
           }
           <Divider />
           {toggle === 'YEAR2' ?
@@ -149,10 +149,10 @@ const Projects = () => {
             <ToggleButton value="YEAR2" onClick={() => setToggle('YEAR2')}>{t('SecondYear')}</ToggleButton>
           }
           <Divider />
-          {toggle === 'YEAR3' ?
-            <ToggleButton active value="YEAR3" onClick={() => setToggle('YEAR3')}>{t('ThirdYear')}</ToggleButton>
+          {toggle === 'YEAR1' ?
+            <ToggleButton active value="YEAR1" onClick={() => setToggle('YEAR1')}>{t('FirstYear')}</ToggleButton>
             :
-            <ToggleButton value="YEAR3" onClick={() => setToggle('YEAR3')}>{t('ThirdYear')}</ToggleButton>
+            <ToggleButton value="YEAR1" onClick={() => setToggle('YEAR1')}>{t('FirstYear')}</ToggleButton>
           }
         </ToggleButtonGroup>
         <CardContainer>
