@@ -159,7 +159,7 @@ const Contact = () => {
       newErrors.email = t('emaileror');
     } else if (!/^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/.test(email)) {
       isValid = false;
-      newErrors.email = t('invalidemailerror'); // You'll need to add this to your translations
+      newErrors.email = t('invalidemailerror');
     }
 
     if (form.current.name.value.trim() === '') {
