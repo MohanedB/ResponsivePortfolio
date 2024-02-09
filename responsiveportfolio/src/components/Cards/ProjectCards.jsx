@@ -131,32 +131,49 @@ const Avatar = styled.img`
 `
 
 const ProjectCards = ({ project, setOpenModal }) => {
-    const { t, i18n } = useTranslation();
-    const [hovered, setHovered] = useState(false);
-    const changeLanguage = (lng) => {
-      i18n.changeLanguage(lng);
-    };
-    return (
-        <Card onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)} onClick={() => window.open(project.github, '_blank')}>
-        <Image src={project.image} />
-        <Tags>
-          {project.tags?.map((tag, index) => (
-            <Tag key={index}>{tag}</Tag>
-          ))}
-        </Tags>
-        <Details>
-          <Title>{t(project.titleKey)}</Title>
-          <Date>{t(project.dateKey)}</Date>
-          <Description>{t(project.descriptionKey)}</Description>
-        </Details>
-        <Members>
-          {project.member?.map((member) => (
-            <Avatar key={member.id} src={member.img} />
-          ))}
-        </Members>
-        <HoverDescription show={hovered}>{t(project.descriptionKey)}</HoverDescription>
-      </Card>
-    );
+  const { t, i18n } = useTranslation();
+  const [hovered, setHovered] = useState(false);
+  const [clickCount, setClickCount] = useState(0);
+  const changeLanguage = (lng) => {
+    i18n.changeLanguage(lng);
   };
 
+  const handleClick = () => {
+    setClickCount(prevCount => prevCount + 1);
+    if (clickCount === 1) {
+      window.open(project.github, '_blank');
+      setClickCount(0);
+    }
+  };
+
+  return (
+      <Card 
+          onMouseEnter={() => setHovered(true)} 
+          onMouseLeave={() => setHovered(false)} 
+          onTouchStart={() => setHovered(true)} 
+          onTouchEnd={() => setHovered(false)} 
+          onClick={handleClick}
+      >
+      <Image src={project.image}/>
+      <Tags>
+        {project.tags?.map((tag, index) => (
+          <Tag key={index}>{tag}</Tag>
+        ))}
+      </Tags>
+      <Details>
+        <Title>{t(project.titleKey)}</Title>
+        <Date>{t(project.dateKey)}</Date>
+        <Description>{t(project.descriptionKey)}</Description>
+      </Details>
+      <Members>
+        {project.member?.map((member) => (
+          <Avatar key={member.id} src={member.img} />
+        ))}
+      </Members>
+      <HoverDescription show={hovered}>{t(project.descriptionKey)}</HoverDescription>
+    </Card>
+  );
+};
+
 export default ProjectCards
+
