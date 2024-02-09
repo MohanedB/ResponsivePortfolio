@@ -5,6 +5,7 @@ import FallenGodImg from '../Image/FallenGod.png'
 import HalalBitesImg from '../Image/HalalBites.png'
 import QuickReloadImg from '../Image/QuickReload.png'
 import QuizAppImg from "../Image/QuizApp.jpg"
+import Fred from "../Image/Fred.jpg"
 
 
 export const Bio = {
@@ -208,6 +209,7 @@ export const Bio = {
     category: "YEAR3",
     github: "https://github.com/istiaque-champ/champ_petclinic",
     webapp: "a",
+  
   },
 
     {
@@ -220,6 +222,7 @@ export const Bio = {
       category: "YEAR1",
       github: "https://github.com/MohanedB/Calculator",
       webapp: "",
+      
     },
     {
       id: 2,
@@ -247,6 +250,14 @@ export const Bio = {
       category: "YEAR2",
       github: "https://github.com/ShadowFever3/FinalProject2D",
       webapp: "",
+      member: [
+        {
+          name: "Fred",
+          img: Fred,
+          linkedin:"https://www.linkedin.com/in/frédéric-vezina/",
+          github:"",
+        }
+      ]
     },
     {
       id: 7,
@@ -258,6 +269,14 @@ export const Bio = {
       category: "YEAR3",
       github: "https://github.com/MohanedB/QuickReload",
       webapp: "",
+      member: [
+        {
+          name: "Fred",
+          img: Fred,
+          linkedin:"https://www.linkedin.com/in/frédéric-vezina/",
+          github:"",
+        }
+      ]
     },
   ];
 
