@@ -6,8 +6,7 @@ export const Bio = {
     description:
       "Je suis un étudiant motivé et polyvalent, toujours prêt à relever de nouveaux défis avec une passion pour l'apprentissage. Je suis dédié à fournir des résultats de haute qualité avec une attitude positive et une grande mentalité et je suis prêt à apporter une contribution significative et à réaliser de grandes choses.",
     github: "https://github.com/MohanedB",
-    resume:
-      "https://drive.google.com/file/d/1gYPWbHka132RoIe99fekqtijmsf_iT0N/view?usp=sharing",
+    resume: "https://drive.google.com/file/d/1UVwUSO5qr1_FiP0IcnN1iLIHptml2Gun/view?usp=sharing",
     linkedin: "https://www.linkedin.com/in/mohaned-bouzaidi-a7390724a/",
     insta: "https://www.instagram.com/_momo204/",
     facebook: "https://www.facebook.com/mohaned.bouzaidi.7/",
