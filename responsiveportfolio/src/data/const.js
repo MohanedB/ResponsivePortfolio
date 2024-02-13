@@ -185,7 +185,7 @@ export const Bio = {
     image: PaysageMelocheImg,
     tags: ["ReactJs", "Visual Studio Code","NodeJS", "MangoDB", "Jira"],
     category: "YEAR3",
-    github: "https://paysages-meloche.vercel.app/",
+    github: "https://github.com/Carstal/paysages-meloche",
     webapp: "",
   },
   {
