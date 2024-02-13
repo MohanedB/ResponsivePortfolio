@@ -196,7 +196,7 @@ export const Bio = {
     image:HalalBitesImg,
     tags: ["JavaScript", "Visual Studio Code", "IntellIj", "ReactJs", "Java SpringBoot", "MySQL", "Jira"],
     category: "YEAR3",
-    github: "https://github.com/Nmazza1/HalalbitesBackend",
+    github: "https://halalbites.onrender.com/",
     webapp: "",
   },
   {
