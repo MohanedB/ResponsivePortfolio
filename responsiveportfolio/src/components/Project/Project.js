@@ -108,6 +108,12 @@ const CardContainer = styled.div`
     // }
 `;
 
+const StyledParagraph = styled.p`
+    color: white; /* This corresponds to the Tailwind class 'text-white' */
+    font-size: 1.5rem; /* This corresponds to the Tailwind class 'text-2xl' */
+`;
+
+
 
 
 const Projects = () => {
@@ -155,6 +161,7 @@ const Projects = () => {
             <ToggleButton value="YEAR1" onClick={() => setToggle('YEAR1')}>{t('FirstYear')}</ToggleButton>
           }
         </ToggleButtonGroup>
+        <StyledParagraph>{t('text')}</StyledParagraph>
         <CardContainer>
           {toggle === 'all' && projects
             .map((project) => (
@@ -166,7 +173,6 @@ const Projects = () => {
               <ProjectCard project={project} openModal={openModal} setOpenModal={setOpenModal} github={project.github}/>
             ))}
         </CardContainer>
-       
       </Wrapper>
     </Container>
   )
