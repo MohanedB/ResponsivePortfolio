@@ -109,8 +109,8 @@ const CardContainer = styled.div`
 `;
 
 const StyledParagraph = styled.p`
-    color: white; /* This corresponds to the Tailwind class 'text-white' */
-    font-size: 1.5rem; /* This corresponds to the Tailwind class 'text-2xl' */
+    color: white; 
+    font-size: 1rem; 
 `;
 
 
