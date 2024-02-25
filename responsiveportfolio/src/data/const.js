@@ -170,7 +170,7 @@ export const Bio = {
             img: "",
             schoolKey: "education3",
             dateKey: "education2",
-            grade: "28.9",
+            grade: "27.6",
             descKey: "education0", 
             degreeKey: "education1"
     },
