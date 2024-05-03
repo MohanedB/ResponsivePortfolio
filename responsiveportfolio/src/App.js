@@ -9,6 +9,7 @@ import Contact from './components/Contact/Contact';
 import Footer from './components/footer/footer';
 import { BrowserRouter as Router} from "react-router-dom";
 import Projects from './components/Project/Project';
+import Experience from './components/Experience/experience';
 import { I18nextProvider } from 'react-i18next';
 import i18n from './components/Internationalization/I18n';
 import { useTranslation } from 'react-i18next';
@@ -40,6 +41,7 @@ function App() {
             <Hero/>
             <Wrapper>
               <Skills/>
+              <Experience />
             </Wrapper>
             <Education/>
             <Projects/>

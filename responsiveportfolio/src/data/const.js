@@ -6,6 +6,7 @@ import HalalBitesImg from '../Image/HalalBites.png'
 import QuickReloadImg from '../Image/QuickReload.png'
 import QuizAppImg from "../Image/QuizApp.jpg"
 import Fred from "../Image/Fred.jpg"
+import Montreal from "../Image/MontrealCityLogo.gif"
 
 
 export const Bio = {
@@ -176,7 +177,25 @@ export const Bio = {
     },
 
   ];
-
+  export const experiences = [
+    {
+      id: 0,
+      img: Montreal,
+      role: "exper1",
+      company: "exper2",
+      date: "exper3",
+      desc: "exper4",
+      skills: [
+        "NodeJS",
+        "EJS",
+        "Visual Studio code",
+        "ONE UEM",
+      ],
+      doc: "",
+    },
+  ];
+  
+  
   export const projects = [   {
     id: 3,
     titleKey: "education10",

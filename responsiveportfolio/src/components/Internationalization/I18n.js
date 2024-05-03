@@ -20,7 +20,9 @@ education16: "Fallen God", education17:"Jan 2022 - Mar 2022", education18:"A gam
 education19: "HalalBites", education20:"Jan 2024 - Feb 2024", education21: "A search engine website made for people of different cultures such as muslims. The website would help these people find specific restaurant around them, such as for example, all halal restaurant in someones city",
 education22:"QuickReload", education23:"Jan 13th, 2024 - Jan 14th, 2024", education24:"a 2D game inspired by the classic arcade game “Asteroids” called “QuickReload” in a team of 2 using the Unity Game Engine"
 ,Success: "Email sent successfully!",skill0: "Frontend", skill1:"Backend", skill2:"Others", Github: "GitHub", emaileror:"Please enter an email", nameeror: "Please enter a name", subjecteror:"Please enter a subject", messageeror:"Please enter a message",
-R:"R Score:", invalidemailerror:"Please enter a valid Email", text:"*Click twice on the project card to be redirected"
+R:"R Score:", invalidemailerror:"Please enter a valid Email", text:"*Click twice on the project card to be redirected", exper1:"Full Stack Developer", exper2: "Montreal city", exper3: "March 4th - May 10th", exper4: "Worked on a website project that would allow the developers to create smartgroups based on their wishes. They can choose the number of devices per groups or how many groups they want to split the devices into",
+exper5: "Experience", exper6: "My work experience as a developer and working on different companies and projects."
+
 };
 
 const translations_fr = { ...Bio_fr, ...education_fr, ...projects_fr, ...skills_fr, About: "À propos", resumer: "CV",
@@ -38,7 +40,8 @@ education16: "Fallen God", education17: "janv. 2022 - mars 2022", education18: "
 education19: "HalalBites", education20: "janv. 2024 - févr. 2024", education21: "Un site web de moteur de recherche conçu pour des personnes de différentes cultures telles que les musulmans. Le site web aiderait ces personnes à trouver un restaurant spécifique autour d'eux, comme par exemple, tous les restaurants halal dans la ville de quelqu'un",
 education22: "QuickReload",education23: "13 janv. 2024 - 14 janv. 2024", education24: "un jeu 2D inspiré du jeu d'arcade classique “Asteroids” appelé “QuickReload” dans une équipe de 2 en utilisant le moteur de jeu Unity"
 ,Success: "Email envoyé avec succès", skill0:"Frontend", skill1:"Backend", skill2:"Autres", Github: "GitHub", emaileror: "Veuillez entrer un email", nameeror: "Veuillez entrer un nom", subjecteror: "Veuillez entrer un sujet", messageeror: "Veuillez entrer un message", text:"*Cliquez deux fois sur la fiche du projet pour être redirigé"
-,R: "Cote R: ", invalidemailerror:"Veuillez entre un email valid"
+,R: "Cote R: ", invalidemailerror:"Veuillez entre un email valid", exper1: "Développeur Full Stack", exper2: "Ville de Montréal", exper3: "4 Mars - 10 Mai", exper4: "J'ai travaillé sur un site web qui permettrait aux développeurs de créer des smartgroups en fonction de leurs souhaits. Ils peuvent choisir le nombre d’appareils par groupes ou en combien de groupes ils veulent diviser les appareils.",
+exper5: "Expérience", exper6: "Mon expérience de travail en tant que développeur et travaillant sur différentes entreprises et projets."
 };
 i18n
   .use(LanguageDetector)
