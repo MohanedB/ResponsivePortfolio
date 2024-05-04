@@ -300,6 +300,7 @@ const Navbar = () => {
           <NavLink href="#about">{t('About')}</NavLink>
           <NavLink href='#skills'>{t('Skill')}</NavLink>
           <NavLink href='#education'>{t('Education')}</NavLink>
+          <NavLink href='#experience'>{t('exper5')}</NavLink>
           <NavLink href='#projects'>{t('Projects')}</NavLink>
           <NavLink href='#contact'>{t('Contact')}</NavLink>
         </NavItems>
@@ -316,6 +317,7 @@ const Navbar = () => {
             <MobileLink href="#about" onClick={() => setIsOpen(false)}>{t('About')}</MobileLink>
             <MobileLink href='#skills' onClick={() => setIsOpen(false)}>{t('Skill')}</MobileLink>
             <MobileLink href='#education' onClick={() => setIsOpen(false)}>{t('Education')}</MobileLink>
+            <MobileLink href='#experience' onClick={() => setIsOpen(false)}>{t('exper5')}</MobileLink>
             <MobileLink href='#projects' onClick={() => setIsOpen(false)}>{t('Projects')}</MobileLink>
             <MobileLink href='#contact' onClick={() => setIsOpen(false)}>{t('Contact')}</MobileLink>
             <GitHubButton style={{padding: '10px 16px', background: `${({ theme }) => theme.primary}`, color: 'white',width: 'max-content'}} href={Bio.github} target="_blank">{t('Github')}</GitHubButton>
