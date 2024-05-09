@@ -7,6 +7,7 @@ import QuickReloadImg from '../Image/QuickReload.png'
 import QuizAppImg from "../Image/QuizApp.jpg"
 import Fred from "../Image/Fred.jpg"
 import Montreal from "../Image/MontrealCityLogo.gif"
+import Internship from "../Image/PhotoInternship.png"
 
 
 export const Bio = {
@@ -295,6 +296,20 @@ export const Bio = {
           linkedin:"https://www.linkedin.com/in/frédéric-vezina/",
           github:"",
         }
+      ]
+    },
+    {
+      id: 8,
+      titleKey: "education25",
+      dateKey: "education26",
+      descriptionKey:"education27",
+      image:Internship,
+      tags: ["EJS", "Visual Studio", "NodeJS", "ONE UEM"],
+      category: "YEAR3",
+      github: "",
+      webapp: "",
+      member: [
+      
       ]
     },
   ];
