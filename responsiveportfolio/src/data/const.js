@@ -56,7 +56,7 @@ export const Bio = {
         {
           name: "SwiftUI",
           image:
-            "https://zonneveld.dev/wp-content/uploads/2019/10/swiftUI-banner.jpg",
+            "https://developer.apple.com/assets/elements/icons/swiftui/swiftui-96x96_2x.png",
         },
         {
           name: "TailWind",
