@@ -101,7 +101,6 @@ function Footer() {
           <NavLink href="#about">{t('About')}</NavLink>
           <NavLink href='#skills'>{t('Skill')}</NavLink>
           <NavLink href='#education'>{t('Education')}</NavLink>
-          <NavLink href='#experience'>{t('exper5')}</NavLink>
           <NavLink href='#projects'>{t('Projects')}</NavLink>
           <NavLink href='#contact'>{t('Contact')}</NavLink>
         </Nav>
