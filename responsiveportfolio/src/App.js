@@ -41,9 +41,9 @@ function App() {
             <Hero/>
             <Wrapper>
               <Skills/>
-              <Experience />
             </Wrapper>
             <Education/>
+            <Experience />
             <Projects/>
             <Contact/>
             <Footer/>
