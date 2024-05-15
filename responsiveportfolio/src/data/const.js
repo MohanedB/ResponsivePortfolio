@@ -203,7 +203,7 @@ export const Bio = {
   
   
   export const projects = [   {
-    id: 3,
+    id: 1,
     titleKey: "education10",
     dateKey: "education11",
     descriptionKey:"education12",
@@ -214,7 +214,7 @@ export const Bio = {
     webapp: "",
   },
   {
-    id: 6,
+    id: 2,
     titleKey: "education19",
     dateKey: "education20",
     descriptionKey:"education21",
@@ -225,7 +225,7 @@ export const Bio = {
     webapp: "",
   },
   {
-    id: 4,
+    id: 3,
     titleKey: "education13",
     dateKey: "education14",
     descriptionKey:"education15",
@@ -237,7 +237,7 @@ export const Bio = {
   
   },
   {
-    id: 8,
+    id: 4,
     titleKey: "education25",
     dateKey: "education26",
     descriptionKey:"education27",
@@ -251,7 +251,7 @@ export const Bio = {
     ]
   },
     {
-      id: 1,
+      id: 5,
       titleKey: "education4",
       dateKey: "education5",
       descriptionKey:"education6",
@@ -263,7 +263,7 @@ export const Bio = {
       
     },
     {
-      id: 2,
+      id: 6,
       titleKey: "education7",
       dateKey: "education8",
       descriptionKey:"education9",
@@ -274,7 +274,7 @@ export const Bio = {
       webapp: "",
     },
     {
-      id: 5,
+      id: 7,
       titleKey: "education16",
       dateKey: "education17",
       descriptionKey:"education18",
@@ -298,7 +298,7 @@ export const Bio = {
       ]
     },
     {
-      id: 7,
+      id: 8,
       titleKey: "education22",
       dateKey: "education23",
       descriptionKey:"education24",
