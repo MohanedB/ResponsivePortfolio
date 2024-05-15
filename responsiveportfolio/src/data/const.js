@@ -236,7 +236,20 @@ export const Bio = {
     webapp: "",
   
   },
-
+  {
+    id: 8,
+    titleKey: "education25",
+    dateKey: "education26",
+    descriptionKey:"education27",
+    image:Internship,
+    tags: ["EJS", "Visual Studio", "NodeJS", "ONE UEM"],
+    category: "YEAR3",
+    github: "",
+    webapp: "",
+    member: [
+    
+    ]
+  },
     {
       id: 1,
       titleKey: "education4",
@@ -303,20 +316,7 @@ export const Bio = {
         }
       ]
     },
-    {
-      id: 8,
-      titleKey: "education25",
-      dateKey: "education26",
-      descriptionKey:"education27",
-      image:Internship,
-      tags: ["EJS", "Visual Studio", "NodeJS", "ONE UEM"],
-      category: "YEAR3",
-      github: "",
-      webapp: "",
-      member: [
-      
-      ]
-    },
+
   ];
 
  
