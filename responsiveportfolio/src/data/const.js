@@ -158,6 +158,11 @@ export const Bio = {
             "https://www.svgrepo.com/show/331626/unity.svg",
         },
         {
+          name: "Unreal Engine",
+          image:
+            "https://download.logo.wine/logo/Unreal_Engine/Unreal_Engine-Logo.wine.png",
+        }
+        {
           name: "Linux",
           image:
             "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ab/Linux_Logo_in_Linux_Libertine_Font.svg/1200px-Linux_Logo_in_Linux_Libertine_Font.svg.png",
