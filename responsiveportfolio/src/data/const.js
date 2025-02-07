@@ -333,7 +333,7 @@ export const Bio = {
       descriptionKey: "education24",
       image: QuickReloadImg,
       tags: ["Unity", "Visual Studio", "C#", "GitHub"],
-      mainCategory: "University",
+      mainCategory: "Cegep",
       subCategory: "YEAR3",
       github: "https://github.com/MohanedB/QuickReload",
       webapp: "",
@@ -345,6 +345,19 @@ export const Bio = {
           github: "https://github.com/emilydavis"
         }
       ]
+    },
+    {
+      id: 9,
+      titleKey: "UEDU1",
+      dateKey: "UEDU2",
+      descriptionKey: "UEDU3",
+      image: QuickReloadImg,
+      tags: ["Unity", "Visual Studio", "C#", "GitHub"],
+      mainCategory: "University",
+      subCategory: "YEAR1",
+      github: "https://github.com/MohanedB/CarMathProject-H02",
+      webapp: "",
+      members: []
     }
   ];
   
