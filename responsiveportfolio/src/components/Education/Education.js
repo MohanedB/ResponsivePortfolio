@@ -71,7 +71,7 @@ const TimelineSection = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 12px;
+    gap: 24px;  /* Increased gap for better spacing */
     @media (max-width: 660px) {
         align-items: center;
     }
@@ -95,13 +95,13 @@ const Index = () => {
                 {t('Edudesc')}
                 </Desc>
                 <TimelineSection>
-                    <Timeline>
-                        {education.map((education,index) => (
-                                    <EducationCard education={education}/>
-                        ))}
-                        
-                    </Timeline>
-
+                <Timeline>
+                 {education.map((education, index) => (
+                <TimelineItem key={index} style={{ marginBottom: "24px" }}>
+                  <EducationCard education={education} />
+                   </TimelineItem>
+                  ))}
+               </Timeline>
                 </TimelineSection>
             </Wrapper>
         </Container>

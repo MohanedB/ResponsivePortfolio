@@ -13,145 +13,159 @@ export const Bio = {
 };
 
 export const skills = [
-    {
-      titleKey: "skill0",
-      skills: [
-        {
-          name: "React Js",
-          image:
-            "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9Ii0xMS41IC0xMC4yMzE3NCAyMyAyMC40NjM0OCI+CiAgPHRpdGxlPlJlYWN0IExvZ88L3RpdGxlPgogIDxjaXJjbGUgY3g9IjAiIGN5PSIwIiByPSIyLjA1IiBmaWxsPSIjNjFkYWZiIi8+CiAgPGcgc3Ryb2tlPSIjNjFkYWZiIiBzdHJva2Utd2lkdGg9IjEiIGZpbGw9Im5vbmUiPgogICAgPGVsbGlwc2Ugcng9IjExIiByeT0iNC4yIi8+CiAgICA8ZWxsaXBzZSByeD0iMTEiIHJ5PSI0LjIiIHRyYW5zZm9ybT0icm90YXRlKDYwKSIvPgogICAgPGVsbGlwc2Ugcng9IjExIiByeT0iNC4yIiB0cmFuc2Zvcm09InJvdGF0ZSgxMjApIi8+CiAgPC9nPgo8L3N2Zz4K",
-        },
-        {
-          name: "HTML",
-          image: "https://www.w3.org/html/logo/badge/html5-badge-h-solo.png",
-        },
-        {
-          name: "CSS",
-          image:
-            "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/CSS3_logo_and_wordmark.svg/1452px-CSS3_logo_and_wordmark.svg.png",
-        },
-        {
-          name: "JavaScript",
-          image:
-            "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/JavaScript-logo.png/800px-JavaScript-logo.png",
-        },
-        {
-          name: "Bootstrap",
-          image:
-            "https://getbootstrap.com/docs/5.3/assets/brand/bootstrap-logo-shadow.png",
-        },
-        {
-          name: "SwiftUI",
-          image:
-            "https://zonneveld.dev/wp-content/uploads/2019/10/swiftUI-banner.jpg",
-        },
-        {
-          name: "TailWind",
-          image:
-            "https://cdn.icon-icons.com/icons2/2107/PNG/512/file_type_tailwind_icon_130128.png",
-        },
-      ],
-    },
-    {
-      titleKey: "skill1",
-      skills: [
-        {
-          name: "Node Js",
-          image: "https://nodejs.org/static/images/logo.svg",
-        },
+  {
+    titleKey: "skill0",
+    skills: [
+      {
+        name: "React Js",
+        image:
+          "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9Ii0xMS41IC0xMC4yMzE3NCAyMyAyMC40NjM0OCI+CiAgPHRpdGxlPlJlYWN0IExvZ288L3RpdGxlPgogIDxjaXJjbGUgY3g9IjAiIGN5PSIwIiByPSIyLjA1IiBmaWxsPSIjNjFkYWZiIi8+CiAgPGcgc3Ryb2tlPSIjNjFkYWZiIiBzdHJva2Utd2lkdGg9IjEiIGZpbGw9Im5vbmUiPgogICAgPGVsbGlwc2Ugcng9IjExIiByeT0iNC4yIi8+CiAgICA8ZWxsaXBzZSByeD0iMTEiIHJ5PSI0LjIiIHRyYW5zZm9ybT0icm90YXRlKDYwKSIvPgogICAgPGVsbGlwc2Ugcng9IjExIiByeT0iNC4yIiB0cmFuc2Zvcm09InJvdGF0ZSgxMjApIi8+CiAgPC9nPgo8L3N2Zz4K",
+      },
+      {
+        name: " EJS",
+        image:
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT1PvXIB8twwKNE3k9ty9oAUcwxLKhrf4yOScQuj0wUMQ&s",
+      },
+      {
+        name: "HTML",
+        image: "https://www.w3.org/html/logo/badge/html5-badge-h-solo.png",
+      },
+      {
+        name: "CSS",
+        image:
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/CSS3_logo_and_wordmark.svg/1452px-CSS3_logo_and_wordmark.svg.png",
+      },
+      {
+        name: "JavaScript",
+        image:
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/JavaScript-logo.png/800px-JavaScript-logo.png",
+      },
+      {
+        name: "Bootstrap",
+        image:
+          "https://getbootstrap.com/docs/5.3/assets/brand/bootstrap-logo-shadow.png",
+      },
+      {
+        name: "SwiftUI",
+        image:
+          "https://developer.apple.com/assets/elements/icons/swiftui/swiftui-96x96_2x.png",
+      },
+      {
+        name: "TailWind",
+        image:
+          "https://cdn.worldvectorlogo.com/logos/tailwind-css-1.svg",
+      },
+    ],
+  },
+  {
+    titleKey: "skill1",
+    skills: [
+      {
+        name: "Node Js",
+        image: "https://nodejs.org/static/images/logo.svg",
+      },
 
-        { 
-          name: "Python",
-          image:
-            "https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg",
-        },
-        {
-          name: "MySQL",
-          image:
-            "https://raw.githubusercontent.com/devicons/devicon/master/icons/mysql/mysql-original-wordmark.svg",
-        },
-        {
-          name: "MongoDB",
-          image:
-            "https://raw.githubusercontent.com/devicons/devicon/master/icons/mongodb/mongodb-original-wordmark.svg",
-        },
-        {
-          name: "Firebase",
-          image: "https://www.vectorlogo.zone/logos/firebase/firebase-icon.svg",
-        },
-        {
-          name: "Java",
-          image:
-            "https://raw.githubusercontent.com/devicons/devicon/master/icons/java/java-original.svg",
-        },
-        {
-          name: "C#",
-          image:
-            "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bd/Logo_C_sharp.svg/1200px-Logo_C_sharp.svg.png",
-        },
-        {
-          name: "PHP",
-          image:
-            "https://img.icons8.com/?size=256&id=UGYn5TapNioV&format=png",
-        },
-        {
-          name: "Xcode",
-          image:
-            "https://cdn.icon-icons.com/icons2/3053/PNG/512/xcode_alt_macos_bigsur_icon_189542.png",
-        },
-      ],
-    },
-    {
-      titleKey: "skill2",
-      skills: [
-        {
-          name: "Git",
-          image:
-            "https://img.icons8.com/?size=256&id=20906&format=png",
-        },
-              {
-                name: "GitHub",
-                image:
-                  "https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png",
-              },
-              {
-                name: "Docker",
-                image:
-                  "https://raw.githubusercontent.com/devicons/devicon/master/icons/docker/docker-original-wordmark.svg",
-              },
-              {
-                name: "VS Code",
-                image:
-                  "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Visual_Studio_Code_1.35_icon.svg/512px-Visual_Studio_Code_1.35_icon.svg.png?20210804221519",
-              },
-              {
-                name: "Postman",
-                image:
-                  "https://img.icons8.com/?size=256&id=QEQQKirln6Tf&format=png",
-              },
-              {
-                name: "Figma",
-                image:
-                  "https://img.icons8.com/?size=256&id=zfHRZ6i1Wg0U&format=png",
-              },
-              {
-                name: "Unity",
-                image:
-                  "https://www.svgrepo.com/show/331626/unity.svg",
-              },
-              {
-                name: "Linux",
-                image:
-                  "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ab/Linux_Logo_in_Linux_Libertine_Font.svg/1200px-Linux_Logo_in_Linux_Libertine_Font.svg.png",
-              },
-              {
-                name: "GNS3",
-                image:
-                  "https://cdn.icon-icons.com/icons2/1381/PNG/512/gns3_94911.png",
-              },
-            ],
-          },
-        ];
+      { 
+        name: "Python",
+        image:
+          "https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg",
+      },
+      {
+        name: "MySQL",
+        image:
+          "https://raw.githubusercontent.com/devicons/devicon/master/icons/mysql/mysql-original-wordmark.svg",
+      },
+      {
+        name: "MongoDB",
+        image:
+          "https://raw.githubusercontent.com/devicons/devicon/master/icons/mongodb/mongodb-original-wordmark.svg",
+      },
+      {
+        name: "Firebase",
+        image: "https://www.vectorlogo.zone/logos/firebase/firebase-icon.svg",
+      },
+      {
+        name: "Java",
+        image:
+          "https://raw.githubusercontent.com/devicons/devicon/master/icons/java/java-original.svg",
+      },
+      {
+        name: "C#",
+        image:
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bd/Logo_C_sharp.svg/1200px-Logo_C_sharp.svg.png",
+      },
+      {
+        name: "PHP",
+        image:
+          "https://img.icons8.com/?size=256&id=UGYn5TapNioV&format=png",
+      },
+      {
+        name: "C++",
+        image:
+          "https://img.icons8.com/?size=100&id=TpULddJc4gTh&format=png&color=000000",
+      },
+    ],
+  },
+  {
+    titleKey: "skill2",
+    skills: [
+      {
+        name: "Git",
+        image:
+          "https://img.icons8.com/?size=256&id=20906&format=png",
+      },
+      {
+        name: "GitHub",
+        image:
+          "https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png",
+      },
+      {
+        name: "Docker",
+        image:
+          "https://raw.githubusercontent.com/devicons/devicon/master/icons/docker/docker-original-wordmark.svg",
+      },
+      {
+        name: "VS Code",
+        image:
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Visual_Studio_Code_1.35_icon.svg/512px-Visual_Studio_Code_1.35_icon.svg.png?20210804221519",
+      },
+      {
+        name: "Postman",
+        image:
+          "https://img.icons8.com/?size=256&id=QEQQKirln6Tf&format=png",
+      },
+      {
+        name: "Figma",
+        image:
+          "https://img.icons8.com/?size=256&id=zfHRZ6i1Wg0U&format=png",
+      },
+      {
+        name: "Unity",
+        image:
+          "https://www.svgrepo.com/show/331626/unity.svg",
+      },
+      {
+        name: "Unreal Engine",
+        image:
+          "https://cdn2.unrealengine.com/ue-logotype-2023-vertical-white-1686x2048-bbfded26daa7.png",
+      },
+      {
+        name: "Linux",
+        image:
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ab/Linux_Logo_in_Linux_Libertine_Font.svg/1200px-Linux_Logo_in_Linux_Libertine_Font.svg.png",
+      },
+      {
+        name: "GNS3",
+        image: "https://upload.wikimedia.org/wikipedia/commons/8/8f/GNS3_logo.png",
+      },
+      {
+        name: "Xcode",
+        image:
+          "https://icon.icepanel.io/Technology/svg/Xcode.svg",
+      },
+    ],
+  },
+];
         
         export const education = [
           {

@@ -21,7 +21,9 @@ education19: "HalalBites", education20:"Jan 2024 - Feb 2024", education21: "A se
 education22:"QuickReload", education23:"Jan 13th, 2024 - Jan 14th, 2024", education24:"a 2D game inspired by the classic arcade game “Asteroids” called “QuickReload” in a team of 2 using the Unity Game Engine"
 ,Success: "Email sent successfully!",skill0: "Frontend", skill1:"Backend", skill2:"Others", Github: "GitHub", emaileror:"Please enter an email", nameeror: "Please enter a name", subjecteror:"Please enter a subject", messageeror:"Please enter a message",
 R:"R Score:", invalidemailerror:"Please enter a valid Email", text:"*Click twice on the project card to be redirected", exper1:"IT Analyst", exper2: "Montreal city", exper3: "March 4th - May 10th", exper4: "Worked on an application project that would allow the developers to create smartgroups based on their wishes. They can choose the number of devices per groups or how many groups they want to split the devices into",
-exper5: "Experience", exper6: "My work experience as a developer and working on different companies and projects.", education25: "AppDeMo", education26: "March 4th, 2024 - May 10th, 2024", education27:"An application  that would allow the developers to create smartgroups based on their wishes. They can choose the number of devices per groups or how many groups they want to split the devices into"
+exper5: "Experience", exper6: "My work experience as a developer and working on different companies and projects.", education25: "AppDeMo", education26: "March 4th, 2024 - May 10th, 2024", education27:"An application  that would allow the developers to create smartgroups based on their wishes. They can choose the number of devices per groups or how many groups they want to split the devices into",
+NEDU1: "UQAT Center in Montreal", NEDU2: "Août 2024 - Avril 2027", NEDU3: "Je suis actuellement en train de faire un baccalauréat en jeu vidéo." , NEDU4: "Baccalauréat en création de jeux vidéo",
+
 
 };
 
@@ -29,7 +31,7 @@ const translations_fr = { ...Bio_fr, ...education_fr, ...projects_fr, ...skills_
 Skill: "Compétences", Education: "Éducation", Projects: "Projets", Contact: "Contactez Moi", greeting: "Bonjour, je suis", IAM: "Je suis un",  
 skilldesc: "Voici certaines des compétences que j’ai acquises dans mon programme d’informatique et mes études individuelles au cours des 3 dernières années.",  
 Language_en: "Anglais", Language_fr: "Français", Edudesc: "Mon éducation a été un voyage de découverte de soi et de croissance. Voici les détails de mon parcours éducatif",
-education0: "Je termine actuellement ma technique en informatique. J'ai terminé jusqu'à présent 5 semestres sans faille avec une cote R global de 27.6. J'ai suivi plusieurs cours tels que java, linux, IOS, base de données et plus encore.",
+education0: "J'ai terminé ma technique en informatique avec succès, avec une cote R globale de 27,6. J'ai suivi plusieurs cours, tels que Java, Linux, iOS, bases de données et bien plus encore.",
 All: "Tous", FirstYear: "Première Année", SecondYear: "Deuxième Année", ThirdYear: "Troisième Année", ProjectDesc: "J’ai travaillé sur un large éventail de projets",ContactDesc: "N'hésitez pas à me contacter pour toute question ou opportunité!",
 Email: "Votre Email",Name: "Votre Nom", Subject: "Sujet", Message:"Message", Send: "Envoyer", education1:"Technique Informatique", education2: "Août 2020 - Mai 2024", education3 : "Collège Champlain",
 education4: "Calculatrice", education5: "Juin 2021", education6: "Une simple calculatrice en C#",education7: "QuizApp",education8: "nov. 2022 - déc. 2022",
@@ -41,8 +43,8 @@ education19: "HalalBites", education20: "janv. 2024 - févr. 2024", education21:
 education22: "QuickReload",education23: "13 janv. 2024 - 14 janv. 2024", education24: "un jeu 2D inspiré du jeu d'arcade classique “Asteroids” appelé “QuickReload” dans une équipe de 2 en utilisant le moteur de jeu Unity"
 ,Success: "Email envoyé avec succès", skill0:"Frontend", skill1:"Backend", skill2:"Autres", Github: "GitHub", emaileror: "Veuillez entrer un email", nameeror: "Veuillez entrer un nom", subjecteror: "Veuillez entrer un sujet", messageeror: "Veuillez entrer un message", text:"*Cliquez deux fois sur la fiche du projet pour être redirigé"
 ,R: "Cote R: ", invalidemailerror:"Veuillez entre un email valid", exper1: "Analyste en Informatique", exper2: "Ville de Montréal", exper3: "4 Mars - 10 Mai", exper4: "J'ai travaillé sur une application qui permettrait aux développeurs de créer des smartgroups en fonction de leurs souhaits. Ils peuvent choisir le nombre d’appareils par groupes ou en combien de groupes ils veulent diviser les appareils.",
-exper5: "Expérience", exper6: "Mon expérience de travail en tant que développeur et travaillant sur différentes entreprises et projets.",education25: "AppDeMo", education26: "4 Mars, 2024 - 10 Mai, 2024", education27:"une application qui permettrait aux développeurs de créer des smartgroups en fonction de leurs souhaits. Ils peuvent choisir le nombre d’appareils par groupes ou en combien de groupes ils veulent diviser les appareils."
-
+exper5: "Expérience", exper6: "Mon expérience de travail en tant que développeur et travaillant sur différentes entreprises et projets.",education25: "AppDeMo", education26: "4 Mars, 2024 - 10 Mai, 2024", education27:"une application qui permettrait aux développeurs de créer des smartgroups en fonction de leurs souhaits. Ils peuvent choisir le nombre d’appareils par groupes ou en combien de groupes ils veulent diviser les appareils.",
+NEDU1: "UQAT Center in Montreal", NEDU2: "August 2024 - April 2027", NEDU3: "I am currently pursuing a bachelor's degree in video game development.", NEDU4: "Bachelor's degree in video game creation"
 };
 i18n
   .use(LanguageDetector)

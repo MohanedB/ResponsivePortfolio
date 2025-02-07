@@ -189,7 +189,16 @@ export const Bio = {
             grade: "27.6",
             descKey: "education0", 
             degreeKey: "education1"
-    },
+    },    
+    {
+      id: 1,
+            img: "",
+            schoolKey: "NEDU1",
+            dateKey: "NEDU2",
+            grade: "n/a",
+            descKey: "NEDU3", 
+            degreeKey: "NEDU4"
+    },    
 
   ];
   export const experiences = [
