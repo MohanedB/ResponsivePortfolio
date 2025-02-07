@@ -220,98 +220,109 @@ export const Bio = {
   ];
   
   
-  export const projects = [   {
-    id: 1,
-    titleKey: "education10",
-    dateKey: "education11",
-    descriptionKey:"education12",
-    image: PaysageMelocheImg,
-    tags: ["ReactJs", "Visual Studio Code","NodeJS", "MangoDB", "Jira"],
-    category: "YEAR3",
-    github: "https://github.com/Carstal/paysages-meloche",
-    webapp: "",
-  },
-  {
-    id: 2,
-    titleKey: "education19",
-    dateKey: "education20",
-    descriptionKey:"education21",
-    image:HalalBitesImg,
-    tags: ["JavaScript", "Visual Studio Code", "IntellIj", "ReactJs", "Java SpringBoot", "MySQL", "Jira"],
-    category: "YEAR3",
-    github: "https://halalbites.onrender.com/",
-    webapp: "",
-  },
-  {
-    id: 3,
-    titleKey: "education13",
-    dateKey: "education14",
-    descriptionKey:"education15",
-    image:PetClinicImg,
-    tags: ["JavaScript", "Visual Studio Code", "Git Hub", "Jira"],
-    category: "YEAR3",
-    github: "https://github.com/istiaque-champ/champ_petclinic",
-    webapp: "",
-  
-  },
-  {
-    id: 4,
-    titleKey: "education25",
-    dateKey: "education26",
-    descriptionKey:"education27",
-    image:Internship,
-    tags: ["EJS", "Visual Studio", "NodeJS", "ONE UEM"],
-    category: "YEAR3",
-    github: "",
-    webapp: "",
-    member: [
-    
-    ]
-  },
+  export const projects = [
+    {
+      id: 1,
+      titleKey: "education10",
+      dateKey: "education11",
+      descriptionKey: "education12",
+      image: PaysageMelocheImg,
+      tags: ["ReactJs", "Visual Studio Code", "NodeJS", "MongoDB", "Jira"],
+      mainCategory: "Cegep",
+      subCategory: "YEAR3",
+      github: "https://github.com/Carstal/paysages-meloche",
+      webapp: "",
+      members: [
+        {
+          name: "John Doe",
+          img: "https://example.com/john_doe.png",
+          linkedin: "https://www.linkedin.com/in/johndoe/",
+          github: "https://github.com/johndoe"
+        }
+      ]
+    },
+    {
+      id: 2,
+      titleKey: "education19",
+      dateKey: "education20",
+      descriptionKey: "education21",
+      image: HalalBitesImg,
+      tags: ["JavaScript", "Visual Studio Code", "IntelliJ", "ReactJs", "Java SpringBoot", "MySQL", "Jira"],
+      mainCategory: "Cegep",
+      subCategory: "YEAR3",
+      github: "https://halalbites.onrender.com/",
+      webapp: "",
+      members: []
+    },
+    {
+      id: 3,
+      titleKey: "education13",
+      dateKey: "education14",
+      descriptionKey: "education15",
+      image: PetClinicImg,
+      tags: ["JavaScript", "Visual Studio Code", "Git Hub", "Jira"],
+      mainCategory: "Cegep",
+      subCategory: "YEAR3",
+      github: "https://github.com/istiaque-champ/champ_petclinic",
+      webapp: "",
+      members: []
+    },
+    {
+      id: 4,
+      titleKey: "education25",
+      dateKey: "education26",
+      descriptionKey: "education27",
+      image: Internship,
+      tags: ["EJS", "Visual Studio", "NodeJS", "ONE UEM"],
+      mainCategory: "Cegep",
+      subCategory: "YEAR3",
+      github: "",
+      webapp: "",
+      members: []
+    },
     {
       id: 5,
       titleKey: "education4",
       dateKey: "education5",
-      descriptionKey:"education6",
-      image:CalculatorImg,
+      descriptionKey: "education6",
+      image: CalculatorImg,
       tags: ["C#", "Visual Studio", "XAML"],
-      category: "YEAR1",
+      mainCategory: "Cegep",
+      subCategory: "YEAR1",
       github: "https://github.com/MohanedB/Calculator",
       webapp: "",
-      
+      members: []
     },
     {
       id: 6,
       titleKey: "education7",
       dateKey: "education8",
-      descriptionKey:"education9",
-      image:QuizAppImg,
+      descriptionKey: "education9",
+      image: QuizAppImg,
       tags: ["Firebase", "SwiftUI", "Swift", "Xcode"],
-      category: "YEAR2",
+      mainCategory: "Cegep",
+      subCategory: "YEAR2",
       github: "https://drive.google.com/drive/folders/1m76YGJ4o-YVeRBAoO9fLtQVap-J3kfFy?usp=sharing",
       webapp: "",
+      members: []
     },
     {
       id: 7,
       titleKey: "education16",
       dateKey: "education17",
-      descriptionKey:"education18",
-      image:FallenGodImg,
-      tags: [
-        "Unity",
-        "C#",
-        "Git Hub",
-        "Visual Studio"
-      ],
-      category: "YEAR2",
+      descriptionKey: "education18",
+      image: FallenGodImg,
+      tags: ["Unity", "C#", "Git Hub", "Visual Studio"],
+      mainCategory: "Cegep",
+      subCategory: "YEAR2",
       github: "https://github.com/ShadowFever3/FinalProject2D",
       webapp: "",
-      member: [
+      members: [
         {
           name: "Fred",
           img: Fred,
-          linkedin:"https://www.linkedin.com/in/frédéric-vezina/",
-          github:"",
+          linkedin: "https://www.linkedin.com/in/frédéric-vezina/",
+          github: ""
         }
       ]
     },
@@ -319,23 +330,23 @@ export const Bio = {
       id: 8,
       titleKey: "education22",
       dateKey: "education23",
-      descriptionKey:"education24",
-      image:QuickReloadImg,
+      descriptionKey: "education24",
+      image: QuickReloadImg,
       tags: ["Unity", "Visual Studio", "C#", "GitHub"],
-      category: "YEAR3",
+      mainCategory: "University",
+      subCategory: "YEAR3",
       github: "https://github.com/MohanedB/QuickReload",
       webapp: "",
-      member: [
+      members: [
         {
-          name: "Fred",
-          img: Fred,
-          linkedin:"https://www.linkedin.com/in/frédéric-vezina/",
-          github:"",
+          name: "Emily Davis",
+          img: "https://example.com/emily_davis.png",
+          linkedin: "https://www.linkedin.com/in/emilydavis/",
+          github: "https://github.com/emilydavis"
         }
       ]
-    },
-
+    }
   ];
-
+  
  
 
