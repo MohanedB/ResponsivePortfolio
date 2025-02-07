@@ -22,7 +22,8 @@ education22:"QuickReload", education23:"Jan 13th, 2024 - Jan 14th, 2024", educat
 ,Success: "Email sent successfully!",skill0: "Frontend", skill1:"Backend", skill2:"Others", Github: "GitHub", emaileror:"Please enter an email", nameeror: "Please enter a name", subjecteror:"Please enter a subject", messageeror:"Please enter a message",
 R:"R Score:", invalidemailerror:"Please enter a valid Email", text:"*Click twice on the project card to be redirected", exper1:"IT Analyst", exper2: "Montreal city", exper3: "March 4th - May 10th", exper4: "Worked on an application project that would allow the developers to create smartgroups based on their wishes. They can choose the number of devices per groups or how many groups they want to split the devices into",
 exper5: "Experience", exper6: "My work experience as a developer and working on different companies and projects.", education25: "AppDeMo", education26: "March 4th, 2024 - May 10th, 2024", education27:"An application  that would allow the developers to create smartgroups based on their wishes. They can choose the number of devices per groups or how many groups they want to split the devices into",
-NEDU1: "UQAT Center in Montreal", NEDU2: "August 2024 - April 2027", NEDU3: "I am currently pursuing a bachelor's degree in video game development.", NEDU4: "Bachelor's degree in video game creation"
+NEDU1: "UQAT Center in Montreal", NEDU2: "August 2024 - April 2027", NEDU3: "I am currently pursuing a bachelor's degree in video game development.", NEDU4: "Bachelor's degree in video game creation",
+Cegep: "Cegep", University:"University", Back: "Back"
 
 
 };
@@ -45,6 +46,8 @@ education22: "QuickReload",education23: "13 janv. 2024 - 14 janv. 2024", educati
 ,R: "Cote R: ", invalidemailerror:"Veuillez entre un email valid", exper1: "Analyste en Informatique", exper2: "Ville de Montréal", exper3: "4 Mars - 10 Mai", exper4: "J'ai travaillé sur une application qui permettrait aux développeurs de créer des smartgroups en fonction de leurs souhaits. Ils peuvent choisir le nombre d’appareils par groupes ou en combien de groupes ils veulent diviser les appareils.",
 exper5: "Expérience", exper6: "Mon expérience de travail en tant que développeur et travaillant sur différentes entreprises et projets.",education25: "AppDeMo", education26: "4 Mars, 2024 - 10 Mai, 2024", education27:"une application qui permettrait aux développeurs de créer des smartgroups en fonction de leurs souhaits. Ils peuvent choisir le nombre d’appareils par groupes ou en combien de groupes ils veulent diviser les appareils.",
 NEDU1: "UQAT Center in Montreal", NEDU2: "Août 2024 - Avril 2027", NEDU3: "Je suis actuellement en train de faire un baccalauréat en jeu vidéo." , NEDU4: "Baccalauréat en création de jeux vidéo",
+Cegep: "Cégep", University:"Université", Back:"Retour"
+
 };
 i18n
   .use(LanguageDetector)
