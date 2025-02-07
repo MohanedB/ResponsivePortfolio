@@ -66,7 +66,7 @@ export const Bio = {
         {
           name: "TailWind",
           image:
-            "https://cdn.icon-icons.com/icons2/2107/PNG/512/file_type_tailwind_icon_130128.png",
+            "https://cdn.worldvectorlogo.com/logos/tailwind-css-1.svg",
         },
       ],
     },
@@ -111,6 +111,11 @@ export const Bio = {
           name: "PHP",
           image:
             "https://img.icons8.com/?size=256&id=UGYn5TapNioV&format=png",
+        },
+        {
+          name: "C++",
+          image:
+            "https://img.icons8.com/?size=100&id=TpULddJc4gTh&format=png&color=000000",
         },
       ],
     },
@@ -159,13 +164,12 @@ export const Bio = {
         },
         {
           name: "GNS3",
-          image:
-            "https://cdn.icon-icons.com/icons2/1381/PNG/512/gns3_94911.png",
+          image: "https://upload.wikimedia.org/wikipedia/commons/8/8f/GNS3_logo.png",
         },
         {
           name: "Xcode",
           image:
-            "https://cdn.icon-icons.com/icons2/3053/PNG/512/xcode_alt_macos_bigsur_icon_189542.png",
+            "https://icon.icepanel.io/Technology/svg/Xcode.svg",
         },
       ],
     },
