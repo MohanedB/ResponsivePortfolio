@@ -160,8 +160,8 @@ export const Bio = {
         {
           name: "Unreal Engine",
           image:
-            "https://download.logo.wine/logo/Unreal_Engine/Unreal_Engine-Logo.wine.png",
-        }
+            "https://cdn2.unrealengine.com/ue-logotype-2023-vertical-white-1686x2048-bbfded26daa7.png",
+        },
         {
           name: "Linux",
           image:
