@@ -23,6 +23,7 @@ export const Bio = {
     linkedin: "https://www.linkedin.com/in/mohaned-bouzaidi-a7390724a/",
     insta: "https://www.instagram.com/_momo204/",
     facebook: "https://www.facebook.com/mohaned.bouzaidi.7/",
+    itch: "https://mohanedbouzaidi.itch.io",
   };
 
   export const skills = [
