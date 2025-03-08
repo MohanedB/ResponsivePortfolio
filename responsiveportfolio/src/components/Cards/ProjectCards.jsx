@@ -1,6 +1,6 @@
-import React, { useRef, useState } from 'react';
 import styled from 'styled-components';
 import { useTranslation } from 'react-i18next';
+import React, { useState } from 'react';
 
 const HoverDescription = styled.div`
   position: absolute;
@@ -9,7 +9,7 @@ const HoverDescription = styled.div`
   right: 0;
   padding: 10px;
   background-color: ${({ theme }) => theme.card};
-  color: ${({ theme }) => theme.white};
+  color: ${({ theme }) => theme.white}; // Change this line
   border-radius: 0 0 10px 10px;
   box-shadow: 0 0 10px rgba(0,0,0,0.2);
   transform: translateY(100%);
@@ -18,14 +18,13 @@ const HoverDescription = styled.div`
 `;
 
 const Card = styled.div`
-  position: relative;
   width: 330px;
   height: 490px;
   background-color: ${({ theme }) => theme.card};
   cursor: pointer;
   border-radius: 10px;
   box-shadow: 0 0 12px 4px rgba(0,0,0,0.4);
-  overflow: hidden;
+  overflow: hidden; // Add this line
   padding: 26px 20px;
   display: flex;
   flex-direction: column;
@@ -37,12 +36,13 @@ const Card = styled.div`
     filter: brightness(1.1);
     ${({ theme }) => `
       ${HoverDescription} {
-        transform: translateY(0%);
+        transform: translateY(0%); // Change this line
         opacity: 1;
       }
     `}
   }
   &:active {
+    // ...existing styles
     cursor: pointer;
   }
 `;
@@ -110,7 +110,7 @@ const Description = styled.div`
   margin-top: 8px;
   display: -webkit-box;
   max-width: 100%;
-  -webkit-line-clamp: 3;
+  -webkit-line-clamp: 3; // Change this line
   -webkit-box-orient: vertical;
   text-overflow: ellipsis;
 `;
@@ -131,76 +131,32 @@ const Avatar = styled.img`
   border: 3px solid ${({ theme }) => theme.card};
 `;
 
-const DoubleTapHint = styled.div`
-  position: absolute;
-  bottom: 40px;
-  left: 50%;
-  transform: translateX(-50%);
-  background-color: rgba(0, 0, 0, 0.7);
-  color: white;
-  padding: 5px 10px;
-  border-radius: 5px;
-  font-size: 12px;
-  opacity: ${props => props.show ? 1 : 0};
-  transition: opacity 0.3s ease;
-  pointer-events: none;
-  z-index: 100;
-`;
-
 const ProjectCards = ({ project, setOpenModal }) => {
-  const { t } = useTranslation();
-  const tapTimeout = useRef(null);
-  const [showHint, setShowHint] = useState(false);
-  const delay = 300; // delay for double tap (in ms)
-  const lastTapTime = useRef(0);
+  const { t, i18n } = useTranslation();
+  const [hovered, setHovered] = useState(false);
+  const [clickCount, setClickCount] = useState(0);
 
-  // Detect mobile more reliably
-  const isMobile = useRef(() => {
-    return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || 
-           (navigator.maxTouchPoints && navigator.maxTouchPoints > 2);
-  });
+  const changeLanguage = (lng) => {
+    i18n.changeLanguage(lng);
+  };
 
-  const handleTap = (e) => {
-    e.preventDefault();
-    
-    if (isMobile.current()) {
-      const currentTime = new Date().getTime();
-      const tapLength = currentTime - lastTapTime.current;
-      
-      // Clear any existing timeout
-      if (tapTimeout.current) {
-        clearTimeout(tapTimeout.current);
-        tapTimeout.current = null;
-      }
-      
-      if (tapLength < delay && tapLength > 0) {
-        // Double tap detected
-        if (project.buildGameUrl) {
-          window.open(project.buildGameUrl, '_blank');
-        } else {
-          window.open(project.github, '_blank');
-        }
-        lastTapTime.current = 0; // Reset
-      } else {
-        // First tap
-        lastTapTime.current = currentTime;
-        setShowHint(true);
-        
-        // Hide hint after a period
-        tapTimeout.current = setTimeout(() => {
-          setShowHint(false);
-          lastTapTime.current = 0;
-        }, 2000);
-      }
-    } else {
-      // PC behavior - single click
+  const handleClick = () => {
+    setClickCount(prevCount => prevCount + 1);
+    if (clickCount === 1) {
       window.open(project.github, '_blank');
+      setClickCount(0);
     }
   };
 
   return (
-    <Card onClick={handleTap}>
-      <Image src={project.image} />
+    <Card 
+      onMouseEnter={() => setHovered(true)} 
+      onMouseLeave={() => setHovered(false)} 
+      onTouchStart={() => setHovered(true)} 
+      onTouchEnd={() => setHovered(false)} 
+      onClick={handleClick}
+    >
+      <Image src={project.image}/>
       <Tags>
         {project.tags?.map((tag, index) => (
           <Tag key={index}>{tag}</Tag>
@@ -216,10 +172,7 @@ const ProjectCards = ({ project, setOpenModal }) => {
           <Avatar key={member.id} src={member.img} />
         ))}
       </Members>
-      <HoverDescription>{t(project.descriptionKey)}</HoverDescription>
-      {isMobile.current() && (
-        <DoubleTapHint show={showHint}>Double tap to open</DoubleTapHint>
-      )}
+      <HoverDescription show={hovered}>{t(project.descriptionKey)}</HoverDescription>
     </Card>
   );
 };
