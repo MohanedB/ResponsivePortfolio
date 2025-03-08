@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import styled from 'styled-components';
 import { useTranslation } from 'react-i18next';
 
@@ -18,6 +18,7 @@ const HoverDescription = styled.div`
 `;
 
 const Card = styled.div`
+  position: relative;
   width: 330px;
   height: 490px;
   background-color: ${({ theme }) => theme.card};
@@ -130,47 +131,75 @@ const Avatar = styled.img`
   border: 3px solid ${({ theme }) => theme.card};
 `;
 
+const DoubleTapHint = styled.div`
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgba(0, 0, 0, 0.7);
+  color: white;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 12px;
+  opacity: ${props => props.show ? 1 : 0};
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+  z-index: 100;
+`;
+
 const ProjectCards = ({ project, setOpenModal }) => {
   const { t } = useTranslation();
   const tapTimeout = useRef(null);
+  const [showHint, setShowHint] = useState(false);
   const delay = 300; // delay for double tap (in ms)
+  const lastTapTime = useRef(0);
 
-  // Basic mobile check using the user agent
-  const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
-    navigator.userAgent
-  );
+  // Detect mobile more reliably
+  const isMobile = useRef(() => {
+    return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || 
+           (navigator.maxTouchPoints && navigator.maxTouchPoints > 2);
+  });
 
-  const handleTap = () => {
-    if (isMobile) {
-      // On mobile, require a double tap
+  const handleTap = (e) => {
+    e.preventDefault();
+    
+    if (isMobile.current()) {
+      const currentTime = new Date().getTime();
+      const tapLength = currentTime - lastTapTime.current;
+      
+      // Clear any existing timeout
       if (tapTimeout.current) {
         clearTimeout(tapTimeout.current);
         tapTimeout.current = null;
-        // Double tap action: for example, run build game action
+      }
+      
+      if (tapLength < delay && tapLength > 0) {
+        // Double tap detected
         if (project.buildGameUrl) {
           window.open(project.buildGameUrl, '_blank');
         } else {
-          console.log('Double tap: Build game action not defined');
-        }
-      } else {
-        tapTimeout.current = setTimeout(() => {
-          // Single tap action on mobile (if needed, you might leave it empty)
           window.open(project.github, '_blank');
-          tapTimeout.current = null;
-        }, delay);
+        }
+        lastTapTime.current = 0; // Reset
+      } else {
+        // First tap
+        lastTapTime.current = currentTime;
+        setShowHint(true);
+        
+        // Hide hint after a period
+        tapTimeout.current = setTimeout(() => {
+          setShowHint(false);
+          lastTapTime.current = 0;
+        }, 2000);
       }
     } else {
-      // On PC, just perform the single tap action immediately
+      // PC behavior - single click
       window.open(project.github, '_blank');
     }
   };
 
   return (
     <Card
-      onMouseEnter={() => {}}
-      onMouseLeave={() => {}}
-      onTouchStart={() => {}}
-      onTouchEnd={() => {}}
       onClick={handleTap}
     >
       <Image src={project.image} />
@@ -190,6 +219,9 @@ const ProjectCards = ({ project, setOpenModal }) => {
         ))}
       </Members>
       <HoverDescription>{t(project.descriptionKey)}</HoverDescription>
+      {isMobile.current() && (
+        <DoubleTapHint show={showHint}>Double tap to open</DoubleTapHint>
+      )}
     </Card>
   );
 };
