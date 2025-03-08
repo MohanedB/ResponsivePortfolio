@@ -151,64 +151,55 @@ const ProjectCards = ({ project, setOpenModal }) => {
   const { t } = useTranslation();
   const tapTimeout = useRef(null);
   const [showHint, setShowHint] = useState(false);
-  const delay = 300; // délai en ms pour distinguer un double click/tap
+  const delay = 300; // delay for double tap (in ms)
+  const lastTapTime = useRef(0);
 
-  // Détection de mobile
-  const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
-    navigator.userAgent
-  );
+  // Detect mobile more reliably
+  const isMobile = useRef(() => {
+    return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || 
+           (navigator.maxTouchPoints && navigator.maxTouchPoints > 2);
+  });
 
-  // Pour mobile : on utilise la logique de double tap
-  const handleMobileTap = (e) => {
+  const handleTap = (e) => {
     e.preventDefault();
-    const currentTime = new Date().getTime();
-    // Si le délai entre deux taps est inférieur au délai défini, c'est un double tap
-    if (tapTimeout.current) {
-      clearTimeout(tapTimeout.current);
-      tapTimeout.current = null;
-      // Action double sur mobile : ouvrir build du jeu ou GitHub en fallback
-      if (project.buildGameUrl) {
-        window.open(project.buildGameUrl, '_blank');
+    
+    if (isMobile.current()) {
+      const currentTime = new Date().getTime();
+      const tapLength = currentTime - lastTapTime.current;
+      
+      // Clear any existing timeout
+      if (tapTimeout.current) {
+        clearTimeout(tapTimeout.current);
+        tapTimeout.current = null;
+      }
+      
+      if (tapLength < delay && tapLength > 0) {
+        // Double tap detected
+        if (project.buildGameUrl) {
+          window.open(project.buildGameUrl, '_blank');
+        } else {
+          window.open(project.github, '_blank');
+        }
+        lastTapTime.current = 0; // Reset
       } else {
-        window.open(project.github, '_blank');
+        // First tap
+        lastTapTime.current = currentTime;
+        setShowHint(true);
+        
+        // Hide hint after a period
+        tapTimeout.current = setTimeout(() => {
+          setShowHint(false);
+          lastTapTime.current = 0;
+        }, 2000);
       }
     } else {
-      // Premier tap : on affiche un indice puis on attend
-      tapTimeout.current = setTimeout(() => {
-        // Ne fait rien quand le timer expire (ou vous pouvez choisir une action)
-        tapTimeout.current = null;
-      }, delay);
-      setShowHint(true);
-      setTimeout(() => setShowHint(false), 2000);
-    }
-  };
-
-  // Pour PC : on utilise onClick et onDoubleClick
-  const pcClickTimeout = useRef(null);
-  const handlePCClick = (e) => {
-    // Lancer l'action clic unique après un léger délai, afin de voir si un double click arrive
-    pcClickTimeout.current = setTimeout(() => {
+      // PC behavior - single click
       window.open(project.github, '_blank');
-      pcClickTimeout.current = null;
-    }, 250);
-  };
-
-  const handlePCDoubleClick = (e) => {
-    // Annuler le clic unique et lancer l'action double
-    if (pcClickTimeout.current) {
-      clearTimeout(pcClickTimeout.current);
-      pcClickTimeout.current = null;
     }
-    window.open(project.buildGameUrl ? project.buildGameUrl : project.github, '_blank');
   };
 
   return (
-    <Card
-      // Si mobile, on utilise le gestionnaire unifié
-      // Sinon, on attache onClick et onDoubleClick pour PC
-      onClick={isMobile ? handleMobileTap : handlePCClick}
-      onDoubleClick={!isMobile ? handlePCDoubleClick : undefined}
-    >
+    <Card onClick={handleTap}>
       <Image src={project.image} />
       <Tags>
         {project.tags?.map((tag, index) => (
@@ -226,7 +217,9 @@ const ProjectCards = ({ project, setOpenModal }) => {
         ))}
       </Members>
       <HoverDescription>{t(project.descriptionKey)}</HoverDescription>
-      {isMobile && <DoubleTapHint show={showHint}>Double tap to open</DoubleTapHint>}
+      {isMobile.current() && (
+        <DoubleTapHint show={showHint}>Double tap to open</DoubleTapHint>
+      )}
     </Card>
   );
 };
