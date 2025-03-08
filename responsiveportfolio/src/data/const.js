@@ -8,7 +8,8 @@ import QuizAppImg from "../Image/QuizApp.jpg"
 import Fred from "../Image/Fred.jpg"
 import Montreal from "../Image/MontrealCityLogo.gif"
 import Internship from "../Image/PhotoInternship.png"
-
+import GreatGameOfWar from "../Image/GreatGameOfWar.png"
+import RobotLab from "../Image/RobotLab.png"
 
 export const Bio = {
     name: "Mohaned Bouzaidi",
@@ -352,11 +353,24 @@ export const Bio = {
       titleKey: "UEDU1",
       dateKey: "UEDU2",
       descriptionKey: "UEDU3",
-      image: QuickReloadImg,
+      image: RobotLab,
       tags: ["Unity", "Visual Studio", "C#", "GitHub"],
       mainCategory: "University",
       subCategory: "YEAR1",
       github: "https://github.com/MohanedB/CarMathProject-H02",
+      webapp: "",
+      members: []
+    },
+    {
+      id: 10,
+      titleKey: "UEDU4",
+      dateKey: "UEDU5",
+      descriptionKey: "UEDU6",
+      image: GreatGameOfWar,
+      tags: ["Unity", "Visual Studio", "C#", "GitHub"],
+      mainCategory: "University",
+      subCategory: "YEAR1",
+      github: "https://github.com/UQATM/GameJam2025-UQATM",
       webapp: "",
       members: []
     }
