@@ -274,6 +274,9 @@ const Projects = () => {
                     </>
                 ) : (
                     <>
+                       <p style={{ color: 'white', marginBottom: '8px' }}>
+                        *Double click to go to github
+                      </p>
                         {/* STEP 2: Year Selection (Only appears after Cegep/University is selected) */}
                         <ToggleButtonGroup>
                             <ToggleButton active={subCategory === 'all'} onClick={() => setSubCategory('all')}>

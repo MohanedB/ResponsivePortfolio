@@ -25,7 +25,7 @@ exper5: "Experience", exper6: "My work experience as a developer and working on 
 NEDU1: "UQAT Center in Montreal", NEDU2: "August 2024 - April 2027", NEDU3: "I am currently pursuing a bachelor's degree in video game development.", NEDU4: "Bachelor's degree in video game creation",
 Cegep: "Cegep", University:"University", Back: "Back", UEDU1: "Robot Control in Unity", UEDU2:"January 28 2025", 
 UEDU3:"This lab focuses on programming a robot in Unity using only scripts, without the physics engine. The robot must move forward, backward, turn, and stop via specific key inputs. Applied transformations include translations, rotations, and scaling. The wheels must rotate realistically based on user commands, ensuring smooth and controlled movement",
-UEDU4: "The Great Game of War", UEDU5:"March 4 2025 - March 6 2025", UEDU6:"The Great Game of War is a Tower Defense game where you switch between a strategic view and tank combat.", SearchHint: "Game, C#, Visual Studio, Jira, etc.."
+UEDU4: "The Great Game of War", UEDU5:"March 4 2025 - March 6 2025", UEDU6:"The Great Game of War is a Tower Defense game where you switch between a strategic view and tank combat.", SearchHint: "Game, C#, Visual Studio, Jira, etc..", NoProjectsFound: "No Project Were FOund with this!"
 };
 
 const translations_fr = { ...Bio_fr, ...education_fr, ...projects_fr, ...skills_fr, About: "À propos", resumer: "CV",
@@ -48,7 +48,17 @@ exper5: "Expérience", exper6: "Mon expérience de travail en tant que développ
 NEDU1: "UQAT Center in Montreal", NEDU2: "Août 2024 - Avril 2027", NEDU3: "Je suis actuellement en train de faire un baccalauréat en jeu vidéo." , NEDU4: "Baccalauréat en création de jeux vidéo",
 Cegep: "Cégep", University:"Université", Back:"Retour",  UEDU1: "Contrôle d’un Robot en Unity", UEDU2:"28 janvier 2025", 
 UEDU3:"Ce laboratoire vise à programmer un robot en Unity en utilisant uniquement des scripts, sans moteur physique. Le robot doit avancer, reculer, tourner et stopper via des touches prédéfinies. Les transformations appliquées incluent déplacements, rotations et changements d’échelle. Les roues doivent bouger de façon réaliste en réponse aux commandes du joueur."
-, UEDU4: "The Great Game of War", UEDU5:"4 Mars 2025 - 6 Mars 2025", UEDU6:"The Great Game of War est un Tower Defense où vous alternez entre vue stratégique et combat en tank.", SearchHint:"Indice de recherche", SearchByTag:"RechercherPartag", SearchHint: "  Game, C#, Visual Studio, Jira, etc.."
+, UEDU4: "The Great Game of War", UEDU5:"4 Mars 2025 - 6 Mars 2025", UEDU6:"The Great Game of War est un Tower Defense où vous alternez entre vue stratégique et combat en tank.", SearchByTag:"RechercherPartag", SearchHint: "Game, C#, Visual Studio, Jira, etc..",
+NoProjectsFound: "Aucun projet n'a été trouvé"
+
+
+
+
+
+
+
+
+
 
 };
 i18n
