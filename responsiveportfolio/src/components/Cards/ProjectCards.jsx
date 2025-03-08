@@ -1,160 +1,179 @@
-import styled from 'styled-components'
+import React, { useRef } from 'react';
+import styled from 'styled-components';
 import { useTranslation } from 'react-i18next';
-import React, { useState } from 'react';
 
 const HoverDescription = styled.div`
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    padding: 10px;
-    background-color: ${({ theme }) => theme.card};
-    color: ${({ theme }) => theme.white}; // Change this line
-    border-radius: 0 0 10px 10px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.2);
-    transform: translateY(100%);
-    opacity: 0;
-    transition: all 0.3s ease-in-out;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 10px;
+  background-color: ${({ theme }) => theme.card};
+  color: ${({ theme }) => theme.white};
+  border-radius: 0 0 10px 10px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+  transform: translateY(100%);
+  opacity: 0;
+  transition: all 0.3s ease-in-out;
 `;
 
 const Card = styled.div`
-    width: 330px;
-    height: 490px;
-    background-color: ${({ theme }) => theme.card};
-    cursor: pointer;
-    border-radius: 10px;
-    box-shadow: 0 0 12px 4px rgba(0,0,0,0.4);
-    overflow: hidden; // Add this line
-    padding: 26px 20px;
-    display: flex;
-    flex-direction: column;
-    gap: 14px;
-    transition: all 0.5s ease-in-out;
-    &:hover {
-        transform: translateY(-10px);
-        box-shadow: 0 0 50px 4px rgba(0,0,0,0.6);
-        filter: brightness(1.1);
-        ${({ theme }) => `
-            ${HoverDescription} {
-                transform: translateY(0%); // Change this line
-                opacity: 1;
-            }
-        `}
-    }
-    &:active {
-        // ...existing styles
-        cursor: pointer;
+  width: 330px;
+  height: 490px;
+  background-color: ${({ theme }) => theme.card};
+  cursor: pointer;
+  border-radius: 10px;
+  box-shadow: 0 0 12px 4px rgba(0,0,0,0.4);
+  overflow: hidden;
+  padding: 26px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  transition: all 0.5s ease-in-out;
+  &:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 0 50px 4px rgba(0,0,0,0.6);
+    filter: brightness(1.1);
+    ${({ theme }) => `
+      ${HoverDescription} {
+        transform: translateY(0%);
+        opacity: 1;
       }
-`
+    `}
+  }
+  &:active {
+    cursor: pointer;
+  }
+`;
 
 const Image = styled.img`
-    width: 100%;
-    height: 180px;
-    background-color: ${({ theme }) => theme.white};
-    border-radius: 10px;
-    box-shadow: 0 0 16px 2px rgba(0,0,0,0.3);
-`
+  width: 100%;
+  height: 180px;
+  background-color: ${({ theme }) => theme.white};
+  border-radius: 10px;
+  box-shadow: 0 0 16px 2px rgba(0,0,0,0.3);
+`;
 
 const Tags = styled.div`
-    width: 100%;
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 8px;
-    margin-top: 4px;
-`
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 4px;
+`;
 
 const Tag = styled.span`
-    font-size: 12px;
-    font-weight: 400;
-    color: ${({ theme }) => theme.primary};
-    background-color: ${({ theme }) => theme.primary + 15};
-    padding: 2px 8px;
-    border-radius: 10px;
-`
+  font-size: 12px;
+  font-weight: 400;
+  color: ${({ theme }) => theme.primary};
+  background-color: ${({ theme }) => theme.primary + 15};
+  padding: 2px 8px;
+  border-radius: 10px;
+`;
 
 const Details = styled.div`
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    gap: 0px;
-    padding: 0px 2px;
-`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0px;
+  padding: 0px 2px;
+`;
+
 const Title = styled.div`
-    font-size: 20px;
-    font-weight: 600;
-    color: ${({ theme }) => theme.text_secondary};
-    overflow: hidden;
-    display: -webkit-box;
-    max-width: 100%;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-    text-overflow: ellipsis;
-`
+  font-size: 20px;
+  font-weight: 600;
+  color: ${({ theme }) => theme.text_secondary};
+  overflow: hidden;
+  display: -webkit-box;
+  max-width: 100%;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  text-overflow: ellipsis;
+`;
 
 const Date = styled.div`
-    font-size: 12px;
-    margin-left: 2px;
-    font-weight: 400;
-    color: ${({ theme }) => theme.text_secondary + 80};
-    @media only screen and (max-width: 768px){
-        font-size: 10px;
-    }
-`
+  font-size: 12px;
+  margin-left: 2px;
+  font-weight: 400;
+  color: ${({ theme }) => theme.text_secondary + 80};
+  @media only screen and (max-width: 768px){
+    font-size: 10px;
+  }
+`;
 
 const Description = styled.div`
-    font-weight: 400;
-    color: ${({ theme }) => theme.text_secondary + 99};
-    overflow: hidden;
-    margin-top: 8px;
-    display: -webkit-box;
-    max-width: 100%;
-    -webkit-line-clamp: 3; // Change this line
-    -webkit-box-orient: vertical;
-    text-overflow: ellipsis;
-`
+  font-weight: 400;
+  color: ${({ theme }) => theme.text_secondary + 99};
+  overflow: hidden;
+  margin-top: 8px;
+  display: -webkit-box;
+  max-width: 100%;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  text-overflow: ellipsis;
+`;
 
 const Members = styled.div`
-    display: flex;
-    align-items: center;
-    padding-left: 10px;
-`
+  display: flex;
+  align-items: center;
+  padding-left: 10px;
+`;
+
 const Avatar = styled.img`
-    width: 38px;
-    height: 38px;
-    border-radius: 50%;
-    margin-left: -10px;
-    background-color: ${({ theme }) => theme.white};
-    box-shadow: 0 0 10px rgba(0,0,0,0.2);
-    border: 3px solid ${({ theme }) => theme.card};
-`
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  margin-left: -10px;
+  background-color: ${({ theme }) => theme.white};
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+  border: 3px solid ${({ theme }) => theme.card};
+`;
 
 const ProjectCards = ({ project, setOpenModal }) => {
-  const { t, i18n } = useTranslation();
-  const [hovered, setHovered] = useState(false);
-  const [clickCount, setClickCount] = useState(0);
-  const changeLanguage = (lng) => {
-    i18n.changeLanguage(lng);
-  };
+  const { t } = useTranslation();
+  const tapTimeout = useRef(null);
+  const delay = 300; // delay for double tap (in ms)
 
-  const handleClick = () => {
-    setClickCount(prevCount => prevCount + 1);
-    if (clickCount === 1) {
+  // Basic mobile check using the user agent
+  const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+    navigator.userAgent
+  );
+
+  const handleTap = () => {
+    if (isMobile) {
+      // On mobile, require a double tap
+      if (tapTimeout.current) {
+        clearTimeout(tapTimeout.current);
+        tapTimeout.current = null;
+        // Double tap action: for example, run build game action
+        if (project.buildGameUrl) {
+          window.open(project.buildGameUrl, '_blank');
+        } else {
+          console.log('Double tap: Build game action not defined');
+        }
+      } else {
+        tapTimeout.current = setTimeout(() => {
+          // Single tap action on mobile (if needed, you might leave it empty)
+          window.open(project.github, '_blank');
+          tapTimeout.current = null;
+        }, delay);
+      }
+    } else {
+      // On PC, just perform the single tap action immediately
       window.open(project.github, '_blank');
-      setClickCount(0);
     }
   };
 
   return (
-      <Card 
-          onMouseEnter={() => setHovered(true)} 
-          onMouseLeave={() => setHovered(false)} 
-          onTouchStart={() => setHovered(true)} 
-          onTouchEnd={() => setHovered(false)} 
-          onClick={handleClick}
-      >
-      <Image src={project.image}/>
+    <Card
+      onMouseEnter={() => {}}
+      onMouseLeave={() => {}}
+      onTouchStart={() => {}}
+      onTouchEnd={() => {}}
+      onClick={handleTap}
+    >
+      <Image src={project.image} />
       <Tags>
         {project.tags?.map((tag, index) => (
           <Tag key={index}>{tag}</Tag>
@@ -170,10 +189,9 @@ const ProjectCards = ({ project, setOpenModal }) => {
           <Avatar key={member.id} src={member.img} />
         ))}
       </Members>
-      <HoverDescription show={hovered}>{t(project.descriptionKey)}</HoverDescription>
+      <HoverDescription>{t(project.descriptionKey)}</HoverDescription>
     </Card>
   );
 };
 
-export default ProjectCards
-
+export default ProjectCards;
