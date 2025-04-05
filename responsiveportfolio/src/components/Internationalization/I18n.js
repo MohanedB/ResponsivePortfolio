@@ -25,7 +25,7 @@ exper5: "Experience", exper6: "My work experience as a developer and working on 
 NEDU1: "UQAT Center in Montreal", NEDU2: "August 2024 - April 2027", NEDU3: "I am currently pursuing a bachelor's degree in video game development.", NEDU4: "Bachelor's degree in video game creation",
 Cegep: "Cegep", University:"University", Back: "Back", UEDU1: "Robot Control in Unity", UEDU2:"January 28 2025", 
 UEDU3:"This lab focuses on programming a robot in Unity using only scripts, without the physics engine. The robot must move forward, backward, turn, and stop via specific key inputs. Applied transformations include translations, rotations, and scaling. The wheels must rotate realistically based on user commands, ensuring smooth and controlled movement",
-UEDU4: "The Great Game of War", UEDU5:"March 4 2025 - March 6 2025", UEDU6:"The Great Game of War is a Tower Defense game where you switch between a strategic view and tank combat.", SearchHint: "Game, C#, Visual Studio, Jira, etc..", NoProjectsFound: "No Project Were FOund with this!"
+UEDU4: "The Great Game of War", UEDU5:"March 4 2025 - March 6 2025", UEDU6:"The Great Game of War is a Tower Defense game where you switch between a strategic view and tank combat.", SearchHint: "Game, C#, Visual Studio, Jira, etc..", NoProjectsFound: "No Project Were Found with this!"
 };
 
 const translations_fr = { ...Bio_fr, ...education_fr, ...projects_fr, ...skills_fr, About: "À propos", resumer: "CV",
