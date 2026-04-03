@@ -4,6 +4,7 @@ import { useRef } from 'react';
 import emailjs from '@emailjs/browser';
 import { Snackbar } from '@mui/material';
 import { useTranslation } from 'react-i18next';
+import useScrollReveal from '../../hooks/useScrollReveal';
 
 const Container = styled.div`
   display: flex;
@@ -27,6 +28,10 @@ const Wrapper = styled.div`
   max-width: 1350px;
   padding: 0px 0px 80px 0px;
   gap: 12px;
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+  &.visible { opacity: 1; transform: translateY(0); }
   @media (max-width: 960px) {
     flex-direction: column;
   }
@@ -124,6 +129,7 @@ const Contact = () => {
   const form = useRef();
   const { i18n } = useTranslation();
   const { t } = useTranslation();
+  const [wrapperRef, wrapperVisible] = useScrollReveal();
 
   const changeLanguage = (language) => {
     i18n.changeLanguage(language);
@@ -212,7 +218,7 @@ const Contact = () => {
 
   return (
     <Container id="contact">
-      <Wrapper>
+      <Wrapper ref={wrapperRef} className={wrapperVisible ? 'visible' : ''}>
         <Title>{t('Contact')}</Title>
         <Desc>{t('ContactDesc')}</Desc>
         <ContactForm ref={form} onSubmit={handleButtonClick}>

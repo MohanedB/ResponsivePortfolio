@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { skillsByMode } from '../../data/const';
 import { useTranslation } from 'react-i18next';
 import { usePortfolio } from '../../context/PortfolioContext';
+import useScrollReveal from '../../hooks/useScrollReveal';
 const Container = styled.div`
   display: flex;
   flex-direction: column;
@@ -32,6 +33,10 @@ export const Title = styled.div`
   font-weight: 600;
   margin-top: 20px;
   color: ${({ theme }) => theme.text_primary};
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+  &.visible { opacity: 1; transform: translateY(0); }
   @media (max-width: 768px) {
     margin-top: 12px;
     font-size: 32px;
@@ -43,6 +48,11 @@ export const Desc = styled.div`
   text-align: center;
   max-width: 600px;
   color: ${({ theme }) => theme.text_secondary};
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+  transition-delay: 0.15s;
+  &.visible { opacity: 1; transform: translateY(0); }
   @media (max-width: 768px) {
     font-size: 16px;
   }
@@ -55,6 +65,17 @@ const SkillsContainer = styled.div`
   margin-top: 30px;
   gap: 30px;
   justify-content: center;
+
+  & > div {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  &.visible > div { opacity: 1; transform: translateY(0); }
+  &.visible > div:nth-child(1) { transition-delay: 0.1s; }
+  &.visible > div:nth-child(2) { transition-delay: 0.22s; }
+  &.visible > div:nth-child(3) { transition-delay: 0.34s; }
+  &.visible > div:nth-child(4) { transition-delay: 0.46s; }
 `;
 
 const Skill = styled.div`
@@ -102,6 +123,14 @@ const SkillItem = styled.div`
   align-items: center;
   justify-content: center;
   gap: 8px;
+  transition: all 0.3s ease;
+  &:hover {
+    color: ${({ theme }) => theme.primary};
+    border-color: ${({ theme }) => theme.primary};
+    transform: scale(1.08) translateY(-2px);
+    box-shadow: 0 0 14px rgba(133, 76, 230, 0.4);
+    background: rgba(133, 76, 230, 0.07);
+  }
   @media (max-width: 768px) {
     font-size: 14px;
     padding: 8px 12px;
@@ -120,16 +149,17 @@ const SkillImage = styled.img`
 const Skills = () => {
   const { t } = useTranslation();
   const { mode } = usePortfolio();
+  const [containerRef, containerVisible] = useScrollReveal();
 
   // Fall back to 'software' if mode is null (splash not yet dismissed)
   const activeSkills = skillsByMode[mode] || skillsByMode['software'];
 
   return (
-    <Container id='skills'>
+    <Container ref={containerRef} id='skills'>
       <Wrapper>
-        <Title>{t('Skill')}</Title>
-        <Desc>{t('skilldesc')}</Desc>
-        <SkillsContainer>
+        <Title className={containerVisible ? 'visible' : ''}>{t('Skill')}</Title>
+        <Desc className={containerVisible ? 'visible' : ''}>{t('skilldesc')}</Desc>
+        <SkillsContainer className={containerVisible ? 'visible' : ''}>
           {activeSkills.map((skillGroup, idx) => (
             <Skill key={idx}>
               <SkillTitle>{t(skillGroup.titleKey)}</SkillTitle>

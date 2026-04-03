@@ -1,6 +1,11 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import { useTranslation } from 'react-i18next';
-import React, { useState } from 'react';
+import React from 'react';
+
+const shimmer = keyframes`
+  0%   { transform: translateX(-150%) skewX(-15deg); }
+  100% { transform: translateX(250%)  skewX(-15deg); }
+`;
 
 const HoverDescription = styled.div`
   position: absolute;
@@ -9,7 +14,7 @@ const HoverDescription = styled.div`
   right: 0;
   padding: 10px;
   background-color: ${({ theme }) => theme.card};
-  color: ${({ theme }) => theme.white}; // Change this line
+  color: ${({ theme }) => theme.white};
   border-radius: 0 0 10px 10px;
   box-shadow: 0 0 10px rgba(0,0,0,0.2);
   transform: translateY(100%);
@@ -24,26 +29,46 @@ const Card = styled.div`
   cursor: pointer;
   border-radius: 10px;
   box-shadow: 0 0 12px 4px rgba(0,0,0,0.4);
-  overflow: hidden; // Add this line
+  overflow: hidden;
   padding: 26px 20px;
   display: flex;
   flex-direction: column;
   gap: 14px;
-  transition: all 0.5s ease-in-out;
+  transition: all 0.4s ease-in-out;
+  position: relative;
+  border: 1px solid transparent;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -120%;
+    width: 55%;
+    height: 100%;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.045),
+      transparent
+    );
+    z-index: 1;
+    pointer-events: none;
+  }
+
   &:hover {
     transform: translateY(-10px);
-    box-shadow: 0 0 50px 4px rgba(0,0,0,0.6);
+    box-shadow: 0 0 50px 4px rgba(0,0,0,0.6), 0 0 24px rgba(133, 76, 230, 0.3);
     filter: brightness(1.1);
-    ${({ theme }) => `
-      ${HoverDescription} {
-        transform: translateY(0%); // Change this line
-        opacity: 1;
-      }
-    `}
+    border-color: rgba(133, 76, 230, 0.35);
   }
-  &:active {
-    // ...existing styles
-    cursor: pointer;
+
+  &:hover::before {
+    animation: ${shimmer} 0.75s ease forwards;
+  }
+
+  &:hover ${HoverDescription} {
+    transform: translateY(0%);
+    opacity: 1;
   }
 `;
 
@@ -53,6 +78,7 @@ const Image = styled.img`
   background-color: ${({ theme }) => theme.white};
   border-radius: 10px;
   box-shadow: 0 0 16px 2px rgba(0,0,0,0.3);
+  object-fit: cover;
 `;
 
 const Tags = styled.div`
@@ -98,9 +124,7 @@ const Date = styled.div`
   margin-left: 2px;
   font-weight: 400;
   color: ${({ theme }) => theme.text_secondary + 80};
-  @media only screen and (max-width: 768px){
-    font-size: 10px;
-  }
+  @media only screen and (max-width: 768px){ font-size: 10px; }
 `;
 
 const Description = styled.div`
@@ -110,7 +134,7 @@ const Description = styled.div`
   margin-top: 8px;
   display: -webkit-box;
   max-width: 100%;
-  -webkit-line-clamp: 3; // Change this line
+  -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   text-overflow: ellipsis;
 `;
@@ -131,32 +155,27 @@ const Avatar = styled.img`
   border: 3px solid ${({ theme }) => theme.card};
 `;
 
-const ProjectCards = ({ project, setOpenModal }) => {
-  const { t, i18n } = useTranslation();
-  const [hovered, setHovered] = useState(false);
-  const [clickCount, setClickCount] = useState(0);
+const ClickHint = styled.div`
+  position: absolute;
+  bottom: 10px;
+  right: 14px;
+  font-size: 11px;
+  color: ${({ theme }) => theme.primary};
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
 
-  const changeLanguage = (lng) => {
-    i18n.changeLanguage(lng);
-  };
+  ${Card}:hover & {
+    opacity: 0.75;
+  }
+`;
 
-  const handleClick = () => {
-    setClickCount(prevCount => prevCount + 1);
-    if (clickCount === 1) {
-      window.open(project.github, '_blank');
-      setClickCount(0);
-    }
-  };
+const ProjectCards = ({ project, onOpen }) => {
+  const { t } = useTranslation();
 
   return (
-    <Card 
-      onMouseEnter={() => setHovered(true)} 
-      onMouseLeave={() => setHovered(false)} 
-      onTouchStart={() => setHovered(true)} 
-      onTouchEnd={() => setHovered(false)} 
-      onClick={handleClick}
-    >
-      <Image src={project.image}/>
+    <Card onClick={() => onOpen(project)}>
+      <Image src={project.image} alt={t(project.titleKey)} />
       <Tags>
         {project.tags?.map((tag, index) => (
           <Tag key={index}>{tag}</Tag>
@@ -172,7 +191,8 @@ const ProjectCards = ({ project, setOpenModal }) => {
           <Avatar key={member.id} src={member.img} />
         ))}
       </Members>
-      <HoverDescription show={hovered}>{t(project.descriptionKey)}</HoverDescription>
+      <HoverDescription>{t(project.descriptionKey)}</HoverDescription>
+      <ClickHint>Click to view details →</ClickHint>
     </Card>
   );
 };

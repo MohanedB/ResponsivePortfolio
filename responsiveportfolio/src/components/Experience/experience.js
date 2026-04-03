@@ -1,6 +1,7 @@
 
 import React from 'react'
 import styled from 'styled-components'
+import useScrollReveal from '../../hooks/useScrollReveal'
 import Timeline from '@mui/lab/Timeline';
 import TimelineItem from '@mui/lab/TimelineItem';
 import TimelineSeparator from '@mui/lab/TimelineSeparator';
@@ -34,6 +35,10 @@ const Wrapper = styled.div`
     max-width: 1350px;
     padding: 80px 0;
     gap: 12px;
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+    &.visible { opacity: 1; transform: translateY(0); }
     @media (max-width: 960px) {
         flex-direction: column;
     }
@@ -77,13 +82,14 @@ const TimelineSection = styled.div`
 
 const Experience = () => {
     const { t, i18n } = useTranslation();
+    const [wrapperRef, wrapperVisible] = useScrollReveal();
 
     const changeLanguage = (lng) => {
       i18n.changeLanguage(lng);
     };
     return (
         <Container id="experience">
-            <Wrapper>
+            <Wrapper ref={wrapperRef} className={wrapperVisible ? 'visible' : ''}>
                 <Title>{t('exper5')}</Title>
                 <Desc>
                 {t('exper6')}

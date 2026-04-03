@@ -1,5 +1,26 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
+
+const fadeInLeft = keyframes`
+  from { opacity: 0; transform: translateX(-50px); }
+  to   { opacity: 1; transform: translateX(0); }
+`;
+
+const fadeInRight = keyframes`
+  from { opacity: 0; transform: translateX(50px); }
+  to   { opacity: 1; transform: translateX(0); }
+`;
+
+const floatGlow = keyframes`
+  0%, 100% {
+    transform: translateY(0px);
+    filter: drop-shadow(0 0 8px rgba(133, 76, 230, 0.45));
+  }
+  50% {
+    transform: translateY(-18px);
+    filter: drop-shadow(0 0 28px rgba(133, 76, 230, 0.9));
+  }
+`;
 import HeroAnimation from '../HeroAnimation/HeroAnimation';
 import HeroImg from '../../Image/HeroImage.jpg';
 import Typewriter from 'typewriter-effect';
@@ -79,6 +100,7 @@ export const HeroRightContainer = styled.div`
   order: 2;
   justify-content: end;
   gap: 12px;
+  animation: ${fadeInRight} 0.9s ease 0.2s both;
   @media (max-width: 960px) {
     order: 1;
     justify-content: center;
@@ -99,6 +121,7 @@ export const Img = styled.img`
   border-radius: 50%;
   border: 2px solid ${({ theme }) => theme.primary};
   object-fit: cover;
+  animation: ${floatGlow} 5s ease-in-out infinite;
   @media (max-width: 768px) {
     max-width: 400px;
     max-height: 400px;
@@ -114,6 +137,7 @@ export const Title = styled.div`
   font-size: 50px;
   color: ${({ theme }) => theme.text_primary};
   line-height: 68px;
+  animation: ${fadeInLeft} 0.8s ease forwards;
   @media (max-width: 960px) { text-align: center; }
   @media (max-width: 640px) {
     font-size: 40px;
@@ -129,6 +153,7 @@ export const TextLoop = styled.div`
   gap: 12px;
   color: ${({ theme }) => theme.text_primary};
   line-height: 68px;
+  animation: ${fadeInLeft} 0.8s ease 0.18s both;
   @media (max-width: 960px) { text-align: center; }
   @media (max-width: 640px) {
     font-size: 22px;
@@ -147,6 +172,7 @@ export const SubTitle = styled.div`
   line-height: 32px;
   margin-bottom: 42px;
   color: ${({ theme }) => theme.text_primary + 95};
+  animation: ${fadeInLeft} 0.8s ease 0.36s both;
   @media (max-width: 960px) { text-align: center; }
   @media (max-width: 640px) {
     font-size: 16px;
@@ -168,13 +194,15 @@ export const ResumeButton = styled.a`
   cursor: pointer;
   font-size: 20px;
   font-weight: 600;
-  transition: all 0.2s ease-in-out !important;
+  transition: all 0.3s ease-in-out !important;
   background: hsla(271, 100%, 50%, 1);
   background: linear-gradient(225deg, hsla(271, 100%, 50%, 1) 0%, hsla(294, 100%, 50%, 1) 100%);
   box-shadow: 20px 20px 60px #1F2634, -20px -20px 60px #1F2634;
+  animation: ${fadeInLeft} 0.8s ease 0.54s both;
   &:hover {
-    transform: scale(1.05);
-    transition: all 0.4s ease-in-out;
+    transform: scale(1.07);
+    box-shadow: 0 0 28px rgba(133, 76, 230, 0.65);
+    transition: all 0.3s ease-in-out;
   }
   @media (max-width: 640px) {
     padding: 12px 0;

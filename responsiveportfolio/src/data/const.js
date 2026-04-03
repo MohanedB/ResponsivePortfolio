@@ -152,6 +152,25 @@ export const projects = [
     members: [
       { name: "John Doe", img: "https://example.com/john_doe.png", linkedin: "https://www.linkedin.com/in/johndoe/", github: "https://github.com/johndoe" }
     ],
+    whatIDidKey: "proj1_whatIDid",
+    proudCodeLang: "JavaScript",
+    proudCodeDescKey: "proj1_proudCodeDesc",
+    proudCode: `// POST /api/schedules — create with conflict check
+router.post('/', async (req, res) => {
+  const { workerId, start, end } = req.body;
+
+  const conflict = await Schedule.findOne({
+    workerId,
+    $or: [{ start: { $lt: end }, end: { $gt: start } }],
+  });
+
+  if (conflict) {
+    return res.status(409).json({ error: 'Schedule conflict detected' });
+  }
+
+  const schedule = await Schedule.create({ workerId, start, end });
+  res.status(201).json(schedule);
+});`,
   },
   {
     id: 2,
@@ -166,6 +185,20 @@ export const projects = [
     github: "https://halalbites.onrender.com/",
     webapp: "",
     members: [],
+    whatIDidKey: "proj2_whatIDid",
+    proudCodeLang: "Java",
+    proudCodeDescKey: "proj2_proudCodeDesc",
+    proudCode: `@GetMapping("/api/restaurants/search")
+public ResponseEntity<List<Restaurant>> search(
+    @RequestParam String query,
+    @RequestParam(required = false) String cuisine,
+    @RequestParam(defaultValue = "false") boolean halalOnly) {
+
+  List<Restaurant> results = restaurantService
+      .search(query, cuisine, halalOnly);
+
+  return ResponseEntity.ok(results);
+}`,
   },
   {
     id: 3,
@@ -180,6 +213,19 @@ export const projects = [
     github: "https://github.com/istiaque-champ/champ_petclinic",
     webapp: "",
     members: [],
+    whatIDidKey: "proj3_whatIDid",
+    proudCodeLang: "JavaScript",
+    proudCodeDescKey: "proj3_proudCodeDesc",
+    proudCode: `// Filter appointments within a date range
+function filterByRange(appointments, from, to) {
+  const start = new Date(from);
+  const end   = new Date(to);
+
+  return appointments.filter(appt => {
+    const date = new Date(appt.date);
+    return date >= start && date <= end;
+  });
+}`,
   },
   {
     id: 4,
@@ -194,6 +240,19 @@ export const projects = [
     github: "",
     webapp: "",
     members: [],
+    whatIDidKey: "proj4_whatIDid",
+    proudCodeLang: "JavaScript",
+    proudCodeDescKey: "proj4_proudCodeDesc",
+    proudCode: `// Split devices into N equal groups
+function splitIntoGroups(devices, groupCount) {
+  const groups = Array.from({ length: groupCount }, () => []);
+
+  devices.forEach((device, i) => {
+    groups[i % groupCount].push(device);
+  });
+
+  return groups;
+}`,
   },
   {
     id: 5,
@@ -208,6 +267,21 @@ export const projects = [
     github: "https://github.com/MohanedB/Calculator",
     webapp: "",
     members: [],
+    whatIDidKey: "proj5_whatIDid",
+    proudCodeLang: "C#",
+    proudCodeDescKey: "proj5_proudCodeDesc",
+    proudCode: `private double Evaluate(double left, double right, string op)
+{
+    return op switch
+    {
+        "+" => left + right,
+        "-" => left - right,
+        "*" => left * right,
+        "/" => right != 0 ? left / right
+                          : throw new DivideByZeroException(),
+        _   => right,
+    };
+}`,
   },
   {
     id: 6,
@@ -222,6 +296,22 @@ export const projects = [
     github: "https://drive.google.com/drive/folders/1m76YGJ4o-YVeRBAoO9fLtQVap-J3kfFy?usp=sharing",
     webapp: "",
     members: [],
+    whatIDidKey: "proj6_whatIDid",
+    proudCodeLang: "Swift",
+    proudCodeDescKey: "proj6_proudCodeDesc",
+    proudCode: `func fetchQuestions(amount: Int) async throws -> [Question] {
+    let url = URL(string: "https://opentdb.com/api.php?amount=\\(amount)")!
+    let (data, _) = try await URLSession.shared.data(from: url)
+    let response = try JSONDecoder().decode(TriviaResponse.self, from: data)
+
+    return response.results.map { q in
+        var answers = q.incorrectAnswers + [q.correctAnswer]
+        answers.shuffle()
+        return Question(text: q.question,
+                        answers: answers,
+                        correct: q.correctAnswer)
+    }
+}`,
   },
   {
     id: 7,
@@ -238,6 +328,30 @@ export const projects = [
     members: [
       { name: "Fred", img: Fred, linkedin: "https://www.linkedin.com/in/frédéric-vezina/", github: "" }
     ],
+    whatIDidKey: "proj7_whatIDid",
+    proudCodeLang: "C#",
+    proudCodeDescKey: "proj7_proudCodeDesc",
+    proudCode: `private void UpdateState()
+{
+    switch (_state)
+    {
+        case EnemyState.Patrol:
+            Patrol();
+            if (CanSeePlayer()) SetState(EnemyState.Chase);
+            break;
+
+        case EnemyState.Chase:
+            ChasePlayer();
+            if (IsInAttackRange())  SetState(EnemyState.Attack);
+            if (!CanSeePlayer())    SetState(EnemyState.Patrol);
+            break;
+
+        case EnemyState.Attack:
+            AttackPlayer();
+            if (!IsInAttackRange()) SetState(EnemyState.Chase);
+            break;
+    }
+}`,
   },
   {
     id: 8,
@@ -252,6 +366,26 @@ export const projects = [
     github: "https://github.com/MohanedB/QuickReload",
     webapp: "",
     members: [],
+    whatIDidKey: "proj8_whatIDid",
+    proudCodeLang: "C#",
+    proudCodeDescKey: "proj8_proudCodeDesc",
+    proudCode: `IEnumerator Reload()
+{
+    _isReloading = true;
+    reloadBar.gameObject.SetActive(true);
+
+    float elapsed = 0f;
+    while (elapsed < reloadTime)
+    {
+        elapsed += Time.deltaTime;
+        reloadBar.value = elapsed / reloadTime;
+        yield return null;
+    }
+
+    _currentAmmo = maxAmmo;
+    reloadBar.gameObject.SetActive(false);
+    _isReloading = false;
+}`,
   },
   {
     id: 9,
@@ -266,6 +400,22 @@ export const projects = [
     github: "https://github.com/MohanedB/CarMathProject-H02",
     webapp: "",
     members: [],
+    whatIDidKey: "proj9_whatIDid",
+    proudCodeLang: "C#",
+    proudCodeDescKey: "proj9_proudCodeDesc",
+    proudCode: `void Update()
+{
+    float move   = Input.GetAxis("Vertical")   * speed * Time.deltaTime;
+    float rotate = Input.GetAxis("Horizontal") * turnSpeed * Time.deltaTime;
+
+    transform.Translate(Vector3.forward * move);
+    transform.Rotate(Vector3.up * rotate);
+
+    // Spin wheels proportional to movement
+    float wheelSpin = (move / wheelRadius) * Mathf.Rad2Deg;
+    foreach (var wheel in wheels)
+        wheel.Rotate(Vector3.right * wheelSpin);
+}`,
   },
   {
     id: 10,
@@ -280,5 +430,19 @@ export const projects = [
     github: "https://github.com/UQATM/GameJam2025-UQATM",
     webapp: "",
     members: [],
+    whatIDidKey: "proj10_whatIDid",
+    proudCodeLang: "C#",
+    proudCodeDescKey: "proj10_proudCodeDesc",
+    proudCode: `IEnumerator SpawnWave(int waveNumber)
+{
+    int count = Mathf.Min(baseCount + waveNumber * 2, maxEnemies);
+    float interval = Mathf.Max(minInterval, spawnInterval - waveNumber * 0.1f);
+
+    for (int i = 0; i < count; i++)
+    {
+        Instantiate(enemyPrefab, spawnPoint.position, Quaternion.identity);
+        yield return new WaitForSeconds(interval);
+    }
+}`,
   },
 ];

@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "Portfolio (React)",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["--prefix", "responsiveportfolio", "start"],
+      "port": 3000
+    }
+  ]
+}

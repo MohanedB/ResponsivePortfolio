@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { useState } from 'react';
 import ProjectCard from '../Cards/ProjectCards';
+import ProjectModal from './ProjectModal';
 import { projects } from '../../data/const';
 import { useTranslation } from 'react-i18next';
 import { usePortfolio } from '../../context/PortfolioContext';
@@ -134,7 +135,7 @@ const NoResultsMessage = styled.div`
 `;
 
 const Projects = () => {
-    const [openModal, setOpenModal] = useState(false);
+    const [selectedProject, setSelectedProject] = useState(null);
     const [mainCategory, setMainCategory] = useState(null);
     const [subCategory, setSubCategory] = useState(null);
     const [searchTerm, setSearchTerm] = useState('');
@@ -196,6 +197,13 @@ const Projects = () => {
     });
 
     return (
+        <>
+        {selectedProject && (
+            <ProjectModal
+                project={selectedProject}
+                onClose={() => setSelectedProject(null)}
+            />
+        )}
         <Container id="projects">
             <Wrapper>
                 <Title>{t('Projects')}</Title>
@@ -231,9 +239,7 @@ const Projects = () => {
                                         <ProjectCard
                                             key={project.id}
                                             project={project}
-                                            openModal={openModal}
-                                            setOpenModal={setOpenModal}
-                                            github={project.github}
+                                            onOpen={setSelectedProject}
                                         />
                                     ))}
                                 </CardContainer>
@@ -245,7 +251,6 @@ const Projects = () => {
                     </>
                 ) : (
                     <>
-                        <p style={{ color: 'white', marginBottom: '8px' }}>*Double click to go to github</p>
                         <ToggleButtonGroup>
                             <ToggleButton active={subCategory === 'all'} onClick={() => setSubCategory('all')}>
                                 {t('All')}
@@ -269,9 +274,7 @@ const Projects = () => {
                                 <ProjectCard
                                     key={project.id}
                                     project={project}
-                                    openModal={openModal}
-                                    setOpenModal={setOpenModal}
-                                    github={project.github}
+                                    onOpen={setSelectedProject}
                                 />
                             ))}
                         </CardContainer>
@@ -282,6 +285,7 @@ const Projects = () => {
                 )}
             </Wrapper>
         </Container>
+        </>
     );
 };
 

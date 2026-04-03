@@ -92,6 +92,41 @@ const translations_en = {
 
   R: "R Score:",
   text: "*Click twice on the project card to be redirected",
+
+  // ── Project modal section headings ───────────────────────────────────────
+  WhatIDid: "What I Did",
+  ProudCode: "Code I'm Proud Of",
+
+  // ── Project modal: What I Did & proud code descriptions ──────────────────
+  proj1_whatIDid: "I led the backend development using Node.js and MongoDB, designing the REST API and the scheduling data model. I also built the worker management dashboard in React and implemented the PDF generation for legal documents.",
+  proj1_proudCodeDesc: "This route handles creating a new schedule entry while checking for conflicts — I'm proud of how clean the async/await flow turned out.",
+
+  proj2_whatIDid: "I built the React frontend from scratch including the search UI, restaurant cards, and filter bar. I also wrote the Java Spring Boot search endpoint and the MySQL query that filters restaurants by name, cuisine, and halal certification.",
+  proj2_proudCodeDesc: "This Spring Boot controller handles the full search — I'm proud that a single endpoint cleanly covers all filter combinations without a mess of conditionals.",
+
+  proj3_whatIDid: "Inherited an existing codebase and added a calendar view for appointments. I implemented date-range filtering on the appointment list and fixed several front-end rendering bugs that had persisted across previous years.",
+  proj3_proudCodeDesc: "This filter function handles the calendar range logic — I'm proud of how compact yet readable it is compared to the original sprawl.",
+
+  proj4_whatIDid: "Built the full application solo during my internship at Montreal City. I designed the Node.js + EJS architecture, integrated the ONE UEM API to fetch device data, and implemented both splitting strategies (by count and by number of groups).",
+  proj4_proudCodeDesc: "This algorithm evenly distributes devices into N groups — simple but satisfying to write cleanly in one pass.",
+
+  proj5_whatIDid: "Built the entire calculator from scratch in C# with a XAML UI. Implemented all arithmetic operations, operator chaining, and edge-case handling (divide by zero, decimal precision).",
+  proj5_proudCodeDesc: "This expression evaluator handles operator precedence properly — I'm proud I wrote it without relying on eval() or a library.",
+
+  proj6_whatIDid: "Developed the full iOS app in Swift using SwiftUI. Integrated the Open Trivia DB API for random questions, built the scoring system, and used Firebase Firestore to persist high scores with real-time updates.",
+  proj6_proudCodeDesc: "This async fetch decodes the API response and shuffles the answer choices in one clean chain — my first time doing proper async/await in Swift.",
+
+  proj7_whatIDid: "Programmed the player controller, enemy AI state machine (patrol → chase → attack), coin pickup system, and the portal unlock trigger. I also handled all the physics-based movement and hitbox configuration.",
+  proj7_proudCodeDesc: "This enemy state machine is the piece of code I'm most proud of in this project — clean enum-driven logic with no spaghetti if-chains.",
+
+  proj8_whatIDid: "Built the core game loop: player ship movement, shooting mechanic with ammo/reload system, asteroid spawning with increasing difficulty, and the score + lives UI. The game was made in under 48 hours for a game jam.",
+  proj8_proudCodeDesc: "The reload system with a visual cooldown bar was the mechanic that made the game unique — I'm proud of how it ties gameplay tension to a simple coroutine.",
+
+  proj9_whatIDid: "Implemented all robot movement using pure Transform manipulations — no Rigidbody or physics engine. Programmed forward/backward translation, left/right rotation, and realistic wheel spinning that responds to speed and direction.",
+  proj9_proudCodeDesc: "Calculating the wheel rotation from the robot's actual displacement was the math challenge I enjoyed the most in this lab.",
+
+  proj10_whatIDid: "Implemented the dual-view system (strategy map ↔ tank combat), tower placement logic, the enemy wave spawner with scaling difficulty, and the camera transition between the two views.",
+  proj10_proudCodeDesc: "The wave spawner that smoothly scales difficulty over time was my favourite part — exponential growth clamped to a max felt great to tune.",
 };
 
 const translations_fr = {
@@ -181,6 +216,41 @@ const translations_fr = {
 
   R: "Cote R:",
   text: "*Cliquez deux fois sur la carte du projet pour être redirigé",
+
+  // ── Project modal section headings ───────────────────────────────────────
+  WhatIDid: "Ce que j'ai fait",
+  ProudCode: "Code dont je suis fier",
+
+  // ── Project modal: What I Did & proud code descriptions ──────────────────
+  proj1_whatIDid: "J'ai dirigé le développement backend avec Node.js et MongoDB, en concevant l'API REST et le modèle de données de planification. J'ai également construit le tableau de bord de gestion des employés en React et implémenté la génération de PDF pour les documents légaux.",
+  proj1_proudCodeDesc: "Cette route gère la création d'une entrée de planning tout en vérifiant les conflits — je suis fier de la clarté du flux async/await.",
+
+  proj2_whatIDid: "J'ai construit le frontend React de zéro, incluant l'interface de recherche, les cartes de restaurants et la barre de filtres. J'ai aussi écrit l'endpoint de recherche Spring Boot et la requête MySQL filtrant par nom, cuisine et certification halal.",
+  proj2_proudCodeDesc: "Ce contrôleur Spring Boot gère la recherche complète — je suis fier qu'un seul endpoint couvre proprement toutes les combinaisons de filtres.",
+
+  proj3_whatIDid: "J'ai repris une base de code existante et ajouté une vue calendrier pour les rendez-vous. J'ai implémenté le filtrage par plage de dates et corrigé plusieurs bugs d'affichage front-end persistants depuis des années.",
+  proj3_proudCodeDesc: "Cette fonction de filtre gère la logique de plage calendrier — je suis fier de sa compacité et lisibilité par rapport au code original.",
+
+  proj4_whatIDid: "J'ai construit l'application complète en solo lors de mon stage à la Ville de Montréal. J'ai conçu l'architecture Node.js + EJS, intégré l'API ONE UEM pour récupérer les données des appareils, et implémenté les deux stratégies de division.",
+  proj4_proudCodeDesc: "Cet algorithme distribue équitablement les appareils en N groupes — simple mais satisfaisant à écrire proprement en un seul passage.",
+
+  proj5_whatIDid: "J'ai construit la calculatrice complète en C# avec une interface XAML. J'ai implémenté toutes les opérations arithmétiques, le chaînage d'opérateurs et la gestion des cas limites (division par zéro, précision décimale).",
+  proj5_proudCodeDesc: "Cet évaluateur d'expressions gère correctement la priorité des opérateurs — je suis fier de l'avoir écrit sans recourir à eval() ou une bibliothèque.",
+
+  proj6_whatIDid: "J'ai développé l'application iOS complète en Swift avec SwiftUI. J'ai intégré l'API Open Trivia DB pour les questions aléatoires, construit le système de score et utilisé Firebase Firestore pour persister les meilleurs scores avec des mises à jour en temps réel.",
+  proj6_proudCodeDesc: "Ce fetch asynchrone décode la réponse API et mélange les choix de réponses en une chaîne propre — ma première utilisation sérieuse d'async/await en Swift.",
+
+  proj7_whatIDid: "J'ai programmé le contrôleur du joueur, la machine à états de l'IA ennemie (patrouille → poursuite → attaque), le système de ramassage de pièces et le déclencheur du portail. J'ai également géré tout le mouvement physique et la configuration des hitboxes.",
+  proj7_proudCodeDesc: "Cette machine à états ennemie est le code dont je suis le plus fier dans ce projet — logique pilotée par enum, sans enchevêtrement de conditions.",
+
+  proj8_whatIDid: "J'ai construit la boucle de jeu principale : mouvement du vaisseau, mécanique de tir avec système munitions/rechargement, spawn d'astéroïdes à difficulté croissante, et l'interface score + vies. Le jeu a été réalisé en moins de 48h pour un game jam.",
+  proj8_proudCodeDesc: "Le système de rechargement avec barre de progression visuelle était la mécanique qui rendait le jeu unique — je suis fier de la façon dont il lie la tension du gameplay à une simple coroutine.",
+
+  proj9_whatIDid: "J'ai implémenté tout le mouvement du robot avec de pures manipulations de Transform — sans Rigidbody ni moteur physique. J'ai programmé les translations avant/arrière, la rotation gauche/droite et la rotation réaliste des roues.",
+  proj9_proudCodeDesc: "Calculer la rotation des roues à partir du déplacement réel du robot était le défi mathématique que j'ai le plus apprécié dans ce laboratoire.",
+
+  proj10_whatIDid: "J'ai implémenté le système de double vue (carte stratégique ↔ combat en tank), la logique de placement des tours, le spawner de vagues ennemies à difficulté croissante et la transition de caméra entre les deux vues.",
+  proj10_proudCodeDesc: "Le spawner de vagues qui augmente progressivement la difficulté était ma partie préférée — la croissance exponentielle plafonnée à un maximum était géniale à calibrer.",
 };
 
 i18n
