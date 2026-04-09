@@ -89,6 +89,7 @@ const translations_en = {
   Success: "Email sent successfully!", emaileror: "Please enter an email", nameeror: "Please enter a name",
   subjecteror: "Please enter a subject", messageeror: "Please enter a message",
   invalidemailerror: "Please enter a valid Email",
+  emailSendError: "Couldn't send your message. Please try again later.",
 
   R: "R Score:",
   text: "*Click twice on the project card to be redirected",
@@ -213,6 +214,7 @@ const translations_fr = {
   Success: "Email envoyé avec succès!", emaileror: "Veuillez entrer un email", nameeror: "Veuillez entrer un nom",
   subjecteror: "Veuillez entrer un sujet", messageeror: "Veuillez entrer un message",
   invalidemailerror: "Veuillez entrer un email valide",
+  emailSendError: "Impossible d'envoyer votre message. Veuillez réessayer plus tard.",
 
   R: "Cote R:",
   text: "*Cliquez deux fois sur la carte du projet pour être redirigé",

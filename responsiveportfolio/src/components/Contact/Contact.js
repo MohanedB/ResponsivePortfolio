@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { useRef } from 'react';
 import emailjs from '@emailjs/browser';
-import { Snackbar } from '@mui/material';
+import { Snackbar, Alert } from '@mui/material';
 import { useTranslation } from 'react-i18next';
 import useScrollReveal from '../../hooks/useScrollReveal';
 
@@ -126,6 +126,7 @@ const ContactButton = styled.input`
 const Contact = () => {
   // hooks
   const [open, setOpen] = React.useState(false);
+  const [openError, setOpenError] = React.useState(false);
   const form = useRef();
   const { i18n } = useTranslation();
   const { t } = useTranslation();
@@ -135,23 +136,13 @@ const Contact = () => {
     i18n.changeLanguage(language);
   };
 
-  const sendemail = (e) => {
-    emailjs
-      .sendForm(
-        'service_x5oinbn',
-        'template_6y1ugbd',
-        form.current,
-        '6YknmoR5NVPH3K1pT'
-      )
-      .then(
-        (result) => {
-          setOpen(true);
-          form.current.reset();
-        },
-        (error) => {
-          console.log(error.text);
-        }
-      );
+  const sendemail = () => {
+    return emailjs.sendForm(
+      'service_x5oinbn',
+      'template_6y1ugbd',
+      form.current,
+      '6YknmoR5NVPH3K1pT'
+    );
   };
 
   const [buttonDisabled, setButtonDisabled] = React.useState(false);
@@ -204,16 +195,20 @@ const Contact = () => {
       return;
     }
 
-    // Disable the button and change its appearance to gray
     setButtonDisabled(true);
 
-    // Send the email
-    sendemail(e);
-
-    // Re-enable the button after 10 seconds (adjust the timeout if needed)
-    setTimeout(() => {
-      setButtonDisabled(false);
-    }, 10000);
+    sendemail()
+      .then(() => {
+        setOpen(true);
+        form.current.reset();
+      })
+      .catch((error) => {
+        console.log(error.text);
+        setOpenError(true);
+      })
+      .finally(() => {
+        setButtonDisabled(false);
+      });
   };
 
   return (
@@ -257,9 +252,23 @@ const Contact = () => {
           open={open}
           autoHideDuration={6000}
           onClose={() => setOpen(false)}
-          message={t('Success')}
-          severity="success"
-        />
+          anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
+        >
+          <Alert onClose={() => setOpen(false)} severity="success" variant="filled" sx={{ width: '100%' }}>
+            {t('Success')}
+          </Alert>
+        </Snackbar>
+
+        <Snackbar
+          open={openError}
+          autoHideDuration={6000}
+          onClose={() => setOpenError(false)}
+          anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
+        >
+          <Alert onClose={() => setOpenError(false)} severity="error" variant="filled" sx={{ width: '100%' }}>
+            {t('emailSendError')}
+          </Alert>
+        </Snackbar>
       </Wrapper>
     </Container>
   );
