@@ -131,6 +131,16 @@ export const experiences = [
     skills: ["NodeJS", "EJS", "Visual Studio code", "ONE UEM"],
     doc: "",
   },
+  {
+    id: 1,
+    img: Montreal,
+    role: "exper7",
+    company: "exper2",
+    date: "exper9",
+    desc: "exper10",
+    skills: ["Active Directory", "Microsoft 365", "ServiceNow", "Windows 10", "Windows 11", "Remote Desktop"],
+    doc: "",
+  },
 ];
 
 // ─── Projects ────────────────────────────────────────────────────────────────

@@ -71,8 +71,10 @@ const translations_en = {
   UEDU6: "The Great Game of War is a Tower Defense game where you switch between a strategic view and tank combat.",
 
   // Experience
+  exper7: "IT Support Technician", exper9: "January 12th - March 12th, 2026",
+  exper10: "Delivered Tier 1 technical support for municipal staff across multiple departments. Resolved account access and password issues via Active Directory, deployed and configured software applications, and troubleshot hardware and connectivity incidents. Managed requests through a ticketing system, consistently meeting SLA targets while maintaining high end-user satisfaction.",
   exper1: "Full-Stack Programmer", exper2: "Montreal city",
-  exper3: "March 4th - May 10th",
+  exper3: "March 4th - May 10th, 2025",
   exper4: "Worked on an application project that would allow the developers to create smartgroups based on their wishes. They can choose the number of devices per groups or how many groups they want to split the devices into",
 
   // Projects / filtering
@@ -196,8 +198,10 @@ const translations_fr = {
   UEDU6: "The Great Game of War est un Tower Defense où vous alternez entre vue stratégique et combat en tank.",
 
   // Experience
+  exper7: "Technicien en soutien informatique", exper9: "12 janvier - 12 mars 2026",
+  exper10: "Fourni un support technique de niveau 1 pour le personnel municipal de plusieurs départements. Résolution des problèmes d'accès aux comptes et de mots de passe via Active Directory, déploiement et configuration d'applications, et dépannage des incidents matériels et de connectivité. Gestion des demandes via un système de billetterie en respectant les délais SLA.",
   exper1: "Programmeur Full-Stack", exper2: "Ville de Montréal",
-  exper3: "4 mars - 10 mai",
+  exper3: "4 mars - 10 mai 2025",
   exper4: "Travaillé sur un projet d'application permettant aux développeurs de créer des smartgroups selon leurs souhaits.",
 
   // Projects / filtering
