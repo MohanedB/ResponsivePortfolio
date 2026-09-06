@@ -29,6 +29,7 @@ The tests cover project discovery, translated search, combined filters, empty re
 - `src/data/const.js`: previous projects, skills, education and experience records.
 - `src/components/Internationalization/I18n.js`: existing translations.
 - `src/Image/`: local images. Projects without an image use a title cover.
+- `src/components/Skills/SkillIcon.jsx`: bundled icons for the skill labels; no external image hosting is needed.
 
 Use `github` only for public source repositories. Use `website` and an optional `websiteLabelKey` for product sites, files or team showcases. Omit unavailable links and unknown dates. Add a `whatIDidKey` for verified personal contributions.
 

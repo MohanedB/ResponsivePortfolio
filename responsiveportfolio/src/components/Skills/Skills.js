@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { skillsByMode } from '../../data/const';
 import { useTranslation } from 'react-i18next';
 import useScrollReveal from '../../hooks/useScrollReveal';
+import SkillIcon from './SkillIcon';
 const Container = styled.div`
   display: flex;
   flex-direction: column;
@@ -140,11 +141,6 @@ const SkillItem = styled.div`
   }
 `;
 
-const SkillImage = styled.img`
-  width: 24px;
-  height: 24px;
-`;
-
 const Skills = () => {
   const { t } = useTranslation();
   const [containerRef, containerVisible] = useScrollReveal();
@@ -163,7 +159,7 @@ const Skills = () => {
               <SkillList>
                 {skillGroup.skills.map((item, i) => (
                   <SkillItem key={i}>
-                    <SkillImage src={item.image} alt="" loading="lazy" onError={event => { event.currentTarget.style.display = 'none'; }} />
+                    <SkillIcon name={item.name} />
                     {item.name}
                   </SkillItem>
                 ))}

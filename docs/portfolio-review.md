@@ -15,7 +15,7 @@ The updated page opens directly on the introduction, puts projects immediately a
 - Project cards were mouse-oriented clickable containers with hover-only hints. They are now keyboard-operable buttons with persistent detail prompts. Project details use a labeled modal with focus management and Escape dismissal.
 - The contact form used a restrictive email expression and lacked associated labels/error descriptions. It now uses browser email validity, accessible field feedback, focus on the first invalid field, and protection against duplicate submissions. Existing delivery configuration remains in place; a successful test of the UI does not establish live email delivery.
 - Navigation, icon links, document language, focus indicators, and the main content landmark needed accessibility improvements. The changes add descriptive labels, a skip link, French/English document language updates, and reduced-motion behavior.
-- Missing images had no fallback. Project media now falls back to a title cover, and nonessential skill icons can fail without hiding their labels.
+- Missing images had no fallback. Project media now falls back to a title cover. Skill badges use bundled SVG icons with colors visible on the dark background; EJS uses a local template-delimiter mark. This replaces external logo requests entirely and correctly distinguishes Visual Studio from VS Code.
 - Some project destinations were mislabeled as GitHub links, and Calculator was categorized as a game. Website/file destinations now have appropriate labels, and Calculator appears under software.
 - The document and manifest retained generic application metadata. They now identify Mohaned and the portfolio's purpose.
 
@@ -54,3 +54,4 @@ Straw and Feathers still needs its engine and any shareable build or media. Moha
 - Verified reduced-motion preference disables the animated role text and hero SVG animation, document language updates to French, and missing images do not leave visible broken-image icons.
 - No uncaught browser errors were reported during these flows. Live EmailJS delivery and a hosted deployment were not tested.
 - `git diff --check`: passed.
+- Skill-icon follow-up: reproduced seven failed external images, then verified all 32 skill badges render bundled 24×24 SVGs with zero skill-image requests. Desktop (1440px) and mobile (390px) checks passed, as did the production build and all nine existing tests.
