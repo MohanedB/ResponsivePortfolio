@@ -55,7 +55,7 @@ Straw and Feathers still needs its engine and any shareable build or media. The 
 - The CI production build passed, with approximately 197.6 KB gzip JavaScript and the existing toolchain notices.
 - Chromium via Edge at 1440, 390 and 320 CSS pixels showed no horizontal page overflow on any of the four new pages. Image enlargement, Escape/focus return, a 288px dialog at the 320px viewport, contained code scrolling with an 8px scrollbar, English/French menus and direct links were checked.
 - Explicit return preserved query, focus and scroll. Native browser Back restored the recorded 638px position, query and heading focus. No browser errors were reported.
-- Pull-request update and hosted preview-deployment verification remain pending. Historical browser findings below document the earlier portfolio changes separately.
+- Code commit `094e1e2` was pushed to [PR #2](https://github.com/MohanedB/ResponsivePortfolio/pull/2), with a successful Vercel deployment. Direct ARCHIVERIF/TPS pages and the deployed screenshot/enlargement were verified in the existing authenticated in-app browser session. The preview retains authentication and the PR remains unmerged. Historical findings below document the earlier portfolio changes separately.
 
 ## Historical verification: initial portfolio and skill-icon updates
 

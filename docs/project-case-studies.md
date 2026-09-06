@@ -179,6 +179,6 @@ The three new games currently have no supplied gameplay media or verified playab
 - [x] CI production build: passed; JavaScript bundle approximately 197.6 KB gzip. Existing Create React App/toolchain notices remain.
 - [x] Chromium via Edge at 1440, 390 and 320 CSS pixels: all four new pages without horizontal page overflow; gallery enlargement, Escape and focus return; a 288px-wide dialog at the 320px viewport; code scrolling contained within an 8px scrollbar; EN/FR menus and direct links.
 - [x] Explicit return preserved query, focus and scroll; native browser Back restored the recorded 638px position with query and heading focus. No browser errors were reported.
-- [ ] Push/update the existing pull request and verify its hosted preview deployment.
+- [x] Pushed code commit `094e1e2` to [PR #2](https://github.com/MohanedB/ResponsivePortfolio/pull/2). Vercel reported a successful deployment; direct ARCHIVERIF and TPS pages, the product screenshot and image enlargement were verified in the existing authenticated in-app browser session.
 
-Email transport remains mocked in tests; no email delivery claim is made. Hosted verification will be added after deployment checks finish.
+Email transport remains mocked in tests; no email delivery claim is made. The branch preview retains Vercel authentication and the pull request remains unmerged.
