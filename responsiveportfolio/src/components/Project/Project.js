@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { useSearchParams } from 'react-router-dom';
 import styled from 'styled-components';
 import { useTranslation } from 'react-i18next';
 import ProjectCard from '../Cards/ProjectCards';
-import ProjectModal from './ProjectModal';
 import { projects } from '../../data/const';
 
 const Container = styled.section`
@@ -91,10 +91,16 @@ const normalize = (value) => value.normalize('NFD').replace(/[\u0300-\u036f]/g, 
 
 const Projects = () => {
   const { t } = useTranslation();
-  const [selectedProject, setSelectedProject] = useState(null);
-  const [discipline, setDiscipline] = useState('all');
-  const [context, setContext] = useState('all');
-  const [searchTerm, setSearchTerm] = useState('');
+  const [params, setParams] = useSearchParams();
+  const discipline = ['gamedev', 'software'].includes(params.get('type')) ? params.get('type') : 'all';
+  const context = ['University', 'Cegep', 'Independent'].includes(params.get('context')) ? params.get('context') : 'all';
+  const searchTerm = params.get('q') || '';
+  const updateFilter = (key, value) => {
+    const next = new URLSearchParams(params);
+    if (!value || value === 'all') next.delete(key);
+    else next.set(key, value);
+    setParams(next, { replace: true });
+  };
   const query = normalize(searchTerm);
   const filteredProjects = projects.filter(project => {
     if (discipline !== 'all' && project.portfolioMode !== discipline && project.portfolioMode !== 'both') return false;
@@ -102,33 +108,36 @@ const Projects = () => {
     const searchText = [t(project.titleKey), t(project.descriptionKey), ...(project.tags || []), ...(project.searchTerms || [])].join(' ');
     return normalize(searchText).includes(query);
   });
-  const reset = () => { setDiscipline('all'); setContext('all'); setSearchTerm(''); };
+  const reset = () => {
+    const next = new URLSearchParams(params);
+    ['type', 'context', 'q'].forEach(key => next.delete(key));
+    setParams(next, { replace: true });
+  };
 
   return (
     <>
-      {selectedProject && <ProjectModal project={selectedProject} onClose={() => setSelectedProject(null)} />}
       <Container id="projects" aria-labelledby="projects-title">
         <Wrapper>
-          <Title id="projects-title">{t('Projects')}</Title>
+          <Title id="projects-title" tabIndex={-1}>{t('Projects')}</Title>
           <Desc>{t('ProjectDesc')}</Desc>
           <Filters role="group" aria-label={t('ProjectType')}>
             {[['all', 'AllProjects'], ['gamedev', 'Games'], ['software', 'ModeSoftware']].map(([value, label]) => (
-              <FilterButton key={value} type="button" $active={discipline === value} aria-pressed={discipline === value} onClick={() => setDiscipline(value)}>{t(label)}</FilterButton>
+              <FilterButton key={value} type="button" $active={discipline === value} aria-pressed={discipline === value} onClick={() => updateFilter('type', value)}>{t(label)}</FilterButton>
             ))}
           </Filters>
           <SearchRow>
             <Field $search>{t('SearchProjects')}
-              <input type="search" placeholder={t('SearchByTag')} value={searchTerm} onChange={event => setSearchTerm(event.target.value)} />
+              <input type="search" placeholder={t('SearchByTag')} value={searchTerm} onChange={event => updateFilter('q', event.target.value)} />
             </Field>
             <Field>{t('ProjectContext')}
-              <select value={context} onChange={event => setContext(event.target.value)}>
+              <select value={context} onChange={event => updateFilter('context', event.target.value)}>
                 {[['all', 'AllContexts'], ['University', 'University'], ['Cegep', 'Cegep'], ['Independent', 'Independent']].map(([value, label]) => <option key={value} value={value}>{t(label)}</option>)}
               </select>
             </Field>
             {(discipline !== 'all' || context !== 'all' || searchTerm) && <FilterButton type="button" onClick={reset}>{t('ClearFilters')}</FilterButton>}
           </SearchRow>
           <Results role="status">{t('ProjectCount', { count: filteredProjects.length })}</Results>
-          <Grid>{filteredProjects.map(project => <ProjectCard key={project.id} project={project} onOpen={setSelectedProject} />)}</Grid>
+          <Grid>{filteredProjects.map(project => <ProjectCard key={project.id} project={project} />)}</Grid>
           {filteredProjects.length === 0 && <Empty><p>{t('NoProjectsFound')}</p><FilterButton type="button" onClick={reset}>{t('ShowAllProjects')}</FilterButton></Empty>}
         </Wrapper>
       </Container>

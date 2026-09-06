@@ -5,6 +5,7 @@ import archiverifCover from '../Image/ArchiVerif.svg';
 export const recentProjects = [
   {
     id: 12,
+    slug: 'straw-and-feathers',
     titleKey: 'strawTitle',
     descriptionKey: 'strawDescription',
     whatIDidKey: 'strawContribution',
@@ -16,6 +17,7 @@ export const recentProjects = [
   },
   {
     id: 14,
+    slug: 'archiverif',
     titleKey: 'archiverifTitle',
     descriptionKey: 'archiverifDescription',
     whatIDidKey: 'archiverifContribution',
@@ -28,6 +30,7 @@ export const recentProjects = [
   },
   {
     id: 13,
+    slug: 'grouillere',
     titleKey: 'grouillereTitle',
     descriptionKey: 'grouillereDescription',
     whatIDidKey: 'grouillereContribution',
@@ -41,6 +44,7 @@ export const recentProjects = [
   },
   {
     id: 11,
+    slug: 'letumloop-tps',
     titleKey: 'letumTitle',
     descriptionKey: 'letumDescription',
     whatIDidKey: 'letumContribution',
@@ -60,7 +64,7 @@ export const projectTranslations = {
     SearchProjects: 'Search projects', ProjectContext: 'Project context', AllContexts: 'All contexts',
     Independent: 'Independent', ClearFilters: 'Clear filters', ShowAllProjects: 'Show all projects',
     ProjectCount_one: '{{count}} project', ProjectCount_other: '{{count}} projects',
-    OpenProject: 'View {{title}}', ViewProject: 'View project', CloseProject: 'Close project',
+    OpenProject: 'More information about {{title}}', ViewProject: 'More information', CloseProject: 'Close project',
     AboutProject: 'About the project', VisitWebsite: 'Visit website', ViewFiles: 'View project files',
     TeamWriteup: 'Team project write-up', Sending: 'Sending…',
     PrototypeInDevelopment: 'Prototype v1 · In development', LiveProduct: 'Live product',
@@ -87,7 +91,7 @@ export const projectTranslations = {
     SearchProjects: 'Rechercher un projet', ProjectContext: 'Contexte du projet', AllContexts: 'Tous les contextes',
     Independent: 'Indépendant', ClearFilters: 'Effacer les filtres', ShowAllProjects: 'Voir tous les projets',
     ProjectCount_one: '{{count}} projet', ProjectCount_other: '{{count}} projets',
-    OpenProject: 'Voir {{title}}', ViewProject: 'Voir le projet', CloseProject: 'Fermer le projet',
+    OpenProject: 'En savoir plus sur {{title}}', ViewProject: 'En savoir plus', CloseProject: 'Fermer le projet',
     AboutProject: 'À propos du projet', VisitWebsite: 'Visiter le site', ViewFiles: 'Voir les fichiers du projet',
     TeamWriteup: 'Présentation du projet d’équipe', Sending: 'Envoi…',
     PrototypeInDevelopment: 'Prototype v1 · En développement', LiveProduct: 'En ligne',

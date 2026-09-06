@@ -167,14 +167,14 @@ const Navbar = () => {
 
   const renderLinks = () => links.map(([id, label]) => (
     <li key={id}>
-      <NavLink href={`#${id}`} onClick={() => setIsOpen(false)}>{t(label)}</NavLink>
+      <NavLink href={`/#${id}`} onClick={() => setIsOpen(false)}>{t(label)}</NavLink>
     </li>
   ));
 
   return (
     <Nav aria-label={t('MainNavigation', { defaultValue: isFrench ? 'Navigation principale' : 'Main navigation' })}>
       <NavbarContainer>
-        <NavLogo href="#about" onClick={() => setIsOpen(false)}>
+        <NavLogo href="/#about" onClick={() => setIsOpen(false)}>
           <DiBlackberry size="36" aria-hidden="true" />
           <span>Mohaned.</span>
         </NavLogo>

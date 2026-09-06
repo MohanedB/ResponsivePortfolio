@@ -152,6 +152,7 @@ export const projects = [
   {
     id: 1,
     titleKey: "education10",
+    slug: 'paysage-meloche',
     dateKey: "education11",
     descriptionKey: "education12",
     image: PaysageMelocheImg,
@@ -187,6 +188,7 @@ router.post('/', async (req, res) => {
   {
     id: 2,
     titleKey: "education19",
+    slug: 'halalbites',
     dateKey: "education20",
     descriptionKey: "education21",
     image: HalalBitesImg,
@@ -215,6 +217,7 @@ public ResponseEntity<List<Restaurant>> search(
   {
     id: 3,
     titleKey: "education13",
+    slug: 'pet-clinic',
     dateKey: "education14",
     descriptionKey: "education15",
     image: PetClinicImg,
@@ -242,6 +245,7 @@ function filterByRange(appointments, from, to) {
   {
     id: 4,
     titleKey: "education25",
+    slug: 'appdemo',
     dateKey: "education26",
     descriptionKey: "education27",
     image: Internship,
@@ -269,6 +273,7 @@ function splitIntoGroups(devices, groupCount) {
   {
     id: 5,
     titleKey: "education4",
+    slug: 'calculator',
     dateKey: "education5",
     descriptionKey: "education6",
     image: CalculatorImg,
@@ -298,6 +303,7 @@ function splitIntoGroups(devices, groupCount) {
   {
     id: 6,
     titleKey: "education7",
+    slug: 'quizapp',
     dateKey: "education8",
     descriptionKey: "education9",
     image: QuizAppImg,
@@ -329,6 +335,7 @@ function splitIntoGroups(devices, groupCount) {
   {
     id: 7,
     titleKey: "education16",
+    slug: 'fallen-god',
     dateKey: "education17",
     descriptionKey: "education18",
     image: FallenGodImg,
@@ -369,6 +376,7 @@ function splitIntoGroups(devices, groupCount) {
   {
     id: 8,
     titleKey: "education22",
+    slug: 'quickreload',
     dateKey: "education23",
     descriptionKey: "education24",
     image: QuickReloadImg,
@@ -403,6 +411,7 @@ function splitIntoGroups(devices, groupCount) {
   {
     id: 9,
     titleKey: "UEDU1",
+    slug: 'robot-control',
     dateKey: "UEDU2",
     descriptionKey: "UEDU3",
     image: RobotLab,
@@ -433,6 +442,7 @@ function splitIntoGroups(devices, groupCount) {
   {
     id: 10,
     titleKey: "UEDU4",
+    slug: 'the-great-game-of-war',
     dateKey: "UEDU5",
     descriptionKey: "UEDU6",
     image: GreatGameOfWar,

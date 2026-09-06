@@ -86,12 +86,12 @@ function Footer() {
       <FooterWrapper>
         <Logo>Mohaned Bouzaidi</Logo>
         <Nav>
-          <NavLink href="#about">{t('About')}</NavLink>
-          <NavLink href='#skills'>{t('Skill')}</NavLink>
-          <NavLink href='#education'>{t('Education')}</NavLink>
-          <NavLink href='#experience'>{t('exper5')}</NavLink>
-          <NavLink href='#projects'>{t('Projects')}</NavLink>
-          <NavLink href='#contact'>{t('Contact')}</NavLink>
+          <NavLink href="/#about">{t('About')}</NavLink>
+          <NavLink href='/#skills'>{t('Skill')}</NavLink>
+          <NavLink href='/#education'>{t('Education')}</NavLink>
+          <NavLink href='/#experience'>{t('exper5')}</NavLink>
+          <NavLink href='/#projects'>{t('Projects')}</NavLink>
+          <NavLink href='/#contact'>{t('Contact')}</NavLink>
         </Nav>
         <SocialMediaIcons>
           <SocialMediaIcon href={Bio.facebook} target="_blank" rel="noopener noreferrer" aria-label="Facebook"><FacebookIcon /></SocialMediaIcon>

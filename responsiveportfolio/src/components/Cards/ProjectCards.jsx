@@ -2,8 +2,10 @@ import React from 'react';
 import styled from 'styled-components';
 import { useTranslation } from 'react-i18next';
 import ProjectMedia from '../Project/ProjectMedia';
+import { Link, useLocation } from 'react-router-dom';
 
-const Card = styled.button`
+const Card = styled(Link)`
+  text-decoration: none;
   width: 100%;
   min-width: 0;
   padding: 0;
@@ -58,17 +60,18 @@ const Hint = styled.span`
   color: #d7c5f4;
 `;
 
-export default function ProjectCards({ project, onOpen }) {
+export default function ProjectCards({ project }) {
   const { t } = useTranslation();
+  const location = useLocation();
   return (
-    <Card type="button" onClick={() => onOpen(project)} aria-label={t('OpenProject', { title: t(project.titleKey) })} aria-haspopup="dialog">
+    <Card to={`/projects/${project.slug}`} state={{ from: `/${location.search}#projects` }} aria-label={t('OpenProject', { title: t(project.titleKey) })}>
       <ProjectMedia project={project} />
       <Details>
         <Category>{t(project.mainCategory)} · {t(project.statusKey || project.dateKey)}</Category>
         <Title>{t(project.titleKey)}</Title>
         <Description>{t(project.descriptionKey)}</Description>
         <Tags>{project.tags?.map(tag => <span key={tag}>{tag}</span>)}</Tags>
-        <Hint>{t('ViewProject')} <span aria-hidden="true">↗</span></Hint>
+        <Hint>{t('ViewProject')} <span aria-hidden="true">→</span></Hint>
       </Details>
     </Card>
   );

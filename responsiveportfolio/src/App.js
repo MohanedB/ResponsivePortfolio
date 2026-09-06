@@ -12,6 +12,8 @@ import Projects from './components/Project/Project';
 import Experience from './components/Experience/experience';
 import { I18nextProvider, useTranslation } from 'react-i18next';
 import i18n from './components/Internationalization/I18n';
+import { BrowserRouter, Routes, Route, useLocation, useNavigationType } from 'react-router-dom';
+import ProjectDetails from './components/Project/ProjectDetails';
 
 const Body = styled.div`
   background-color: ${({ theme }) => theme.bg};
@@ -75,13 +77,49 @@ const BackToTopBtn = styled.button`
 `;
 
 function PortfolioApp() {
+  const location = useLocation();
+  const navigationType = useNavigationType();
+  const previousPath = React.useRef(null);
+  const scrollPositions = React.useRef(new Map());
+  const lastScrollY = React.useRef(window.scrollY);
   const { t, i18n } = useTranslation();
   const isFrench = (i18n.resolvedLanguage || i18n.language || 'en').startsWith('fr');
   const [scrollProgress, setScrollProgress] = React.useState(0);
   const [showBack, setShowBack] = React.useState(false);
 
   React.useEffect(() => {
+    const previous = window.history.scrollRestoration;
+    window.history.scrollRestoration = 'manual';
+    return () => { window.history.scrollRestoration = previous; };
+  }, []);
+
+  React.useEffect(() => {
+    const changedPage = previousPath.current !== location.pathname;
+    const hadPreviousPage = previousPath.current !== null;
+    const positions = scrollPositions.current;
+    const scrollKey = `${location.key}:${location.pathname}${location.search}${location.hash}`;
+    const restorePosition = navigationType === 'POP' && positions.has(scrollKey);
+    const frame = (changedPage || location.hash || restorePosition) && requestAnimationFrame(() => {
+      const target = location.hash ? document.getElementById(location.hash.slice(1)) : null;
+      if (restorePosition) window.scrollTo({ top: positions.get(scrollKey), behavior: 'instant' });
+      else if (target) target.scrollIntoView();
+      else if (changedPage) window.scrollTo({ top: 0, behavior: 'instant' });
+      if (changedPage && location.pathname !== '/') document.querySelector('main h1')?.focus({ preventScroll: true });
+      else if (changedPage && (location.hash === '#projects' || (hadPreviousPage && navigationType === 'POP'))) document.getElementById('projects-title')?.focus({ preventScroll: true });
+      previousPath.current = location.pathname;
+      const total = document.documentElement.scrollHeight - window.innerHeight;
+      setScrollProgress(total > 0 ? (window.scrollY / total) * 100 : 0);
+      setShowBack(window.scrollY > 500);
+    });
+    return () => {
+      if (frame) cancelAnimationFrame(frame);
+      if (previousPath.current === location.pathname) positions.set(scrollKey, lastScrollY.current);
+    };
+  }, [location.pathname, location.search, location.hash, location.key, navigationType]);
+
+  React.useEffect(() => {
     const onScroll = () => {
+      lastScrollY.current = window.scrollY;
       const total = document.documentElement.scrollHeight - window.innerHeight;
       setScrollProgress(total > 0 ? (window.scrollY / total) * 100 : 0);
       setShowBack(window.scrollY > 500);
@@ -110,14 +148,18 @@ function PortfolioApp() {
       <NavBar />
       <Body>
         <main id="main-content" tabIndex={-1}>
-          <Hero />
-          <Projects />
-          <Wrapper>
-            <Skills />
-          </Wrapper>
-          <Education />
-          <Experience />
-          <Contact />
+          <Routes>
+            <Route path="/" element={<>
+              <Hero />
+              <Projects />
+              <Wrapper><Skills /></Wrapper>
+              <Education />
+              <Experience />
+              <Contact />
+            </>} />
+            <Route path="/projects/:slug" element={<ProjectDetails />} />
+            <Route path="*" element={<ProjectDetails />} />
+          </Routes>
         </main>
         <Footer />
       </Body>
@@ -138,7 +180,7 @@ function App() {
   return (
     <I18nextProvider i18n={i18n}>
       <ThemeProvider theme={darkTheme}>
-        <PortfolioApp />
+        <BrowserRouter><PortfolioApp /></BrowserRouter>
       </ThemeProvider>
     </I18nextProvider>
   );
