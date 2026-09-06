@@ -5,23 +5,23 @@ import { useTranslation } from 'react-i18next';
 const Image = styled.img`
   display: block;
   width: 100%;
-  height: ${({ $large }) => $large ? '240px' : '190px'};
+  height: ${({ $large }) => $large ? '240px' : '160px'};
   object-fit: cover;
   background: #242033;
 `;
 const Cover = styled.span`
   width: 100%;
-  height: ${({ $large }) => $large ? '240px' : '190px'};
+  height: ${({ $large }) => $large ? '240px' : '160px'};
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   gap: 12px;
-  padding: 28px;
+  padding: 24px;
   text-align: center;
   color: #f2edf9;
   background: ${({ $software }) => $software ? 'linear-gradient(140deg, #18273a, #354766)' : 'linear-gradient(140deg, #302345, #65428a)'};
-  strong { font-size: 26px; line-height: 1.25; }
+  strong { font-size: 24px; line-height: 1.25; }
   small { font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; }
 `;
 

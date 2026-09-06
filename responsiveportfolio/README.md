@@ -1,6 +1,6 @@
 # Mohaned Bouzaidi — Portfolio
 
-Bilingual React portfolio for games, prototypes and software projects. Visitors see all work immediately and can combine Games/Software filters with University, Cégep or Independent context. Project cards link to dedicated `/projects/:slug` pages; ARCHIVERIF, LetumLoop TPS, Straw and Feathers, and Grouillère have expanded case studies.
+Bilingual React portfolio for games, prototypes and software projects. Visitors see all work immediately and can combine Games/Software filters with University, Cégep or Independent context. Compact project cards have a separate More information button linking to dedicated `/projects/:slug` pages; ARCHIVERIF, LetumLoop TPS, Straw and Feathers, and Grouillère have expanded case studies.
 
 ## Run locally
 
