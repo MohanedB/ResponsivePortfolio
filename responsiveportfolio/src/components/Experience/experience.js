@@ -44,7 +44,7 @@ const Wrapper = styled.div`
     }
 `;
 
-const Title = styled.div`
+const Title = styled.h2`
 font-size: 42px;
 text-align: center;
 font-weight: 600;
@@ -81,12 +81,9 @@ const TimelineSection = styled.div`
 
 
 const Experience = () => {
-    const { t, i18n } = useTranslation();
+    const { t } = useTranslation();
     const [wrapperRef, wrapperVisible] = useScrollReveal();
 
-    const changeLanguage = (lng) => {
-      i18n.changeLanguage(lng);
-    };
     return (
         <Container id="experience">
             <Wrapper ref={wrapperRef} className={wrapperVisible ? 'visible' : ''}>

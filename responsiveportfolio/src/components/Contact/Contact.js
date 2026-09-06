@@ -37,7 +37,7 @@ const Wrapper = styled.div`
   }
 `;
 
-const Title = styled.div`
+const Title = styled.h2`
   font-size: 42px;
   text-align: center;
   font-weight: 600;
@@ -73,11 +73,21 @@ const ContactForm = styled.form`
   gap: 12px;
 `;
 
+const Label = styled.label`
+  color: ${({ theme }) => theme.text_primary};
+  font-size: 14px;
+  font-weight: 500;
+`;
+
+const FieldError = styled.p`
+  color: #ffadad;
+  font-size: 14px;
+`;
+
 const ContactInput = styled.input`
   flex: 1;
   background-color: transparent;
   border: 1px solid ${({ theme }) => theme.text_secondary};
-  outline: none;
   font-size: 18px;
   color: ${({ theme }) => theme.text_primary};
   border-radius: 12px;
@@ -91,11 +101,12 @@ const ContactInputMessage = styled.textarea`
   flex: 1;
   background-color: transparent;
   border: 1px solid ${({ theme }) => theme.text_secondary};
-  outline: none;
   font-size: 18px;
   color: ${({ theme }) => theme.text_primary};
   border-radius: 12px;
   padding: 12px 16px;
+  min-height: 140px;
+  resize: vertical;
   &:focus {
     border: 1px solid ${({ theme }) => theme.primary};
   }
@@ -124,17 +135,12 @@ const ContactButton = styled.input`
 `;
 
 const Contact = () => {
-  // hooks
   const [open, setOpen] = React.useState(false);
   const [openError, setOpenError] = React.useState(false);
   const form = useRef();
-  const { i18n } = useTranslation();
+  const sending = useRef(false);
   const { t } = useTranslation();
   const [wrapperRef, wrapperVisible] = useScrollReveal();
-
-  const changeLanguage = (language) => {
-    i18n.changeLanguage(language);
-  };
 
   const sendemail = () => {
     return emailjs.sendForm(
@@ -154,61 +160,40 @@ const Contact = () => {
   });
 
   const validateForm = () => {
-    let isValid = true;
-    let newErrors = { email: '', name: '', subject: '', message: '' };
-
-    // Email validation
-    const email = form.current.email.value.trim();
-    if (email === '') {
-      isValid = false;
-      newErrors.email = t('emaileror');
-    } else if (
-      !/^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/.test(email)
-    ) {
-      isValid = false;
-      newErrors.email = t('invalidemailerror');
-    }
-
-    if (form.current.name.value.trim() === '') {
-      isValid = false;
-      newErrors.name = t('nameeror');
-    }
-
-    if (form.current.subject.value.trim() === '') {
-      isValid = false;
-      newErrors.subject = t('subjecteror');
-    }
-
-    if (form.current.message.value.trim() === '') {
-      isValid = false;
-      newErrors.message = t('messageeror');
-    }
-
+    const fields = form.current.elements;
+    const newErrors = { email: '', name: '', subject: '', message: '' };
+    const requiredMessages = {
+      email: 'emaileror', name: 'nameeror', subject: 'subjecteror', message: 'messageeror',
+    };
+    Object.keys(newErrors).forEach((name) => {
+      const field = fields.namedItem(name);
+      if (!field.value.trim()) newErrors[name] = requiredMessages[name];
+    });
+    const email = fields.namedItem('email');
+    if (!newErrors.email && !email.validity.valid) newErrors.email = 'invalidemailerror';
     setErrors(newErrors);
-    return isValid;
+    const firstInvalid = Object.keys(newErrors).find((name) => newErrors[name]);
+    if (firstInvalid) fields.namedItem(firstInvalid).focus();
+    return !firstInvalid;
   };
 
-  const handleButtonClick = (e) => {
+  const handleButtonClick = async (e) => {
     e.preventDefault();
-    e.stopPropagation();
-    if (!validateForm()) {
-      return;
-    }
-
+    if (sending.current || !validateForm()) return;
+    sending.current = true;
     setButtonDisabled(true);
-
-    sendemail()
-      .then(() => {
-        setOpen(true);
-        form.current.reset();
-      })
-      .catch((error) => {
-        console.log(error.text);
-        setOpenError(true);
-      })
-      .finally(() => {
-        setButtonDisabled(false);
-      });
+    setOpen(false);
+    setOpenError(false);
+    try {
+      await sendemail();
+      setOpen(true);
+      form.current.reset();
+    } catch {
+      setOpenError(true);
+    } finally {
+      sending.current = false;
+      setButtonDisabled(false);
+    }
   };
 
   return (
@@ -216,35 +201,58 @@ const Contact = () => {
       <Wrapper ref={wrapperRef} className={wrapperVisible ? 'visible' : ''}>
         <Title>{t('Contact')}</Title>
         <Desc>{t('ContactDesc')}</Desc>
-        <ContactForm ref={form} onSubmit={handleButtonClick}>
+        <ContactForm ref={form} onSubmit={handleButtonClick} noValidate aria-busy={buttonDisabled}>
+          <Label htmlFor="contact-email">{t('Email')}</Label>
           <ContactInput
+            id="contact-email"
+            type="email"
+            autoComplete="email"
+            required
+            readOnly={buttonDisabled}
             placeholder={t('Email')}
             name="email"
-            error={errors.email}
+            aria-invalid={Boolean(errors.email)}
+            aria-describedby={errors.email ? 'contact-email-error' : undefined}
           />
-          {errors.email && <p style={{ color: 'red' }}>{errors.email}</p>}
+          {errors.email && <FieldError id="contact-email-error" role="alert">{t(errors.email)}</FieldError>}
+          <Label htmlFor="contact-name">{t('Name')}</Label>
           <ContactInput
+            id="contact-name"
+            autoComplete="name"
+            required
+            readOnly={buttonDisabled}
             placeholder={t('Name')}
             name="name"
-            error={errors.name}
+            aria-invalid={Boolean(errors.name)}
+            aria-describedby={errors.name ? 'contact-name-error' : undefined}
           />
-          {errors.name && <p style={{ color: 'red' }}>{errors.name}</p>}
+          {errors.name && <FieldError id="contact-name-error" role="alert">{t(errors.name)}</FieldError>}
+          <Label htmlFor="contact-subject">{t('Subject')}</Label>
           <ContactInput
+            id="contact-subject"
+            required
+            readOnly={buttonDisabled}
             placeholder={t('Subject')}
             name="subject"
-            error={errors.subject}
+            aria-invalid={Boolean(errors.subject)}
+            aria-describedby={errors.subject ? 'contact-subject-error' : undefined}
           />
-          {errors.subject && <p style={{ color: 'red' }}>{errors.subject}</p>}
+          {errors.subject && <FieldError id="contact-subject-error" role="alert">{t(errors.subject)}</FieldError>}
+          <Label htmlFor="contact-message">{t('Message')}</Label>
           <ContactInputMessage
+            id="contact-message"
+            required
+            readOnly={buttonDisabled}
             placeholder={t('Message')}
             rows="4"
             name="message"
-            error={errors.message}
+            aria-invalid={Boolean(errors.message)}
+            aria-describedby={errors.message ? 'contact-message-error' : undefined}
           />
-          {errors.message && <p style={{ color: 'red' }}>{errors.message}</p>}
+          {errors.message && <FieldError id="contact-message-error" role="alert">{t(errors.message)}</FieldError>}
           <ContactButton
             type="submit"
-            value={t('Send')}
+            value={buttonDisabled ? t('Sending') : t('Send')}
             disabled={buttonDisabled}
           />
         </ContactForm>

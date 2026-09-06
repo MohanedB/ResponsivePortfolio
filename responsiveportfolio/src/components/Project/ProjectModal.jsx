@@ -1,7 +1,9 @@
-import React, { useEffect } from 'react';
+import React from 'react';
+import Modal from '@mui/material/Modal';
+import ProjectMedia from './ProjectMedia';
 import styled, { keyframes } from 'styled-components';
 import { useTranslation } from 'react-i18next';
-import { FiX, FiGithub, FiCode } from 'react-icons/fi';
+import { FiX, FiGithub, FiCode, FiExternalLink } from 'react-icons/fi';
 
 const fadeIn = keyframes`
   from { opacity: 0; }
@@ -13,7 +15,7 @@ const slideUp = keyframes`
   to   { opacity: 1; transform: translateY(0)    scale(1); }
 `;
 
-const Overlay = styled.div`
+const Overlay = styled(Modal)`
   position: fixed;
   inset: 0;
   background: rgba(0, 0, 0, 0.78);
@@ -43,21 +45,13 @@ const Panel = styled.div`
   &::-webkit-scrollbar-thumb { background: #575C66; border-radius: 6px; }
 `;
 
-const HeroImage = styled.img`
-  width: 100%;
-  height: 240px;
-  object-fit: cover;
-  border-radius: 20px 20px 0 0;
-  display: block;
-`;
-
 const CloseBtn = styled.button`
   position: sticky;
   top: 12px;
   float: right;
   margin: -228px 16px 0 0;
-  width: 36px;
-  height: 36px;
+  width: 44px;
+  height: 44px;
   border-radius: 50%;
   background: rgba(20, 20, 30, 0.75);
   border: 1px solid rgba(133, 76, 230, 0.4);
@@ -88,6 +82,7 @@ const Header = styled.div`
 
 const TitleBlock = styled.div`
   flex: 1;
+  min-width: 0;
 `;
 
 const Title = styled.h2`
@@ -125,7 +120,7 @@ const GithubBtn = styled.a`
   padding: 10px 20px;
   border-radius: 12px;
   border: 1.5px solid ${({ theme }) => theme.primary};
-  color: ${({ theme }) => theme.primary};
+  color: #d7c5f4;
   font-weight: 600;
   font-size: 14px;
   text-decoration: none;
@@ -222,33 +217,19 @@ const Code = styled.pre`
 
 const ProjectModal = ({ project, onClose }) => {
   const { t } = useTranslation();
-
-  // Close on Escape key
-  useEffect(() => {
-    const onKey = (e) => { if (e.key === 'Escape') onClose(); };
-    window.addEventListener('keydown', onKey);
-    return () => window.removeEventListener('keydown', onKey);
-  }, [onClose]);
-
-  // Prevent body scroll while open
-  useEffect(() => {
-    document.body.style.overflow = 'hidden';
-    return () => { document.body.style.overflow = ''; };
-  }, []);
-
-  const stopProp = (e) => e.stopPropagation();
+  const titleId = `project-title-${project.id}`;
 
   return (
-    <Overlay onClick={onClose}>
-      <Panel onClick={stopProp}>
-        <HeroImage src={project.image} alt={t(project.titleKey)} />
-        <CloseBtn onClick={onClose} aria-label="Close"><FiX /></CloseBtn>
+    <Overlay open onClose={onClose} onClick={event => { if (event.target === event.currentTarget) onClose(); }}>
+      <Panel role="dialog" aria-modal="true" aria-labelledby={titleId} tabIndex={-1}>
+        <ProjectMedia project={project} large />
+        <CloseBtn type="button" onClick={onClose} aria-label={t('CloseProject')}><FiX /></CloseBtn>
 
         <Body>
           <Header>
             <TitleBlock>
-              <Title>{t(project.titleKey)}</Title>
-              <DateText>{t(project.dateKey)}</DateText>
+              <Title id={titleId}>{t(project.titleKey)}</Title>
+              <DateText>{t(project.mainCategory)} · {t(project.statusKey || project.dateKey)}</DateText>
               <Tags>
                 {project.tags?.map((tag, i) => <Tag key={i}>{tag}</Tag>)}
               </Tags>
@@ -259,14 +240,20 @@ const ProjectModal = ({ project, onClose }) => {
                 <FiGithub size={16} /> GitHub
               </GithubBtn>
             )}
+            {project.website && (
+              <GithubBtn href={project.website} target="_blank" rel="noopener noreferrer">
+                <FiExternalLink size={16} /> {t(project.websiteLabelKey || 'VisitWebsite')}
+              </GithubBtn>
+            )}
           </Header>
 
           <Divider />
 
           {/* About */}
           <Section>
-            <SectionTitle>📋 About the Project</SectionTitle>
+            <SectionTitle>{t('AboutProject')}</SectionTitle>
             <SectionText>{t(project.descriptionKey)}</SectionText>
+            {project.availabilityKey && <SectionText style={{ marginTop: 16 }}>{t(project.availabilityKey)}</SectionText>}
           </Section>
 
           {/* What I did */}

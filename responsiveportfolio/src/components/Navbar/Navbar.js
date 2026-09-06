@@ -1,258 +1,205 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Bio } from '../../data/const';
-import { Link as LinkR } from 'react-router-dom';
 import { DiBlackberry } from 'react-icons/di';
-import { FaBars } from 'react-icons/fa';
+import { FaBars, FaTimes } from 'react-icons/fa';
 import { useTranslation } from 'react-i18next';
-import { usePortfolio } from '../../context/PortfolioContext';
 
-const Nav = styled.div`
+const Nav = styled.nav`
   background-color: ${({ theme }) => theme.card_light};
   height: 80px;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1rem;
   position: sticky;
   top: 0;
   z-index: 10;
-  @media (max-width: 960px) {
-    transition: 0.8s all ease;
-  }
 `;
 
 const NavbarContainer = styled.div`
-  white-space: nowrap;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 60px;
-  z-index: 1;
+  gap: 20px;
   width: 100%;
   padding: 0 24px;
-  max-width: 1200px;
+  max-width: 1240px;
+  @media (max-width: 480px) { padding: 0 16px; }
 `;
 
-const NavLogo = styled(LinkR)`
-  width: 80%;
-  padding: 0 6px;
+const NavLogo = styled.a`
+  flex-shrink: 0;
   display: flex;
-  justify-content: start;
   align-items: center;
+  gap: 4px;
+  color: ${({ theme }) => theme.text_primary};
   text-decoration: none;
-  @media (max-width: 640px) {
-    padding: 0 0px;
-  }
-`;
-
-const Span = styled.div`
-  padding: 0 4px;
-  font-weight: bold;
   font-size: 18px;
+  font-weight: 700;
 `;
 
 const NavItems = styled.ul`
-  width: 100%;
   display: flex;
   align-items: center;
-  justify-content: center;
-  gap: 32px;
-  padding: 0 6px;
+  gap: 20px;
   list-style: none;
-  @media screen and (max-width: 768px) {
-    display: none;
-  }
+  white-space: nowrap;
+  @media (max-width: 1100px) { display: none; }
 `;
 
 const NavLink = styled.a`
   color: ${({ theme }) => theme.text_primary};
   font-weight: 500;
-  cursor: pointer;
-  transition: all 0.2s ease-in-out;
   text-decoration: none;
-  :hover {
-    color: ${({ theme }) => theme.primary};
-  }
-  &.active {
-    border-bottom: 2px solid ${({ theme }) => theme.primary};
-  }
+  transition: color 0.2s ease;
+  &:hover { color: ${({ theme }) => theme.primary}; }
 `;
 
 const GitHubButton = styled.a`
   border: 1.8px solid ${({ theme }) => theme.primary};
-  justify-content: center;
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  height: 70%;
-  border-radius: 20px;
-  color: ${({ theme }) => theme.primary};
-  cursor: pointer;
-  padding: 0 20px;
+  justify-content: center;
+  min-height: 44px;
+  border-radius: 22px;
+  color: ${({ theme }) => theme.text_primary};
+  padding: 8px 16px;
   font-weight: 500;
   text-decoration: none;
-  font-size: 16px;
-  transition: all 0.6s ease-in-out;
-  :hover {
-    background: ${({ theme }) => theme.primary};
-    color: ${({ theme }) => theme.white};
-  }
-  @media screen and (max-width: 768px) {
-    font-size: 14px;
-  }
+  transition: background 0.2s ease;
+  &:hover { background: ${({ theme }) => theme.primary}; }
 `;
 
 const NavButton = styled.button`
   border: 1.8px solid ${({ theme }) => theme.primary};
-  justify-content: center;
-  display: flex;
-  align-items: center;
-  margin: 0 6px;
-  height: 70%;
-  border-radius: 30px;
-  color: ${({ theme }) => theme.primary};
+  min-height: 44px;
+  border-radius: 22px;
+  color: ${({ theme }) => theme.text_primary};
   cursor: pointer;
-  padding: 0 20px;
+  padding: 8px 16px;
   font-weight: 500;
   background: transparent;
   font-size: 16px;
-  transition: all 0.6s ease-in-out;
-  :hover {
-    background: ${({ theme }) => theme.primary};
-    color: ${({ theme }) => theme.white};
-  }
-  @media screen and (max-width: 768px) {
-    font-size: 14px;
-  }
+  transition: background 0.2s ease;
+  &:hover { background: ${({ theme }) => theme.primary}; }
 `;
 
 const ButtonContainer = styled.div`
-  width: 80%;
-  height: 100%;
-  float: right;
   display: flex;
-  justify-content: end;
+  flex-shrink: 0;
   align-items: center;
-  padding: 0 6px;
-  @media screen and (max-width: 768px) {
-    display: none;
-  }
+  gap: 10px;
+  @media (max-width: 1100px) { display: none; }
 `;
 
-export const MobileIcon = styled.div`
+const MobileIcon = styled.button`
   display: none;
-  @media screen and (max-width: 768px) {
-    display: block;
-    position: absolute;
-    top: 0;
-    right: 0;
-    transform: translate(-100%, 60%);
-    font-size: 1.5rem;
+  @media (max-width: 1100px) {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    border: 1px solid ${({ theme }) => theme.primary};
+    border-radius: 10px;
+    background: transparent;
+    font-size: 22px;
     cursor: pointer;
     color: ${({ theme }) => theme.text_primary};
   }
 `;
 
-export const MobileMenu = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  gap: 16px;
+const MobileMenu = styled.div`
   position: absolute;
   top: 80px;
+  left: 0;
   right: 0;
-  width: 100%;
-  padding: 12px 40px 24px 40px;
-  background: ${({ theme }) => theme.card_light + 99};
-  transition: all 0.6s ease-in-out;
-  transform: ${({ isOpen }) => (isOpen ? 'translateY(0)' : 'translateY(-100%)')};
-  border-radius: 0 0 20px 20px;
-  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
-  opacity: ${({ isOpen }) => (isOpen ? '100%' : '0')};
-  z-index: ${({ isOpen }) => (isOpen ? '1000' : '-1000')};
-`;
-
-export const MobileLink = styled.a`
-  color: ${({ theme }) => theme.text_primary};
-  font-weight: 500;
-  cursor: pointer;
-  transition: all 0.2s ease-in-out;
-  text-decoration: none;
-  :hover {
-    color: ${({ theme }) => theme.primary};
-  }
-  &.active {
-    border-bottom: 2px solid ${({ theme }) => theme.primary};
-  }
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 16px 24px 24px;
+  max-height: calc(100dvh - 80px);
+  overflow-y: auto;
+  background: ${({ theme }) => theme.card_light};
+  border-bottom: 1px solid ${({ theme }) => theme.primary};
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+  &[hidden] { display: none; }
+  @media (min-width: 1101px) { display: none; }
+  ul { list-style: none; }
+  li a { display: block; padding: 10px 0; }
 `;
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = React.useState(false);
+  const menuButton = React.useRef(null);
   const { i18n, t } = useTranslation();
-  const { mode, selectMode } = usePortfolio();
+  const isFrench = (i18n.resolvedLanguage || i18n.language || 'en').startsWith('fr');
+  const languageLabel = isFrench ? 'English' : 'Français';
+  const links = [
+    ['about', 'About'], ['projects', 'Projects'], ['skills', 'Skill'],
+    ['education', 'Education'], ['experience', 'exper5'], ['contact', 'Contact'],
+  ];
 
-  const handleLanguageClick = (language) => {
-    i18n.changeLanguage(language);
+  React.useEffect(() => {
+    if (!isOpen) return undefined;
+    const closeOnEscape = (event) => {
+      if (event.key === 'Escape') {
+        setIsOpen(false);
+        menuButton.current?.focus();
+      }
+    };
+    const closeOnDesktop = () => {
+      if (window.innerWidth > 1100) setIsOpen(false);
+    };
+    document.addEventListener('keydown', closeOnEscape);
+    window.addEventListener('resize', closeOnDesktop);
+    return () => {
+      document.removeEventListener('keydown', closeOnEscape);
+      window.removeEventListener('resize', closeOnDesktop);
+    };
+  }, [isOpen]);
+
+  const changeLanguage = () => {
+    i18n.changeLanguage(isFrench ? 'en' : 'fr');
+    if (isOpen) menuButton.current?.focus();
     setIsOpen(false);
   };
 
-  const toggleMode = () => {
-    selectMode(mode === 'gamedev' ? 'software' : 'gamedev');
-  };
-
-  const modeLabel = mode === 'gamedev' ? t('ModeSoftware') : t('ModeGameDev');
-  const currentModeLabel = mode === 'gamedev' ? `🎮 ${t('ModeGameDev')}` : `💻 ${t('ModeSoftware')}`;
+  const renderLinks = () => links.map(([id, label]) => (
+    <li key={id}>
+      <NavLink href={`#${id}`} onClick={() => setIsOpen(false)}>{t(label)}</NavLink>
+    </li>
+  ));
 
   return (
-    <Nav>
+    <Nav aria-label={t('MainNavigation', { defaultValue: isFrench ? 'Navigation principale' : 'Main navigation' })}>
       <NavbarContainer>
-        <NavLogo to='/'>
-          <a style={{ display: 'flex', alignItems: 'center', color: 'white', cursor: 'pointer' }}>
-            <DiBlackberry size='3rem' /> <Span>Portfolio</Span>
-          </a>
+        <NavLogo href="#about" onClick={() => setIsOpen(false)}>
+          <DiBlackberry size="36" aria-hidden="true" />
+          <span>Mohaned.</span>
         </NavLogo>
-        <MobileIcon>
-          <FaBars onClick={() => setIsOpen(!isOpen)} />
-        </MobileIcon>
-        <NavItems>
-          <NavLink href='#about'>{t('About')}</NavLink>
-          <NavLink href='#skills'>{t('Skill')}</NavLink>
-          <NavLink href='#education'>{t('Education')}</NavLink>
-          <NavLink href='#experience'>{t('exper5')}</NavLink>
-          <NavLink href='#projects'>{t('Projects')}</NavLink>
-          <NavLink href='#contact'>{t('Contact')}</NavLink>
-        </NavItems>
+        <NavItems>{renderLinks()}</NavItems>
         <ButtonContainer>
-          <GitHubButton href={Bio.github} target='_blank'>{t('Github')}</GitHubButton>
-          {/* Mode toggle: shows current mode, click to switch */}
-          <NavButton onClick={toggleMode} title={`${t('ModeSwitch')} ${modeLabel}`}>
-            {currentModeLabel}
-          </NavButton>
-          {i18n.language === 'en' ? (
-            <NavButton onClick={() => handleLanguageClick('fr')}>{t('Language_fr')}</NavButton>
-          ) : (
-            <NavButton onClick={() => handleLanguageClick('en')}>{t('Language_en')}</NavButton>
-          )}
+          <GitHubButton href={Bio.github} target="_blank" rel="noopener noreferrer">{t('Github')}</GitHubButton>
+          <NavButton type="button" onClick={changeLanguage} lang={isFrench ? 'en' : 'fr'}>{languageLabel}</NavButton>
         </ButtonContainer>
-        {isOpen && (
-          <MobileMenu isOpen={isOpen}>
-            <MobileLink href='#about' onClick={() => setIsOpen(false)}>{t('About')}</MobileLink>
-            <MobileLink href='#skills' onClick={() => setIsOpen(false)}>{t('Skill')}</MobileLink>
-            <MobileLink href='#education' onClick={() => setIsOpen(false)}>{t('Education')}</MobileLink>
-            <MobileLink href='#experience' onClick={() => setIsOpen(false)}>{t('exper5')}</MobileLink>
-            <MobileLink href='#projects' onClick={() => setIsOpen(false)}>{t('Projects')}</MobileLink>
-            <MobileLink href='#contact' onClick={() => setIsOpen(false)}>{t('Contact')}</MobileLink>
-            <GitHubButton style={{ padding: '10px 16px', background: `${({ theme }) => theme.primary}`, color: 'white', width: 'max-content' }} href={Bio.github} target='_blank'>{t('Github')}</GitHubButton>
-            <NavButton onClick={() => { toggleMode(); setIsOpen(false); }}>
-              {currentModeLabel}
-            </NavButton>
-            {i18n.language === 'en' ? (
-              <NavButton onClick={() => handleLanguageClick('fr')}>{t('Language_fr')}</NavButton>
-            ) : (
-              <NavButton onClick={() => handleLanguageClick('en')}>{t('Language_en')}</NavButton>
-            )}
-          </MobileMenu>
-        )}
+        <MobileIcon
+          ref={menuButton}
+          type="button"
+          onClick={() => setIsOpen((open) => !open)}
+          aria-expanded={isOpen}
+          aria-controls="mobile-navigation"
+          aria-label={t(isOpen ? 'CloseMenu' : 'OpenMenu', {
+            defaultValue: isFrench ? (isOpen ? 'Fermer le menu' : 'Ouvrir le menu') : (isOpen ? 'Close menu' : 'Open menu'),
+          })}
+        >
+          {isOpen ? <FaTimes aria-hidden="true" /> : <FaBars aria-hidden="true" />}
+        </MobileIcon>
+        <MobileMenu id="mobile-navigation" hidden={!isOpen}>
+          <ul>{renderLinks()}</ul>
+          <GitHubButton href={Bio.github} target="_blank" rel="noopener noreferrer">{t('Github')}</GitHubButton>
+          <NavButton type="button" onClick={changeLanguage} lang={isFrench ? 'en' : 'fr'}>{languageLabel}</NavButton>
+        </MobileMenu>
       </NavbarContainer>
     </Nav>
   );

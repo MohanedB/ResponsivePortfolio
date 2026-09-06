@@ -8,13 +8,10 @@ import Skills from './components/Skills/Skills';
 import Education from './components/Education/Education';
 import Contact from './components/Contact/Contact';
 import Footer from './components/footer/footer';
-import { BrowserRouter as Router } from 'react-router-dom';
 import Projects from './components/Project/Project';
 import Experience from './components/Experience/experience';
-import { I18nextProvider } from 'react-i18next';
+import { I18nextProvider, useTranslation } from 'react-i18next';
 import i18n from './components/Internationalization/I18n';
-import { PortfolioProvider, usePortfolio } from './context/PortfolioContext';
-import SplashScreen from './components/SplashScreen/SplashScreen';
 
 const Body = styled.div`
   background-color: ${({ theme }) => theme.bg};
@@ -77,9 +74,9 @@ const BackToTopBtn = styled.button`
   }
 `;
 
-// Inner component so it can access context
 function PortfolioApp() {
-  const { mode } = usePortfolio();
+  const { t, i18n } = useTranslation();
+  const isFrench = (i18n.resolvedLanguage || i18n.language || 'en').startsWith('fr');
   const [scrollProgress, setScrollProgress] = React.useState(0);
   const [showBack, setShowBack] = React.useState(false);
 
@@ -89,30 +86,47 @@ function PortfolioApp() {
       setScrollProgress(total > 0 ? (window.scrollY / total) * 100 : 0);
       setShowBack(window.scrollY > 500);
     };
+    onScroll();
     window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
+  React.useEffect(() => {
+    document.documentElement.lang = isFrench ? 'fr' : 'en';
+  }, [isFrench]);
+
+  const backToTop = () => {
+    const reduceMotion = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
+    window.scrollTo({ top: 0, behavior: reduceMotion ? 'auto' : 'smooth' });
+    document.getElementById('main-content')?.focus({ preventScroll: true });
+  };
+
   return (
     <>
-      <ScrollBar style={{ width: `${scrollProgress}%` }} />
-      {!mode && <SplashScreen />}
+      <a className="skip-link" href="#main-content">
+        {t('SkipToContent', { defaultValue: isFrench ? 'Aller au contenu' : 'Skip to content' })}
+      </a>
+      <ScrollBar aria-hidden="true" style={{ width: `${scrollProgress}%` }} />
       <NavBar />
       <Body>
-        <Hero />
-        <Wrapper>
-          <Skills />
-        </Wrapper>
-        <Education />
-        <Experience />
-        <Projects />
-        <Contact />
+        <main id="main-content" tabIndex={-1}>
+          <Hero />
+          <Projects />
+          <Wrapper>
+            <Skills />
+          </Wrapper>
+          <Education />
+          <Experience />
+          <Contact />
+        </main>
         <Footer />
       </Body>
       <BackToTopBtn
         $show={showBack}
-        onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-        aria-label="Back to top"
+        onClick={backToTop}
+        tabIndex={showBack ? 0 : -1}
+        aria-hidden={!showBack}
+        aria-label={t('BackToTop', { defaultValue: isFrench ? 'Retour en haut' : 'Back to top' })}
       >
         ↑
       </BackToTopBtn>
@@ -123,13 +137,9 @@ function PortfolioApp() {
 function App() {
   return (
     <I18nextProvider i18n={i18n}>
-      <PortfolioProvider>
-        <ThemeProvider theme={darkTheme}>
-          <Router>
-            <PortfolioApp />
-          </Router>
-        </ThemeProvider>
-      </PortfolioProvider>
+      <ThemeProvider theme={darkTheme}>
+        <PortfolioApp />
+      </ThemeProvider>
     </I18nextProvider>
   );
 }

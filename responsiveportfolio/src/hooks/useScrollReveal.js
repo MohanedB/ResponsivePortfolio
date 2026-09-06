@@ -8,6 +8,12 @@ const useScrollReveal = (threshold = 0.12) => {
     const current = ref.current;
     if (!current) return;
 
+    const preference = window.matchMedia?.('(prefers-reduced-motion: reduce)');
+    if (preference?.matches || typeof IntersectionObserver === 'undefined') {
+      setIsVisible(true);
+      return;
+    }
+
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
@@ -19,7 +25,17 @@ const useScrollReveal = (threshold = 0.12) => {
     );
 
     observer.observe(current);
-    return () => observer.disconnect();
+    const showWithoutMotion = () => {
+      if (preference.matches) {
+        setIsVisible(true);
+        observer.disconnect();
+      }
+    };
+    preference?.addEventListener?.('change', showWithoutMotion);
+    return () => {
+      observer.disconnect();
+      preference?.removeEventListener?.('change', showWithoutMotion);
+    };
   }, [threshold]);
 
   return [ref, isVisible];

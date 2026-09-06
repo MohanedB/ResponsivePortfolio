@@ -10,6 +10,7 @@ import Montreal from "../Image/MontrealCityLogo.gif"
 import Internship from "../Image/PhotoInternship.png"
 import GreatGameOfWar from "../Image/GreatGameOfWar.png"
 import RobotLab from "../Image/RobotLab.png"
+import { recentProjects } from './projectUpdates';
 
 export const Bio = {
   name: "Mohaned Bouzaidi",
@@ -147,6 +148,7 @@ export const experiences = [
 // portfolioMode: "software" | "gamedev" | "both"
 
 export const projects = [
+  ...recentProjects,
   {
     id: 1,
     titleKey: "education10",
@@ -192,7 +194,7 @@ router.post('/', async (req, res) => {
     mainCategory: "Cegep",
     subCategory: "YEAR3",
     portfolioMode: "software",
-    github: "https://halalbites.onrender.com/",
+    website: "https://halalbites.onrender.com/",
     webapp: "",
     members: [],
     whatIDidKey: "proj2_whatIDid",
@@ -273,7 +275,7 @@ function splitIntoGroups(devices, groupCount) {
     tags: ["C#", "Visual Studio", "XAML"],
     mainCategory: "Cegep",
     subCategory: "YEAR1",
-    portfolioMode: "gamedev",
+    portfolioMode: "software",
     github: "https://github.com/MohanedB/Calculator",
     webapp: "",
     members: [],
@@ -303,7 +305,8 @@ function splitIntoGroups(devices, groupCount) {
     mainCategory: "Cegep",
     subCategory: "YEAR2",
     portfolioMode: "software",
-    github: "https://drive.google.com/drive/folders/1m76YGJ4o-YVeRBAoO9fLtQVap-J3kfFy?usp=sharing",
+    website: "https://drive.google.com/drive/folders/1m76YGJ4o-YVeRBAoO9fLtQVap-J3kfFy?usp=sharing",
+    websiteLabelKey: 'ViewFiles',
     webapp: "",
     members: [],
     whatIDidKey: "proj6_whatIDid",

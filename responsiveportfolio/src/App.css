@@ -10,12 +10,45 @@
 
 html{
   scroll-behavior: smooth;
+  scroll-padding-top: 96px;
 }
 
 body{
   margin: 0px !important;
   padding: 0;
   font-family: 'Montserrat', sans-serif;
+  background: #1c1c27;
+}
+
+:focus-visible {
+  outline: 3px solid #d8b4fe;
+  outline-offset: 4px;
+}
+
+.skip-link {
+  position: fixed;
+  top: 12px;
+  left: 16px;
+  z-index: 10000;
+  padding: 12px 18px;
+  border-radius: 8px;
+  background: #f2f3f4;
+  color: #1c1c27;
+  transform: translateY(-180%);
+}
+
+.skip-link:focus { transform: translateY(0); }
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }
 
 /* width */
@@ -67,3 +100,18 @@ body{
 .stagger.visible > *:nth-child(4) { transition-delay: 0.35s; }
 .stagger.visible > *:nth-child(5) { transition-delay: 0.45s; }
 .stagger.visible > *:nth-child(6) { transition-delay: 0.55s; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+
+  *, *::before, *::after {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+
+  .reveal, .stagger > * {
+    opacity: 1;
+    transform: none;
+  }
+}

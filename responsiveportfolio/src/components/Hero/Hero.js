@@ -1,5 +1,9 @@
 import React from 'react';
 import styled, { keyframes } from 'styled-components';
+import HeroAnimation from '../HeroAnimation/HeroAnimation';
+import HeroImg from '../../Image/HeroImage.jpg';
+import Typewriter from 'typewriter-effect';
+import { useTranslation } from 'react-i18next';
 
 const fadeInLeft = keyframes`
   from { opacity: 0; transform: translateX(-50px); }
@@ -21,13 +25,7 @@ const floatGlow = keyframes`
     filter: drop-shadow(0 0 28px rgba(133, 76, 230, 0.9));
   }
 `;
-import HeroAnimation from '../HeroAnimation/HeroAnimation';
-import HeroImg from '../../Image/HeroImage.jpg';
-import Typewriter from 'typewriter-effect';
-import { Bio } from '../../data/const';
-import { useTranslation } from 'react-i18next';
-import { usePortfolio } from '../../context/PortfolioContext';
-export const HeroContainer = styled.div`
+export const HeroContainer = styled.section`
   background: ${({ theme }) => theme.card_light};
   display: flex;
   justify-content: center;
@@ -44,6 +42,7 @@ export const HeroContainer = styled.div`
 `;
 
 export const HeroBg = styled.div`
+  pointer-events: none;
   position: absolute;
   display: flex;
   justify-content: end;
@@ -70,6 +69,7 @@ export const HeroInnerContainer = styled.div`
   align-items: center;
   width: 100%;
   max-width: 1100px;
+  gap: 40px;
   @media (max-width: 960px) {
     flex-direction: column;
   }
@@ -77,17 +77,16 @@ export const HeroInnerContainer = styled.div`
 
 export const HeroLeftContainer = styled.div`
   width: 100%;
+  min-width: 0;
   order: 1;
   @media (max-width: 960px) {
-    order: 2;
-    margin-bottom: 30px;
+    order: 1;
     display: flex;
     flex-direction: column;
     align-items: center;
   }
   @media (max-width: 640px) {
-    order: 2;
-    margin-bottom: 30px;
+    order: 1;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -96,26 +95,28 @@ export const HeroLeftContainer = styled.div`
 
 export const HeroRightContainer = styled.div`
   width: 100%;
+  min-width: 0;
   display: flex;
   order: 2;
   justify-content: end;
   gap: 12px;
   animation: ${fadeInRight} 0.9s ease 0.2s both;
   @media (max-width: 960px) {
-    order: 1;
+    order: 2;
     justify-content: center;
     align-items: center;
-    margin-bottom: 80px;
+    margin-bottom: 0;
   }
   @media (max-width: 640px) {
-    margin-bottom: 30px;
+    margin-bottom: 0;
   }
 `;
 
 export const Img = styled.img`
   position: relative;
   width: 100%;
-  height: 100%;
+  height: auto;
+  aspect-ratio: 1;
   max-width: 400px;
   max-height: 400px;
   border-radius: 50%;
@@ -127,12 +128,12 @@ export const Img = styled.img`
     max-height: 400px;
   }
   @media (max-width: 640px) {
-    max-width: 280px;
-    max-height: 280px;
+    max-width: 220px;
+    max-height: 220px;
   }
 `;
 
-export const Title = styled.div`
+export const Title = styled.h1`
   font-weight: 700;
   font-size: 50px;
   color: ${({ theme }) => theme.text_primary};
@@ -150,28 +151,33 @@ export const TextLoop = styled.div`
   font-weight: 600;
   font-size: 32px;
   display: flex;
-  gap: 12px;
+  flex-wrap: wrap;
+  gap: 0 10px;
   color: ${({ theme }) => theme.text_primary};
-  line-height: 68px;
+  line-height: 1.5;
+  margin: 12px 0 20px;
+  min-height: 96px;
   animation: ${fadeInLeft} 0.8s ease 0.18s both;
-  @media (max-width: 960px) { text-align: center; }
+  @media (max-width: 960px) { text-align: center; justify-content: center; min-height: 48px; }
   @media (max-width: 640px) {
     font-size: 22px;
-    line-height: 48px;
+    line-height: 1.5;
+    min-height: 66px;
     margin-bottom: 16px;
   }
 `;
 
 export const Span = styled.span`
   color: ${({ theme }) => theme.primary};
-  cursor: pointer;
+  min-width: 0;
+  overflow-wrap: anywhere;
 `;
 
-export const SubTitle = styled.div`
+export const SubTitle = styled.p`
   font-size: 20px;
   line-height: 32px;
   margin-bottom: 42px;
-  color: ${({ theme }) => theme.text_primary + 95};
+  color: ${({ theme }) => theme.text_secondary};
   animation: ${fadeInLeft} 0.8s ease 0.36s both;
   @media (max-width: 960px) { text-align: center; }
   @media (max-width: 640px) {
@@ -181,23 +187,22 @@ export const SubTitle = styled.div`
 `;
 
 export const ResumeButton = styled.a`
-  -webkit-appearance: button;
-  -moz-appearance: button;
-  appearance: button;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   text-decoration: none;
-  width: 95%;
-  max-width: 300px;
+  min-height: 48px;
   text-align: center;
-  padding: 16px 0;
+  padding: 14px 26px;
   color: ${({ theme }) => theme.white};
   border-radius: 20px;
   cursor: pointer;
   font-size: 20px;
   font-weight: 600;
-  transition: all 0.3s ease-in-out !important;
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
   background: hsla(271, 100%, 50%, 1);
   background: linear-gradient(225deg, hsla(271, 100%, 50%, 1) 0%, hsla(294, 100%, 50%, 1) 100%);
-  box-shadow: 20px 20px 60px #1F2634, -20px -20px 60px #1F2634;
+  box-shadow: 0 8px 24px rgba(133, 76, 230, 0.2);
   animation: ${fadeInLeft} 0.8s ease 0.54s both;
   &:hover {
     transform: scale(1.07);
@@ -205,49 +210,89 @@ export const ResumeButton = styled.a`
     transition: all 0.3s ease-in-out;
   }
   @media (max-width: 640px) {
-    padding: 12px 0;
+    padding: 12px 22px;
     font-size: 18px;
   }
 `;
 
-const Hero = () => {
-  const { t } = useTranslation();
-  const { mode } = usePortfolio();
+const Actions = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 16px;
+  @media (max-width: 960px) { justify-content: center; }
+`;
 
-  // Pick translation keys based on mode
-  const rolesKey   = mode === 'gamedev' ? 'roles_gamedev'   : 'roles_software';
-  const descKey    = mode === 'gamedev' ? 'description_gamedev' : 'description_software';
+const ResumeLink = styled(ResumeButton)`
+  background: transparent;
+  border: 1px solid ${({ theme }) => theme.primary};
+  box-shadow: none;
+`;
+
+const Hero = () => {
+  const { t, i18n } = useTranslation();
+  const isFrench = (i18n.resolvedLanguage || i18n.language || 'en').startsWith('fr');
+  const [reduceMotion, setReduceMotion] = React.useState(
+    () => window.matchMedia?.('(prefers-reduced-motion: reduce)').matches ?? false
+  );
+
+  React.useEffect(() => {
+    const preference = window.matchMedia?.('(prefers-reduced-motion: reduce)');
+    if (!preference) return undefined;
+    const updatePreference = () => setReduceMotion(preference.matches);
+    if (preference.addEventListener) {
+      preference.addEventListener('change', updatePreference);
+      return () => preference.removeEventListener('change', updatePreference);
+    }
+    preference.addListener(updatePreference);
+    return () => preference.removeListener(updatePreference);
+  }, []);
+
+  const roles = t('roles_unified', {
+    returnObjects: true,
+    defaultValue: isFrench
+      ? ['Développeur de jeux', 'Développeur full-stack']
+      : ['Game Developer', 'Full-Stack Developer'],
+  });
+  const description = t('description_unified', {
+    defaultValue: isFrench
+      ? "Étudiant en création de jeux vidéo à l'UQAT, je développe des jeux et des logiciels avec Unity, Unreal Engine et les technologies web. Découvrez mes prototypes, mes jeux universitaires et mes projets de développement logiciel."
+      : 'A game development student at UQAT, I build games and software with Unity, Unreal Engine and web technologies. Explore my prototypes, university games and software projects.',
+  });
 
   return (
-    <div id='about'>
-      <HeroContainer>
-        <HeroBg>
-          <HeroAnimation />
+      <HeroContainer id="about" aria-labelledby="intro-title">
+        <HeroBg aria-hidden="true">
+          {!reduceMotion && <HeroAnimation />}
         </HeroBg>
         <HeroInnerContainer>
           <HeroLeftContainer id='Left'>
-            <Title>{t('greeting')} <br /> {t('name')}</Title>
+            <Title id="intro-title">{t('greeting')} <br /> {t('name')}</Title>
             <TextLoop>
               {t('IAM')}
-              <Span>
-                <Typewriter
-                  options={{
-                    strings: [...t(rolesKey, { returnObjects: true })],
-                    autoStart: true,
-                    loop: true,
-                  }}
-                />
+              <Span aria-hidden={!reduceMotion}>
+                {reduceMotion ? roles.join(' / ') : (
+                  <Typewriter
+                    key={isFrench ? 'fr' : 'en'}
+                    options={{ strings: roles, autoStart: true, loop: true }}
+                  />
+                )}
               </Span>
+              {!reduceMotion && <span className="sr-only">{roles.join(' / ')}</span>}
             </TextLoop>
-            <SubTitle>{t(descKey)}</SubTitle>
-            <ResumeButton href={t('resume')} target='display'>{t('resumer')}</ResumeButton>
+            <SubTitle>{description}</SubTitle>
+            <Actions>
+              <ResumeButton href="#projects">
+                {t('ViewProjects', { defaultValue: isFrench ? 'Voir les projets' : 'View projects' })}
+              </ResumeButton>
+              <ResumeLink href={t('resume')} target="_blank" rel="noopener noreferrer">{t('resumer')}</ResumeLink>
+            </Actions>
           </HeroLeftContainer>
           <HeroRightContainer id='Right'>
-            <Img src={HeroImg} alt='hero-image' />
+            <Img src={HeroImg} alt="Mohaned Bouzaidi" width="400" height="400" />
           </HeroRightContainer>
         </HeroInnerContainer>
       </HeroContainer>
-    </div>
   );
 };
 
