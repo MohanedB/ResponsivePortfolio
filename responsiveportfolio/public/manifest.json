@@ -4,8 +4,16 @@
   "description": "Games, prototypes and software projects by Mohaned Bouzaidi.",
   "icons": [
     {
-      "src": "briefcase.png",
-      "type": "image/png"
+      "src": "logo192.png",
+      "type": "image/png",
+      "sizes": "192x192",
+      "purpose": "any"
+    },
+    {
+      "src": "logo512.png",
+      "type": "image/png",
+      "sizes": "512x512",
+      "purpose": "any"
     }
   ],
   "start_url": ".",

@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Bio } from '../../data/const';
-import { DiBlackberry } from 'react-icons/di';
+import brandMark from '../../Image/brand/mb-logo.png';
 import { FaBars, FaTimes } from 'react-icons/fa';
 import { useTranslation } from 'react-i18next';
 
@@ -31,11 +31,13 @@ const NavLogo = styled.a`
   flex-shrink: 0;
   display: flex;
   align-items: center;
-  gap: 4px;
+  gap: 10px;
+  min-height: 44px;
   color: ${({ theme }) => theme.text_primary};
   text-decoration: none;
   font-size: 18px;
   font-weight: 700;
+  img { display: block; flex-shrink: 0; border-radius: 8px; }
 `;
 
 const NavItems = styled.ul`
@@ -175,7 +177,7 @@ const Navbar = () => {
     <Nav aria-label={t('MainNavigation', { defaultValue: isFrench ? 'Navigation principale' : 'Main navigation' })}>
       <NavbarContainer>
         <NavLogo href="/#about" onClick={() => setIsOpen(false)}>
-          <DiBlackberry size="36" aria-hidden="true" />
+          <img src={brandMark} width="40" height="40" alt="" />
           <span>Mohaned.</span>
         </NavLogo>
         <NavItems>{renderLinks()}</NavItems>
