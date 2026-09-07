@@ -1,70 +1,51 @@
-# Getting Started with Create React App
+# Mohaned Bouzaidi — Portfolio
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Bilingual React portfolio for games, prototypes and software projects. Visitors see all work immediately and can combine Games/Software filters with University, Cégep or Independent context. Compact project cards have a separate More information button linking to dedicated `/projects/:slug` pages; ARCHIVERIF, LetumLoop TPS, Straw and Feathers, and Grouillère have expanded case studies.
 
-## Available Scripts
+## Run locally
 
-In the project directory, you can run:
+From the repository root:
 
-### `npm start`
+```powershell
+cd responsiveportfolio
+npm ci
+npm start
+```
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Open [localhost:3000](http://localhost:3000). The app uses the existing Create React App toolchain.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Project navigation
 
-### `npm test`
+Examples: `/projects/archiverif`, `/projects/letumloop-tps`, `/projects/straw-and-feathers`, `/projects/grouillere`. Every project record has a stable slug. Unknown addresses show a translated not-found page with a return link.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Home filters live in the URL: `type=gamedev|software`, `context=University|Cegep|Independent`, and `q=search text`. For example, `/?type=gamedev&context=University&q=grouillere#projects` opens a filtered grid. Opening a case study from that grid preserves its return URL. A directly opened project page returns to `/#projects`.
 
-### `npm run build`
+The included `vercel.json` SPA rewrite supports application routes on Vercel. Other static hosts need an equivalent fallback to `index.html` for direct project-page requests and refreshes.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Verify
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```powershell
+npm test -- --watchAll=false --runInBand
+npm run build
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+The repository suite contains 17 tests across four suites covering project discovery, shareable links, translated search, combined filters, empty results, direct case-study rendering, preserved return filters, French content/product links, unknown slugs, gallery behavior and contact validation/sending states. Email transport is mocked; no test email is sent. The CI production build and Chromium/Edge checks at 1440, 390 and 320 CSS pixels passed. Detailed browser results and pending hosted deployment verification are recorded in the project documentation.
 
-### `npm run eject`
+## Update content
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+- `src/data/projectUpdates.js`: recent project records and their English/French copy.
+- `src/data/const.js`: previous projects, skills, education and experience records.
+- `src/data/caseStudies.js`: expanded bilingual content keyed by project slug: role, introduction, systems, workflow/responsibilities, outcome, availability, media and code.
+- `src/components/Internationalization/I18n.js`: existing translations.
+- `src/Image/`: local images. `src/Image/case-studies/` holds the new authentic captures. Projects without an image use a title cover.
+- `src/components/Skills/SkillIcon.jsx`: bundled icons for the skill labels; no external image hosting is needed.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Give every project a unique, stable `slug`; add its expanded content under the same key in `caseStudies.js`. Use `github` only for verified public source repositories. Use `website` and an optional `websiteLabelKey` for product sites, files or team showcases. Set `playableUrl` only for a verified public playable or download destination. Omit unavailable links and unknown dates. Add a `whatIDidKey` for confirmed personal contributions.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+Gallery items support `image`, `video` and click-to-load `embed` media with localized `alt`/`caption`, optional `poster`, and optional credit. Import local images into the data file. Images can be enlarged; videos use controls and do not autoplay. Code items use localized `title`/`description`, a language label, the exact source text and source file/revision attribution. Public source URLs are optional and must be accessible. The renderer hides sections without content and lets visitors expand code excerpts on demand.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+See [Project case-study pages](../docs/project-case-studies.md) for complete data examples, route/filter behavior, media guidance, source SHAs and excerpt line ranges, and screenshot capture URLs. Three real source excerpts and two public ARCHIVERIF screenshots are included. Gameplay media and verified playable links for the three new games remain unavailable; their pages do not invent those assets.
 
-## Learn More
+Contact delivery uses the existing EmailJS service in `Contact.js`. A successful build and mocked tests do not verify live delivery or the service's allowed origins.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+See [the portfolio review](../docs/portfolio-review.md) for remaining content gaps, verification history and recommended improvements.

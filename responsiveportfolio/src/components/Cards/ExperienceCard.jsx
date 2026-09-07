@@ -1,7 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
 import { useTranslation } from 'react-i18next';
-import { experiences } from '../../data/const';
 
 const Document = styled.img`
     display: none;
@@ -147,15 +146,11 @@ const Skill = styled.div`
 
 
 const ExperienceCard = ({ experience }) => {
-    const { t, i18n } = useTranslation();
-  
-    const changeLanguage = (lng) => {
-      i18n.changeLanguage(lng);
-    };
+    const { t } = useTranslation();
     return (
         <Card>
             <Top>
-                <Image src={experience.img} />
+                <Image src={experience.img} alt={t(experience.company)} />
                 <Body>
                     <Role> {t(experience.role)}</Role>
                     <Company>{t(experience.company)}</Company>
@@ -183,7 +178,7 @@ const ExperienceCard = ({ experience }) => {
             </Description>
             {experience.doc &&
                 <a href={experience.doc} target="new">
-                    <Document src={experience.doc} />
+                    <Document src={experience.doc} alt={t(experience.company)} />
                 </a>
             }
         </Card>

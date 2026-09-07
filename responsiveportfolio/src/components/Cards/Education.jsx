@@ -129,16 +129,12 @@ const Grade = styled.div`
 
 
 const EducationCard = ({ education }) => {
-    const { t, i18n } = useTranslation();
-  
-    const changeLanguage = (lng) => {
-      i18n.changeLanguage(lng);
-    };
+    const { t } = useTranslation();
   
     return (
       <Card>
         <Top>
-          <Image src={education.img} />
+            {education.img && <Image src={education.img} alt={t(education.schoolKey)} />}
           <Body>
             <Name>{t(education.schoolKey)}</Name>
             <Degree>{t(education.degreeKey)}</Degree>
@@ -154,4 +150,4 @@ const EducationCard = ({ education }) => {
   };
   
   export default EducationCard;
-  
+

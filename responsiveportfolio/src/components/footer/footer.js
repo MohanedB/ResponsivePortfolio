@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 import FacebookIcon from '@mui/icons-material/Facebook';
-import TwitterIcon from '@mui/icons-material/Twitter';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import InstagramIcon from '@mui/icons-material/Instagram';
 // Import the correct itch.io icon
@@ -8,7 +7,7 @@ import { FaItchIo } from 'react-icons/fa'; // Use FontAwesome icons instead
 import { Bio } from '../../data/const';
 import { useTranslation } from 'react-i18next';
 
-const FooterContainer = styled.div`
+const FooterContainer = styled.footer`
   width: 100%;
   padding: 2rem 0;
   display: flex;
@@ -16,7 +15,7 @@ const FooterContainer = styled.div`
   //background: linear-gradient(100.26deg, rgba(0, 102, 255, 0.05) 42.33%, rgba(150, 0, 225, 0.05) 127.07%);
 `;
 
-const FooterWrapper = styled.footer`
+const FooterWrapper = styled.div`
   width: 100%;
   max-width: 1200px;
   display: flex;
@@ -27,7 +26,7 @@ const FooterWrapper = styled.footer`
   color: ${({ theme }) => theme.text_primary};
 `;
 
-const Logo = styled.h1`
+const Logo = styled.p`
   font-weight: 600;
   font-size: 20px;
   color: ${({ theme }) => theme.primary};
@@ -79,40 +78,27 @@ const SocialMediaIcon = styled.a`
   }
 `;
 
-// Custom style for react-icons to match Material UI icons
-const IconWrapper = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.5rem;
-`;
-
 function Footer() {
-  const { i18n } = useTranslation();
   const { t } = useTranslation();
-
-  const changeLanguage = (language) => {
-    i18n.changeLanguage(language);
-  };
   
   return (
     <FooterContainer>
       <FooterWrapper>
         <Logo>Mohaned Bouzaidi</Logo>
         <Nav>
-          <NavLink href="#about">{t('About')}</NavLink>
-          <NavLink href='#skills'>{t('Skill')}</NavLink>
-          <NavLink href='#education'>{t('Education')}</NavLink>
-          <NavLink href='#experience'>{t('exper5')}</NavLink>
-          <NavLink href='#projects'>{t('Projects')}</NavLink>
-          <NavLink href='#contact'>{t('Contact')}</NavLink>
+          <NavLink href="/#about">{t('About')}</NavLink>
+          <NavLink href='/#skills'>{t('Skill')}</NavLink>
+          <NavLink href='/#education'>{t('Education')}</NavLink>
+          <NavLink href='/#experience'>{t('exper5')}</NavLink>
+          <NavLink href='/#projects'>{t('Projects')}</NavLink>
+          <NavLink href='/#contact'>{t('Contact')}</NavLink>
         </Nav>
         <SocialMediaIcons>
-          <SocialMediaIcon href={Bio.facebook} target="display"><FacebookIcon /></SocialMediaIcon>
-          <SocialMediaIcon href={Bio.linkedin} target="display"><LinkedInIcon /></SocialMediaIcon>
-          <SocialMediaIcon href={Bio.insta} target="display"><InstagramIcon /></SocialMediaIcon>
+          <SocialMediaIcon href={Bio.facebook} target="_blank" rel="noopener noreferrer" aria-label="Facebook"><FacebookIcon /></SocialMediaIcon>
+          <SocialMediaIcon href={Bio.linkedin} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><LinkedInIcon /></SocialMediaIcon>
+          <SocialMediaIcon href={Bio.insta} target="_blank" rel="noopener noreferrer" aria-label="Instagram"><InstagramIcon /></SocialMediaIcon>
           {/* This link will take users to your itch.io account when clicked */}
-          <SocialMediaIcon href={Bio.itch} target="display"><FaItchIo /></SocialMediaIcon>
+          <SocialMediaIcon href={Bio.itch} target="_blank" rel="noopener noreferrer" aria-label="itch.io"><FaItchIo /></SocialMediaIcon>
         </SocialMediaIcons>
       </FooterWrapper>
     </FooterContainer>

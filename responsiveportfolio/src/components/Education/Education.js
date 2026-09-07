@@ -4,11 +4,7 @@ import styled from 'styled-components';
 import useScrollReveal from '../../hooks/useScrollReveal';
 import Timeline from '@mui/lab/Timeline';
 import TimelineItem from '@mui/lab/TimelineItem';
-import TimelineSeparator from '@mui/lab/TimelineSeparator';
-import TimelineConnector from '@mui/lab/TimelineConnector';
-import TimelineContent from '@mui/lab/TimelineContent';
-import TimelineDot from '@mui/lab/TimelineDot';
-import { education, experiences } from '../../data/const';
+import { education } from '../../data/const';
 import EducationCard from '../Cards/Education';
 import { useTranslation } from 'react-i18next';
 
@@ -45,7 +41,7 @@ const Wrapper = styled.div`
     }
 `;
 
-const Title = styled.div`
+const Title = styled.h2`
 font-size: 42px;
 text-align: center;
 font-weight: 600;
@@ -86,12 +82,9 @@ const TimelineSection = styled.div`
 
 
 const Index = () => {
-    const { t, i18n } = useTranslation();
+    const { t } = useTranslation();
     const [wrapperRef, wrapperVisible] = useScrollReveal();
 
-    const changeLanguage = (lng) => {
-      i18n.changeLanguage(lng);
-    };
     return (
 
         <Container id="education">

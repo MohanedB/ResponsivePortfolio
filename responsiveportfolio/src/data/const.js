@@ -10,6 +10,7 @@ import Montreal from "../Image/MontrealCityLogo.gif"
 import Internship from "../Image/PhotoInternship.png"
 import GreatGameOfWar from "../Image/GreatGameOfWar.png"
 import RobotLab from "../Image/RobotLab.png"
+import { recentProjects } from './projectUpdates';
 
 export const Bio = {
   name: "Mohaned Bouzaidi",
@@ -32,37 +33,37 @@ export const skillsByMode = {
     {
       titleKey: "skill0",
       skills: [
-        { name: "React Js", image: "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9Ii0xMS41IC0xMC4yMzE3NCAyMyAyMC40NjM0OCI+CiAgPHRpdGxlPlJlYWN0IExvZ288L3RpdGxlPgogIDxjaXJjbGUgY3g9IjAiIGN5PSIwIiByPSIyLjA1IiBmaWxsPSIjNjFkYWZiIi8+CiAgPGcgc3Ryb2tlPSIjNjFkYWZiIiBzdHJva2Utd2lkdGg9IjEiIGZpbGw9Im5vbmUiPgogICAgPGVsbGlwc2Ugcng9IjExIiByeT0iNC4yIi8+CiAgICA8ZWxsaXBzZSByeD0iMTEiIHJ5PSI0LjIiIHRyYW5zZm9ybT0icm90YXRlKDYwKSIvPgogICAgPGVsbGlwc2Ugcng9IjExIiByeT0iNC4yIiB0cmFuc2Zvcm09InJvdGF0ZSgxMjApIi8+CiAgPC9nPgo8L3N2Zz4K" },
-        { name: "EJS", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT1PvXIB8twwKNE3k9ty9oAUcwxLKhrf4yOScQuj0wUMQ&s" },
-        { name: "HTML", image: "https://www.w3.org/html/logo/badge/html5-badge-h-solo.png" },
-        { name: "CSS", image: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/CSS3_logo_and_wordmark.svg/1452px-CSS3_logo_and_wordmark.svg.png" },
-        { name: "JavaScript", image: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/JavaScript-logo.png/800px-JavaScript-logo.png" },
-        { name: "Bootstrap", image: "https://getbootstrap.com/docs/5.3/assets/brand/bootstrap-logo-shadow.png" },
-        { name: "TailWind", image: "https://cdn.worldvectorlogo.com/logos/tailwind-css-1.svg" },
+        { name: "React Js" },
+        { name: "EJS" },
+        { name: "HTML" },
+        { name: "CSS" },
+        { name: "JavaScript" },
+        { name: "Bootstrap" },
+        { name: "TailWind" },
       ],
     },
     {
       titleKey: "skill1",
       skills: [
-        { name: "Node Js", image: "https://nodejs.org/static/images/logo.svg" },
-        { name: "Python", image: "https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg" },
-        { name: "MySQL", image: "https://raw.githubusercontent.com/devicons/devicon/master/icons/mysql/mysql-original-wordmark.svg" },
-        { name: "MongoDB", image: "https://raw.githubusercontent.com/devicons/devicon/master/icons/mongodb/mongodb-original-wordmark.svg" },
-        { name: "Firebase", image: "https://www.vectorlogo.zone/logos/firebase/firebase-icon.svg" },
-        { name: "Java", image: "https://raw.githubusercontent.com/devicons/devicon/master/icons/java/java-original.svg" },
-        { name: "PHP", image: "https://img.icons8.com/?size=256&id=UGYn5TapNioV&format=png" },
+        { name: "Node Js" },
+        { name: "Python" },
+        { name: "MySQL" },
+        { name: "MongoDB" },
+        { name: "Firebase" },
+        { name: "Java" },
+        { name: "PHP" },
       ],
     },
     {
       titleKey: "skill2",
       skills: [
-        { name: "Git", image: "https://img.icons8.com/?size=256&id=20906&format=png" },
-        { name: "GitHub", image: "https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" },
-        { name: "Docker", image: "https://raw.githubusercontent.com/devicons/devicon/master/icons/docker/docker-original-wordmark.svg" },
-        { name: "VS Code", image: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Visual_Studio_Code_1.35_icon.svg/512px-Visual_Studio_Code_1.35_icon.svg.png?20210804221519" },
-        { name: "Postman", image: "https://img.icons8.com/?size=256&id=QEQQKirln6Tf&format=png" },
-        { name: "Figma", image: "https://img.icons8.com/?size=256&id=zfHRZ6i1Wg0U&format=png" },
-        { name: "Linux", image: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ab/Linux_Logo_in_Linux_Libertine_Font.svg/1200px-Linux_Logo_in_Linux_Libertine_Font.svg.png" },
+        { name: "Git" },
+        { name: "GitHub" },
+        { name: "Docker" },
+        { name: "VS Code" },
+        { name: "Postman" },
+        { name: "Figma" },
+        { name: "Linux" },
       ],
     },
   ],
@@ -71,22 +72,22 @@ export const skillsByMode = {
     {
       titleKey: "skill_gd0",
       skills: [
-        { name: "Unity", image: "https://www.svgrepo.com/show/331626/unity.svg" },
-        { name: "Unreal Engine", image: "https://cdn2.unrealengine.com/ue-logotype-2023-vertical-white-1686x2048-bbfded26daa7.png" },
-        { name: "C#", image: "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bd/Logo_C_sharp.svg/1200px-Logo_C_sharp.svg.png" },
-        { name: "C++", image: "https://img.icons8.com/?size=100&id=TpULddJc4gTh&format=png&color=000000" },
-        { name: "Python", image: "https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg" },
+        { name: "Unity" },
+        { name: "Unreal Engine" },
+        { name: "C#" },
+        { name: "C++" },
+        { name: "Python" },
       ],
     },
     {
       titleKey: "skill_gd1",
       skills: [
-        { name: "Git", image: "https://img.icons8.com/?size=256&id=20906&format=png" },
-        { name: "GitHub", image: "https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" },
-        { name: "Visual Studio", image: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Visual_Studio_Code_1.35_icon.svg/512px-Visual_Studio_Code_1.35_icon.svg.png?20210804221519" },
-        { name: "Xcode", image: "https://icon.icepanel.io/Technology/svg/Xcode.svg" },
-        { name: "Linux", image: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ab/Linux_Logo_in_Linux_Libertine_Font.svg/1200px-Linux_Logo_in_Linux_Libertine_Font.svg.png" },
-        { name: "Figma", image: "https://img.icons8.com/?size=256&id=zfHRZ6i1Wg0U&format=png" },
+        { name: "Git" },
+        { name: "GitHub" },
+        { name: "Visual Studio" },
+        { name: "Xcode" },
+        { name: "Linux" },
+        { name: "Figma" },
       ],
     },
   ],
@@ -147,9 +148,11 @@ export const experiences = [
 // portfolioMode: "software" | "gamedev" | "both"
 
 export const projects = [
+  ...recentProjects,
   {
     id: 1,
     titleKey: "education10",
+    slug: 'paysage-meloche',
     dateKey: "education11",
     descriptionKey: "education12",
     image: PaysageMelocheImg,
@@ -185,6 +188,7 @@ router.post('/', async (req, res) => {
   {
     id: 2,
     titleKey: "education19",
+    slug: 'halalbites',
     dateKey: "education20",
     descriptionKey: "education21",
     image: HalalBitesImg,
@@ -192,7 +196,7 @@ router.post('/', async (req, res) => {
     mainCategory: "Cegep",
     subCategory: "YEAR3",
     portfolioMode: "software",
-    github: "https://halalbites.onrender.com/",
+    website: "https://halalbites.onrender.com/",
     webapp: "",
     members: [],
     whatIDidKey: "proj2_whatIDid",
@@ -213,6 +217,7 @@ public ResponseEntity<List<Restaurant>> search(
   {
     id: 3,
     titleKey: "education13",
+    slug: 'pet-clinic',
     dateKey: "education14",
     descriptionKey: "education15",
     image: PetClinicImg,
@@ -240,6 +245,7 @@ function filterByRange(appointments, from, to) {
   {
     id: 4,
     titleKey: "education25",
+    slug: 'appdemo',
     dateKey: "education26",
     descriptionKey: "education27",
     image: Internship,
@@ -267,13 +273,14 @@ function splitIntoGroups(devices, groupCount) {
   {
     id: 5,
     titleKey: "education4",
+    slug: 'calculator',
     dateKey: "education5",
     descriptionKey: "education6",
     image: CalculatorImg,
     tags: ["C#", "Visual Studio", "XAML"],
     mainCategory: "Cegep",
     subCategory: "YEAR1",
-    portfolioMode: "gamedev",
+    portfolioMode: "software",
     github: "https://github.com/MohanedB/Calculator",
     webapp: "",
     members: [],
@@ -296,6 +303,7 @@ function splitIntoGroups(devices, groupCount) {
   {
     id: 6,
     titleKey: "education7",
+    slug: 'quizapp',
     dateKey: "education8",
     descriptionKey: "education9",
     image: QuizAppImg,
@@ -303,7 +311,8 @@ function splitIntoGroups(devices, groupCount) {
     mainCategory: "Cegep",
     subCategory: "YEAR2",
     portfolioMode: "software",
-    github: "https://drive.google.com/drive/folders/1m76YGJ4o-YVeRBAoO9fLtQVap-J3kfFy?usp=sharing",
+    website: "https://drive.google.com/drive/folders/1m76YGJ4o-YVeRBAoO9fLtQVap-J3kfFy?usp=sharing",
+    websiteLabelKey: 'ViewFiles',
     webapp: "",
     members: [],
     whatIDidKey: "proj6_whatIDid",
@@ -326,6 +335,7 @@ function splitIntoGroups(devices, groupCount) {
   {
     id: 7,
     titleKey: "education16",
+    slug: 'fallen-god',
     dateKey: "education17",
     descriptionKey: "education18",
     image: FallenGodImg,
@@ -366,6 +376,7 @@ function splitIntoGroups(devices, groupCount) {
   {
     id: 8,
     titleKey: "education22",
+    slug: 'quickreload',
     dateKey: "education23",
     descriptionKey: "education24",
     image: QuickReloadImg,
@@ -400,6 +411,7 @@ function splitIntoGroups(devices, groupCount) {
   {
     id: 9,
     titleKey: "UEDU1",
+    slug: 'robot-control',
     dateKey: "UEDU2",
     descriptionKey: "UEDU3",
     image: RobotLab,
@@ -430,6 +442,7 @@ function splitIntoGroups(devices, groupCount) {
   {
     id: 10,
     titleKey: "UEDU4",
+    slug: 'the-great-game-of-war',
     dateKey: "UEDU5",
     descriptionKey: "UEDU6",
     image: GreatGameOfWar,

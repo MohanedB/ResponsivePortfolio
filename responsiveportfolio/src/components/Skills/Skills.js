@@ -2,8 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 import { skillsByMode } from '../../data/const';
 import { useTranslation } from 'react-i18next';
-import { usePortfolio } from '../../context/PortfolioContext';
 import useScrollReveal from '../../hooks/useScrollReveal';
+import SkillIcon from './SkillIcon';
 const Container = styled.div`
   display: flex;
   flex-direction: column;
@@ -96,7 +96,7 @@ const Skill = styled.div`
   }
 `;
 
-const SkillTitle = styled.h2`
+const SkillTitle = styled.h3`
   font-size: 28px;
   font-weight: 600;
   color: ${({ theme }) => theme.text_secondary};
@@ -141,23 +141,16 @@ const SkillItem = styled.div`
   }
 `;
 
-const SkillImage = styled.img`
-  width: 24px;
-  height: 24px;
-`;
-
 const Skills = () => {
   const { t } = useTranslation();
-  const { mode } = usePortfolio();
   const [containerRef, containerVisible] = useScrollReveal();
 
-  // Fall back to 'software' if mode is null (splash not yet dismissed)
-  const activeSkills = skillsByMode[mode] || skillsByMode['software'];
+  const activeSkills = [...skillsByMode.gamedev, ...skillsByMode.software];
 
   return (
     <Container ref={containerRef} id='skills'>
       <Wrapper>
-        <Title className={containerVisible ? 'visible' : ''}>{t('Skill')}</Title>
+        <Title as="h2" className={containerVisible ? 'visible' : ''}>{t('Skill')}</Title>
         <Desc className={containerVisible ? 'visible' : ''}>{t('skilldesc')}</Desc>
         <SkillsContainer className={containerVisible ? 'visible' : ''}>
           {activeSkills.map((skillGroup, idx) => (
@@ -166,7 +159,7 @@ const Skills = () => {
               <SkillList>
                 {skillGroup.skills.map((item, i) => (
                   <SkillItem key={i}>
-                    <SkillImage src={item.image} alt={item.name} />
+                    <SkillIcon name={item.name} />
                     {item.name}
                   </SkillItem>
                 ))}

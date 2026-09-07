@@ -1,1 +1,7 @@
 responsiveportfolio/.env
+node_modules/
+build/
+coverage/
+.env.local
+.env.*.local
+.artifacts/

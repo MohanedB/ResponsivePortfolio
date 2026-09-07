@@ -1,6 +1,7 @@
 import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
 import LanguageDetector from 'i18next-browser-languagedetector';
+import { projectTranslations } from '../../data/projectUpdates';
 
 import { Bio as Bio_en, education as education_en, projects as projects_en, skills as skills_en } from '../../data/const';
 import { Bio as Bio_fr, education as education_fr, projects as projects_fr, skills as skills_fr } from '../../data/constfr';
@@ -265,11 +266,20 @@ i18n
   .init({
     debug: false,
     fallbackLng: 'en',
+    supportedLngs: ['en', 'fr'],
+    nonExplicitSupportedLngs: true,
+    load: 'languageOnly',
     interpolation: { escapeValue: false },
     resources: {
-      en: { translation: translations_en },
-      fr: { translation: translations_fr },
+      en: { translation: { ...translations_en, ...projectTranslations.en } },
+      fr: { translation: { ...translations_fr, ...projectTranslations.fr } },
     },
   });
+
+const updateDocumentLanguage = () => {
+  document.documentElement.lang = i18n.resolvedLanguage?.startsWith('fr') ? 'fr' : 'en';
+};
+i18n.on('languageChanged', updateDocumentLanguage);
+updateDocumentLanguage();
 
 export default i18n;

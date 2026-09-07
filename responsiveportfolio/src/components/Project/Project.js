@@ -1,292 +1,148 @@
 import React from 'react';
+import { useSearchParams } from 'react-router-dom';
 import styled from 'styled-components';
-import { useState } from 'react';
-import ProjectCard from '../Cards/ProjectCards';
-import ProjectModal from './ProjectModal';
-import { projects } from '../../data/const';
 import { useTranslation } from 'react-i18next';
-import { usePortfolio } from '../../context/PortfolioContext';
+import ProjectCard from '../Cards/ProjectCards';
+import { projects } from '../../data/const';
 
-const Container = styled.div`
-    background: linear-gradient(343.07deg, rgba(132, 59, 206, 0.06) 5.71%, rgba(132, 59, 206, 0) 64.83%);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    position: relative;
-    z-index: 1;
-    align-items: center;
-    clip-path: polygon(0 0, 100% 0, 100% 100%,100% 98%, 0 100%);
+const Container = styled.section`
+  padding: 64px 20px 80px;
+  background: linear-gradient(343deg, rgba(132, 59, 206, 0.08), transparent 65%);
 `;
-
 const Wrapper = styled.div`
-    position: relative;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-direction: column;
-    width: 100%;
-    max-width: 1350px;
-    padding: 10px 0px 100px 0;
-    gap: 12px;
-    @media (max-width: 960px) {
-        flex-direction: column;
-    }
+  max-width: 1120px;
+  margin: 0 auto;
 `;
-
-const Title = styled.div`
-    font-size: 42px;
-    text-align: center;
-    font-weight: 600;
-    margin-top: 20px;
+const Title = styled.h2`
+  font-size: clamp(32px, 5vw, 42px);
+  color: ${({ theme }) => theme.text_primary};
+  text-align: center;
+`;
+const Desc = styled.p`
+  max-width: 660px;
+  margin: 12px auto 28px;
+  color: ${({ theme }) => theme.text_secondary};
+  text-align: center;
+  line-height: 1.7;
+`;
+const Filters = styled.div`
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 20px;
+`;
+const FilterButton = styled.button`
+  min-height: 44px;
+  padding: 10px 20px;
+  border-radius: 24px;
+  border: 1px solid ${({ $active, theme }) => $active ? theme.primary : '#454253'};
+  background: ${({ $active }) => $active ? '#593398' : 'transparent'};
+  color: ${({ theme }) => theme.text_primary};
+  font: inherit;
+  cursor: pointer;
+  &:hover { border-color: ${({ theme }) => theme.primary}; }
+`;
+const SearchRow = styled.div`
+  display: flex;
+  align-items: flex-end;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin: 24px 0 12px;
+`;
+const Field = styled.label`
+  flex: ${({ $search }) => $search ? '2 1 280px' : '1 1 180px'};
+  display: grid;
+  gap: 8px;
+  color: ${({ theme }) => theme.text_secondary};
+  font-size: 14px;
+  input, select {
+    width: 100%;
+    min-height: 48px;
+    padding: 12px 14px;
+    border: 1px solid #555064;
+    border-radius: 10px;
+    background: ${({ theme }) => theme.card};
     color: ${({ theme }) => theme.text_primary};
-    @media (max-width: 768px) {
-        margin-top: 12px;
-        font-size: 32px;
-    }
+    font: inherit;
+  }
+  input::placeholder { color: #a9a6b2; }
+`;
+const Results = styled.p`
+  color: ${({ theme }) => theme.text_secondary};
+  margin: 20px 0;
+  font-size: 14px;
+`;
+const Grid = styled.div`
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+  @media (max-width: 960px) { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  @media (max-width: 620px) { grid-template-columns: minmax(0, 1fr); }
+`;
+const Empty = styled.div`
+  padding: 40px 16px;
+  text-align: center;
+  color: ${({ theme }) => theme.text_secondary};
+  p { margin-bottom: 20px; }
 `;
 
-const Desc = styled.div`
-    font-size: 18px;
-    text-align: center;
-    max-width: 600px;
-    color: ${({ theme }) => theme.text_secondary};
-    @media (max-width: 768px) {
-        margin-top: 12px;
-        font-size: 16px;
-    }
-`;
-
-const ToggleButtonGroup = styled.div`
-    display: flex;
-    border: 1.5px solid ${({ theme }) => theme.primary};
-    color: ${({ theme }) => theme.primary};
-    font-size: 16px;
-    border-radius: 12px;
-    font-weight: 500;
-    margin: 22px 0px;
-    @media (max-width: 768px) {
-        font-size: 12px;
-    }
-`;
-
-const ToggleButton = styled.div`
-    padding: 8px 18px;
-    border-radius: 6px;
-    cursor: pointer;
-    ${({ active, theme }) =>
-        active && `background: ${theme.primary + 20};`
-    }
-    &:hover {
-        background: ${({ theme }) => theme.primary + 8};
-    }
-    @media (max-width: 768px) {
-        padding: 6px 8px;
-        border-radius: 4px;
-    }
-`;
-
-const CardContainer = styled.div`
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 28px;
-    flex-wrap: wrap;
-`;
-
-const SearchContainer = styled.div`
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: 20px 0 10px 0;
-`;
-
-const SearchInput = styled.input`
-    width: 60%;
-    max-width: 500px;
-    padding: 12px 20px;
-    border-radius: 20px;
-    border: 1px solid #6c5ce7;
-    background-color: rgba(108, 92, 231, 0.1);
-    color: white;
-    font-size: 16px;
-    &::placeholder {
-        color: rgba(255, 255, 255, 0.6);
-    }
-    &:focus {
-        outline: none;
-        box-shadow: 0 0 0 2px rgba(108, 92, 231, 0.5);
-    }
-`;
-
-const SearchHint = styled.div`
-    font-size: 12px;
-    color: rgba(255, 255, 255, 0.6);
-    margin-top: 6px;
-    text-align: center;
-    max-width: 500px;
-`;
-
-const NoResultsMessage = styled.div`
-    color: ${({ theme }) => theme.text_secondary};
-    margin-top: 20px;
-    font-size: 16px;
-    text-align: center;
-`;
+const normalize = (value) => value.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().trim();
 
 const Projects = () => {
-    const [selectedProject, setSelectedProject] = useState(null);
-    const [mainCategory, setMainCategory] = useState(null);
-    const [subCategory, setSubCategory] = useState(null);
-    const [searchTerm, setSearchTerm] = useState('');
-    const { t } = useTranslation();
-    const { mode } = usePortfolio();
+  const { t } = useTranslation();
+  const [params, setParams] = useSearchParams();
+  const discipline = ['gamedev', 'software'].includes(params.get('type')) ? params.get('type') : 'all';
+  const context = ['University', 'Cegep', 'Independent'].includes(params.get('context')) ? params.get('context') : 'all';
+  const searchTerm = params.get('q') || '';
+  const updateFilter = (key, value) => {
+    const next = new URLSearchParams(params);
+    if (!value || value === 'all') next.delete(key);
+    else next.set(key, value);
+    setParams(next, { replace: true });
+  };
+  const query = normalize(searchTerm);
+  const filteredProjects = projects.filter(project => {
+    if (discipline !== 'all' && project.portfolioMode !== discipline && project.portfolioMode !== 'both') return false;
+    if (context !== 'all' && project.mainCategory !== context) return false;
+    const searchText = [t(project.titleKey), t(project.descriptionKey), ...(project.tags || []), ...(project.searchTerms || [])].join(' ');
+    return normalize(searchText).includes(query);
+  });
+  const reset = () => {
+    const next = new URLSearchParams(params);
+    ['type', 'context', 'q'].forEach(key => next.delete(key));
+    setParams(next, { replace: true });
+  };
 
-    const getAllUniqueTags = () => {
-        const allTags = [];
-        projects.forEach(project => {
-            if (project.tags && Array.isArray(project.tags)) {
-                project.tags.forEach(tag => {
-                    if (!allTags.includes(tag)) allTags.push(tag);
-                });
-            }
-        });
-        const sampleTags = [];
-        const tagCount = Math.min(5, allTags.length);
-        for (let i = 0; i < tagCount; i++) {
-            const randomIndex = Math.floor(Math.random() * allTags.length);
-            if (!sampleTags.includes(allTags[randomIndex])) {
-                sampleTags.push(allTags[randomIndex]);
-                allTags.splice(randomIndex, 1);
-            } else {
-                i--;
-            }
-        }
-        return sampleTags;
-    };
-
-    const sampleTags = getAllUniqueTags();
-
-    const handleSearchChange = (e) => {
-        setSearchTerm(e.target.value);
-    };
-
-    const filteredProjects = projects.filter(project => {
-        // Mode filter: show project only if it matches current mode or is tagged 'both'
-        if (mode && project.portfolioMode !== 'both' && project.portfolioMode !== mode) {
-            return false;
-        }
-
-        if (!searchTerm.trim()) {
-            if (!mainCategory) return true;
-            return project.mainCategory === mainCategory &&
-                (subCategory === 'all' || !subCategory || project.subCategory === subCategory);
-        }
-
-        const searchLower = searchTerm.toLowerCase();
-        const nameMatch = project.titleKey.toLowerCase().includes(searchLower);
-        const tagMatch = project.tags?.some(tag => tag.toLowerCase().includes(searchLower));
-
-        if (nameMatch || tagMatch) {
-            if (!mainCategory) return true;
-            return project.mainCategory === mainCategory &&
-                (subCategory === 'all' || !subCategory || project.subCategory === subCategory);
-        }
-
-        return false;
-    });
-
-    return (
-        <>
-        {selectedProject && (
-            <ProjectModal
-                project={selectedProject}
-                onClose={() => setSelectedProject(null)}
-            />
-        )}
-        <Container id="projects">
-            <Wrapper>
-                <Title>{t('Projects')}</Title>
-                <Desc>{t('ProjectDesc')}</Desc>
-
-                <SearchContainer>
-                    <SearchInput
-                        type="text"
-                        placeholder={t('SearchByTag') || "Search by technology or project name"}
-                        value={searchTerm}
-                        onChange={handleSearchChange}
-                    />
-                    <SearchHint>
-                        {t('SearchHint') || `Try: ${sampleTags.join(', ')}`}
-                    </SearchHint>
-                </SearchContainer>
-
-                {!mainCategory ? (
-                    <>
-                        <ToggleButtonGroup>
-                            <ToggleButton active={mainCategory === 'Cegep'} onClick={() => setMainCategory('Cegep')}>
-                                {t('Cegep')}
-                            </ToggleButton>
-                            <ToggleButton active={mainCategory === 'University'} onClick={() => setMainCategory('University')}>
-                                {t('University')}
-                            </ToggleButton>
-                        </ToggleButtonGroup>
-
-                        {searchTerm.trim() !== '' && (
-                            <>
-                                <CardContainer>
-                                    {filteredProjects.map((project) => (
-                                        <ProjectCard
-                                            key={project.id}
-                                            project={project}
-                                            onOpen={setSelectedProject}
-                                        />
-                                    ))}
-                                </CardContainer>
-                                {filteredProjects.length === 0 && (
-                                    <NoResultsMessage>{t('NoProjectsFound')}</NoResultsMessage>
-                                )}
-                            </>
-                        )}
-                    </>
-                ) : (
-                    <>
-                        <ToggleButtonGroup>
-                            <ToggleButton active={subCategory === 'all'} onClick={() => setSubCategory('all')}>
-                                {t('All')}
-                            </ToggleButton>
-                            <ToggleButton active={subCategory === 'YEAR3'} onClick={() => setSubCategory('YEAR3')}>
-                                {t('ThirdYear')}
-                            </ToggleButton>
-                            <ToggleButton active={subCategory === 'YEAR2'} onClick={() => setSubCategory('YEAR2')}>
-                                {t('SecondYear')}
-                            </ToggleButton>
-                            <ToggleButton active={subCategory === 'YEAR1'} onClick={() => setSubCategory('YEAR1')}>
-                                {t('FirstYear')}
-                            </ToggleButton>
-                            <ToggleButton onClick={() => { setMainCategory(null); setSubCategory(null); }}>
-                                🔙 {t('Back')}
-                            </ToggleButton>
-                        </ToggleButtonGroup>
-
-                        <CardContainer>
-                            {filteredProjects.map((project) => (
-                                <ProjectCard
-                                    key={project.id}
-                                    project={project}
-                                    onOpen={setSelectedProject}
-                                />
-                            ))}
-                        </CardContainer>
-                        {filteredProjects.length === 0 && (
-                            <NoResultsMessage>{t('NoProjectsFound')}</NoResultsMessage>
-                        )}
-                    </>
-                )}
-            </Wrapper>
-        </Container>
-        </>
-    );
+  return (
+    <>
+      <Container id="projects" aria-labelledby="projects-title">
+        <Wrapper>
+          <Title id="projects-title" tabIndex={-1}>{t('Projects')}</Title>
+          <Desc>{t('ProjectDesc')}</Desc>
+          <Filters role="group" aria-label={t('ProjectType')}>
+            {[['all', 'AllProjects'], ['gamedev', 'Games'], ['software', 'ModeSoftware']].map(([value, label]) => (
+              <FilterButton key={value} type="button" $active={discipline === value} aria-pressed={discipline === value} onClick={() => updateFilter('type', value)}>{t(label)}</FilterButton>
+            ))}
+          </Filters>
+          <SearchRow>
+            <Field $search>{t('SearchProjects')}
+              <input type="search" placeholder={t('SearchByTag')} value={searchTerm} onChange={event => updateFilter('q', event.target.value)} />
+            </Field>
+            <Field>{t('ProjectContext')}
+              <select value={context} onChange={event => updateFilter('context', event.target.value)}>
+                {[['all', 'AllContexts'], ['University', 'University'], ['Cegep', 'Cegep'], ['Independent', 'Independent']].map(([value, label]) => <option key={value} value={value}>{t(label)}</option>)}
+              </select>
+            </Field>
+            {(discipline !== 'all' || context !== 'all' || searchTerm) && <FilterButton type="button" onClick={reset}>{t('ClearFilters')}</FilterButton>}
+          </SearchRow>
+          <Results role="status">{t('ProjectCount', { count: filteredProjects.length })}</Results>
+          <Grid>{filteredProjects.map(project => <ProjectCard key={project.id} project={project} />)}</Grid>
+          {filteredProjects.length === 0 && <Empty><p>{t('NoProjectsFound')}</p><FilterButton type="button" onClick={reset}>{t('ShowAllProjects')}</FilterButton></Empty>}
+        </Wrapper>
+      </Container>
+    </>
+  );
 };
 
 export default Projects;
