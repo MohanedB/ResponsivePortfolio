@@ -4,7 +4,7 @@ Implementation and content provenance, September 5, 2026.
 
 ## Implemented behavior
 
-Project cards are compact, non-clickable articles with a thumbnail, title, short summary and technology tags. Each card has a separate **More information / En savoir plus** button styled as a navigation link. Only that link opens the larger `/projects/:slug` detail page. All 14 current projects have stable slugs and pages; the four recent additions have expanded case studies. Older projects reuse their existing descriptions, contribution text, images and code where present.
+Each compact project card is a single React Router link containing a thumbnail, title, short summary, technology tags and a plain **More information / En savoir plus** text label. Clicking anywhere on the card or activating its link by keyboard opens the larger `/projects/:slug` detail page. Subtle hover and focus feedback indicates the interaction, and motion respects the visitor's reduced-motion preference. All 14 current projects have stable slugs and pages; the four recent additions have expanded case studies. Older projects reuse their existing descriptions, contribution text, images and code where present.
 
 Expanded pages show context, role, tools, contributions, systems, a workflow or responsibility diagram and an outcome. Gallery and code sections appear only when content exists. Section links help visitors move through long pages. External actions distinguish a product website, team write-up, public source and verified playable/download destination.
 
@@ -29,7 +29,7 @@ Global navigation targets home sections from project pages. Navigation manages h
 
 For example, `/?type=gamedev&context=University&q=grouillere#projects` opens the university-games selection with a search for Grouillère. Search ignores case, surrounding whitespace and accents. Unsupported discipline/context values behave as the default. Filter updates replace the current history entry. Reset removes these three parameters and preserves unrelated query parameters.
 
-The card's More information link preserves the home URL in router state. **Back to projects** returns to that URL and `#projects`. A directly opened project URL has no previous grid state, so it returns to `/#projects`. Sharing a case-study URL shares the project itself, without the sender’s earlier filters.
+The card link preserves the home URL in router state. **Back to projects** returns to that URL and `#projects`. A directly opened project URL has no previous grid state, so it returns to `/#projects`. Sharing a case-study URL shares the project itself, without the sender’s earlier filters.
 
 ## Maintain project content
 

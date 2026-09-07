@@ -4,7 +4,18 @@ import { useTranslation } from 'react-i18next';
 import ProjectMedia from '../Project/ProjectMedia';
 import { Link, useLocation } from 'react-router-dom';
 
-const Card = styled.article`
+const Hint = styled.span`
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: auto;
+  padding-top: 10px;
+  color: #d7c5f4;
+  font-size: 13px;
+  span { transition: transform 0.2s ease; }
+`;
+const Card = styled(Link)`
+  text-decoration: none;
   width: 100%;
   min-width: 0;
   padding: 0;
@@ -17,8 +28,25 @@ const Card = styled.article`
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  transition: border-color 0.2s ease;
-  &:focus-within { border-color: ${({ theme }) => theme.primary}; }
+  cursor: pointer;
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+  &:focus-visible {
+    border-color: ${({ theme }) => theme.primary};
+    box-shadow: 0 8px 24px #854ce622;
+    ${Hint} { text-decoration: underline; text-underline-offset: 4px; }
+  }
+  @media (hover: hover) and (pointer: fine) {
+    &:hover {
+      transform: translateY(-4px);
+      border-color: ${({ theme }) => theme.primary};
+      box-shadow: 0 10px 28px #854ce622;
+      ${Hint} { text-decoration: underline; text-underline-offset: 4px; }
+      ${Hint} span { transform: translateX(4px); }
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    &, &:hover, ${Hint} span, &:hover ${Hint} span { transform: none; transition: none; }
+  }
 `;
 const Details = styled.div`
   display: flex;
@@ -51,47 +79,21 @@ const Tags = styled.div`
   gap: 6px;
   span { font-size: 11px; color: #d7c5f4; background: #854ce622; padding: 4px 9px; border-radius: 8px; }
 `;
-const Action = styled.div`
-  margin-top: auto;
-  padding: 14px 18px 18px;
-  border-top: 1px solid #393443;
-`;
-const MoreInformation = styled(Link)`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-  min-height: 44px;
-  padding: 10px 14px;
-  border: 1px solid #9a6ade;
-  border-radius: 9px;
-  background: #593398;
-  color: #f2edf9;
-  font-size: 14px;
-  font-weight: 500;
-  text-decoration: none;
-  transition: background 0.2s ease;
-  &:hover { background: #7045b2; }
-`;
 
 export default function ProjectCards({ project }) {
   const { t } = useTranslation();
   const location = useLocation();
   const titleId = `project-card-title-${project.slug}`;
   return (
-    <Card aria-labelledby={titleId}>
+    <Card to={`/projects/${project.slug}`} state={{ from: `/${location.search}#projects` }} aria-label={t('OpenProject', { title: t(project.titleKey) })}>
       <ProjectMedia project={project} />
       <Details>
         <Category>{t(project.mainCategory)} · {t(project.statusKey || project.dateKey)}</Category>
         <Title id={titleId}>{t(project.titleKey)}</Title>
         <Description>{t(project.descriptionKey)}</Description>
         <Tags>{project.tags?.map(tag => <span key={tag}>{tag}</span>)}</Tags>
+        <Hint>{t('ViewProject')} <span aria-hidden="true">→</span></Hint>
       </Details>
-      <Action>
-        <MoreInformation to={`/projects/${project.slug}`} state={{ from: `/${location.search}#projects` }} aria-label={t('OpenProject', { title: t(project.titleKey) })}>
-          {t('ViewProject')} <span aria-hidden="true">→</span>
-        </MoreInformation>
-      </Action>
     </Card>
   );
 }
