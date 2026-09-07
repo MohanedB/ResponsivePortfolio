@@ -1,6 +1,6 @@
 # Mohaned Bouzaidi — Portfolio
 
-Bilingual React portfolio for games, prototypes and software projects. Visitors see all work immediately and can combine Games/Software filters with University, Cégep or Independent context. Each compact project card links to its dedicated `/projects/:slug` page and includes a persistent More information text label; ARCHIVERIF, LetumLoop TPS, Straw and Feathers, and Grouillère have expanded case studies.
+Bilingual React portfolio for games, prototypes and software projects. Visitors see all work immediately and can combine Games/Software filters with project context, game engine, calendar year, programming language and search. Each compact project card links to its dedicated `/projects/:slug` page and includes a persistent More information text label; ARCHIVERIF, LetumLoop TPS, Straw and Feathers, and Grouillère have expanded case studies.
 
 ## Run locally
 
@@ -18,7 +18,7 @@ Open [localhost:3000](http://localhost:3000). The app uses the existing Create R
 
 Examples: `/projects/archiverif`, `/projects/letumloop-tps`, `/projects/straw-and-feathers`, `/projects/grouillere`. Every project record has a stable slug. Unknown addresses show a translated not-found page with a return link.
 
-Home filters live in the URL: `type=gamedev|software`, `context=University|Cegep|Independent`, and `q=search text`. For example, `/?type=gamedev&context=University&q=grouillere#projects` opens a filtered grid. Opening a case study from that grid preserves its return URL. A directly opened project page returns to `/#projects`.
+Home filters live in the URL: `type=gamedev|software`, `context=University|Cegep|Independent`, `engine=unity|unreal`, `year=YYYY|unspecified`, `language=language ID`, and `q=search text`. For example, `/?type=gamedev&engine=unity&year=2025&language=csharp#projects` opens the matching Unity/C# games. Options come from confirmed project metadata, and selected filters combine. Unsupported filter values behave as All. Reset clears these six parameters and preserves unrelated parameters. Opening a case study from the filtered grid preserves its return URL. A directly opened project page returns to `/#projects`.
 
 The included `vercel.json` SPA rewrite supports application routes on Vercel. Other static hosts need an equivalent fallback to `index.html` for direct project-page requests and refreshes.
 
@@ -29,7 +29,7 @@ npm test -- --watchAll=false --runInBand
 npm run build
 ```
 
-The repository suite contains 17 tests across four suites covering project discovery, shareable links, translated search, combined filters, empty results, direct case-study rendering, preserved return filters, French content/product links, unknown slugs, gallery behavior and contact validation/sending states. Email transport is mocked; no test email is sent. The CI production build and Chromium/Edge checks at 1440, 390 and 320 CSS pixels passed. Detailed browser results and pending hosted deployment verification are recorded in the project documentation.
+The repository suite contains 24 tests across four suites covering project discovery, shareable links, translated search, combined engine/year/language filters, unspecified years, invalid filter values, complete reset, direct case-study rendering, preserved return filters, French content/product links, unknown slugs, gallery behavior and contact validation/sending states. Email transport is mocked; no test email is sent. The filter update was checked in Chromium on desktop and at 390 and 320 CSS pixels. Detailed verification results are recorded in the project documentation.
 
 ## Update content
 
@@ -40,7 +40,7 @@ The repository suite contains 17 tests across four suites covering project disco
 - `src/Image/`: local images. `src/Image/case-studies/` holds the new authentic captures. Projects without an image use a title cover.
 - `src/components/Skills/SkillIcon.jsx`: bundled icons for the skill labels; no external image hosting is needed.
 
-Give every project a unique, stable `slug`; add its expanded content under the same key in `caseStudies.js`. Use `github` only for verified public source repositories. Use `website` and an optional `websiteLabelKey` for product sites, files or team showcases. Set `playableUrl` only for a verified public playable or download destination. Omit unavailable links and unknown dates. Add a `whatIDidKey` for confirmed personal contributions.
+Give every project a unique, stable `slug`; add its expanded content under the same key in `caseStudies.js`. Define explicit `engines`, `years` and `languages` arrays using confirmed metadata; unknown values remain empty. The four recent projects have no confirmed calendar year, and Straw and Feathers' engine/languages are still unconfirmed. See [Project discovery filters](../docs/project-filters.md) for stable IDs, the complete mapping and date-provenance cautions. Use `github` only for verified public source repositories. Use `website` and an optional `websiteLabelKey` for product sites, files or team showcases. Set `playableUrl` only for a verified public playable or download destination. Omit unavailable links and unknown dates. Add a `whatIDidKey` for confirmed personal contributions.
 
 Gallery items support `image`, `video` and click-to-load `embed` media with localized `alt`/`caption`, optional `poster`, and optional credit. Import local images into the data file. Images can be enlarged; videos use controls and do not autoplay. Code items use localized `title`/`description`, a language label, the exact source text and source file/revision attribution. Public source URLs are optional and must be accessible. The renderer hides sections without content and lets visitors expand code excerpts on demand.
 

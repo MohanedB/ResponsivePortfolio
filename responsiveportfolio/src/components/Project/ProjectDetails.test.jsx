@@ -1,5 +1,5 @@
 import React from 'react';
-import { fireEvent, render, screen, within } from '@testing-library/react';
+import { act, fireEvent, render, screen, within } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import { ThemeProvider } from 'styled-components';
 import { I18nextProvider } from 'react-i18next';
@@ -35,17 +35,22 @@ test('opens a direct TPS URL with explained real code and no unavailable downloa
   expect(within(details).getByRole('region')).toHaveTextContent('CanJump_Implementation');
 });
 
-test('returns to the same project search and combined filters', () => {
-  renderPage('/?type=gamedev&context=University&q=grouillere');
-  fireEvent.click(screen.getByRole('link', { name: 'More information about Grouillère' }));
-  expect(screen.getByRole('heading', { level: 1 })).toHaveTextContent('Grouillère');
-  const back = screen.getAllByRole('link', { name: 'Back to projects' })[0];
-  expect(back).toHaveAttribute('href', '/?type=gamedev&context=University&q=grouillere#projects');
+test('preserves the search and all combined filters when returning after a language switch', async () => {
+  renderPage('/?type=gamedev&context=University&engine=unity&year=2025&language=csharp&q=robot');
+  fireEvent.click(screen.getByRole('link', { name: 'More information about Robot Control in Unity' }));
+  expect(screen.getByRole('heading', { level: 1 })).toHaveTextContent('Robot Control in Unity');
+  await act(async () => { await i18n.changeLanguage('fr'); });
+  const back = screen.getAllByRole('link', { name: 'Retour aux projets' })[0];
+  expect(back).toHaveAttribute('href', '/?type=gamedev&context=University&engine=unity&year=2025&language=csharp&q=robot#projects');
   fireEvent.click(back);
-  expect(screen.getByRole('searchbox')).toHaveValue('grouillere');
-  expect(screen.getByRole('combobox')).toHaveValue('University');
-  expect(screen.getByRole('button', { name: 'Games' })).toHaveAttribute('aria-pressed', 'true');
-  expect(screen.queryByRole('link', { name: 'More information about ARCHIVERIF' })).not.toBeInTheDocument();
+  expect(screen.getByRole('searchbox')).toHaveValue('robot');
+  expect(screen.getByRole('combobox', { name: 'Contexte du projet' })).toHaveValue('University');
+  expect(screen.getByRole('combobox', { name: 'Moteur de jeu' })).toHaveValue('unity');
+  expect(screen.getByRole('combobox', { name: 'Année' })).toHaveValue('2025');
+  expect(screen.getByRole('combobox', { name: 'Langage de programmation' })).toHaveValue('csharp');
+  expect(screen.getByRole('button', { name: 'Jeux' })).toHaveAttribute('aria-pressed', 'true');
+  expect(screen.getByRole('link', { name: /En savoir plus sur Contrôle d'un Robot en Unity/ })).toBeVisible();
+  expect(screen.queryByRole('link', { name: 'En savoir plus sur ARCHIVERIF' })).not.toBeInTheDocument();
 });
 
 test('localizes the case study and public product destination', async () => {

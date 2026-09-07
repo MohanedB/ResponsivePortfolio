@@ -10,7 +10,7 @@ The updated page opens directly on the introduction, puts projects immediately a
 
 ## Findings addressed
 
-- Project discovery required category choices before showing work. The unified grid now shows the work immediately, with combinable discipline/context filters, a result count, and a clear reset action.
+- Project discovery required category choices before showing work. The unified grid now shows the work immediately, with combinable discipline, context, game-engine, calendar-year and programming-language filters, a result count, and a clear reset action. See [Project discovery filters](project-filters.md) for metadata and URL behavior.
 - Search matched internal translation keys instead of displayed project names. It now searches translated titles, descriptions, technologies, and aliases, including accent-insensitive matching for Grouillère.
 - Project cards were mouse-oriented clickable containers with hover-only hints. Each compact card is now a single navigation link with a persistent **More information / En savoir plus** text label. The whole card opens its shareable `/projects/:slug` page, with subtle hover and keyboard-focus feedback that respects reduced-motion preferences. The four recent additions have expanded case studies. The earlier summary modal has been replaced by these pages. A modal is used only to enlarge gallery images.
 - Case-study navigation preserves the home page’s search, discipline and context filters in the URL. Pages provide contribution sections, section links, explained code excerpts, a return link, translated titles and descriptions, and a useful not-found state. Galleries include captions, optional credits and image enlargement; code excerpts expand on demand.

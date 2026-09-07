@@ -6,6 +6,9 @@ export const recentProjects = [
   {
     id: 12,
     slug: 'straw-and-feathers',
+    engines: [],
+    years: [],
+    languages: [],
     titleKey: 'strawTitle',
     descriptionKey: 'strawDescription',
     whatIDidKey: 'strawContribution',
@@ -18,6 +21,9 @@ export const recentProjects = [
   {
     id: 14,
     slug: 'archiverif',
+    engines: [],
+    years: [],
+    languages: ['typescript', 'python'],
     titleKey: 'archiverifTitle',
     descriptionKey: 'archiverifDescription',
     whatIDidKey: 'archiverifContribution',
@@ -31,6 +37,9 @@ export const recentProjects = [
   {
     id: 13,
     slug: 'grouillere',
+    engines: ['unreal'],
+    years: [],
+    languages: ['cpp', 'blueprints'],
     titleKey: 'grouillereTitle',
     descriptionKey: 'grouillereDescription',
     whatIDidKey: 'grouillereContribution',
@@ -45,6 +54,9 @@ export const recentProjects = [
   {
     id: 11,
     slug: 'letumloop-tps',
+    engines: ['unreal'],
+    years: [],
+    languages: ['cpp'],
     titleKey: 'letumTitle',
     descriptionKey: 'letumDescription',
     whatIDidKey: 'letumContribution',
