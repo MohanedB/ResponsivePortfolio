@@ -9,11 +9,11 @@ The project grid combines discipline, project context, game engine, calendar yea
 | `type` | `gamedev`, `software` | All projects |
 | `context` | `University`, `Cegep`, `Independent` | All contexts |
 | `engine` | Engine IDs present in the dataset: currently `unity`, `unreal` | All engines |
-| `year` | Documented years present in the dataset, currently `2021`–`2025`; `unspecified` selects projects with no confirmed year | All years |
+| `year` | Documented years present in the dataset, currently `2021`–`2026`; `unspecified` is available only when a project has no confirmed year, which currently applies to none | All years |
 | `language` | Language IDs present in the dataset, listed below | All languages |
 | `q` | Search text | Empty search |
 
-For example, `/?type=gamedev&engine=unity&year=2025&language=csharp#projects` selects the documented 2025 Unity/C# games. `/?year=unspecified#projects` selects the four recent projects whose calendar years have not been confirmed.
+For example, `/?type=gamedev&engine=unity&year=2025&language=csharp#projects` selects the documented 2025 Unity/C# games. `/?year=2026#projects` selects Straw and Feathers, ARCHIVERIF, Grouillère and LetumLoop — TPS Prototype, all confirmed by Mohaned as projects he made in 2026.
 
 Dropdown options come from the current dataset. Unsupported query values behave as the corresponding All option. Labels are translated; URL IDs remain stable across English and French. Text search ignores case, accents and surrounding whitespace and includes displayed project text, tags, aliases, human-readable engine/language labels and documented years.
 
@@ -33,7 +33,7 @@ languages: ['csharp'],
 - `years`: strings naming documented calendar years, independent of academic labels such as `YEAR1`. Use `[]` when the year is unknown. The UI's `unspecified` sentinel is not stored in project metadata. If an explicitly documented project period spans several years, list each of those years.
 - `languages`: stable IDs for demonstrated programming languages or Blueprint visual scripting: `cpp`, `csharp`, `javascript`, `typescript`, `python`, `java`, `swift`, `blueprints`. Use `[]` when unconfirmed. Tools, databases and frameworks are still available as tags but are not classified as languages.
 
-An empty engine or language array matches the corresponding All option, but no specific engine/language selection. An empty year array also matches the localized **Not specified** option. Do not derive missing metadata from repository names, commit dates, page publication dates, school years, status labels or the technologies listed in the general skills section.
+An empty engine or language array matches the corresponding All option, but no specific engine/language selection. If a future project has an empty year array, the localized **Not specified** option appears and selects it. All 14 current projects have a year, so that option is absent and `year=unspecified` behaves as an unsupported value. Do not derive missing metadata from repository names, commit dates, page publication dates, school years, status labels or the technologies listed in the general skills section.
 
 ## Current mapping and evidence
 
@@ -41,10 +41,10 @@ Older project years mirror their existing English/French project-date text in `s
 
 | Project | Engines | Calendar years | Languages | Evidence |
 | --- | --- | --- | --- | --- |
-| Straw and Feathers | — | — | — | Engine, languages and calendar year await owner confirmation. |
-| ARCHIVERIF | — | — | `typescript`, `python` | Inspected frontend/backend source documented in the case-study provenance. Calendar year unconfirmed. |
-| Grouillère | `unreal` | — | `cpp`, `blueprints` | Existing project tags and verified team write-up. Calendar year unconfirmed. |
-| LetumLoop — TPS Prototype | `unreal` | — | `cpp` | Inspected Unreal/C++ source documented in the case-study provenance. Calendar year unconfirmed. |
+| Straw and Feathers | — | `2026` | — | Year confirmed by Mohaned. Engine and languages await owner confirmation. |
+| ARCHIVERIF | — | `2026` | `typescript`, `python` | Year confirmed by Mohaned; inspected frontend/backend source documented in the case-study provenance. |
+| Grouillère | `unreal` | `2026` | `cpp`, `blueprints` | Year confirmed by Mohaned; existing project tags and verified team write-up establish technologies. |
+| LetumLoop — TPS Prototype | `unreal` | `2026` | `cpp` | Year confirmed by Mohaned; inspected Unreal/C++ source documented in the case-study provenance. |
 | Paysage-Meloche | — | `2023` | `javascript` | Date key `education11`; JavaScript excerpt label. |
 | HalalBites | — | `2024` | `javascript`, `java` | Date key `education20`; JavaScript/Java SpringBoot tags and Java excerpt label. |
 | Pet-Clinic | — | `2023` | `javascript` | Date key `education14`; JavaScript tag and excerpt label. |
@@ -58,6 +58,6 @@ Older project years mirror their existing English/French project-date text in `s
 
 AppDeMo's displayed project date is March 4–May 10, **2024**, while the Montréal internship experience uses March 4–May 10, **2025** (`education26` versus `exper3`). Its filter metadata deliberately follows the existing project display. Neither date is corrected by this change; the owner must confirm the right year before reconciling them.
 
-All four recent projects keep empty year arrays. Grouillère's teammate-article publication date is not treated as its release year, and Git history is not used to assign years to ARCHIVERIF or LetumLoop. Straw and Feathers' controller work does not establish its engine or programming language.
+All four recent projects use `years: ['2026']` following Mohaned's direct confirmation. Their cards and detail-page facts display 2026. Exact months, days and release dates remain unconfirmed. Grouillère's teammate-article publication date and repository Git history are not the evidence for this year. Straw and Feathers' controller work does not establish its engine or programming language.
 
 See [Project case-study pages](project-case-studies.md) for the recent projects' source and media provenance. Gameplay captures, playable builds and additional source-backed content remain separate follow-ups.

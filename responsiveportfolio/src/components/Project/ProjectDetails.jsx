@@ -183,6 +183,7 @@ export default function ProjectDetails() {
         <Facts aria-label={text.status}>
           <dl>
             {study?.role && <><dt>{text.role}</dt><dd>{localized(study.role)}</dd></>}
+            {project.statusKey && !!project.years?.length && <><dt>{t('ProjectYear')}</dt><dd>{project.years.join(', ')}</dd></>}
             <dt>{text.status}</dt><dd>{t(project.statusKey || project.dateKey)}</dd>
             <dt>{text.stack}</dt><dd><Tags>{project.tags.map(tag => <span key={tag}>{tag}</span>)}</Tags></dd>
           </dl>

@@ -22,7 +22,7 @@ The updated page opens directly on the introduction, puts projects immediately a
 
 ## New project content and provenance
 
-All four additions have English and French copy. Unknown dates and academic year numbers have been omitted.
+All four additions have English and French copy. Mohaned confirmed that Straw and Feathers, ARCHIVERIF, Grouillère and LetumLoop — TPS Prototype were made in **2026**. Their filter metadata, cards and detail-page facts show that calendar year. Exact months, days, release dates and academic year numbers remain unconfirmed and have been omitted. All 14 projects now have a documented year, so the conditional **Not specified** year option is currently absent.
 
 | Project | Evidence and presentation |
 | --- | --- |

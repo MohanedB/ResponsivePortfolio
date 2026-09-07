@@ -100,11 +100,14 @@ test('applies a calendar year from a shared URL before the visitor touches a fil
   expect(screen.queryByRole('link', { name: 'More information about Straw and Feathers' })).not.toBeInTheDocument();
 });
 
-test('lets visitors find projects whose calendar year has not been specified', () => {
-  renderProjects('/?year=unspecified');
-  expect(screen.getByRole('combobox', { name: 'Year' })).toHaveValue('unspecified');
-  expect(screen.getByRole('link', { name: 'More information about Straw and Feathers' })).toBeVisible();
-  expect(screen.getByRole('link', { name: 'More information about ARCHIVERIF' })).toBeVisible();
+test('finds all four recent projects in 2026 and shows their year on the cards', () => {
+  renderProjects('/?year=2026');
+  expect(screen.getByRole('combobox', { name: 'Year' })).toHaveValue('2026');
+  ['Straw and Feathers', 'ARCHIVERIF', 'Grouillère', 'LetumLoop — TPS Prototype'].forEach(title => {
+    expect(screen.getByRole('link', { name: `More information about ${title}` })).toHaveTextContent('2026');
+  });
+  expect(screen.getAllByRole('link')).toHaveLength(4);
+  expect(screen.queryByRole('option', { name: 'Not specified' })).not.toBeInTheDocument();
   expect(screen.queryByRole('link', { name: 'More information about Robot Control in Unity' })).not.toBeInTheDocument();
 });
 
