@@ -1,11 +1,15 @@
 import archiverifCover from '../Image/ArchiVerif.svg';
 
 // Verified project facts and public destinations: see docs/portfolio-review.md.
-// Unknown dates, individual features, and private repository URLs are omitted.
+// Mohaned confirmed these four projects were made in 2026; exact dates remain unspecified.
+// Unknown individual features and private repository URLs are omitted.
 export const recentProjects = [
   {
     id: 12,
     slug: 'straw-and-feathers',
+    engines: [],
+    years: ['2026'],
+    languages: [],
     titleKey: 'strawTitle',
     descriptionKey: 'strawDescription',
     whatIDidKey: 'strawContribution',
@@ -18,6 +22,9 @@ export const recentProjects = [
   {
     id: 14,
     slug: 'archiverif',
+    engines: [],
+    years: ['2026'],
+    languages: ['typescript', 'python'],
     titleKey: 'archiverifTitle',
     descriptionKey: 'archiverifDescription',
     whatIDidKey: 'archiverifContribution',
@@ -31,6 +38,9 @@ export const recentProjects = [
   {
     id: 13,
     slug: 'grouillere',
+    engines: ['unreal'],
+    years: ['2026'],
+    languages: ['cpp', 'blueprints'],
     titleKey: 'grouillereTitle',
     descriptionKey: 'grouillereDescription',
     whatIDidKey: 'grouillereContribution',
@@ -45,6 +55,9 @@ export const recentProjects = [
   {
     id: 11,
     slug: 'letumloop-tps',
+    engines: ['unreal'],
+    years: ['2026'],
+    languages: ['cpp'],
     titleKey: 'letumTitle',
     descriptionKey: 'letumDescription',
     whatIDidKey: 'letumContribution',

@@ -25,9 +25,14 @@ Global navigation targets home sections from project pages. Navigation manages h
 | --- | --- | --- |
 | `type` | `gamedev`, `software` | All projects |
 | `context` | `University`, `Cegep`, `Independent` | All contexts |
+| `engine` | Dataset engine IDs: `unity`, `unreal` | All engines |
+| `year` | Documented dataset years, currently `2021`–`2026`; `unspecified` is offered only if a project lacks a year, which currently applies to none | All years |
+| `language` | Dataset language IDs: `cpp`, `csharp`, `javascript`, `typescript`, `python`, `java`, `swift`, `blueprints` | All languages |
 | `q` | Search text | Empty search |
 
-For example, `/?type=gamedev&context=University&q=grouillere#projects` opens the university-games selection with a search for Grouillère. Search ignores case, surrounding whitespace and accents. Unsupported discipline/context values behave as the default. Filter updates replace the current history entry. Reset removes these three parameters and preserves unrelated query parameters.
+For example, `/?type=gamedev&context=University&q=grouillere#projects` opens the university-games selection with a search for Grouillère. Adding `engine=unreal&language=cpp&year=2026` also matches its confirmed technologies and owner-confirmed calendar year. All selected filters combine. Search ignores case, surrounding whitespace and accents, and includes readable engine/language labels and documented years. Dropdown options come from project metadata; unsupported filter values behave as the default. Filter updates replace the current history entry. Reset removes `type`, `context`, `engine`, `year`, `language` and `q` and preserves unrelated query parameters.
+
+Every project has explicit `engines`, `years` and `languages` arrays. Mohaned confirmed that Straw and Feathers, ARCHIVERIF, Grouillère and LetumLoop — TPS Prototype were made in 2026; their cards and detail-page facts display that year. Exact months, days and release dates remain unconfirmed. All current projects have a year, so **Not specified** is absent; it appears only if a future project has an empty year array. Straw and Feathers' engine/languages remain unconfirmed. See [Project discovery filters](project-filters.md) for stable IDs, all 14 metadata mappings, evidence and the separate unresolved AppDeMo/internship year discrepancy.
 
 The card link preserves the home URL in router state. **Back to projects** returns to that URL and `#projects`. A directly opened project URL has no previous grid state, so it returns to `/#projects`. Sharing a case-study URL shares the project itself, without the sender’s earlier filters.
 
@@ -175,7 +180,7 @@ The three new games currently have no supplied gameplay media or verified playab
 - [x] Four bilingual case studies with confirmed roles, source-backed ARCHIVERIF/TPS descriptions and accurate external destinations.
 - [x] Captioned gallery/enlargement, video/embed support, expandable code and explanatory diagrams.
 - [x] Two authentic ARCHIVERIF captures and three excerpts compared exactly with source revisions.
-- [x] Repository suite: 17 passing tests across four suites, including the four gallery checks now committed in `src/components/Project/ProjectMedia.test.jsx`.
+- [x] Repository suite: 24 passing tests across four suites, including combined engine/year/language filters, the four projects selected by the 2026 year filter, reset/invalid values, bilingual return context and the four gallery checks in `src/components/Project/ProjectMedia.test.jsx`.
 - [x] CI production build: passed; JavaScript bundle approximately 197.6 KB gzip. Existing Create React App/toolchain notices remain.
 - [x] Chromium via Edge at 1440, 390 and 320 CSS pixels: all four new pages without horizontal page overflow; gallery enlargement, Escape and focus return; a 288px-wide dialog at the 320px viewport; code scrolling contained within an 8px scrollbar; EN/FR menus and direct links.
 - [x] Explicit return preserved query, focus and scroll; native browser Back restored the recorded 638px position with query and heading focus. No browser errors were reported.

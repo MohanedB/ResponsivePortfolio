@@ -84,11 +84,13 @@ export default function ProjectCards({ project }) {
   const { t } = useTranslation();
   const location = useLocation();
   const titleId = `project-card-title-${project.slug}`;
+  const date = project.dateKey ? t(project.dateKey) : project.years?.join(', ');
+  const context = [t(project.mainCategory), date, project.statusKey ? t(project.statusKey) : ''].filter(Boolean).join(' · ');
   return (
     <Card to={`/projects/${project.slug}`} state={{ from: `/${location.search}#projects` }} aria-label={t('OpenProject', { title: t(project.titleKey) })}>
       <ProjectMedia project={project} />
       <Details>
-        <Category>{t(project.mainCategory)} · {t(project.statusKey || project.dateKey)}</Category>
+        <Category>{context}</Category>
         <Title id={titleId}>{t(project.titleKey)}</Title>
         <Description>{t(project.descriptionKey)}</Description>
         <Tags>{project.tags?.map(tag => <span key={tag}>{tag}</span>)}</Tags>

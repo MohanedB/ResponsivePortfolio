@@ -178,7 +178,7 @@ const Navbar = () => {
       <NavbarContainer>
         <NavLogo href="/#about" onClick={() => setIsOpen(false)}>
           <img src={brandMark} width="40" height="40" alt="" />
-          <span>Mohaned.</span>
+          <span>Portfolio</span>
         </NavLogo>
         <NavItems>{renderLinks()}</NavItems>
         <ButtonContainer>
