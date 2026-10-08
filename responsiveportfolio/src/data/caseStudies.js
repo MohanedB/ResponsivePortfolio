@@ -1,3 +1,5 @@
+import { strawV05CaseStudy } from './strawV05CaseStudy';
+import { boustreamingCaseStudy } from './boustreamingCaseStudy';
 import archiverifHome from '../Image/case-studies/archiverif-home.png';
 import archiverifWorkflow from '../Image/case-studies/archiverif-document-workflow.png';
 
@@ -255,54 +257,8 @@ export const caseStudies = {
       },
     ],
   },
-  'straw-and-feathers': {
-    role: { en: 'Programmer · All code in prototype v1', fr: 'Programmeur · Tout le code du prototype v1' },
-    intro: {
-      en: 'Straw and Feathers is my current university game project. I wrote all the code in its first prototype, including the full character controllers for the straw and the crow and the system for switching between them.',
-      fr: 'Straw and Feathers est mon projet de jeu universitaire actuel. J’ai écrit tout le code du premier prototype, notamment les contrôleurs complets de la paille et du corbeau ainsi que le système permettant de passer de l’un à l’autre.',
-    },
-    systems: [
-      {
-        title: { en: 'The straw’s character controller', fr: 'Le contrôleur de la paille' },
-        body: {
-          en: 'I implemented the complete controller for the straw. This covers the code responsible for controlling that character in the current prototype and forms one half of the two-character experience.',
-          fr: 'J’ai implémenté le contrôleur complet de la paille. Cela couvre le code qui permet de contrôler ce personnage dans le prototype actuel et constitue l’une des deux parties de l’expérience à deux personnages.',
-        },
-      },
-      {
-        title: { en: 'The crow’s character controller', fr: 'Le contrôleur du corbeau' },
-        body: {
-          en: 'I also implemented the crow’s complete controller. My programming contribution covers both playable characters in the prototype.',
-          fr: 'J’ai également implémenté le contrôleur complet du corbeau. La programmation des deux personnages jouables fait partie de ma contribution au prototype.',
-        },
-      },
-      {
-        title: { en: 'Switching between the two characters', fr: 'Passer d’un personnage à l’autre' },
-        body: {
-          en: 'I wrote the system that switches control between the straw and the crow, connecting the two controllers in the same prototype. My responsibility extends to all of the code visible in this first version.',
-          fr: 'J’ai écrit le système qui transfère le contrôle entre la paille et le corbeau, reliant les deux contrôleurs dans le même prototype. Ma responsabilité couvre l’ensemble du code visible dans cette première version.',
-        },
-      },
-    ],
-    flow: {
-      title: { en: 'My programming responsibilities in v1', fr: 'Mes responsabilités de programmation dans la v1' },
-      steps: [
-        { en: 'Straw controller', fr: 'Contrôleur de la paille' },
-        { en: 'Character switching', fr: 'Changement de personnage' },
-        { en: 'Crow controller', fr: 'Contrôleur du corbeau' },
-      ],
-    },
-    outcome: {
-      en: 'The first prototype brings both controllable characters and switching into one version. Development is continuing, with my contribution covering all of the prototype’s programming.',
-      fr: 'Le premier prototype réunit les deux personnages contrôlables et le passage de l’un à l’autre. Le développement se poursuit, et ma contribution couvre toute la programmation du prototype.',
-    },
-    availability: {
-      en: 'Prototype v1 is in development. A public playable version is not currently linked.',
-      fr: 'Le prototype v1 est en développement. Aucune version jouable publique n’est actuellement liée.',
-    },
-    media: [],
-    code: [],
-  },
+  'straw-and-feathers': strawV05CaseStudy,
+  boustreaming: boustreamingCaseStudy,
   grouillere: {
     role: { en: 'Character programmer · Controller and character interactions', fr: 'Programmeur personnage · Contrôleur et interactions' },
     intro: {

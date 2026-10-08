@@ -1,10 +1,10 @@
 # Project case-study pages
 
-Implementation and content provenance, September 5, 2026.
+Implementation and content provenance, updated October 8, 2026. Earlier verification is recorded separately below.
 
 ## Implemented behavior
 
-Each compact project card is a single React Router link containing a thumbnail, title, short summary, technology tags and a plain **More information / En savoir plus** text label. Clicking anywhere on the card or activating its link by keyboard opens the larger `/projects/:slug` detail page. Subtle hover and focus feedback indicates the interaction, and motion respects the visitor's reduced-motion preference. All 14 current projects have stable slugs and pages; the four recent additions have expanded case studies. Older projects reuse their existing descriptions, contribution text, images and code where present.
+Each compact project card is a single React Router link containing a thumbnail, title, short summary, technology tags and a plain **More information / En savoir plus** text label. Clicking anywhere on the card or activating its link by keyboard opens the larger `/projects/:slug` detail page. Subtle hover and focus feedback indicates the interaction, and motion respects the visitor's reduced-motion preference. All 15 current projects have stable slugs and pages; five recent projects have expanded case studies. Older projects reuse their existing descriptions, contribution text, images and code where present.
 
 Expanded pages show context, role, tools, contributions, systems, a workflow or responsibility diagram and an outcome. Gallery and code sections appear only when content exists. Section links help visitors move through long pages. External actions distinguish a product website, team write-up, public source and verified playable/download destination.
 
@@ -14,6 +14,7 @@ Expanded pages show context, role, tools, contributions, systems, a workflow or 
 | LetumLoop — TPS Prototype | `/projects/letumloop-tps` |
 | Straw and Feathers | `/projects/straw-and-feathers` |
 | Grouillère | `/projects/grouillere` |
+| BouStreaming | `/projects/boustreaming` |
 
 `App.js` uses the existing React Router dependency. `responsiveportfolio/vercel.json` rewrites application paths to the SPA entry point for direct page requests and refreshes. Project pages update the document title and description in the current language. Unknown slugs and unmatched paths display a translated not-found page with a return link. This is an application state served through the SPA rewrite, not a server-generated HTTP 404 page.
 
@@ -32,7 +33,7 @@ Global navigation targets home sections from project pages. Navigation manages h
 
 For example, `/?type=gamedev&context=University&q=grouillere#projects` opens the university-games selection with a search for Grouillère. Adding `engine=unreal&language=cpp&year=2026` also matches its confirmed technologies and owner-confirmed calendar year. All selected filters combine. Search ignores case, surrounding whitespace and accents, and includes readable engine/language labels and documented years. Dropdown options come from project metadata; unsupported filter values behave as the default. Filter updates replace the current history entry. Reset removes `type`, `context`, `engine`, `year`, `language` and `q` and preserves unrelated query parameters.
 
-Every project has explicit `engines`, `years` and `languages` arrays. Mohaned confirmed that Straw and Feathers, ARCHIVERIF, Grouillère and LetumLoop — TPS Prototype were made in 2026; their cards and detail-page facts display that year. Exact months, days and release dates remain unconfirmed. All current projects have a year, so **Not specified** is absent; it appears only if a future project has an empty year array. Straw and Feathers' engine/languages remain unconfirmed. See [Project discovery filters](project-filters.md) for stable IDs, all 14 metadata mappings, evidence and the separate unresolved AppDeMo/internship year discrepancy.
+Every project has explicit `engines`, `years` and `languages` arrays. Straw and Feathers, ARCHIVERIF, Grouillère, LetumLoop — TPS Prototype and BouStreaming use 2026; their cards and detail-page facts display that year. Exact months, days and release dates remain unconfirmed. All current projects have a year, so **Not specified** is absent; it appears only if a future project has an empty year array. The inspected Straw V05 snapshot establishes Unreal Engine 5.7, C++ and Blueprints. See [Project discovery filters](project-filters.md) for stable IDs, all 15 metadata mappings, evidence and the separate unresolved AppDeMo/internship year discrepancy.
 
 The card link preserves the home URL in router state. **Back to projects** returns to that URL and `#projects`. A directly opened project URL has no previous grid state, so it returns to `/#projects`. Sharing a case-study URL shares the project itself, without the sender’s earlier filters.
 
@@ -41,6 +42,8 @@ The card link preserves the home URL in router state. **Back to projects** retur
 - `responsiveportfolio/src/data/projectUpdates.js`: recent project records and short English/French translations.
 - `responsiveportfolio/src/data/const.js`: the complete project list and older project slugs.
 - `responsiveportfolio/src/data/caseStudies.js`: expanded content keyed by the exact project slug.
+- `responsiveportfolio/src/data/strawV05CaseStudy.js`: Straw and Feathers V05 content and local-snapshot code provenance.
+- `responsiveportfolio/src/data/boustreamingCaseStudy.js`: BouStreaming content, private-source excerpt and original brand banner.
 - `responsiveportfolio/src/components/Project/ProjectDetails.jsx`: page renderer and optional sections.
 - `responsiveportfolio/src/components/Project/ProjectGallery.jsx`: media and image enlargement.
 - `responsiveportfolio/src/components/Project/CodeHighlights.jsx`: expandable source excerpts.
@@ -69,7 +72,7 @@ Base roles, systems and outcomes on confirmed facts. Distinguish personal contri
 
 ## Add authentic images or footage
 
-Store shareable local assets under `responsiveportfolio/src/Image/case-studies/` and import them in `caseStudies.js`. Provide both languages for the alt text and caption:
+Store shareable local assets under `responsiveportfolio/src/Image/case-studies/` and import them in `caseStudies.js` or the project's case-study module. Provide both languages for the alt text and caption:
 
 ```js
 {
@@ -103,19 +106,21 @@ Prefer short, clear clips with accurate captions. Credit team media and distingu
 }
 ```
 
-Code uses native expandable `details` sections and a keyboard-focusable horizontal scroll region. The page shows a shortened revision; the full SHA remains in the title attribute and source data. Label partial functions as excerpts. Compare text with `git show <revision>:<file>`, preserve source comments, and document omitted context in the explanation. Record the revision and line range below. Publish only authorized material without credentials or real customer data. Private source can have plain path/revision attribution without an inaccessible GitHub button.
+Code uses native expandable `details` sections and a keyboard-focusable horizontal scroll region. Git-backed excerpts record their full commit SHA; label a local source snapshot explicitly instead of inventing a Git revision. For a local snapshot, record a source-file SHA-256 and line range in the provenance. Label partial functions as excerpts. Compare Git-backed text with `git show <revision>:<file>`, preserve source comments, and document omitted context in the explanation. Publish only authorized material without credentials or real customer data. Private source can have plain file/snapshot attribution without an inaccessible repository button.
 
 ## Verified code provenance
 
-Mohaned confirmed sole authorship of ARCHIVERIF and the TPS prototype and requested interesting source excerpts in the portfolio. All three passages were compared exactly with committed source, including comments, on September 5, 2026. The line ranges refer to these immutable revisions.
+Mohaned confirmed sole authorship of ARCHIVERIF and the TPS prototype and requested interesting source excerpts in the portfolio. Their original three passages were compared exactly with committed source, including comments, on September 5, 2026. The V05 and BouStreaming source locations below were inspected for the October 8 update; V05 is a local snapshot without Git history. These are source-provenance records, not evidence of a successful game build or a new portfolio test run.
 
 | Repository | Full revision | Source path and lines | Published passage |
 | --- | --- | --- | --- |
 | `verifrbq-web` | `34093ac05f449019dee3ce5185c1ed382fcf425c` | `lib/documents.ts`, 58–75 | Complete 18-line `expiryDisplayStatus`: distinguishes expiry today from past expiry through a Montréal-local date helper and preserves missing/pending or unusable-date states. |
 | `Prototype_V1_TPS_DECKBUILDER` | `294662a40f0db48ea42f00015599a931a606d895` | `Prototype_V1/Source/Counterforce/Movement/CounterforceMovementComponent.cpp`, 284–301 | Complete 18-line `CanJump_Implementation`: checks walkable ground and the finite, nonnegative, one-use coyote-time window. |
 | `Prototype_V1_TPS_DECKBUILDER` | `294662a40f0db48ea42f00015599a931a606d895` | `Prototype_V1/Source/Counterforce/Camera/CounterforceCameraBoomComponent.cpp`, 35–53 | Contiguous 19-line excerpt from `BlendLocations`: immediate retraction to a safe distance and interpolated recovery. Labeled as a partial function. |
+| Straw and Feathers local V05 snapshot | No Git revision; source-file SHA-256 `C27C9B1FF65B507D141BD86D1CF90C169178C47CC3AE97CB49AB3E5652A1A1EA` | `Source/Counterforce/Player/CounterforcePlayerController.cpp`, 394–416 | Complete `StartCharacterSwitch`: resets character input, subscribes to camera-blend completion, configures the view transition and changes possession under a guard. |
+| `BouStreaming` | `d1fbf45927d25174cd5b3e7e529ecfaaa087b85c` | `src/components/library/pending-removal.ts`, 220–237 | Complete `flushRemovals`: clears pending state before a focus-related callback can finalize it twice, then publishes the hidden item and starts settlement. |
 
-The inspected source repositories are private. The portfolio publishes short authorized passages with attribution, not full source files or private repository links. Exact excerpt verification does not establish playable behavior: no TPS engine/executable was launched during this research.
+The inspected repositories and the V05 source snapshot are private. The portfolio publishes short authorized passages with attribution, not full source files, private repository links or Fibery download URLs. Exact excerpt verification does not establish playable behavior: no TPS engine/executable was launched during the original source research.
 
 ## Evidence for system descriptions
 
@@ -149,13 +154,33 @@ Paths below are relative to `Prototype_V1/Source/Counterforce/`:
 
 The repository name does not establish deckbuilding. The page does not claim cards, multiplayer, AI enemies, inventory, headshots, penetration or ricochet. An existing development executable was not treated as a packaged redistributable build. The only source-folder screenshot found was a 192×192 editor thumbnail; it was not added as gameplay media.
 
-### Straw and Feathers and Grouillère
+### Straw and Feathers — V05
 
-Descriptions rely on Mohaned’s confirmed contributions. Straw and Feathers: all code in prototype v1, complete straw and crow controllers, and switching between them. Grouillère: the complete character controller and character-related systems, including cheese and poison interactions; teammates handled enemies, the ending cinematic, score and timer.
+The existing `/projects/straw-and-feathers` page now represents the advanced V05 prototype (`AdvancedPrototype`), not ongoing V1 development. Mohaned supplied the outcome that the school did not select the project. The team visuals remain preliminary; neither their polish nor the project-selection outcome determines the programming ownership described here.
 
-The [Grouillère team write-up](https://www.therookies.co/projects/104357) supplies general context and is labeled as a team presentation, not a playable destination. Its author’s individual level/technical-design work is not attributed to Mohaned. Neither game has source-backed excerpts or supplied gameplay media in the case-study data. Do not infer flight, pickup, buff or timing architecture from names or broad contribution statements.
+Local source root: `E:/StrawsAndFeathersV05/20263-Projets3e/StrawAndFeather/StrawAndFeatherUE`. The project descriptor and inspected source establish Unreal Engine 5.7 with C++ and Blueprints. This folder has no Git snapshot; the controller file hash above identifies the inspected local version.
 
-## Screenshot provenance
+Private Fibery evidence in the `cnm-mtl` workspace's `StrawAndFeather` space includes technical design document 12568, technical-proof document 14416, Mohaned's technical-proof reflection 13753, the other programmer's reflection 13752, and tasks 40, 62 and 63. The reflections and task ownership distinguish implementation from RACI oversight:
+
+- Mohaned implemented the Scarecrow/Crow movement and character/camera switching, reusable carrying and automatic drop on switching, compatible item receivers with Blueprint events, and censer activation in the Scarecrow's aura.
+- He integrated the team's animations into gameplay, including Plant/Unplant, Anim Notifies, scare action restrictions and a `HandleDeath` entry point allowing animation before respawn. He also helped establish technical/QA documentation and Perforce review conventions.
+- Other teammates created the character models, animations and VFX. Another programmer implemented crow vision, traps/respawn, the scare ability and enemy-crow behavior; Mohaned's relevant integration and Accountable responsibilities do not establish sole authorship of those systems.
+
+Mohaned's earlier statement that he wrote all V1 code applies to that earlier prototype only. It is not a blanket ownership claim for the team-built V05. Task 62 is marked Done but still contains pending validation notes for item compatibility/rejection, normal dropping, door collision and receiver detection/radius adjustments. The portfolio can describe the implementation without claiming that documentation alone proves every case passed.
+
+No gameplay image or video was embedded in the inspected reflections; the queried carry/receiver/censer tasks and Technical Proof level returned no file attachments. No public playable build or game media has been supplied. Future captures should identify the V05 stage and credit team visuals; private Fibery downloads must not become public portfolio links.
+
+### Grouillère
+
+Mohaned confirmed the complete character controller and character-related systems, including cheese and poison interactions; teammates handled enemies, the ending cinematic, score and timer. The [team write-up](https://www.therookies.co/projects/104357) supplies general context and is labeled as a team presentation, not a playable destination. Its author's individual level/technical-design work is not attributed to Mohaned. Grouillère still has no source-backed excerpt or supplied gameplay media in the case-study data; specific implementation details need actual source evidence.
+
+### BouStreaming
+
+Private source root: `E:/GitHub/BouStreaming`, inspected commit `d1fbf45927d25174cd5b3e7e529ecfaaa087b85c`. The documented stack is Next.js, React, TypeScript, Tailwind and Supabase/PostgreSQL. BouStreaming is working with restricted access. A legal-content version is planned, not presented as already released. No public external URL is supplied, and the private repository is not a visitor destination.
+
+The case-study module is `responsiveportfolio/src/data/boustreamingCaseStudy.js`. Its `flushRemovals` excerpt shows the ordering used to settle a deferred removal while accounting for focus callbacks; it is attributed to the exact commit and file above. Source inspection does not establish public availability or a newly tested deployment.
+
+## Media provenance
 
 Two PNGs were captured directly from the [public ARCHIVERIF English homepage](https://archiverif.ca/en) on September 5, 2026, at 1400×900. The cookie notice was dismissed using its button. No account login, company lookup or private dashboard access occurred. Captures were not cropped, edited or synthesized.
 
@@ -166,13 +191,26 @@ Two PNGs were captured directly from the [public ARCHIVERIF English homepage](ht
 
 Both assets have bilingual alt text/captions and public product credit. The illustrated watchlist is a public example, not customer dashboard data. The existing ARCHIVERIF brand cover originated from the [published brand graphic](https://archiverif.ca/brand/og-image.svg), distinct from these screenshots.
 
+BouStreaming's original banner was copied from `E:/GitHub/BouStreaming/android/app/src/main/res/drawable-xhdpi/banner.png` into `responsiveportfolio/src/Image/case-studies/boustreaming-banner.png`. It is genuine project brand artwork, not an application screenshot, video still or proof of publicly available content. Do not caption it as a product-interface capture.
+
 ## Playable destinations and remaining media
 
 Set a project record’s `playableUrl` only for a checked, public play/download destination. Explain platform/build status in localized availability text. Keep product sites in `website`, public repositories in `github`, and team write-ups in `website` with a translated `websiteLabelKey`.
 
-The three new games currently have no supplied gameplay media or verified playable link. Their diagrams are labeled as implemented systems or responsibilities, and no nonfunctional play button is rendered. ARCHIVERIF links to the live product in the visitor’s current language. Game media remains pending authentic owner files or verified public sources.
+Straw V05, LetumLoop TPS and Grouillère currently have no supplied gameplay media or verified public playable link. Their diagrams are labeled as implemented systems or responsibilities, and no nonfunctional play button is rendered. ARCHIVERIF links to the live product in the visitor's current language. BouStreaming has restricted access and no public external destination; its planned legal-content version must not be presented as available. Authentic gameplay clips, interface captures and shareable builds remain separate follow-ups.
 
-## Implementation and verification status
+## October 8 V05/BouStreaming update — current verification
+
+The content update adds BouStreaming as the fifteenth project and fifth 2026 entry, and replaces Straw's V1-only case study with the source-backed V05 presentation. It records the private/local source provenance, team ownership and media limitations above.
+
+- `npm test -- --watchAll=false --runInBand` passed all 24 tests across four suites.
+- `CI=true npm run build` compiled successfully, with 205.01 KB gzip main JavaScript and the existing Node/Browserslist notices.
+- Both new excerpts exactly match the recorded V05 snapshot and BouStreaming commit. The copied BouStreaming banner's hash matches the original asset.
+- The development server compiled and is running on port 3000. Fresh browser inspection was blocked by the browser tool's URL security policy; no new visual or interaction verification is claimed.
+
+## Historical verification — before the V05/BouStreaming update
+
+The following results describe the earlier four-case-study and discovery-filter work. They do not validate the October 8 content update.
 
 - [x] Stable project slugs and real card links.
 - [x] URL discipline/context/search filters and return to the filtered grid.
@@ -186,4 +224,4 @@ The three new games currently have no supplied gameplay media or verified playab
 - [x] Explicit return preserved query, focus and scroll; native browser Back restored the recorded 638px position with query and heading focus. No browser errors were reported.
 - [x] Pushed code commit `094e1e2` to [PR #2](https://github.com/MohanedB/ResponsivePortfolio/pull/2). Vercel reported a successful deployment; direct ARCHIVERIF and TPS pages, the product screenshot and image enlargement were verified in the existing authenticated in-app browser session.
 
-Email transport remains mocked in tests; no email delivery claim is made. The branch preview retains Vercel authentication and the pull request remains unmerged.
+Email transport was mocked in these tests; no email delivery claim was made. At that verification point, the branch preview retained Vercel authentication and the pull request was unmerged.
