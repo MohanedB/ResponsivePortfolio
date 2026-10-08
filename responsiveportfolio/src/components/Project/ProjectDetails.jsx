@@ -104,7 +104,27 @@ const System = styled.div`
   border-radius: 14px;
   background: ${({ theme }) => theme.card};
   h3 { font-size: 20px; margin-bottom: 14px; }
-  p { color: ${({ theme }) => theme.text_secondary}; font-size: 14px; }
+  p { color: ${({ theme }) => theme.text_secondary}; font-size: 14px; white-space: pre-line; }
+`;
+const Sources = styled.ul`
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 16px;
+  list-style: none;
+  margin: 18px 0 0;
+  padding: 14px 0 0;
+  border-top: 1px solid #393443;
+  a {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    min-height: 36px;
+    color: #d7c5f4;
+    font-size: 13px;
+    text-underline-offset: 3px;
+    overflow-wrap: anywhere;
+  }
+  a:hover { color: #fff; }
 `;
 const Flow = styled.figure`
   border-radius: 16px;
@@ -142,6 +162,7 @@ export default function ProjectDetails() {
   const localized = value => typeof value === 'string' ? value : value?.[language] || value?.en || '';
   const project = projects.find(item => item.slug === slug);
   const study = caseStudies[slug];
+  const systemsLabel = localized(study?.systemsTitle) || text.systems;
   const from = location.state?.from;
   const returnTo = typeof from === 'string' && /^\/(?:\?|#|$)/.test(from) ? from : '/#projects';
   const title = project ? t(project.titleKey) : text.unknown;
@@ -191,15 +212,21 @@ export default function ProjectDetails() {
       </Hero>
       <Contents aria-label={text.contents}>
         <Link to="#contribution" state={location.state}>{text.overview}</Link>
-        {!!study?.systems?.length && <Link to="#systems" state={location.state}>{text.systems}</Link>}
+        {!!study?.systems?.length && <Link to="#systems" state={location.state}>{systemsLabel}</Link>}
         {!!media.length && <Link to="#media" state={location.state}>{text.media}</Link>}
         {!!code.length && <Link to="#code" state={location.state}>{text.code}</Link>}
         {study?.outcome && <Link to="#outcome" state={location.state}>{text.outcome}</Link>}
       </Contents>
       <Section id="contribution"><h2>{text.overview}</h2><p>{project.whatIDidKey ? t(project.whatIDidKey) : description}</p></Section>
       {!!study?.systems?.length && <Section id="systems">
-        <h2>{text.systems}</h2>
-        <Systems>{study.systems.map((system, index) => <System key={index}><h3>{localized(system.title)}</h3><p>{localized(system.body)}</p></System>)}</Systems>
+        <h2>{systemsLabel}</h2>
+        {study.sourcesNote && <p style={{ marginBottom: 20 }}>{localized(study.sourcesNote)}</p>}
+        <Systems>{study.systems.map((system, index) => <System key={index}>
+          <h3>{localized(system.title)}</h3><p>{localized(system.body)}</p>
+          {!!system.sources?.length && <Sources>{system.sources.map(source => <li key={source.url}>
+            <a href={source.url} target="_blank" rel="noopener noreferrer">{localized(source.label)}<FiExternalLink aria-hidden="true" /></a>
+          </li>)}</Sources>}
+        </System>)}</Systems>
         {study.flow && <Flow><figcaption>{localized(study.flow.title)}</figcaption><ol>{study.flow.steps.map((step, index) => <li key={index}><span>{localized(step)}</span>{index < study.flow.steps.length - 1 && <FiArrowRight aria-hidden="true" />}</li>)}</ol></Flow>}
       </Section>}
       {!!media.length && <Section id="media"><h2>{text.media}</h2><ProjectGallery items={media} language={language} /></Section>}

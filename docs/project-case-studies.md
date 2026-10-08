@@ -54,8 +54,16 @@ Keep slugs stable after publishing; a change requires a route redirect to preser
 {
   role: { en: '...', fr: '...' },
   intro: { en: '...', fr: '...' },
+  systemsTitle: { en: '...', fr: '...' }, // optional contribution-section heading
+  sourcesNote: { en: '...', fr: '...' }, // optional source-access explanation
   systems: [
-    { title: { en: '...', fr: '...' }, body: { en: '...', fr: '...' } },
+    {
+      title: { en: '...', fr: '...' },
+      body: { en: '...', fr: '...' },
+      sources: [ // optional evidence links for this contribution
+        { label: { en: '...', fr: '...' }, url: 'https://verified-source.example' },
+      ],
+    },
   ],
   flow: {
     title: { en: '...', fr: '...' },
@@ -69,6 +77,8 @@ Keep slugs stable after publishing; a change requires a route redirect to preser
 ```
 
 Base roles, systems and outcomes on confirmed facts. Distinguish personal contributions from teammates’ work. Describe a diagram as an implementation flow only when source supports that sequence; otherwise label it as responsibilities. Omit unknown dates, team sizes, engine details, metrics and mechanics.
+
+Use optional per-system `sources` for task or documentation evidence, with descriptive labels in both languages. Mohaned explicitly authorized links to the Straw and Feathers Fibery records. Those records may require a workspace login; `sourcesNote` explains that limitation. A source link is evidence for a contribution, not a playable build or a promise of public access. Read Fibery without changing tasks, documents, roles, status or acceptance checklists.
 
 ## Add authentic images or footage
 
@@ -120,7 +130,7 @@ Mohaned confirmed sole authorship of ARCHIVERIF and the TPS prototype and reques
 | Straw and Feathers local V05 snapshot | No Git revision; source-file SHA-256 `C27C9B1FF65B507D141BD86D1CF90C169178C47CC3AE97CB49AB3E5652A1A1EA` | `Source/Counterforce/Player/CounterforcePlayerController.cpp`, 394–416 | Complete `StartCharacterSwitch`: resets character input, subscribes to camera-blend completion, configures the view transition and changes possession under a guard. |
 | `BouStreaming` | `d1fbf45927d25174cd5b3e7e529ecfaaa087b85c` | `src/components/library/pending-removal.ts`, 220–237 | Complete `flushRemovals`: clears pending state before a focus-related callback can finalize it twice, then publishes the hidden item and starts settlement. |
 
-The inspected repositories and the V05 source snapshot are private. The portfolio publishes short authorized passages with attribution, not full source files, private repository links or Fibery download URLs. Exact excerpt verification does not establish playable behavior: no TPS engine/executable was launched during the original source research.
+The inspected repositories and the V05 source snapshot are private. The portfolio publishes short authorized passages with attribution, not full source files, private repository links or Fibery download URLs. Authorized Fibery task/document links are separate from downloads and may require workspace access. Exact excerpt verification does not establish playable behavior: no TPS engine/executable was launched during the original source research.
 
 ## Evidence for system descriptions
 
@@ -160,13 +170,52 @@ The existing `/projects/straw-and-feathers` page now represents the advanced V05
 
 Local source root: `E:/StrawsAndFeathersV05/20263-Projets3e/StrawAndFeather/StrawAndFeatherUE`. The project descriptor and inspected source establish Unreal Engine 5.7 with C++ and Blueprints. This folder has no Git snapshot; the controller file hash above identifies the inspected local version.
 
-Private Fibery evidence in the `cnm-mtl` workspace's `StrawAndFeather` space includes technical design document 12568, technical-proof document 14416, Mohaned's technical-proof reflection 13753, the other programmer's reflection 13752, and tasks 40, 62 and 63. The reflections and task ownership distinguish implementation from RACI oversight:
+The October 8 follow-up inventories the full Fibery task database: **59 tasks across two pages**, with **33 records involving Mohaned**. Of those, **18 Done tasks list him as Responsible, Accountable or Consulted**, and **15 list him only as Informed**. The review was strictly read-only. Mohaned requested complete task-level coverage and explicitly authorized the case study's Fibery links; access to those records may still require the reader's workspace account.
 
-- Mohaned implemented the Scarecrow/Crow movement and character/camera switching, reusable carrying and automatic drop on switching, compatible item receivers with Blueprint events, and censer activation in the Scarecrow's aura.
-- He integrated the team's animations into gameplay, including Plant/Unplant, Anim Notifies, scare action restrictions and a `HandleDeath` entry point allowing animation before respawn. He also helped establish technical/QA documentation and Perforce review conventions.
-- Other teammates created the character models, animations and VFX. Another programmer implemented crow vision, traps/respawn, the scare ability and enemy-crow behavior; Mohaned's relevant integration and Accountable responsibilities do not establish sole authorship of those systems.
+Primary evidence includes the [task board](https://cnm-mtl.fibery.io/StrawAndFeather/13080), [Mohaned's technical-proof reflection](https://cnm-mtl.fibery.io/StrawAndFeather/13753), [technical design document](https://cnm-mtl.fibery.io/StrawAndFeather/12568), [QA document](https://cnm-mtl.fibery.io/StrawAndFeather/12535), [technical-proof document](https://cnm-mtl.fibery.io/StrawAndFeather/14416), and [the other programmer's reflection](https://cnm-mtl.fibery.io/StrawAndFeather/13752). The freshly read reflection establishes direct work beyond what a RACI label alone proves.
 
-Mohaned's earlier statement that he wrote all V1 code applies to that earlier prototype only. It is not a blanket ownership claim for the team-built V05. Task 62 is marked Done but still contains pending validation notes for item compatibility/rejection, normal dropping, door collision and receiver detection/radius adjustments. The portfolio can describe the implementation without claiming that documentation alone proves every case passed.
+#### Complete Responsible / Accountable / Consulted task matrix
+
+Every task in this table is recorded as **Done**. The scope column bounds the portfolio claim; status alone does not establish sole authorship or a newly verified acceptance test.
+
+| Task | Exact Fibery title | Mohaned's role | Contribution scope |
+| --- | --- | --- | --- |
+| [37](https://cnm-mtl.fibery.io/StrawAndFeather/Task/37) | `camera-switch` | Responsible | Character/camera switching, including gameplay and animation sequencing. |
+| [38](https://cnm-mtl.fibery.io/StrawAndFeather/Task/38) | `movement-scarecrow` | Responsible | Scarecrow movement/controller implementation and integration. |
+| [40](https://cnm-mtl.fibery.io/StrawAndFeather/Task/40) | `interaction-carry_object_as_crow` | Responsible | Reusable carrying components, grab/drop and automatic release when switching away from the Crow. |
+| [43](https://cnm-mtl.fibery.io/StrawAndFeather/Task/43) | `movement-playercrow` | Responsible | Playable Crow movement/controller implementation. |
+| [49](https://cnm-mtl.fibery.io/StrawAndFeather/Task/49) | `fibery-technical_document` | Responsible (shared), Accountable | Shared technical documentation and implementation conventions. |
+| [50](https://cnm-mtl.fibery.io/StrawAndFeather/Task/50) | `fibery-quality_document` | Responsible | Shared QA documentation and review conventions, not a claim that every check passed. |
+| [62](https://cnm-mtl.fibery.io/StrawAndFeather/Task/62) | `interaction-item_receiver` | Responsible | Typed item receivers, acceptance/rejection Blueprint events and hook/censer door integration. |
+| [63](https://cnm-mtl.fibery.io/StrawAndFeather/Task/63) | `ability-activateCenser` | Responsible | Censer activation within the Scarecrow's aura and its carrying/receiver integration. |
+| [39](https://cnm-mtl.fibery.io/StrawAndFeather/Task/39) | `ability-crow_vision` | Accountable | Oversight and coordination; do not attribute the teammate's vision implementation to Mohaned. |
+| [41](https://cnm-mtl.fibery.io/StrawAndFeather/Task/41) | `interaction-death` | Accountable | Reflection confirms direct death-animation integration through `HandleDeath`; do not claim sole authorship of respawn. |
+| [42](https://cnm-mtl.fibery.io/StrawAndFeather/Task/42) | `interaction-traps` | Accountable | Oversight and coordination; trap implementation belongs to the other programmer. |
+| [45](https://cnm-mtl.fibery.io/StrawAndFeather/Task/45) | `ability-scare` | Accountable | Reflection confirms direct gameplay/animation integration, action lockouts and animation restoration; the underlying scare ability is shared work. |
+| [57](https://cnm-mtl.fibery.io/StrawAndFeather/Task/57) | `anim-create_player_abp` | Accountable | Reflection confirms direct player Animation Blueprint integration, Plant/Unplant sequencing and Anim Notifies; animation assets are teammates' work. |
+| [68](https://cnm-mtl.fibery.io/StrawAndFeather/Task/68) | `interaction-enemy_crow` | Accountable | Oversight and coordination; enemy-crow implementation belongs to the other programmer. |
+| [24](https://cnm-mtl.fibery.io/StrawAndFeather/Task/24) | `techart-crow vision shader` | Consulted | Consultation on the Crow vision shader; no shader authorship claim. |
+| [33](https://cnm-mtl.fibery.io/StrawAndFeather/Task/33) | `vfx-scarecrow scare` | Consulted | Consultation on scare feedback; no VFX asset authorship claim. |
+| [34](https://cnm-mtl.fibery.io/StrawAndFeather/Task/34) | `vfx-censer` | Consulted | Consultation on censer feedback; no VFX asset authorship claim. |
+| [48](https://cnm-mtl.fibery.io/StrawAndFeather/Task/48) | `design-core-gameplay-tuning` | Consulted | Consultation on core gameplay tuning; do not present this as sole game-design ownership. |
+
+The **15 Informed-only** records are tasks **2, 3, 4, 5, 9, 11, 12, 13, 14, 47 and 60** (Done), and **16, 17, 20 and 21** (Cancelled). Task 60 is `chara-crow texture`. These records establish project awareness, not implementation credit; they are excluded from the personal contribution matrix.
+
+#### Contribution detail recovered in the follow-up
+
+The earlier summary did not adequately explain the following work confirmed in Mohaned's reflection and linked tasks:
+
+- **Switching and animation sequencing:** Plant/Unplant transitions, player Animation Blueprint states and Anim Notifies connect presentation to the character/camera switch.
+- **Scare integration:** movement, switching and repeat-trigger restrictions during the scare, followed by restoration of normal animation behavior. This is Mohaned's integration work, not sole authorship of the teammate's scare system or animation assets.
+- **Death integration:** `HandleDeath` provides a Blueprint-overridable entry point so a death animation can finish before respawn.
+- **Object interaction architecture:** reusable carryable components, physics-body lookup, grab/drop, automatic release, typed receivers and Blueprint acceptance/rejection events. The hook/censer interaction connects object placement with opening a door.
+- **Technical and QA work:** shared documentation, validation criteria and Perforce review conventions, with source links to the exact tasks and documents.
+
+The inspected local snapshot corroborates `StartCharacterSwitch` and completion hooks in `Source/Counterforce/Player/CounterforcePlayerController.cpp`, the scare switch guard in the same file, `HandleDeath` in its header, carryable state/physics restoration in `Source/Counterforce/Interaction/Carry/CarryableComponent.cpp`, typed receiver events in `Source/Counterforce/Interaction/Items/InteractionReceiverComponent.cpp`, and censer activation in `Source/Counterforce/Interaction/Censer/CenserComponent.cpp`. The snapshot's carryable physics lookup uses the owner's root primitive component. Its default C++ `HandleDeath` immediately calls `Respawn`; the delayed animation sequence is Blueprint integration described in Fibery. Plant/Unplant assets and player Animation Blueprints exist, but binary `.uasset` files do not expose their graph logic to this source inspection. Do not misrepresent the old local snapshot as exhaustive evidence of later documented work.
+
+Mohaned's earlier statement that he wrote all V1 code applies to that earlier prototype only. It is not a blanket ownership claim for the team-built V05. Teammates created character models, textures, animations and VFX and implemented other gameplay systems. Accountable or Consulted roles are retained explicitly; direct implementation is attributed only where the reflection or source supports it.
+
+Task 62 is marked Done but still contains pending validation notes for item compatibility/rejection, normal dropping, door collision and receiver detection/radius adjustments. Original task acceptance checklists are project records, not fresh QA verification performed for this portfolio update. The QA entry **Camera Ceiling Clipping — Fixed** has no assignee, so its fix is not attributed to Mohaned.
 
 No gameplay image or video was embedded in the inspected reflections; the queried carry/receiver/censer tasks and Technical Proof level returned no file attachments. No public playable build or game media has been supplied. Future captures should identify the V05 stage and credit team visuals; private Fibery downloads must not become public portfolio links.
 
@@ -199,14 +248,18 @@ Set a project record’s `playableUrl` only for a checked, public play/download 
 
 Straw V05, LetumLoop TPS and Grouillère currently have no supplied gameplay media or verified public playable link. Their diagrams are labeled as implemented systems or responsibilities, and no nonfunctional play button is rendered. ARCHIVERIF links to the live product in the visitor's current language. BouStreaming has restricted access and no public external destination; its planned legal-content version must not be presented as available. Authentic gameplay clips, interface captures and shareable builds remain separate follow-ups.
 
-## October 8 V05/BouStreaming update — current verification
+## October 8 Fibery coverage follow-up — verification
 
-The content update adds BouStreaming as the fifteenth project and fifth 2026 entry, and replaces Straw's V1-only case study with the source-backed V05 presentation. It records the private/local source provenance, team ownership and media limitations above.
+This follow-up adds 11 bilingual contribution sections and authorized Fibery source links, with translated headings and a source-access note. All 24 tests across four suites pass. The CI production build passes with 209.54 KB gzip main JavaScript and the existing toolchain notices. A direct comparison with the complete Fibery inventory confirmed links to all 18 Responsible/Accountable/Consulted tasks, bilingual labels, and the unchanged exact V05 source excerpt. The initial validation caught a missing JSX closing tag in the new source-link layout; it was fixed before these passing runs. Fresh browser visual inspection remains unavailable after the browser tool's URL-policy block. [PR #5](https://github.com/MohanedB/ResponsivePortfolio/pull/5) remains open; no merge has been authorized. Fibery was not modified.
+
+## Historical verification — October 8 V05/BouStreaming update
+
+Before the Fibery coverage follow-up, the content update added BouStreaming as the fifteenth project and fifth 2026 entry, and replaced Straw's V1-only case study with the source-backed V05 presentation. The following results apply to that earlier state:
 
 - `npm test -- --watchAll=false --runInBand` passed all 24 tests across four suites.
 - `CI=true npm run build` compiled successfully, with 205.01 KB gzip main JavaScript and the existing Node/Browserslist notices.
 - Both new excerpts exactly match the recorded V05 snapshot and BouStreaming commit. The copied BouStreaming banner's hash matches the original asset.
-- The development server compiled and is running on port 3000. Fresh browser inspection was blocked by the browser tool's URL security policy; no new visual or interaction verification is claimed.
+- The development server compiled on port 3000. Browser inspection was blocked by the browser tool's URL security policy; no visual or interaction verification was claimed for that update.
 
 ## Historical verification — before the V05/BouStreaming update
 

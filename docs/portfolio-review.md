@@ -36,6 +36,14 @@ The three games currently use title-only covers until authentic screenshots are 
 
 See [Project case-study pages](project-case-studies.md) for durable source paths, full revision IDs, excerpt line ranges, screenshot provenance and content-maintenance instructions.
 
+### Straw V05 task-level coverage follow-up
+
+Mohaned explicitly authorized Fibery links and requested coverage of all his recorded contributions. The read-only review inventoried **59 tasks across two pages**: **33 involve Mohaned**, comprising **18 Done tasks with Responsible, Accountable or Consulted roles** and **15 Informed-only tasks**. The [complete 18-task matrix](project-case-studies.md#complete-responsible--accountable--consulted-task-matrix) preserves the exact titles, roles and contribution boundaries. Informed-only records are not presented as personal implementation work.
+
+The earlier case study underexplained Plant/Unplant switching sequences, player Animation Blueprint states and Anim Notifies, scare movement/switch/retrigger lockouts, animation restoration, `HandleDeath` and deferred respawn, hook/censer door integration, reusable carrying architecture and technical/QA documentation. The expanded content connects these contributions to the [task board](https://cnm-mtl.fibery.io/StrawAndFeather/13080), [Mohaned's reflection](https://cnm-mtl.fibery.io/StrawAndFeather/13753), [technical document](https://cnm-mtl.fibery.io/StrawAndFeather/12568), [QA document](https://cnm-mtl.fibery.io/StrawAndFeather/12535) and individual task records. The source-access note explains that readers may need a Fibery workspace account.
+
+The reflection confirms direct animation/scare/death integration for tasks **57, 45 and 41**, despite their Accountable labels. Tasks **39, 42 and 68** remain oversight/coordination credit; tasks **24, 33, 34 and 48** remain consultation credit. Models, textures, animation assets, VFX and teammates' gameplay systems retain team attribution. Original acceptance checklists are historical project records, not new QA verification. The unassigned **Camera Ceiling Clipping — Fixed** QA entry is not attributed to Mohaned. No Fibery record was modified.
+
 ## Highest-value next improvements
 
 1. Add a short gameplay clip and two or three real screenshots for each game. Put the core interaction first, with optional playback and captions or concise text explaining what the viewer is seeing.
@@ -49,11 +57,15 @@ The AppDeMo project lists **March 4–May 10, 2024**, while the Montréal intern
 
 The three games still need authentic gameplay captures and verified public build destinations. Grouillère needs source files before describing implementation details beyond Mohaned's confirmed responsibilities. Straw V05's engine, language and implementation evidence are now available; team-media credits and actual runtime validation remain important for future captures. BouStreaming's legal-content version is planned, and any future public link must point to a verified available destination.
 
-## October 8 content update — current verification
+## October 8 Fibery coverage follow-up — verification
 
-The V05/BouStreaming update expands the dataset to 15 projects, with five entries selected by the 2026 year filter. `npm test -- --watchAll=false --runInBand` passed all 24 tests across four suites. `CI=true npm run build` compiled successfully with 205.01 KB gzip main JavaScript and the existing Node/Browserslist notices. Both new excerpts match their recorded source, and the copied banner's hash matches the original asset.
+The follow-up expands Straw into 11 bilingual contribution sections with direct task links and a Fibery access note. All 24 tests across four suites pass, and the CI production build passes with 209.54 KB gzip main JavaScript. Inventory comparison confirms coverage of all 18 Responsible/Accountable/Consulted tasks, bilingual labels and the preserved exact V05 excerpt. A JSX closing-tag error caught during initial validation was fixed before the passing runs. Fresh browser visual inspection remains unavailable after the browser tool's URL-policy block. [PR #5](https://github.com/MohanedB/ResponsivePortfolio/pull/5) is open; no merge has been authorized. Fibery was read only.
 
-The development server compiled and is running on port 3000. Fresh browser inspection was blocked by the browser tool's URL security policy; no new visual or interaction verification is claimed. The earlier browser results below remain historical.
+## Historical verification: October 8 V05/BouStreaming content update
+
+Before the Fibery coverage follow-up, the V05/BouStreaming update expanded the dataset to 15 projects, with five entries selected by the 2026 year filter. `npm test -- --watchAll=false --runInBand` passed all 24 tests across four suites. `CI=true npm run build` compiled successfully with 205.01 KB gzip main JavaScript and the existing Node/Browserslist notices. Both new excerpts matched their recorded source, and the copied banner's hash matched the original asset.
+
+The development server compiled on port 3000. Browser inspection was blocked by the browser tool's URL security policy; no visual or interaction verification was claimed for that update. The earlier browser results below remain historical.
 
 ## Historical verification: original dedicated pages
 

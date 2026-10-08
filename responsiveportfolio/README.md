@@ -29,7 +29,7 @@ npm test -- --watchAll=false --runInBand
 npm run build
 ```
 
-The current V05/BouStreaming update passed all 24 tests across four suites. The CI production build compiled successfully with 205.01 KB gzip main JavaScript and the existing Node/Browserslist notices. Both new excerpts exactly match their recorded source, and the copied banner's hash matches the original. The development server compiled on port 3000, but fresh browser inspection was blocked by the browser tool's URL security policy. Earlier Chromium checks on desktop and at 390 and 320 CSS pixels preceded this update, when the 2026 filter selected four projects; the current dataset contains 15 projects, including five from 2026. Email transport is mocked; no test email is sent. Detailed current and historical results are recorded in the project documentation.
+The current update, including Straw's Fibery task breakdown, passed all 24 tests across four suites. The CI production build compiled successfully with 209.54 KB gzip main JavaScript and the existing Node/Browserslist notices. Straw's 11 bilingual sections link all 18 tasks where Mohaned is Responsible, Accountable or Consulted, with roles distinguished and workspace access noted. Source excerpts match their recorded sources, and the copied BouStreaming banner matches the original. Fresh browser visual inspection was blocked by the browser tool's URL security policy. Earlier Chromium checks on desktop and at 390 and 320 CSS pixels preceded this update. The current dataset contains 15 projects, including five from 2026. Email transport is mocked; no test email is sent. Detailed current and historical results are recorded in the project documentation.
 
 ## Update content
 
