@@ -1,5 +1,6 @@
 import archiverifCover from '../Image/ArchiVerif.svg';
 import boustreamingCover from '../Image/case-studies/boustreaming-banner.png';
+import { grouillereArtwork, strawArtwork } from './projectArtwork';
 
 // Verified project facts and public destinations: see docs/portfolio-review.md.
 // Calendar years come from owner confirmation and source history; exact dates remain unspecified.
@@ -15,6 +16,9 @@ export const recentProjects = [
     descriptionKey: 'strawDescription',
     whatIDidKey: 'strawContribution',
     statusKey: 'AdvancedPrototype',
+    image: strawArtwork.src,
+    imageFit: 'contain',
+    imageBackground: '#e8eafd',
     mainCategory: 'University',
     portfolioMode: 'gamedev',
     tags: ['Unreal Engine 5', 'C++', 'Blueprints', 'V05'],
@@ -66,6 +70,9 @@ export const recentProjects = [
     descriptionKey: 'grouillereDescription',
     whatIDidKey: 'grouillereContribution',
     statusKey: 'CompletedProject',
+    image: grouillereArtwork.src,
+    imageFit: 'contain',
+    imageBackground: '#eeeae3',
     mainCategory: 'University',
     portfolioMode: 'gamedev',
     tags: ['Unreal Engine 5', 'C++', 'Blueprints'],

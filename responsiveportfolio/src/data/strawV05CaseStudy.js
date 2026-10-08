@@ -1,3 +1,5 @@
+import { strawArtwork } from './projectArtwork';
+
 // Evidence: V05 local source snapshot, full Fibery task inventory and technical reflection.
 // Ownership and source provenance are documented in docs/project-case-studies.md.
 export const strawV05CaseStudy = {
@@ -156,7 +158,7 @@ export const strawV05CaseStudy = {
     en: 'V05 is an advanced prototype. A public playable build is not available here yet.',
     fr: 'La V05 est un prototype avancé. Aucune version jouable publique n’est encore proposée ici.',
   },
-  media: [],
+  media: [strawArtwork],
   code: [
     {
       title: { en: 'A camera transition coordinated with possession', fr: 'Une transition de caméra coordonnée avec le contrôle' },

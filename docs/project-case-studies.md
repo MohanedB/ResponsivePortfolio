@@ -44,6 +44,7 @@ The card link preserves the home URL in router state. **Back to projects** retur
 - `responsiveportfolio/src/data/caseStudies.js`: expanded content keyed by the exact project slug.
 - `responsiveportfolio/src/data/strawV05CaseStudy.js`: Straw and Feathers V05 content and local-snapshot code provenance.
 - `responsiveportfolio/src/data/boustreamingCaseStudy.js`: BouStreaming content, private-source excerpt and original brand banner.
+- `responsiveportfolio/src/data/projectArtwork.js`: shared gallery objects for the owner-provided Grouillère and Straw and Feathers illustrations, including English/French alt text and captions.
 - `responsiveportfolio/src/components/Project/ProjectDetails.jsx`: page renderer and optional sections.
 - `responsiveportfolio/src/components/Project/ProjectGallery.jsx`: media and image enlargement.
 - `responsiveportfolio/src/components/Project/CodeHighlights.jsx`: expandable source excerpts.
@@ -217,11 +218,11 @@ Mohaned's earlier statement that he wrote all V1 code applies to that earlier pr
 
 Task 62 is marked Done but still contains pending validation notes for item compatibility/rejection, normal dropping, door collision and receiver detection/radius adjustments. Original task acceptance checklists are project records, not fresh QA verification performed for this portfolio update. The QA entry **Camera Ceiling Clipping — Fixed** has no assignee, so its fix is not attributed to Mohaned.
 
-No gameplay image or video was embedded in the inspected reflections; the queried carry/receiver/censer tasks and Technical Proof level returned no file attachments. No public playable build or game media has been supplied. Future captures should identify the V05 stage and credit team visuals; private Fibery downloads must not become public portfolio links.
+No gameplay image or video was embedded in the inspected reflections; the queried carry/receiver/censer tasks and Technical Proof level returned no file attachments. Mohaned subsequently supplied a Scarecrow/Crow character illustration for the card and gallery. It is artwork, not a V05 gameplay capture; its specific artist has not been confirmed. No public playable build has been supplied. Future gameplay captures should identify the V05 stage and credit team visuals; private Fibery downloads must not become public portfolio links.
 
 ### Grouillère
 
-Mohaned confirmed the complete character controller and character-related systems, including cheese and poison interactions; teammates handled enemies, the ending cinematic, score and timer. The [team write-up](https://www.therookies.co/projects/104357) supplies general context and is labeled as a team presentation, not a playable destination. Its author's individual level/technical-design work is not attributed to Mohaned. Grouillère still has no source-backed excerpt or supplied gameplay media in the case-study data; specific implementation details need actual source evidence.
+Mohaned confirmed the complete character controller and character-related systems, including cheese and poison interactions; teammates handled enemies, the ending cinematic, score and timer. The [team write-up](https://www.therookies.co/projects/104357) supplies general context and is labeled as a team presentation, not a playable destination. Its author's individual level/technical-design work is not attributed to Mohaned. Mohaned supplied a mouse character illustration for the card and gallery; its specific artist has not been confirmed. Grouillère still has no source-backed excerpt or supplied gameplay capture in the case-study data; specific implementation details need actual source evidence.
 
 ### BouStreaming
 
@@ -242,13 +243,26 @@ Both assets have bilingual alt text/captions and public product credit. The illu
 
 BouStreaming's original banner was copied from `E:/GitHub/BouStreaming/android/app/src/main/res/drawable-xhdpi/banner.png` into `responsiveportfolio/src/Image/case-studies/boustreaming-banner.png`. It is genuine project brand artwork, not an application screenshot, video still or proof of publicly available content. Do not caption it as a product-interface capture.
 
+Mohaned supplied two character illustrations as attachments and explicitly requested their use for the corresponding games. They are stored as unchanged local PNG copies:
+
+| Portfolio asset | Owner-provided attachment | Content and use |
+| --- | --- | --- |
+| `responsiveportfolio/src/Image/case-studies/grouillere-character.png` | `C:/Users/Mohaned/AppData/Local/Temp/codex-clipboard-58914814-92a0-49c9-9cf0-72bce635744b.png` | First attachment: the mouse character illustration for Grouillère's card and gallery. |
+| `responsiveportfolio/src/Image/case-studies/straw-and-feathers-characters.png` | `C:/Users/Mohaned/AppData/Local/Temp/codex-clipboard-4a86a7e5-b523-4941-87f5-5807e6e03720.png` | Second attachment: the Scarecrow/Crow character illustration for Straw and Feathers' card and gallery. |
+
+The original attachment paths record provenance and are not public destinations. `projectArtwork.js` exports the shared gallery objects referenced by the case studies, with English/French alt text and captions identifying these images as illustrations. No specific artist attribution is confirmed; supplying an image does not establish that Mohaned created it. Cards use `object-fit: contain` with a matching background so the complete characters remain visible. Gallery enlargement presents the same artwork. These images do not demonstrate gameplay or add a public playable link.
+
 ## Playable destinations and remaining media
 
 Set a project record’s `playableUrl` only for a checked, public play/download destination. Explain platform/build status in localized availability text. Keep product sites in `website`, public repositories in `github`, and team write-ups in `website` with a translated `websiteLabelKey`.
 
-Straw V05, LetumLoop TPS and Grouillère currently have no supplied gameplay media or verified public playable link. Their diagrams are labeled as implemented systems or responsibilities, and no nonfunctional play button is rendered. ARCHIVERIF links to the live product in the visitor's current language. BouStreaming has restricted access and no public external destination; its planned legal-content version must not be presented as available. Authentic gameplay clips, interface captures and shareable builds remain separate follow-ups.
+Straw V05 and Grouillère now have owner-provided character illustrations on their cards and in their galleries. LetumLoop TPS retains a title cover. All three games still lack supplied gameplay captures and a verified public playable link. Their diagrams are labeled as implemented systems or responsibilities, and no nonfunctional play button is rendered. ARCHIVERIF links to the live product in the visitor's current language. BouStreaming has restricted access and no public external destination; its planned legal-content version must not be presented as available. Authentic gameplay clips, interface captures and shareable builds remain separate follow-ups.
 
-## October 8 Fibery coverage follow-up — verification
+## Character illustration follow-up — verification
+
+The illustration follow-up adds the two owner-provided PNGs to cards and galleries, with shared bilingual media data and uncropped card presentation. All 24 tests across four suites pass, and the CI production build passes. Both copied PNGs have the same SHA-256 hashes as their original attachments. Source review confirmed the project mapping, gallery schema and preserved defaults for other cards. Fresh browser visual inspection remains unavailable after the earlier URL-policy block. No new playable destination is added.
+
+## Historical verification — October 8 Fibery coverage follow-up
 
 This follow-up adds 11 bilingual contribution sections and authorized Fibery source links, with translated headings and a source-access note. All 24 tests across four suites pass. The CI production build passes with 209.54 KB gzip main JavaScript and the existing toolchain notices. A direct comparison with the complete Fibery inventory confirmed links to all 18 Responsible/Accountable/Consulted tasks, bilingual labels, and the unchanged exact V05 source excerpt. The initial validation caught a missing JSX closing tag in the new source-link layout; it was fixed before these passing runs. Fresh browser visual inspection remains unavailable after the browser tool's URL-policy block. [PR #5](https://github.com/MohanedB/ResponsivePortfolio/pull/5) remains open; no merge has been authorized. Fibery was not modified.
 

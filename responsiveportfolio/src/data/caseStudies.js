@@ -1,5 +1,6 @@
 import { strawV05CaseStudy } from './strawV05CaseStudy';
 import { boustreamingCaseStudy } from './boustreamingCaseStudy';
+import { grouillereArtwork } from './projectArtwork';
 import archiverifHome from '../Image/case-studies/archiverif-home.png';
 import archiverifWorkflow from '../Image/case-studies/archiverif-document-workflow.png';
 
@@ -304,7 +305,7 @@ export const caseStudies = {
       en: 'A public team project write-up is available. A verified playable build is not currently linked.',
       fr: 'Une présentation publique du projet d’équipe est disponible. Aucune version jouable vérifiée n’est actuellement liée.',
     },
-    media: [],
+    media: [grouillereArtwork],
     code: [],
   },
 };
