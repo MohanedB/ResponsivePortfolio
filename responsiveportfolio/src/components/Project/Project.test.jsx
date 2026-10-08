@@ -84,6 +84,7 @@ test('keeps C# distinct from C++ and finds backend Python work without a Python 
 
   fireEvent.change(language, { target: { value: 'cpp' } });
   expect(screen.getByRole('link', { name: 'More information about LetumLoop — TPS Prototype' })).toBeVisible();
+  expect(screen.getByRole('link', { name: 'More information about Straw and Feathers' })).toBeVisible();
   expect(screen.queryByRole('link', { name: 'More information about QuickReload' })).not.toBeInTheDocument();
 
   fireEvent.change(language, { target: { value: 'python' } });
@@ -100,13 +101,13 @@ test('applies a calendar year from a shared URL before the visitor touches a fil
   expect(screen.queryByRole('link', { name: 'More information about Straw and Feathers' })).not.toBeInTheDocument();
 });
 
-test('finds all four recent projects in 2026 and shows their year on the cards', () => {
+test('finds all five recent projects in 2026 and shows their year on the cards', () => {
   renderProjects('/?year=2026');
   expect(screen.getByRole('combobox', { name: 'Year' })).toHaveValue('2026');
-  ['Straw and Feathers', 'ARCHIVERIF', 'Grouillère', 'LetumLoop — TPS Prototype'].forEach(title => {
+  ['Straw and Feathers', 'BouStreaming', 'ARCHIVERIF', 'Grouillère', 'LetumLoop — TPS Prototype'].forEach(title => {
     expect(screen.getByRole('link', { name: `More information about ${title}` })).toHaveTextContent('2026');
   });
-  expect(screen.getAllByRole('link')).toHaveLength(4);
+  expect(screen.getAllByRole('link')).toHaveLength(5);
   expect(screen.queryByRole('option', { name: 'Not specified' })).not.toBeInTheDocument();
   expect(screen.queryByRole('link', { name: 'More information about Robot Control in Unity' })).not.toBeInTheDocument();
 });
