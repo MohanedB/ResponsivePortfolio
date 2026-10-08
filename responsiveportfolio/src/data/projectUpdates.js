@@ -18,7 +18,7 @@ export const recentProjects = [
     statusKey: 'AdvancedPrototype',
     image: strawArtwork.src,
     imageFit: 'contain',
-    imageBackground: '#e8eafd',
+    imageBackground: '#454556',
     mainCategory: 'University',
     portfolioMode: 'gamedev',
     tags: ['Unreal Engine 5', 'C++', 'Blueprints', 'V05'],

@@ -1,8 +1,7 @@
 import grouillereCharacter from '../Image/case-studies/grouillere-character.png';
 import strawCharacters from '../Image/case-studies/straw-and-feathers-characters.png';
 
-// Original illustrations supplied by Mohaned for these projects, copied unchanged.
-// These are character illustrations; gameplay captures remain a separate addition.
+// Character images supplied by Mohaned for these projects, copied unchanged.
 export const grouillereArtwork = {
   kind: 'image',
   src: grouillereCharacter,
@@ -20,11 +19,11 @@ export const strawArtwork = {
   kind: 'image',
   src: strawCharacters,
   alt: {
-    en: 'Illustration of the Straw and Feathers scarecrow in a brown hat and coat, accompanied by a white crow.',
-    fr: 'Illustration de l’épouvantail de Straw and Feathers, avec un chapeau et un manteau bruns, accompagné d’un corbeau blanc.',
+    en: '3D image of the Straw and Feathers scarecrow with a glowing face and a crow perched on its wooden frame, against a dark background.',
+    fr: 'Image 3D de l’épouvantail de Straw and Feathers au visage lumineux, avec un corbeau perché sur son armature en bois, sur fond sombre.',
   },
   caption: {
-    en: 'Scarecrow and crow character illustration for Straw and Feathers.',
-    fr: 'Illustration de l’épouvantail et du corbeau de Straw and Feathers.',
+    en: 'The scarecrow and crow in Straw and Feathers.',
+    fr: 'L’épouvantail et le corbeau de Straw and Feathers.',
   },
 };
