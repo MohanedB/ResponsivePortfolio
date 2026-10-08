@@ -1,6 +1,6 @@
 import { strawV05CaseStudy } from './strawV05CaseStudy';
 import { boustreamingCaseStudy } from './boustreamingCaseStudy';
-import { grouillereArtwork } from './projectArtwork';
+import { grouillereCaseStudy } from './grouillereCaseStudy';
 import archiverifHome from '../Image/case-studies/archiverif-home.png';
 import archiverifWorkflow from '../Image/case-studies/archiverif-document-workflow.png';
 
@@ -260,52 +260,5 @@ export const caseStudies = {
   },
   'straw-and-feathers': strawV05CaseStudy,
   boustreaming: boustreamingCaseStudy,
-  grouillere: {
-    role: { en: 'Character programmer · Controller and character interactions', fr: 'Programmeur personnage · Contrôleur et interactions' },
-    intro: {
-      en: 'Grouillère is a completed university team game from my previous semester. I built the complete character controller and all character-related systems, including the cheese and poison interactions. My contribution focused on the character throughout the game.',
-      fr: 'Grouillère est un jeu universitaire réalisé en équipe au semestre précédent. J’ai développé le contrôleur complet du personnage et tous les systèmes qui lui sont liés, notamment les interactions avec le fromage et le poison. Ma contribution portait sur le personnage dans l’ensemble du jeu.',
-    },
-    systems: [
-      {
-        title: { en: 'The complete character controller', fr: 'Le contrôleur complet du personnage' },
-        body: {
-          en: 'I was responsible for the entire character controller and the surrounding character code. This was my main programming area within the team project.',
-          fr: 'J’étais responsable de l’ensemble du contrôleur et du code lié au personnage. C’était mon principal domaine de programmation dans le projet d’équipe.',
-        },
-      },
-      {
-        title: { en: 'Cheese and poison interactions', fr: 'Les interactions avec le fromage et le poison' },
-        body: {
-          en: 'I implemented the character’s interactions with the cheese and poison as part of my character-system work. These interactions belong to my contribution alongside the controller itself.',
-          fr: 'J’ai implémenté les interactions du personnage avec le fromage et le poison dans le cadre des systèmes dont j’avais la responsabilité, en plus du contrôleur lui-même.',
-        },
-      },
-      {
-        title: { en: 'A defined contribution within a team game', fr: 'Une contribution définie dans un jeu d’équipe' },
-        body: {
-          en: 'My work covers the character and its related systems. The enemies, ending cinematic, score and timer were developed by other team members. The finished game combines those contributions with my character programming.',
-          fr: 'Mon travail couvre le personnage et les systèmes qui lui sont liés. Les ennemis, la cinématique de fin, le score et le chronomètre ont été réalisés par d’autres membres de l’équipe. Le jeu terminé réunit ces contributions et ma programmation du personnage.',
-        },
-      },
-    ],
-    flow: {
-      title: { en: 'My character programming scope', fr: 'Mon périmètre de programmation du personnage' },
-      steps: [
-        { en: 'Complete character controller', fr: 'Contrôleur complet du personnage' },
-        { en: 'Cheese interactions', fr: 'Interactions avec le fromage' },
-        { en: 'Poison interactions', fr: 'Interactions avec le poison' },
-      ],
-    },
-    outcome: {
-      en: 'The completed team project includes my full character controller and character-related interactions. It represents my contribution to a shared game alongside the systems built by my teammates.',
-      fr: 'Le projet d’équipe terminé comprend mon contrôleur complet et les interactions liées au personnage. Il représente ma contribution à un jeu commun, aux côtés des systèmes développés par mes coéquipiers.',
-    },
-    availability: {
-      en: 'A public team project write-up is available. A verified playable build is not currently linked.',
-      fr: 'Une présentation publique du projet d’équipe est disponible. Aucune version jouable vérifiée n’est actuellement liée.',
-    },
-    media: [grouillereArtwork],
-    code: [],
-  },
+  grouillere: grouillereCaseStudy,
 };
