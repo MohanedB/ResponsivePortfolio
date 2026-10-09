@@ -50,7 +50,7 @@ test('preserves the search and all combined filters when returning after a langu
   expect(screen.getByRole('combobox', { name: 'Langage de programmation' })).toHaveValue('csharp');
   expect(screen.getByRole('button', { name: 'Jeux' })).toHaveAttribute('aria-pressed', 'true');
   expect(screen.getByRole('link', { name: /En savoir plus sur Contrôle d'un Robot en Unity/ })).toBeVisible();
-  expect(screen.queryByRole('link', { name: 'En savoir plus sur ARCHIVERIF' })).not.toBeInTheDocument();
+  expect(within(screen.getByRole('region', { name: 'Tous les projets' })).queryByRole('link', { name: 'En savoir plus sur ARCHIVERIF' })).not.toBeInTheDocument();
 });
 
 test('localizes the case study and public product destination', async () => {

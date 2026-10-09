@@ -4,6 +4,8 @@ Implementation and content provenance, updated October 8, 2026. Earlier verifica
 
 ## Implemented behavior
 
+The home page introduces **Selected work / Projets à la une** above the complete project collection. Straw and Feathers, Grouillère and ARCHIVERIF appear in that order with contribution summaries, using `featuredOrder` and `featuredSummaryKey` on their existing records. Featured cards keep their normal routes, dates, technology tags, images and interaction behavior; their descriptions are shown in full. The **All projects** collection still renders all 15 records and owns the existing search, filters and result count. The selected section stays visible independently of those filters. Section headings and card headings retain a logical hierarchy, and repeated project presentations do not create duplicate IDs.
+
 Each compact project card is a single React Router link containing a thumbnail, title, short summary, technology tags and a plain **More information / En savoir plus** text label. Clicking anywhere on the card or activating its link by keyboard opens the larger `/projects/:slug` detail page. Subtle hover and focus feedback indicates the interaction, and motion respects the visitor's reduced-motion preference. All 15 current projects have stable slugs and pages; five recent projects have expanded case studies. Older projects reuse their existing descriptions, contribution text, images and code where present.
 
 Expanded pages show context, role, tools, contributions, systems, a workflow or responsibility diagram and an outcome. Gallery and code sections appear only when content exists. Section links help visitors move through long pages. External actions distinguish a product website, team write-up, public source and verified playable/download destination.
@@ -278,7 +280,11 @@ Set a project record’s `playableUrl` only for a checked, public play/download 
 
 Straw V05 now has an owner-provided 3D character image and Grouillère has a mouse illustration on their cards and in their galleries. LetumLoop TPS retains a title cover. All three games still lack confirmed gameplay captures and a verified public playable link. Their diagrams are labeled as implemented systems or responsibilities, and no nonfunctional play button is rendered. ARCHIVERIF links to the live product in the visitor's current language. BouStreaming has restricted access and no public external destination; its planned legal-content version must not be presented as available. Authentic gameplay clips, interface captures and shareable builds remain separate follow-ups.
 
-## Grouillère Fibery update — verification
+## Selected work and introduction update — verification
+
+All 27 tests across five suites pass, including featured order/content, the 15-project collection, unique IDs, bilingual filtering and real application navigation that preserves search focus and filter state. The CI production build compiles successfully with 214.41 KB gzip main JavaScript. No new runtime dependencies or project routes were added. Browser visual inspection remains unavailable after the earlier URL-policy block; code/content review was local after the independent agent was unavailable due to capacity.
+
+## Historical verification — Grouillère Fibery update
 
 The Grouillère update adds eight bilingual sections and 21 source links on `codex/grouillere-fibery-details`. All 24 tests across four suites pass, and the CI production build compiles successfully with 213.5 KB gzip main JavaScript. A content check verifies all 47 localized fields, the evidence links and the preserved artwork; independent review found no actionable issues. Browser visual inspection remains unavailable after the earlier URL-policy block, and the game itself was not run. [PR #5](https://github.com/MohanedB/ResponsivePortfolio/pull/5), covering the previous updates, has been merged. This update preserves the 2026 project year and public team write-up; it adds neither a source excerpt nor a public playable destination. Fibery remained read-only.
 

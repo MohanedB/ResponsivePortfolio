@@ -15,6 +15,9 @@ const languageOptions = Object.entries(languageLabels).filter(([value]) => proje
 const yearOptions = [...new Set(projects.flatMap(project => project.years || []))].sort((a, b) => Number(b) - Number(a));
 if (projects.some(project => !project.years?.length)) yearOptions.push('unspecified');
 const filterKeys = ['type', 'context', 'engine', 'year', 'language', 'q'];
+const featuredProjects = projects
+  .filter(project => Number.isFinite(project.featuredOrder))
+  .sort((a, b) => a.featuredOrder - b.featuredOrder);
 
 const Container = styled.section`
   padding: 64px 20px 80px;
@@ -42,6 +45,25 @@ const Filters = styled.div`
   flex-wrap: wrap;
   gap: 10px;
   margin-bottom: 20px;
+`;
+const Collection = styled.section`
+  margin-top: 40px;
+  & + & {
+    margin-top: 64px;
+    padding-top: 40px;
+    border-top: 1px solid #454253;
+  }
+`;
+const CollectionTitle = styled.h3`
+  color: ${({ theme }) => theme.text_primary};
+  font-size: clamp(24px, 3vw, 30px);
+  line-height: 1.3;
+`;
+const CollectionDesc = styled.p`
+  margin: 10px 0 24px;
+  max-width: 760px;
+  color: ${({ theme }) => theme.text_secondary};
+  line-height: 1.7;
 `;
 const FilterButton = styled.button`
   min-height: 44px;
@@ -154,47 +176,56 @@ const Projects = () => {
         <Wrapper>
           <Title id="projects-title" tabIndex={-1}>{t('Projects')}</Title>
           <Desc>{t('ProjectDesc')}</Desc>
-          <Filters role="group" aria-label={t('ProjectType')}>
-            {[['all', 'AllProjects'], ['gamedev', 'Games'], ['software', 'ModeSoftware']].map(([value, label]) => (
-              <FilterButton key={value} type="button" $active={discipline === value} aria-pressed={discipline === value} onClick={() => updateFilter('type', value)}>{t(label)}</FilterButton>
-            ))}
-          </Filters>
-          <SearchRow>
-            <Field>{t('SearchProjects')}
-              <input type="search" placeholder={t('SearchByTag')} value={searchTerm} onChange={event => updateFilter('q', event.target.value)} />
-            </Field>
-          </SearchRow>
-          <FilterGrid>
-            <Field>{t('ProjectContext')}
-              <select value={context} onChange={event => updateFilter('context', event.target.value)}>
-                {[['all', 'AllContexts'], ['University', 'University'], ['Cegep', 'Cegep'], ['Independent', 'Independent']].map(([value, label]) => <option key={value} value={value}>{t(label)}</option>)}
-              </select>
-            </Field>
-            <Field>{t('GameEngine')}
-              <select value={engine} onChange={event => updateFilter('engine', event.target.value)}>
-                <option value="all">{t('AllEngines')}</option>
-                {engineOptions.map(([value, label]) => <option key={value} value={value}>{label}</option>)}
-              </select>
-            </Field>
-            <Field>{t('ProjectYear')}
-              <select value={year} onChange={event => updateFilter('year', event.target.value)}>
-                <option value="all">{t('AllYears')}</option>
-                {yearOptions.map(value => <option key={value} value={value}>{value === 'unspecified' ? t('YearUnspecified') : value}</option>)}
-              </select>
-            </Field>
-            <Field>{t('ProgrammingLanguage')}
-              <select value={language} onChange={event => updateFilter('language', event.target.value)}>
-                <option value="all">{t('AllProgrammingLanguages')}</option>
-                {languageOptions.map(([value, label]) => <option key={value} value={value}>{label}</option>)}
-              </select>
-            </Field>
-          </FilterGrid>
-          <ResultRow>
-            <Results role="status">{t('ProjectCount', { count: filteredProjects.length })}</Results>
-            {filterKeys.some(key => params.has(key)) && <FilterButton type="button" onClick={reset}>{t('ClearFilters')}</FilterButton>}
-          </ResultRow>
-          <Grid>{filteredProjects.map(project => <ProjectCard key={project.id} project={project} />)}</Grid>
-          {filteredProjects.length === 0 && <Empty><p>{t('NoProjectsFound')}</p><FilterButton type="button" onClick={reset}>{t('ShowAllProjects')}</FilterButton></Empty>}
+          <Collection aria-labelledby="selected-work-title">
+            <CollectionTitle id="selected-work-title">{t('SelectedWork')}</CollectionTitle>
+            <CollectionDesc>{t('SelectedWorkDesc')}</CollectionDesc>
+            <Grid>{featuredProjects.map(project => <ProjectCard key={project.id} project={project} featured headingAs="h4" />)}</Grid>
+          </Collection>
+          <Collection id="project-catalog" aria-labelledby="project-catalog-title">
+            <CollectionTitle id="project-catalog-title">{t('AllProjects')}</CollectionTitle>
+            <CollectionDesc>{t('ProjectCatalogDesc', { count: projects.length })}</CollectionDesc>
+            <Filters role="group" aria-label={t('ProjectType')}>
+              {[['all', 'AllProjects'], ['gamedev', 'Games'], ['software', 'ModeSoftware']].map(([value, label]) => (
+                <FilterButton key={value} type="button" $active={discipline === value} aria-pressed={discipline === value} onClick={() => updateFilter('type', value)}>{t(label)}</FilterButton>
+              ))}
+            </Filters>
+            <SearchRow>
+              <Field>{t('SearchProjects')}
+                <input type="search" placeholder={t('SearchByTag')} value={searchTerm} onChange={event => updateFilter('q', event.target.value)} />
+              </Field>
+            </SearchRow>
+            <FilterGrid>
+              <Field>{t('ProjectContext')}
+                <select value={context} onChange={event => updateFilter('context', event.target.value)}>
+                  {[['all', 'AllContexts'], ['University', 'University'], ['Cegep', 'Cegep'], ['Independent', 'Independent']].map(([value, label]) => <option key={value} value={value}>{t(label)}</option>)}
+                </select>
+              </Field>
+              <Field>{t('GameEngine')}
+                <select value={engine} onChange={event => updateFilter('engine', event.target.value)}>
+                  <option value="all">{t('AllEngines')}</option>
+                  {engineOptions.map(([value, label]) => <option key={value} value={value}>{label}</option>)}
+                </select>
+              </Field>
+              <Field>{t('ProjectYear')}
+                <select value={year} onChange={event => updateFilter('year', event.target.value)}>
+                  <option value="all">{t('AllYears')}</option>
+                  {yearOptions.map(value => <option key={value} value={value}>{value === 'unspecified' ? t('YearUnspecified') : value}</option>)}
+                </select>
+              </Field>
+              <Field>{t('ProgrammingLanguage')}
+                <select value={language} onChange={event => updateFilter('language', event.target.value)}>
+                  <option value="all">{t('AllProgrammingLanguages')}</option>
+                  {languageOptions.map(([value, label]) => <option key={value} value={value}>{label}</option>)}
+                </select>
+              </Field>
+            </FilterGrid>
+            <ResultRow>
+              <Results role="status">{t('ProjectCount', { count: filteredProjects.length })}</Results>
+              {filterKeys.some(key => params.has(key)) && <FilterButton type="button" onClick={reset}>{t('ClearFilters')}</FilterButton>}
+            </ResultRow>
+            <Grid>{filteredProjects.map(project => <ProjectCard key={project.id} project={project} headingAs="h4" />)}</Grid>
+            {filteredProjects.length === 0 && <Empty><p>{t('NoProjectsFound')}</p><FilterButton type="button" onClick={reset}>{t('ShowAllProjects')}</FilterButton></Empty>}
+          </Collection>
         </Wrapper>
       </Container>
     </>

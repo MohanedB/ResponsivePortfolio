@@ -9,6 +9,8 @@ export const recentProjects = [
   {
     id: 12,
     slug: 'straw-and-feathers',
+    featuredOrder: 1,
+    featuredSummaryKey: 'strawFeaturedSummary',
     engines: ['unreal'],
     years: ['2026'],
     languages: ['cpp', 'blueprints'],
@@ -47,6 +49,8 @@ export const recentProjects = [
   {
     id: 14,
     slug: 'archiverif',
+    featuredOrder: 3,
+    featuredSummaryKey: 'archiverifFeaturedSummary',
     engines: [],
     years: ['2026'],
     languages: ['typescript', 'python'],
@@ -63,6 +67,8 @@ export const recentProjects = [
   {
     id: 13,
     slug: 'grouillere',
+    featuredOrder: 2,
+    featuredSummaryKey: 'grouillereFeaturedSummary',
     engines: ['unreal'],
     years: ['2026'],
     languages: ['cpp', 'blueprints'],
@@ -100,6 +106,12 @@ export const recentProjects = [
 
 export const projectTranslations = {
   en: {
+    SelectedWork: 'Selected work',
+    SelectedWorkDesc: 'Three projects that showcase my gameplay programming and full-stack development.',
+    ProjectCatalogDesc: 'Explore all {{count}} projects, including the selection above. Filter by discipline, technology or year.',
+    strawFeaturedSummary: 'I built both character controllers, character switching, camera transitions and reusable object interactions for this advanced team prototype.',
+    grouillereFeaturedSummary: 'I developed the complete mouse controller: walking and tornado movement, camera controls, jumps, cheese and poison interactions.',
+    archiverifFeaturedSummary: 'I designed and built the entire product, from the bilingual interface and backend to document tracking, registry checks and deployment.',
     ProjectDesc: 'Games, prototypes and software I have built. Explore the work, the context and my contributions.',
     AllProjects: 'All projects', Games: 'Games', ProjectType: 'Project type',
     SearchProjects: 'Search projects', ProjectContext: 'Project context', AllContexts: 'All contexts',
@@ -132,6 +144,12 @@ export const projectTranslations = {
     education0: 'Completed the Computer Science Technology program at Champlain College, with coursework in Java, Linux, iOS development and databases.',
   },
   fr: {
+    SelectedWork: 'Projets à la une',
+    SelectedWorkDesc: 'Trois projets qui illustrent mon travail en programmation de gameplay et en développement full-stack.',
+    ProjectCatalogDesc: 'Explorez les {{count}} projets, y compris la sélection ci-dessus. Filtrez par domaine, technologie ou année.',
+    strawFeaturedSummary: 'J’ai développé les deux contrôleurs, le changement de personnage, les transitions de caméra et des interactions réutilisables avec les objets pour ce prototype avancé en équipe.',
+    grouillereFeaturedSummary: 'J’ai développé le contrôleur complet de la souris : marche, déplacement en tornade, caméra, sauts et interactions avec le fromage et le poison.',
+    archiverifFeaturedSummary: 'J’ai conçu et développé le produit entier : interface bilingue, backend, suivi des documents, vérification des registres et déploiement.',
     ProjectDesc: 'Jeux, prototypes et logiciels que j’ai réalisés. Découvrez les projets, leur contexte et mes contributions.',
     AllProjects: 'Tous les projets', Games: 'Jeux', ProjectType: 'Type de projet',
     SearchProjects: 'Rechercher un projet', ProjectContext: 'Contexte du projet', AllContexts: 'Tous les contextes',

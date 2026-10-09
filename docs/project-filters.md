@@ -1,6 +1,6 @@
 # Project discovery filters
 
-The project grid combines discipline, project context, game engine, calendar year, programming language and text search. A project must match every selected filter. Each dropdown selects one value; a project can belong to several values through its metadata arrays. All projects remain visible when no filters are selected.
+The **All projects** grid combines discipline, project context, game engine, calendar year, programming language and text search. A project must match every selected filter. Each dropdown selects one value; a project can belong to several values through its metadata arrays. All 15 projects remain visible when no filters are selected. The separate **Selected work** section above it always presents Straw and Feathers, Grouillère and ARCHIVERIF; filters and result counts apply only to the complete collection below.
 
 ## URL behavior
 

@@ -176,7 +176,7 @@ export const Span = styled.span`
 export const SubTitle = styled.p`
   font-size: 20px;
   line-height: 32px;
-  margin-bottom: 42px;
+  margin-bottom: 16px;
   color: ${({ theme }) => theme.text_secondary};
   animation: ${fadeInLeft} 0.8s ease 0.36s both;
   @media (max-width: 960px) { text-align: center; }
@@ -184,6 +184,14 @@ export const SubTitle = styled.p`
     font-size: 16px;
     line-height: 32px;
   }
+`;
+
+const Opportunities = styled.p`
+  margin-bottom: 32px;
+  color: ${({ theme }) => theme.text_primary};
+  font-size: 16px;
+  line-height: 1.7;
+  @media (max-width: 960px) { text-align: center; }
 `;
 
 export const ResumeButton = styled.a`
@@ -251,13 +259,18 @@ const Hero = () => {
   const roles = t('roles_unified', {
     returnObjects: true,
     defaultValue: isFrench
-      ? ['Développeur de jeux', 'Développeur full-stack']
-      : ['Game Developer', 'Full-Stack Developer'],
+      ? ['Programmeur gameplay', 'Développeur full-stack']
+      : ['Gameplay Programmer', 'Full-Stack Developer'],
   });
   const description = t('description_unified', {
     defaultValue: isFrench
-      ? "Étudiant en création de jeux vidéo à l'UQAT, je développe des jeux et des logiciels avec Unity, Unreal Engine et les technologies web. Découvrez mes prototypes, mes jeux universitaires et mes projets de développement logiciel."
-      : 'A game development student at UQAT, I build games and software with Unity, Unreal Engine and web technologies. Explore my prototypes, university games and software projects.',
+      ? "Je développe des contrôleurs de personnages, des caméras et des interactions de jeu dans Unreal Engine en C++. Je crée aussi des applications web full-stack et j'étudie en création de jeux vidéo à l'UQAT."
+      : 'I develop character controllers, cameras and player interactions in Unreal Engine with C++. I also build full-stack web products while studying game development at UQAT.',
+  });
+  const opportunities = t('opportunities_unified', {
+    defaultValue: isFrench
+      ? 'Ouvert aux opportunités en développement de jeux vidéo, en développement logiciel et en informatique.'
+      : 'Open to opportunities in game development, software development and IT.',
   });
 
   return (
@@ -281,6 +294,7 @@ const Hero = () => {
               {!reduceMotion && <span className="sr-only">{roles.join(' / ')}</span>}
             </TextLoop>
             <SubTitle>{description}</SubTitle>
+            <Opportunities>{opportunities}</Opportunities>
             <Actions>
               <ResumeButton href="#projects">
                 {t('ViewProjects', { defaultValue: isFrench ? 'Voir les projets' : 'View projects' })}
