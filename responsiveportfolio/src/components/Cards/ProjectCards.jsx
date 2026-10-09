@@ -23,7 +23,7 @@ const Card = styled(Link)`
   font: inherit;
   color: ${({ theme }) => theme.text_primary};
   background: ${({ theme }) => theme.card};
-  border: 1px solid #393443;
+  border: 1px solid ${({ $featured }) => $featured ? '#76559e' : '#393443'};
   border-radius: 16px;
   overflow: hidden;
   display: flex;
@@ -68,7 +68,7 @@ const Description = styled.p`
   color: ${({ theme }) => theme.text_secondary};
   line-height: 1.7;
   font-size: 14px;
-  display: -webkit-box;
+  display: ${({ $featured }) => $featured ? 'block' : '-webkit-box'};
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
@@ -80,19 +80,18 @@ const Tags = styled.div`
   span { font-size: 11px; color: #d7c5f4; background: #854ce622; padding: 4px 9px; border-radius: 8px; }
 `;
 
-export default function ProjectCards({ project }) {
+export default function ProjectCards({ project, featured = false, headingAs = 'h3' }) {
   const { t } = useTranslation();
   const location = useLocation();
-  const titleId = `project-card-title-${project.slug}`;
   const date = project.dateKey ? t(project.dateKey) : project.years?.join(', ');
   const context = [t(project.mainCategory), date, project.statusKey ? t(project.statusKey) : ''].filter(Boolean).join(' · ');
   return (
-    <Card to={`/projects/${project.slug}`} state={{ from: `/${location.search}#projects` }} aria-label={t('OpenProject', { title: t(project.titleKey) })}>
+    <Card $featured={featured} to={`/projects/${project.slug}`} state={{ from: `/${location.search}#projects` }} aria-label={t('OpenProject', { title: t(project.titleKey) })}>
       <ProjectMedia project={project} />
       <Details>
         <Category>{context}</Category>
-        <Title id={titleId}>{t(project.titleKey)}</Title>
-        <Description>{t(project.descriptionKey)}</Description>
+        <Title as={headingAs}>{t(project.titleKey)}</Title>
+        <Description $featured={featured}>{t(featured && project.featuredSummaryKey ? project.featuredSummaryKey : project.descriptionKey)}</Description>
         <Tags>{project.tags?.map(tag => <span key={tag}>{tag}</span>)}</Tags>
         <Hint>{t('ViewProject')} <span aria-hidden="true">→</span></Hint>
       </Details>

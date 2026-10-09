@@ -6,7 +6,9 @@ Initially reviewed September 5, 2026; content and provenance updated October 8, 
 
 Keep one portfolio with **All projects**, **Games**, and **Software** filters. Visitors can understand Mohaned's work immediately and then narrow it to their interests. University, CEGEP, and independent work are useful context filters, rather than separate entrances to the site. This preserves the distinction between disciplines without hiding relevant projects behind a mandatory choice.
 
-The updated page opens directly on the introduction, puts projects immediately after it, and adds a prominent project link beside the résumé. All projects are visible initially.
+The page opens on an introduction that names Unreal Engine/C++, character controllers, cameras and player interactions alongside full-stack web development. Mohaned confirmed that he is open to opportunities in games, software and IT; the English/French introduction says so without inventing a start date or employment type. The project link and résumé remain prominent.
+
+Projects follow the introduction. A **Selected work / Projets à la une** section features Straw and Feathers, Grouillère and ARCHIVERIF in that order, with complete contribution summaries and a stronger card border. The separate **All projects** collection below still contains all 15 projects, including the featured three. Its existing filters and result count apply only to that collection; the selected section remains stable while filtering.
 
 ## Findings addressed
 
@@ -55,7 +57,7 @@ The expanded case study distinguishes cheese's speed boost, rat-poison pickup's 
 1. Add a short gameplay clip and two or three real screenshots for each game. Put the core interaction first, with optional playback and captions or concise text explaining what the viewer is seeing.
 2. Add authentic gameplay captures to Straw V05 and Grouillère. Grouillère now has detailed Fibery evidence; source files would allow precise algorithm explanations and an authentic code excerpt. BouStreaming would benefit from a walkthrough using shareable content. Add team sizes and measured outcomes only when confirmed.
 3. Add verified playable builds, release pages, or public source links where sharing is appropriate. A clearly labeled download should state its platform; unavailable builds should not appear as working buttons.
-4. Keep the most representative recent projects first. Let the existing project filters serve different visitors before considering separate landing pages for individual job applications.
+4. Keep the selected projects current as stronger work becomes available. The existing project filters serve different visitors without requiring separate landing pages for individual job applications.
 
 ## Owner clarification needed
 
@@ -63,7 +65,11 @@ The AppDeMo project lists **March 4–May 10, 2024**, while the Montréal intern
 
 The three games still need authentic gameplay captures and verified public build destinations. Grouillère's documented mechanics now have Fibery evidence; source files are still needed for exact algorithm explanations or code excerpts. Straw V05's engine, language and implementation evidence are available; team-media credits and actual runtime validation remain important for future captures. BouStreaming's legal-content version is planned, and any future public link must point to a verified available destination.
 
-## Grouillère Fibery update — verification
+## Selected work and introduction update — verification
+
+All 27 tests across five suites pass. The CI production build compiles successfully with 214.41 KB gzip main JavaScript. Tests cover the selected order and contribution copy, the complete 15-project collection, unique DOM IDs, English/French filtering and real application navigation/focus without scrolling away from search. Existing project-detail, gallery and contact checks pass. `git diff --check` passes. Code and content were reviewed locally; independent agent review was unavailable due to model capacity. Browser visual inspection remains unavailable after the earlier URL-policy block.
+
+## Historical verification: Grouillère Fibery update
 
 The current update adds eight bilingual Grouillère sections and 21 source links on `codex/grouillere-fibery-details`. All 24 tests across four suites pass; the CI production build compiles successfully with 213.5 KB gzip main JavaScript. The content check verifies 47 localized fields, evidence links and artwork preservation, and independent review found no actionable issues. Fresh browser inspection remains unavailable after the earlier URL-policy block; no game runtime validation is claimed. [PR #5](https://github.com/MohanedB/ResponsivePortfolio/pull/5) has been merged. The new update preserves the artwork, 2026 year and team write-up and adds no code excerpt or playable destination. Fibery remained read-only.
 

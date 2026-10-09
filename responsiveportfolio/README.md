@@ -1,6 +1,8 @@
 # Mohaned Bouzaidi — Portfolio
 
-Bilingual React portfolio for 15 games, prototypes and software projects. Visitors see all work immediately and can combine Games/Software filters with project context, game engine, calendar year, programming language and search. Each compact project card links to its dedicated `/projects/:slug` page and includes a persistent More information text label; ARCHIVERIF, LetumLoop TPS, Straw and Feathers V05, Grouillère and BouStreaming have expanded case studies.
+Bilingual React portfolio for 15 games, prototypes and software projects. Selected work features Straw and Feathers, Grouillère and ARCHIVERIF with contribution summaries above the full collection. Visitors can combine Games/Software filters with project context, game engine, calendar year, programming language and search in All projects. Each compact project card links to its dedicated `/projects/:slug` page and includes a persistent More information text label; ARCHIVERIF, LetumLoop TPS, Straw and Feathers V05, Grouillère and BouStreaming have expanded case studies.
+
+The introduction highlights Unreal Engine/C++, character controllers, cameras and player interactions alongside full-stack development. It reflects Mohaned's confirmed openness to game development, software and IT opportunities without claiming a specific start date or employment type.
 
 ## Run locally
 
@@ -29,11 +31,12 @@ npm test -- --watchAll=false --runInBand
 npm run build
 ```
 
-The Grouillère Fibery update passes all 24 tests across four suites and the CI production build (213.5 KB gzip main JavaScript). Content validation checks its eight bilingual sections, 47 localized fields, 21 source links and preserved artwork. Independent review found no actionable issues. Browser visual inspection remains unavailable after the browser tool's earlier URL-policy block; previous Chromium checks predate this update. The dataset contains 15 projects, including five from 2026. Email transport is mocked; no test email is sent. Detailed current and historical results are recorded in the project documentation.
+The selected-work/introduction update passes all 27 tests across five suites and the CI production build (214.41 KB gzip main JavaScript). Checks cover the three featured projects, all 15 catalog entries, unique IDs, English/French filtering, project navigation/focus, galleries and contact UI. Browser visual inspection remains unavailable after the browser tool's earlier URL-policy block; previous Chromium checks predate this update. Code/content review was local because independent agent review was unavailable due to capacity. Email transport is mocked; no test email is sent. Detailed current and historical results are recorded in the project documentation.
 
 ## Update content
 
 - `src/data/projectUpdates.js`: recent project records and their English/French copy.
+- `featuredOrder` and `featuredSummaryKey` on those records control the selected-work order and translated contribution summaries. The full collection remains unchanged.
 - `src/data/const.js`: previous projects, skills, education and experience records.
 - `src/data/caseStudies.js`: expanded bilingual content keyed by project slug: role, introduction, systems, workflow/responsibilities, outcome, availability, media and code.
 - `src/data/strawV05CaseStudy.js`: the advanced Straw V05 case study, scoped team contributions and local-source excerpt.
