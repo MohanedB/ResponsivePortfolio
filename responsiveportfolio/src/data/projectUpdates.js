@@ -1,11 +1,32 @@
 import archiverifCover from '../Image/ArchiVerif.svg';
 import boustreamingCover from '../Image/case-studies/boustreaming-banner.png';
-import { grouillereArtwork, strawArtwork } from './projectArtwork';
+import { diceTactArtwork, grouillereArtwork, strawArtwork } from './projectArtwork';
 
 // Verified project facts and public destinations: see docs/portfolio-review.md.
 // Calendar years come from owner confirmation and source history; exact dates remain unspecified.
 // Private repository and build URLs are omitted.
 export const recentProjects = [
+  {
+    id: 16,
+    slug: 'dice-tact',
+    featuredOrder: 4,
+    featuredSummaryKey: 'diceTactFeaturedSummary',
+    engines: ['unreal'],
+    years: ['2026'],
+    languages: ['cpp', 'blueprints'],
+    titleKey: 'diceTactTitle',
+    descriptionKey: 'diceTactDescription',
+    whatIDidKey: 'diceTactContribution',
+    statusKey: 'InDevelopment',
+    image: diceTactArtwork.src,
+    imageFit: 'contain',
+    imageBackground: '#302a20',
+    mainCategory: 'University',
+    portfolioMode: 'gamedev',
+    tags: ['Unreal Engine 5.7', 'C++', 'Blueprints'],
+    availabilityKey: 'BuildNotPublished',
+    searchTerms: ['DiceTac', 'DiceTact', 'dice', 'dés', 'tactical', 'tactique', '3C'],
+  },
   {
     id: 12,
     slug: 'straw-and-feathers',
@@ -107,11 +128,12 @@ export const recentProjects = [
 export const projectTranslations = {
   en: {
     SelectedWork: 'Selected work',
-    SelectedWorkDesc: 'Three projects that showcase my gameplay programming and full-stack development.',
+    SelectedWorkDesc: 'Games and software spanning my completed work and current projects.',
     ProjectCatalogDesc: 'Explore all {{count}} projects, including the selection above. Filter by discipline, technology or year.',
     strawFeaturedSummary: 'I built both character controllers, character switching, camera transitions and reusable object interactions for this advanced team prototype.',
     grouillereFeaturedSummary: 'I developed the complete mouse controller: walking and tornado movement, camera controls, jumps, cheese and poison interactions.',
     archiverifFeaturedSummary: 'I designed and built the entire product, from the bilingual interface and backend to document tracking, registry checks and deployment.',
+    diceTactFeaturedSummary: 'My current university team project: tactical battles fought with physical dice. My planned focus is 3C programming — character movement, camera and controls.',
     ProjectDesc: 'Games, prototypes and software I have built. Explore the work, the context and my contributions.',
     AllProjects: 'All projects', Games: 'Games', ProjectType: 'Project type',
     SearchProjects: 'Search projects', ProjectContext: 'Project context', AllContexts: 'All contexts',
@@ -124,8 +146,12 @@ export const projectTranslations = {
     AdvancedPrototype: 'Advanced prototype · V05', LiveProduct: 'Live product',
     WorkingWebsite: 'Working website', RestrictedAccess: 'The application currently has restricted access.',
     CompletedProject: 'Completed project', ArchivedPrototype: 'Archived prototype',
+    InDevelopment: 'In development',
     BuildNotPublished: 'A public build link has not been added yet.',
     SourcePrivate: 'Source code is currently private.',
+    diceTactTitle: 'Dice Tact',
+    diceTactDescription: 'A turn-based tactical game where a band of heroes protects a caravan. Position your characters like pieces on a board, then aim and throw physical dice to unleash abilities against enemies. Developed as a university team project in Unreal Engine 5.7.',
+    diceTactContribution: 'I am joining the project with a planned focus on 3C: character movement, camera and controls. My first step is to understand the existing systems and prepare a modular C++ foundation with designer-friendly configuration. The project is in development; I will expand this page as my contributions take shape.',
     strawTitle: 'Straw and Feathers',
     strawDescription: 'An advanced university prototype built around a scarecrow and a crow. V05 combines my character controllers and switching systems with the team’s models, textures, preliminary animations and a playable test level. The project was not selected for continued school production.',
     strawContribution: 'My work covers both character controllers, switching and camera transitions, reusable object carrying, compatible receivers, the hook-and-door interaction, and censer activation. I also integrated Plant/Unplant, jumpscare timing and lockouts, and the death-animation handoff; co-authored technical and QA documentation; and supported gameplay/VFX integration and review. The detailed breakdown below links each area to my Fibery tasks and distinguishes implementation, integration and consultation. I wrote all code in v1; V05 was built as a team.',
@@ -145,11 +171,12 @@ export const projectTranslations = {
   },
   fr: {
     SelectedWork: 'Projets à la une',
-    SelectedWorkDesc: 'Trois projets qui illustrent mon travail en programmation de gameplay et en développement full-stack.',
+    SelectedWorkDesc: 'Une sélection de jeux et de logiciels, entre réalisations terminées et projets en cours.',
     ProjectCatalogDesc: 'Explorez les {{count}} projets, y compris la sélection ci-dessus. Filtrez par domaine, technologie ou année.',
     strawFeaturedSummary: 'J’ai développé les deux contrôleurs, le changement de personnage, les transitions de caméra et des interactions réutilisables avec les objets pour ce prototype avancé en équipe.',
     grouillereFeaturedSummary: 'J’ai développé le contrôleur complet de la souris : marche, déplacement en tornade, caméra, sauts et interactions avec le fromage et le poison.',
     archiverifFeaturedSummary: 'J’ai conçu et développé le produit entier : interface bilingue, backend, suivi des documents, vérification des registres et déploiement.',
+    diceTactFeaturedSummary: 'Mon projet universitaire actuel en équipe : des combats tactiques avec des dés physiques. Mon rôle prévu porte sur la programmation des 3C — déplacements, caméra et contrôles.',
     ProjectDesc: 'Jeux, prototypes et logiciels que j’ai réalisés. Découvrez les projets, leur contexte et mes contributions.',
     AllProjects: 'Tous les projets', Games: 'Jeux', ProjectType: 'Type de projet',
     SearchProjects: 'Rechercher un projet', ProjectContext: 'Contexte du projet', AllContexts: 'Tous les contextes',
@@ -162,8 +189,12 @@ export const projectTranslations = {
     AdvancedPrototype: 'Prototype avancé · V05', LiveProduct: 'En ligne',
     WorkingWebsite: 'Site fonctionnel', RestrictedAccess: 'L’application est actuellement à accès restreint.',
     CompletedProject: 'Projet terminé', ArchivedPrototype: 'Prototype archivé',
+    InDevelopment: 'En développement',
     BuildNotPublished: 'Aucun lien public vers une version jouable n’a encore été ajouté.',
     SourcePrivate: 'Le code source est actuellement privé.',
+    diceTactTitle: 'Dice Tact',
+    diceTactDescription: 'Un jeu tactique au tour par tour où un groupe de héros protège une caravane. Positionnez vos personnages comme des pions sur un plateau, puis visez et lancez des dés physiques pour déclencher des capacités contre les ennemis. Un projet universitaire réalisé en équipe avec Unreal Engine 5.7.',
+    diceTactContribution: 'Je rejoins le projet avec un rôle prévu en programmation des 3C : déplacements des personnages, caméra et contrôles. Ma première étape consiste à comprendre les systèmes existants et à préparer une base C++ modulaire, configurable par les designers. Le projet est en développement; cette page sera enrichie à mesure que mes contributions prendront forme.',
     strawTitle: 'Straw and Feathers',
     strawDescription: 'Un prototype universitaire avancé centré sur un épouvantail et un corbeau. La V05 réunit mes contrôleurs et systèmes de changement de personnage avec les modèles, textures, premières animations et un niveau de test jouable de l’équipe. Le projet n’a pas été retenu pour la suite de la production à l’école.',
     strawContribution: 'Mon travail couvre les deux contrôleurs, les transitions de personnage et de caméra, le transport réutilisable d’objets, les récepteurs compatibles, l’interaction crochet-porte et l’activation de l’encensoir. J’ai aussi intégré Plant/Unplant, le timing et les blocages du jumpscare, ainsi que le relais vers l’animation de mort; coécrit la documentation technique et QA; et participé à l’intégration et à la revue du gameplay et des effets visuels. Le détail ci-dessous renvoie à mes tâches Fibery et distingue l’implémentation, l’intégration et la consultation. J’ai écrit tout le code de la v1; la V05 a été réalisée en équipe.',

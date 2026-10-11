@@ -37,11 +37,11 @@ test('provides a shareable project page link', () => {
   expect(catalog().getByRole('link', { name: /Paysage-Meloche/i })).toHaveAttribute('href', '/projects/paysage-meloche');
 });
 
-test('combines game and university filters without losing the three new games', () => {
+test('combines game and university filters without losing the recent games', () => {
   renderProjects();
   fireEvent.click(screen.getByRole('button', { name: 'Games' }));
   fireEvent.change(screen.getByRole('combobox', { name: 'Project context' }), { target: { value: 'University' } });
-  ['More information about Straw and Feathers', 'More information about Grouillère', 'More information about LetumLoop — TPS Prototype'].forEach(name => {
+  ['More information about Straw and Feathers', 'More information about Grouillère', 'More information about LetumLoop — TPS Prototype', 'More information about Dice Tact'].forEach(name => {
     expect(catalog().getByRole('link', { name })).toBeVisible();
   });
   expect(catalog().queryByRole('link', { name: 'More information about ARCHIVERIF' })).not.toBeInTheDocument();
@@ -103,13 +103,13 @@ test('applies a calendar year from a shared URL before the visitor touches a fil
   expect(catalog().queryByRole('link', { name: 'More information about Straw and Feathers' })).not.toBeInTheDocument();
 });
 
-test('finds all five recent projects in 2026 and shows their year on the cards', () => {
+test('finds all six recent projects in 2026 and shows their year on the cards', () => {
   renderProjects('/?year=2026');
   expect(screen.getByRole('combobox', { name: 'Year' })).toHaveValue('2026');
-  ['Straw and Feathers', 'BouStreaming', 'ARCHIVERIF', 'Grouillère', 'LetumLoop — TPS Prototype'].forEach(title => {
+  ['Straw and Feathers', 'BouStreaming', 'ARCHIVERIF', 'Grouillère', 'LetumLoop — TPS Prototype', 'Dice Tact'].forEach(title => {
     expect(catalog().getByRole('link', { name: `More information about ${title}` })).toHaveTextContent('2026');
   });
-  expect(catalog().getAllByRole('link')).toHaveLength(5);
+  expect(catalog().getAllByRole('link')).toHaveLength(6);
   expect(screen.queryByRole('option', { name: 'Not specified' })).not.toBeInTheDocument();
   expect(catalog().queryByRole('link', { name: 'More information about Robot Control in Unity' })).not.toBeInTheDocument();
 });
@@ -155,17 +155,18 @@ test('treats invalid shared filter values as all and still allows the visitor to
 });
 
 
-test('features three contribution-focused projects above the complete catalog without duplicate IDs', () => {
+test('features four projects above the complete catalog without duplicate IDs', () => {
   const { container } = renderProjects();
   const selected = screen.getByRole('region', { name: 'Selected work' });
   const links = within(selected).getAllByRole('link');
   expect(links.map(link => link.getAttribute('href'))).toEqual([
-    '/projects/straw-and-feathers', '/projects/grouillere', '/projects/archiverif',
+    '/projects/straw-and-feathers', '/projects/grouillere', '/projects/archiverif', '/projects/dice-tact',
   ]);
   expect(links[0]).toHaveTextContent(/character controllers/);
   expect(links[1]).toHaveTextContent(/mouse controller/);
   expect(links[2]).toHaveTextContent(/entire product/);
-  expect(catalog().getAllByRole('link')).toHaveLength(15);
+  expect(links[3]).toHaveTextContent(/planned focus is 3C programming/);
+  expect(catalog().getAllByRole('link')).toHaveLength(16);
   expect(selected.compareDocumentPosition(screen.getByRole('region', { name: 'All projects' })) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
   const ids = [...container.querySelectorAll('[id]')].map(element => element.id);
   expect(new Set(ids).size).toBe(ids.length);
@@ -175,11 +176,11 @@ test('keeps the selected introduction separate from the filtered catalog and tra
   await i18n.changeLanguage('fr');
   renderProjects('/?engine=unreal&year=2026&language=cpp');
   const selected = within(screen.getByRole('region', { name: 'Projets à la une' }));
-  expect(selected.getAllByRole('link')).toHaveLength(3);
+  expect(selected.getAllByRole('link')).toHaveLength(4);
   expect(selected.getByRole('link', { name: 'En savoir plus sur ARCHIVERIF' })).toHaveTextContent('produit');
-  expect(catalog().getAllByRole('link')).toHaveLength(3);
+  expect(catalog().getAllByRole('link')).toHaveLength(4);
   expect(catalog().queryByRole('link', { name: 'En savoir plus sur ARCHIVERIF' })).not.toBeInTheDocument();
   fireEvent.change(screen.getByRole('searchbox'), { target: { value: 'nonexistentzzzz' } });
   expect(catalog().queryByRole('link')).not.toBeInTheDocument();
-  expect(selected.getAllByRole('link')).toHaveLength(3);
+  expect(selected.getAllByRole('link')).toHaveLength(4);
 });

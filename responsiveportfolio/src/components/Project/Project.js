@@ -120,7 +120,7 @@ const Results = styled.p`
 `;
 const Grid = styled.div`
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(${({ $featured }) => $featured ? 4 : 3}, minmax(0, 1fr));
   gap: 24px;
   @media (max-width: 960px) { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   @media (max-width: 620px) { grid-template-columns: minmax(0, 1fr); }
@@ -179,7 +179,7 @@ const Projects = () => {
           <Collection aria-labelledby="selected-work-title">
             <CollectionTitle id="selected-work-title">{t('SelectedWork')}</CollectionTitle>
             <CollectionDesc>{t('SelectedWorkDesc')}</CollectionDesc>
-            <Grid>{featuredProjects.map(project => <ProjectCard key={project.id} project={project} featured headingAs="h4" />)}</Grid>
+            <Grid $featured>{featuredProjects.map(project => <ProjectCard key={project.id} project={project} featured headingAs="h4" />)}</Grid>
           </Collection>
           <Collection id="project-catalog" aria-labelledby="project-catalog-title">
             <CollectionTitle id="project-catalog-title">{t('AllProjects')}</CollectionTitle>

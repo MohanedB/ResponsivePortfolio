@@ -1,12 +1,12 @@
 # Project case-study pages
 
-Implementation and content provenance, updated October 8, 2026. Earlier verification is recorded separately below.
+Implementation and content provenance, updated October 10, 2026. Earlier verification is recorded separately below.
 
 ## Implemented behavior
 
-The home page introduces **Selected work / Projets à la une** above the complete project collection. Straw and Feathers, Grouillère and ARCHIVERIF appear in that order with contribution summaries, using `featuredOrder` and `featuredSummaryKey` on their existing records. Featured cards keep their normal routes, dates, technology tags, images and interaction behavior; their descriptions are shown in full. The **All projects** collection still renders all 15 records and owns the existing search, filters and result count. The selected section stays visible independently of those filters. Section headings and card headings retain a logical hierarchy, and repeated project presentations do not create duplicate IDs.
+The home page introduces **Selected work / Projets à la une** above the complete project collection. Straw and Feathers, Grouillère, ARCHIVERIF and Dice Tact appear in that order with contribution summaries, using `featuredOrder` and `featuredSummaryKey` on their records. Featured cards keep their normal routes, dates, technology tags, images and interaction behavior; their descriptions are shown in full. The **All projects** collection renders all 16 records and owns the existing search, filters and result count. The selected section stays visible independently of those filters. Section headings and card headings retain a logical hierarchy, and repeated project presentations do not create duplicate IDs.
 
-Each compact project card is a single React Router link containing a thumbnail, title, short summary, technology tags and a plain **More information / En savoir plus** text label. Clicking anywhere on the card or activating its link by keyboard opens the larger `/projects/:slug` detail page. Subtle hover and focus feedback indicates the interaction, and motion respects the visitor's reduced-motion preference. All 15 current projects have stable slugs and pages; five recent projects have expanded case studies. Older projects reuse their existing descriptions, contribution text, images and code where present.
+Each compact project card is a single React Router link containing a thumbnail, title, short summary, technology tags and a plain **More information / En savoir plus** text label. Clicking anywhere on the card or activating its link by keyboard opens the larger `/projects/:slug` detail page. Subtle hover and focus feedback indicates the interaction, and motion respects the visitor's reduced-motion preference. All 16 current projects have stable slugs and pages; five recent projects have expanded case studies, while Dice Tact has a concise introduction ahead of a future detailed case study. Older projects reuse their existing descriptions, contribution text, images and code where present.
 
 Expanded pages show context, role, tools, contributions, systems, a workflow or responsibility diagram and an outcome. Gallery and code sections appear only when content exists. Section links help visitors move through long pages. External actions distinguish a product website, team write-up, public source and verified playable/download destination.
 
@@ -17,6 +17,7 @@ Expanded pages show context, role, tools, contributions, systems, a workflow or 
 | Straw and Feathers | `/projects/straw-and-feathers` |
 | Grouillère | `/projects/grouillere` |
 | BouStreaming | `/projects/boustreaming` |
+| Dice Tact | `/projects/dice-tact` |
 
 `App.js` uses the existing React Router dependency. `responsiveportfolio/vercel.json` rewrites application paths to the SPA entry point for direct page requests and refreshes. Project pages update the document title and description in the current language. Unknown slugs and unmatched paths display a translated not-found page with a return link. This is an application state served through the SPA rewrite, not a server-generated HTTP 404 page.
 
@@ -35,7 +36,7 @@ Global navigation targets home sections from project pages. Navigation manages h
 
 For example, `/?type=gamedev&context=University&q=grouillere#projects` opens the university-games selection with a search for Grouillère. Adding `engine=unreal&language=cpp&year=2026` also matches its confirmed technologies and owner-confirmed calendar year. All selected filters combine. Search ignores case, surrounding whitespace and accents, and includes readable engine/language labels and documented years. Dropdown options come from project metadata; unsupported filter values behave as the default. Filter updates replace the current history entry. Reset removes `type`, `context`, `engine`, `year`, `language` and `q` and preserves unrelated query parameters.
 
-Every project has explicit `engines`, `years` and `languages` arrays. Straw and Feathers, ARCHIVERIF, Grouillère, LetumLoop — TPS Prototype and BouStreaming use 2026; their cards and detail-page facts display that year. Exact months, days and release dates remain unconfirmed. All current projects have a year, so **Not specified** is absent; it appears only if a future project has an empty year array. The inspected Straw V05 snapshot establishes Unreal Engine 5.7, C++ and Blueprints. See [Project discovery filters](project-filters.md) for stable IDs, all 15 metadata mappings, evidence and the separate unresolved AppDeMo/internship year discrepancy.
+Every project has explicit `engines`, `years` and `languages` arrays. Straw and Feathers, ARCHIVERIF, Grouillère, LetumLoop — TPS Prototype, BouStreaming and Dice Tact use 2026; their cards and detail-page facts display that year. Exact months, days and release dates remain unconfirmed. All current projects have a year, so **Not specified** is absent; it appears only if a future project has an empty year array. The inspected Straw V05 snapshot establishes Unreal Engine 5.7, C++ and Blueprints. Dice Tact uses `unreal`, `cpp` and `blueprints`. See [Project discovery filters](project-filters.md) for stable IDs, all 16 metadata mappings, evidence and the separate unresolved AppDeMo/internship year discrepancy.
 
 The card link preserves the home URL in router state. **Back to projects** returns to that URL and `#projects`. A directly opened project URL has no previous grid state, so it returns to `/#projects`. Sharing a case-study URL shares the project itself, without the sender’s earlier filters.
 
@@ -100,7 +101,7 @@ Store shareable local assets under `responsiveportfolio/src/Image/case-studies/`
 
 `credit` and its URL are optional. Images are lazy-loaded and can be enlarged in a labeled dialog. They are contained rather than cropped, and failed images display a readable fallback.
 
-For a local MP4/WebM, use `kind: 'video'`, `src`, optional `poster`, and the same localized alt/caption fields. Videos have native controls, `playsInline` and `preload="none"`; they do not autoplay. For a verified embeddable video URL, use `kind: 'embed'` and optional `poster`. Its iframe loads only after the visitor presses play. Ordinary page URLs are not necessarily embeddable. These formats are supported; no gameplay videos are currently supplied for the three new games.
+For a local MP4/WebM, use `kind: 'video'`, `src`, optional `poster`, and the same localized alt/caption fields. Videos have native controls, `playsInline` and `preload="none"`; they do not autoplay. For a verified embeddable video URL, use `kind: 'embed'` and optional `poster`. Its iframe loads only after the visitor presses play. Ordinary page URLs are not necessarily embeddable. These formats are supported; no gameplay videos are currently supplied for the four recent games.
 
 Prefer short, clear clips with accurate captions. Credit team media and distinguish teammates’ systems from Mohaned’s work. Do not manufacture gameplay imagery or use private customer data as product screenshots.
 
@@ -252,6 +253,12 @@ Private source root: `E:/GitHub/BouStreaming`, inspected commit `d1fbf45927d2517
 
 The case-study module is `responsiveportfolio/src/data/boustreamingCaseStudy.js`. Its `flushRemovals` excerpt shows the ordering used to settle a deferred removal while accounting for focus callbacks; it is attributed to the exact commit and file above. Source inspection does not establish public availability or a newly tested deployment.
 
+### Dice Tact
+
+Dice Tact is the current university game in progress, presented as a 2026 Unreal Engine/C++/Blueprints project at `/projects/dice-tact`. The short entry identifies Mohaned's intended 3C role—character, camera and controls—without presenting those responsibilities as completed implementation. Detailed contributions, source excerpts and a fuller technical case study are reserved for a later update.
+
+Mohaned supplied the title artwork, whose title reads DiceTact. It is copied unchanged to `responsiveportfolio/src/Image/case-studies/dice-tact-cover.png`. This is project title artwork, not a gameplay screenshot or evidence that planned systems are complete. No specific artist credit, public source repository or playable destination is supplied.
+
 ## Media provenance
 
 Two PNGs were captured directly from the [public ARCHIVERIF English homepage](https://archiverif.ca/en) on September 5, 2026, at 1400×900. The cookie notice was dismissed using its button. No account login, company lookup or private dashboard access occurred. Captures were not cropped, edited or synthesized.
@@ -274,13 +281,15 @@ Mohaned supplied a mouse illustration for Grouillère and a replacement 3D chara
 
 The original attachment paths record provenance and are not public destinations. `projectArtwork.js` exports shared gallery objects with English/French alt text and captions distinguishing Grouillère's illustration from Straw's 3D character image. No specific artist attribution is confirmed; supplying an image does not establish that Mohaned created it. Cards use `object-fit: contain` with matching backgrounds, including a dark background for Straw, so the complete characters remain visible. Gallery enlargement presents the same images. Neither image is presented as a gameplay screenshot or runtime verification, and no public playable link is added.
 
+Dice Tact's owner-supplied title artwork is stored unchanged at `responsiveportfolio/src/Image/case-studies/dice-tact-cover.png`. Its title reads DiceTact; its use does not establish artist authorship, gameplay verification or completed 3C work.
+
 ## Playable destinations and remaining media
 
 Set a project record’s `playableUrl` only for a checked, public play/download destination. Explain platform/build status in localized availability text. Keep product sites in `website`, public repositories in `github`, and team write-ups in `website` with a translated `websiteLabelKey`.
 
-Straw V05 now has an owner-provided 3D character image and Grouillère has a mouse illustration on their cards and in their galleries. LetumLoop TPS retains a title cover. All three games still lack confirmed gameplay captures and a verified public playable link. Their diagrams are labeled as implemented systems or responsibilities, and no nonfunctional play button is rendered. ARCHIVERIF links to the live product in the visitor's current language. BouStreaming has restricted access and no public external destination; its planned legal-content version must not be presented as available. Authentic gameplay clips, interface captures and shareable builds remain separate follow-ups.
+Straw V05 now has an owner-provided 3D character image and Grouillère has a mouse illustration on their cards and in their galleries. LetumLoop TPS retains a title cover, and Dice Tact uses the supplied title artwork. These four games still lack confirmed gameplay captures and a verified public playable link. The existing case-study diagrams are labeled as implemented systems or responsibilities; Dice Tact's intended 3C role is not presented as completed work. No nonfunctional play button is rendered. ARCHIVERIF links to the live product in the visitor's current language. BouStreaming has restricted access and no public external destination; its planned legal-content version must not be presented as available. Authentic gameplay clips, interface captures and shareable builds remain separate follow-ups.
 
-## Selected work and introduction update — verification
+## Historical verification — selected work and introduction update
 
 All 27 tests across five suites pass, including featured order/content, the 15-project collection, unique IDs, bilingual filtering and real application navigation that preserves search focus and filter state. The CI production build compiles successfully with 214.41 KB gzip main JavaScript. No new runtime dependencies or project routes were added. Browser visual inspection remains unavailable after the earlier URL-policy block; code/content review was local after the independent agent was unavailable due to capacity.
 
