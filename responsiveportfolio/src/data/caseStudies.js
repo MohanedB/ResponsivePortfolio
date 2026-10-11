@@ -1,12 +1,20 @@
 import { strawV05CaseStudy } from './strawV05CaseStudy';
 import { boustreamingCaseStudy } from './boustreamingCaseStudy';
 import { grouillereCaseStudy } from './grouillereCaseStudy';
+import { diceTactArtwork } from './projectArtwork';
 import archiverifHome from '../Image/case-studies/archiverif-home.png';
 import archiverifWorkflow from '../Image/case-studies/archiverif-document-workflow.png';
 
 // Content verified against source snapshots and the developer's stated role.
 // Research and media provenance: docs/project-case-studies.md.
 export const caseStudies = {
+  'dice-tact': {
+    role: {
+      en: 'Planned focus · 3C programming (character, camera, controls)',
+      fr: 'Rôle prévu · Programmation 3C (personnage, caméra, contrôles)',
+    },
+    media: [diceTactArtwork],
+  },
   archiverif: {
     role: {
       en: 'Sole developer · Product, frontend and backend',

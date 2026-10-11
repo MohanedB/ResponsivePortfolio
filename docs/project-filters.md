@@ -1,6 +1,6 @@
 # Project discovery filters
 
-The **All projects** grid combines discipline, project context, game engine, calendar year, programming language and text search. A project must match every selected filter. Each dropdown selects one value; a project can belong to several values through its metadata arrays. All 15 projects remain visible when no filters are selected. The separate **Selected work** section above it always presents Straw and Feathers, Grouillère and ARCHIVERIF; filters and result counts apply only to the complete collection below.
+The **All projects** grid combines discipline, project context, game engine, calendar year, programming language and text search. A project must match every selected filter. Each dropdown selects one value; a project can belong to several values through its metadata arrays. All 16 projects remain visible when no filters are selected. The separate **Selected work** section above it always presents Straw and Feathers, Grouillère, ARCHIVERIF and Dice Tact, in that order; filters and result counts apply only to the complete collection below.
 
 ## URL behavior
 
@@ -13,7 +13,7 @@ The **All projects** grid combines discipline, project context, game engine, cal
 | `language` | Language IDs present in the dataset, listed below | All languages |
 | `q` | Search text | Empty search |
 
-For example, `/?type=gamedev&engine=unity&year=2025&language=csharp#projects` selects the documented 2025 Unity/C# games. `/?year=2026#projects` selects five entries: Straw and Feathers V05, ARCHIVERIF, Grouillère, LetumLoop — TPS Prototype and BouStreaming.
+For example, `/?type=gamedev&engine=unity&year=2025&language=csharp#projects` selects the documented 2025 Unity/C# games. `/?year=2026#projects` selects six entries: Straw and Feathers V05, ARCHIVERIF, Grouillère, LetumLoop — TPS Prototype, BouStreaming and Dice Tact.
 
 Dropdown options come from the current dataset. Unsupported query values behave as the corresponding All option. Labels are translated; URL IDs remain stable across English and French. Text search ignores case, accents and surrounding whitespace and includes displayed project text, tags, aliases, human-readable engine/language labels and documented years.
 
@@ -33,7 +33,7 @@ languages: ['csharp'],
 - `years`: strings naming documented calendar years, independent of academic labels such as `YEAR1`. Use `[]` when the year is unknown. The UI's `unspecified` sentinel is not stored in project metadata. If an explicitly documented project period spans several years, list each of those years.
 - `languages`: stable IDs for demonstrated programming languages or Blueprint visual scripting: `cpp`, `csharp`, `javascript`, `typescript`, `python`, `java`, `swift`, `blueprints`. Use `[]` when unconfirmed. Tools, databases and frameworks are still available as tags but are not classified as languages.
 
-An empty engine or language array matches the corresponding All option, but no specific engine/language selection. If a future project has an empty year array, the localized **Not specified** option appears and selects it. All 15 current projects have a year, so that option is absent and `year=unspecified` behaves as an unsupported value. Do not derive missing metadata from repository names, commit dates, page publication dates, school years, status labels or the technologies listed in the general skills section.
+An empty engine or language array matches the corresponding All option, but no specific engine/language selection. If a future project has an empty year array, the localized **Not specified** option appears and selects it. All 16 current projects have a year, so that option is absent and `year=unspecified` behaves as an unsupported value. Do not derive missing metadata from repository names, commit dates, page publication dates, school years, status labels or the technologies listed in the general skills section.
 
 ## Current mapping and evidence
 
@@ -46,6 +46,7 @@ Older project years mirror their existing English/French project-date text in `s
 | Grouillère | `unreal` | `2026` | `cpp`, `blueprints` | Year confirmed by Mohaned; existing project tags and verified team write-up establish technologies. |
 | LetumLoop — TPS Prototype | `unreal` | `2026` | `cpp` | Year confirmed by Mohaned; inspected Unreal/C++ source documented in the case-study provenance. |
 | BouStreaming | — | `2026` | `typescript` | Added as a 2026 software project; inspected private `BouStreaming` source establishes its TypeScript/Next.js implementation. |
+| Dice Tact | `unreal` | `2026` | `cpp`, `blueprints` | Current university game in progress, with confirmed Unreal Engine/C++/Blueprints technology. Mohaned's intended 3C role is described as planned work, not completed implementation. |
 | Paysage-Meloche | — | `2023` | `javascript` | Date key `education11`; JavaScript excerpt label. |
 | HalalBites | — | `2024` | `javascript`, `java` | Date key `education20`; JavaScript/Java SpringBoot tags and Java excerpt label. |
 | Pet-Clinic | — | `2023` | `javascript` | Date key `education14`; JavaScript tag and excerpt label. |
@@ -59,6 +60,6 @@ Older project years mirror their existing English/French project-date text in `s
 
 AppDeMo's displayed project date is March 4–May 10, **2024**, while the Montréal internship experience uses March 4–May 10, **2025** (`education26` versus `exper3`). Its filter metadata deliberately follows the existing project display. Neither date is corrected by this change; the owner must confirm the right year before reconciling them.
 
-The five recent projects use `years: ['2026']`. Their cards and detail-page facts display 2026; exact months, days and release dates are not inferred. Grouillère's teammate-article publication date and repository Git history are not used to assign its year. Straw's earlier engine/language uncertainty has been resolved through the inspected V05 descriptor and C++/Blueprint source. V05 remains the same project entry, so replacing its V1 description does not add another card. BouStreaming adds the fifteenth project and has no game-engine metadata.
+The six recent projects use `years: ['2026']`. Their cards and detail-page facts display 2026; exact months, days and release dates are not inferred. Grouillère's teammate-article publication date and repository Git history are not used to assign its year. Straw's earlier engine/language uncertainty has been resolved through the inspected V05 descriptor and C++/Blueprint source. V05 remains the same project entry, so replacing its V1 description does not add another card. BouStreaming has no game-engine metadata. Dice Tact adds the sixteenth project with a concise introduction; its detailed case study remains a future addition.
 
 See [Project case-study pages](project-case-studies.md) for the recent projects' source and media provenance. Gameplay captures, playable builds and additional source-backed content remain separate follow-ups.
